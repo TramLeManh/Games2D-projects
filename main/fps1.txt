@@ -1,0 +1,19 @@
+double drawInterval = 1000000000/FPS;
+        double nextDrawnTime = System.nanoTime() + drawInterval;
+        while (gameThread != null) {
+            // UPDATE: such as character positions
+            update();
+            // DRAW: draw the screen with the updated information
+            repaint();
+            try {
+                double remainingTime = nextDrawnTime  - System.nanoTime();
+                remainingTime = remainingTime/1000000;
+                if(remainingTime<0){
+                    remainingTime = 0;
+                }
+                Thread.sleep((long)remainingTime);
+                nextDrawnTime += drawInterval;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
