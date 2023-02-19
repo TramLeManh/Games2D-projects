@@ -1,3 +1,5 @@
+package entity;
+
 import main.GamePanel;
 import main.keyControl;
 
