@@ -18,7 +18,7 @@ public class Player extends Entity{
     private BufferedImage up1;
     private BufferedImage up2;
     private BufferedImage down1;
-    private BufferedImage leftd2;
+    private BufferedImage left2;
     private BufferedImage left1;
     private BufferedImage down2;
     private BufferedImage right1;
