@@ -12,6 +12,8 @@ import javax.imageio.ImageIO;
 import java.awt.Color;
 
 public class Player extends Entity{
+    public final int screenX;
+    public final int screenY;
     private boolean run;
     GamePanel gp;
     keyControl keyBoard;
@@ -30,34 +32,36 @@ public class Player extends Entity{
         this.keyBoard = keyBoard;
         setDefultValues();
         getplayerImage();
+        screenX = gp.screenWidth/2-(gp.tileSize/2);
+        screenY = gp.screenHeight/2-(gp.tileSize/2);
     }
     public void setDefultValues() {
-        x   = 100;
-        y   = 100;
+        worldX   = 100;
+        worldY   = 100;
         speed = 4;
         direction = "down";
     }
     public void update() {
         if(keyBoard.downPress==true||keyBoard.upPress== true||keyBoard.rightPress||keyBoard.leftPress==true){
-            if(keyBoard.upPress==true&&y>0){
+            if(keyBoard.upPress==true&&worldY>0){
                 direction = "up";
-                y -= speed;
+                worldY -= speed;
             }
-            else if(keyBoard.downPress==true&&y<gp.screenHeight-gp.tileSize){
-                y += speed;
+            else if(keyBoard.downPress==true&&worldY<gp.screenHeight-gp.tileSize){
+                worldY += speed;
                 direction = "down";
             }
-            else if (keyBoard.rightPress==true&&x<gp.screenWidth-gp.tileSize) {
-                x += speed;
+            else if (keyBoard.rightPress==true&&worldX<gp.screenWidth-gp.tileSize) {
+                worldX += speed;
                 direction = "right";
             }
-            else if (keyBoard.leftPress==true&&x>0) {
-                x -= speed;
+            else if (keyBoard.leftPress==true&&worldX>0) {
+                worldX -= speed;
                 direction = "left";
     
             }
             else if(keyBoard.spacePress ==true){
-                System.out.println("x: "+x+"y: " +y);
+                System.out.println("worldX: "+worldX+"worldY: " +worldY);
             }
           
             spriteCounter++;
@@ -128,7 +132,7 @@ public class Player extends Entity{
             }             
         }
 
-        g.drawImage(image,x,y,gp.tileSize,gp.tileSize,null);
+        g.drawImage(image,screenX,screenY,gp.tileSize,gp.tileSize,null);
 
        
     }
