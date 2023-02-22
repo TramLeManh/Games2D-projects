@@ -33,11 +33,11 @@ public class Player extends Entity{
         setDefultValues();
         getplayerImage();
         screenX = gp.screenWidth/2-(gp.tileSize/2);
-        screenY = gp.screenHeight/2-(gp.tileSize/2);
+         screenY = gp.screenHeight/2-(gp.tileSize/2);
     }
     public void setDefultValues() {
-        worldX   = 100;
-        worldY   = 100;
+        worldX   = 1000;
+        worldY   = 1000;
         speed = 4;
         direction = "down";
     }

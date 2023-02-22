@@ -1,5 +1,6 @@
 package tiles;
 
+
 import main.GamePanel;
 import main.keyControl;
 
@@ -23,7 +24,7 @@ public class TilesMangaer extends Tiles {
 
     public TilesMangaer(GamePanel gp) {
         this.gp = gp;
-        tile = new Tiles[10];
+        tile = new Tiles[20];
         mapTileNumber = new int[gp.maxWorldCol][gp.maxWorldRow];
         getImage();
         loadMap();
@@ -97,9 +98,7 @@ public class TilesMangaer extends Tiles {
             x += gp.tileSize;
             if (worldCol == gp.maxWorldCol) {
                 worldCol = 0;
-                x = 0;
                 worldRow++;
-                y += gp.tileSize;
             }
         }
     }
