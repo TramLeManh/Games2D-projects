@@ -37,7 +37,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     public GamePanel() {
         // set Background
-        this.setPreferredSize(new Dimension(screenWidth, screenHeight));
+        this.setPreferredSize(new Dimension(worldWidth, worldHeight));
         this.setBackground(Color.decode("#8F00FF"));/* getHSBColor() */ /* decode hex code */
         this.setDoubleBuffered(true);
         // Insert Keyboard:
