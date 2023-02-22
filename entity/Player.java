@@ -30,10 +30,11 @@ public class Player extends Entity{
     public Player(GamePanel gp,keyControl keyBoard){
         this.gp = gp;
         this.keyBoard = keyBoard;
+        screenX = gp.screenWidth/2-(gp.tileSize/2);
+        screenY = gp.screenHeight/2-(gp.tileSize/2);
         setDefultValues();
         getplayerImage();
-        screenX = gp.screenWidth/2-(gp.tileSize/2);
-         screenY = gp.screenHeight/2-(gp.tileSize/2);
+        
     }
     public void setDefultValues() {
         worldX   = gp.tileSize*23;
@@ -43,19 +44,19 @@ public class Player extends Entity{
     }
     public void update() {
         if(keyBoard.downPress==true||keyBoard.upPress== true||keyBoard.rightPress||keyBoard.leftPress==true){
-            if(keyBoard.upPress==true&&worldY>0){
+            if(keyBoard.upPress==true){
                 direction = "up";
                 worldY -= speed;
             }
-            else if(keyBoard.downPress==true&&worldY<gp.screenHeight-gp.tileSize){
+            else if(keyBoard.downPress==true){
                 worldY += speed;
                 direction = "down";
             }
-            else if (keyBoard.rightPress==true&&worldX<gp.screenWidth-gp.tileSize) {
+            else if (keyBoard.rightPress==true) {
                 worldX += speed;
                 direction = "right";
             }
-            else if (keyBoard.leftPress==true&&worldX>0) {
+            else if (keyBoard.leftPress==true) {
                 worldX -= speed;
                 direction = "left";
     

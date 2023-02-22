@@ -32,7 +32,7 @@ public class TilesMangaer extends Tiles {
 
     public void loadMap() {
         try {
-            InputStream is = getClass().getResourceAsStream("/map/map1.txt");
+            InputStream is = getClass().getResourceAsStream("/map/map01.txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             int row = 0;
             int col = 0;
@@ -63,14 +63,6 @@ public class TilesMangaer extends Tiles {
             tile[0].image = ImageIO.read(getClass().getResource("/picture/tiles/grass.png"));
             tile[1] = new Tiles();
             tile[1].image = ImageIO.read(getClass().getResource("/picture/tiles/wall.png"));
-            tile[2] = new Tiles();
-            tile[2].image = ImageIO.read(getClass().getResource("/picture/tiles/water.png"));
-            tile[3] = new Tiles();
-            tile[3].image = ImageIO.read(getClass().getResource("/picture/tiles/water.png"));
-            tile[3] = new Tiles();
-            tile[3].image = ImageIO.read(getClass().getResource("/picture/tiles/water.png"));
-            tile[4] = new Tiles();
-            tile[4].image = ImageIO.read(getClass().getResource("/picture/tiles/water.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -95,7 +87,6 @@ public class TilesMangaer extends Tiles {
             int screenY = worldY -gp.player.worldY + gp.player.screenY;
             g2.drawImage(tile[tileNumber].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
             worldCol++;
-            x += gp.tileSize;
             if (worldCol == gp.maxWorldCol) {
                 worldCol = 0;
                 worldRow++;
