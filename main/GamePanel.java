@@ -30,6 +30,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Thread gameThread;
     public Player player = new Player(this,keyBoard);
     TilesMangaer tilesM = new TilesMangaer(this);
+    public collisionCheck cCheck = new collisionCheck(this);
     // Player start positions
     int playerX     = 100;
     int playerY     = 100;
@@ -45,6 +46,7 @@ public class GamePanel extends JPanel implements Runnable {
         this.setFocusable(true);
 
     }
+
 
     public void startGameThread() {
         gameThread = new Thread(this);

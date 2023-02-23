@@ -19,8 +19,8 @@ import java.awt.Color;
 public class TilesMangaer extends Tiles {
     GamePanel gp;
     keyControl keyBoard;
-    Tiles[] tile;
-    int mapTileNumber[][];
+    public Tiles[] tile;
+    public int mapTileNumber[][];
 
     public TilesMangaer(GamePanel gp) {
         this.gp = gp;
@@ -61,14 +61,22 @@ public class TilesMangaer extends Tiles {
         try {
             tile[0] = new Tiles();
             tile[0].image = ImageIO.read(getClass().getResource("/picture/tiles/grass.png"));
+
             tile[1] = new Tiles();
             tile[1].image = ImageIO.read(getClass().getResource("/picture/tiles/wall.png"));
+            tile[1].collision =true;
+
             tile[2] = new Tiles();
             tile[2].image = ImageIO.read(getClass().getResource("/picture/tiles/water.png"));
+            tile[2].collision =true;
+
             tile[3] = new Tiles();
             tile[3].image = ImageIO.read(getClass().getResource("/picture/tiles/earth.png"));
+            
             tile[4] = new Tiles();
             tile[4].image = ImageIO.read(getClass().getResource("/picture/tiles/tree.png"));
+            tile[4].collision = true;
+            
             tile[5] = new Tiles();
             tile[5].image = ImageIO.read(getClass().getResource("/picture/tiles/sand.png"));
         } catch (IOException e) {

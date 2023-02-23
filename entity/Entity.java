@@ -1,5 +1,7 @@
 package entity;
 import java.awt.image.BufferedImage;
+import java.awt.Rectangle;
+
 public class Entity {
     public int worldX;
     public int worldY;
@@ -8,4 +10,6 @@ public class Entity {
     public String direction;
     public int spriteCounter = 0;
     public int spriteNum = 2;
+    public Rectangle solidArea;
+    public boolean collisionEnabled = false;
 }
