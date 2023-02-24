@@ -18,12 +18,19 @@ public class GamePanel extends JPanel implements Runnable {
     public final int maxScreenRow = 12;//12
     public final int screenWidth = tileSize * maxScreenCol;//768
     public final int screenHeight = tileSize * maxScreenRow;//576
+    // world settings
+    public final int maxWorldCol = 50;
+    public final int maxWorldRow = 50;
+    public final int worldWidth = maxWorldCol*tileSize;
+    public final int worldHeight = maxWorldRow*tileSize;
+
     int FPS = 60;
     keyControl keyBoard = new keyControl();
     Sound sound = new Sound();
     public Thread gameThread;
-    Player player = new Player(this,keyBoard);
+    public Player player = new Player(this,keyBoard);
     TilesMangaer tilesM = new TilesMangaer(this);
+    public collisionCheck cCheck = new collisionCheck(this);
     // Player start positions
     int playerX     = 100;
     int playerY     = 100;
@@ -31,7 +38,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     public GamePanel() {
         // set Background
-        this.setPreferredSize(new Dimension(screenWidth, screenHeight));
+        this.setPreferredSize(new Dimension(16*48, 12*48));
         this.setBackground(Color.decode("#8F00FF"));/* getHSBColor() */ /* decode hex code */
         this.setDoubleBuffered(true);
         // Insert Keyboard:
@@ -39,6 +46,7 @@ public class GamePanel extends JPanel implements Runnable {
         this.setFocusable(true);
 
     }
+
 
     public void startGameThread() {
         gameThread = new Thread(this);

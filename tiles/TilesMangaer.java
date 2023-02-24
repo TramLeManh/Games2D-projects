@@ -1,5 +1,6 @@
 package tiles;
 
+
 import main.GamePanel;
 import main.keyControl;
 
@@ -18,33 +19,33 @@ import java.awt.Color;
 public class TilesMangaer extends Tiles {
     GamePanel gp;
     keyControl keyBoard;
-    Tiles[] tile;
-    int mapTileNumber[][];
+    public Tiles[] tile;
+    public int mapTileNumber[][];
 
     public TilesMangaer(GamePanel gp) {
         this.gp = gp;
-        tile = new Tiles[10];
-        mapTileNumber = new int[gp.maxScreenCol][gp.maxScreenRow];
+        tile = new Tiles[20];
+        mapTileNumber = new int[gp.maxWorldCol][gp.maxWorldRow];
         getImage();
         loadMap();
     }
 
     public void loadMap() {
         try {
-            InputStream is = getClass().getResourceAsStream("/map/map.txt");
+            InputStream is = getClass().getResourceAsStream("/map/map1.txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             int row = 0;
             int col = 0;
-            while (col < gp.maxScreenCol && row < gp.maxScreenRow) {
+            while (col < gp.maxWorldCol && row < gp.maxWorldRow) {
                 String line = br.readLine();
-                while (col < gp.maxScreenCol) {
+                while (col < gp.maxWorldCol) {
                     String number[] = line.split(" ");
                     int num = Integer.parseInt(number[col]);
                     mapTileNumber[col][row] = num;
                     col++;
 
                 }
-                if (col == gp.maxScreenCol) {
+                if (col == gp.maxWorldCol) {
                     col = 0;
                     row++;
                 }
@@ -60,10 +61,24 @@ public class TilesMangaer extends Tiles {
         try {
             tile[0] = new Tiles();
             tile[0].image = ImageIO.read(getClass().getResource("/picture/tiles/grass.png"));
+
             tile[1] = new Tiles();
             tile[1].image = ImageIO.read(getClass().getResource("/picture/tiles/wall.png"));
+            tile[1].collision =true;
+
             tile[2] = new Tiles();
             tile[2].image = ImageIO.read(getClass().getResource("/picture/tiles/water.png"));
+            tile[2].collision =true;
+
+            tile[3] = new Tiles();
+            tile[3].image = ImageIO.read(getClass().getResource("/picture/tiles/earth.png"));
+            
+            tile[4] = new Tiles();
+            tile[4].image = ImageIO.read(getClass().getResource("/picture/tiles/tree.png"));
+            tile[4].collision = true;
+            
+            tile[5] = new Tiles();
+            tile[5].image = ImageIO.read(getClass().getResource("/picture/tiles/sand.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -75,21 +90,22 @@ public class TilesMangaer extends Tiles {
 
     public void draw(Graphics2D g2) {
         // g2.drawImage(tiles[0].image,0,0,gp.tileSize,gp.tileSize,);
-        int col = 0;
-        int row = 0;
+        int worldCol = 0;
+        int worldRow = 0;
         int x = 0;
         int y = 0;
-        int tileNumber = mapTileNumber[col][row];
-        while (col < gp.maxScreenCol && row < gp.maxScreenRow) {
-            tileNumber = mapTileNumber[col][row];
-            g2.drawImage(tile[tileNumber].image, x, y, gp.tileSize, gp.tileSize, null);
-            col++;
-            x += gp.tileSize;
-            if (col == gp.maxScreenCol) {
-                col = 0;
-                x = 0;
-                row++;
-                y += gp.tileSize;
+        int tileNumber = mapTileNumber[worldCol][worldRow];
+        while (worldCol < gp.maxWorldCol && worldRow < gp.maxWorldRow) {
+            tileNumber = mapTileNumber[worldCol][worldRow];
+            int worldX = worldCol*gp.tileSize;
+            int worldY = worldRow*gp.tileSize;
+            int screenX = worldX -gp.player.worldX + gp.player.screenX;
+            int screenY = worldY -gp.player.worldY + gp.player.screenY;
+            g2.drawImage(tile[tileNumber].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+            worldCol++;
+            if (worldCol == gp.maxWorldCol) {
+                worldCol = 0;
+                worldRow++;
             }
         }
     }
