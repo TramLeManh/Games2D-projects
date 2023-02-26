@@ -1,7 +1,9 @@
 package main;
-
+import object.SuperObject;
 import java.awt.Color;
 import java.awt.Dimension;
+
+import javax.security.auth.Subject;
 import javax.swing.JPanel;
 import tiles.TilesMangaer;
 
@@ -20,7 +22,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int screenHeight = tileSize * maxScreenRow;//576
     // world settings
     public final int maxWorldCol = 50;
-    public final int maxWorldRow = 50;
+    public final int maxWorldRow = 55;
     public final int worldWidth = maxWorldCol*tileSize;
     public final int worldHeight = maxWorldRow*tileSize;
 
@@ -31,6 +33,9 @@ public class GamePanel extends JPanel implements Runnable {
     public Player player = new Player(this,keyBoard);
     public TilesMangaer tilesM = new TilesMangaer(this);
     public collisionCheck cCheck = new collisionCheck(this);
+    public SuperObject object[] = new SuperObject[10];//create ten block objects
+    public object_set  aSetter = new object_set(this);
+
     // Player start positions
     int playerX     = 100;
     int playerY     = 100;
@@ -44,7 +49,9 @@ public class GamePanel extends JPanel implements Runnable {
         // Insert Keyboard:
         this.addKeyListener(keyBoard);
         this.setFocusable(true);
-
+    }
+    public void setupGame(){
+        aSetter.set_object();
     }
 
 
@@ -93,8 +100,17 @@ public class GamePanel extends JPanel implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D playerG = (Graphics2D) g;
+        //tile
         tilesM.draw(playerG);
-
+        //object
+        for(int i = 0; i < object.length; i++){
+           if(object[i] != null){
+            object[i].draw(playerG,this);
+           }
+        }
+        //collision
+        // cCheck.draw(playerG);
+        //player
         player.draw(playerG);
         playerG.dispose();
        

@@ -59,7 +59,7 @@ public class Player extends Entity {
         if (keyBoard.isOne == true) {            
             transfer = false;
             gp.tilesM.tile[2].collision = true;
-                    if(worldY<320){
+                    if(worldY<320+5*gp.tileSize){
                         transfer = true;
                         gp.tilesM.tile[2].collision = false;
                     }

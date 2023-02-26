@@ -14,6 +14,6 @@ public class Main {
         w.setVisible(true);
         gamePanel.startGameThread();
         gamePanel.playMusic();
-
+        gamePanel.setupGame();
     }
 }
