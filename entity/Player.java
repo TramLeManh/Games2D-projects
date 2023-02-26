@@ -18,6 +18,7 @@ public class Player extends Entity {
     public final int screenX;
     public final int screenY;
     private boolean run;
+    private int Key_count = 0;
     GamePanel gp;
     keyControl keyBoard;
     private BufferedImage up1;
@@ -43,6 +44,9 @@ public class Player extends Entity {
         solidArea.y = 16;
         solidArea.width = 32;
         solidArea.height = 32;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
+
     }
 
     public void setDefultValues() {
@@ -79,7 +83,9 @@ public class Player extends Entity {
             // check collision
             collisionEnabled = false;
             gp.cCheck.checkTile(this);
-
+            //object collision
+            int index = gp.cCheck.checkObject(this, true);
+            pickupObject(index);
             spriteCounter++;
             // if collision
             if (collisionEnabled == false) {
@@ -106,6 +112,19 @@ public class Player extends Entity {
             }
         }
 
+    }
+    public void pickupObject(int index) {
+        if(index != -1){
+        String objectName = gp.object[index].name;
+        if(objectName == "key"){
+            ++Key_count;
+            gp.object[index] =  null;
+
+        }
+        if(objectName=="door"&&Key_count ==2){
+            gp.object[index] =  null;
+        }
+        }
     }
 
     // public void getplayerImage() {
