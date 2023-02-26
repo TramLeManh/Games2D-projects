@@ -1,11 +1,15 @@
 package main;
 
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;;
+import java.awt.event.KeyListener;
+import main.GamePanel;
+
 
 public class keyControl implements KeyListener {
     public boolean upPress, downPress, rightPress, leftPress,spacePress;
     public boolean isFall;
+    public boolean isOne,isTwo;
+    GamePanel gp;
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -22,6 +26,10 @@ public class keyControl implements KeyListener {
             rightPress = true;
 
         }
+
+        if(key_code==KeyEvent.VK_1){
+            isOne = true;
+        }
         if (key_code == KeyEvent.VK_S || key_code == KeyEvent.VK_DOWN) {
             downPress = true;
 
@@ -29,9 +37,10 @@ public class keyControl implements KeyListener {
         if (key_code == KeyEvent.VK_W || key_code == KeyEvent.VK_UP) {
             upPress = true;
         }
-        if(key_code ==KeyEvent.VK_SPACE){
-        spacePress =true;
+        if(key_code ==KeyEvent.VK_2){
+        isTwo =true;
         }
+
 
     }
 
@@ -50,8 +59,12 @@ public class keyControl implements KeyListener {
         if (key_code == KeyEvent.VK_W || key_code == KeyEvent.VK_UP) {
             upPress = false;
         }
-        if(key_code ==KeyEvent.VK_SPACE){
-            spacePress = false;
+        if(key_code ==KeyEvent.VK_2){
+            isTwo = false;
+        }
+        
+        if(key_code==KeyEvent.VK_1){
+            isOne = false;
         }
 
     }

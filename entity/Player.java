@@ -13,6 +13,8 @@ import javax.imageio.ImageIO;
 import java.awt.Color;
 
 public class Player extends Entity {
+    choosePlayer choosePlayer = new choosePlayer();
+    private boolean transfer = false;
     public final int screenX;
     public final int screenY;
     private boolean run;
@@ -36,7 +38,6 @@ public class Player extends Entity {
         screenY = gp.screenHeight / 2 - (gp.tileSize / 2);
         // solid
         setDefultValues();
-        getplayerImage();
         solidArea = new Rectangle();
         solidArea.x = 8;
         solidArea.y = 16;
@@ -50,8 +51,19 @@ public class Player extends Entity {
         speed = 4;
         direction = "down";
     }
-
     public void update() {
+        if (keyBoard.isTwo == true) {
+            transfer = true;
+            gp.tilesM.tile[2].collision = false;
+        }
+        if (keyBoard.isOne == true) {            
+            transfer = false;
+            gp.tilesM.tile[2].collision = true;
+                    if(worldY<320){
+                        transfer = true;
+                        gp.tilesM.tile[2].collision = false;
+                    }
+        }
         if (keyBoard.downPress == true || keyBoard.upPress == true || keyBoard.rightPress|| keyBoard.leftPress == true) {
             if ( keyBoard.upPress == true) {
                 direction = "up";
@@ -62,7 +74,7 @@ public class Player extends Entity {
             } else if (keyBoard.leftPress == true) {
                 direction = "left";
             } else if (keyBoard.spacePress == true) {
-                System.out.println("worldX: " + worldX + "worldY: " + worldY);
+                System.out.println("worldX: " + worldX + "Y: " + worldY);
             }
             // check collision
             collisionEnabled = false;
@@ -96,62 +108,36 @@ public class Player extends Entity {
 
     }
 
-    public void getplayerImage() {
-        try {
-            up1 = ImageIO.read(getClass().getResource("/picture/boy_up_1.png"));
-            up2 = ImageIO.read(getClass().getResource("/picture/boy_up_2.png"));
-            down1 = ImageIO.read(getClass().getResource("/picture/boy_down_1.png"));
-            down2 = ImageIO.read(getClass().getResource("/picture/boy_down_2.png"));
-            left1 = ImageIO.read(getClass().getResource("/picture/boy_left_1.png"));
-            left2 = ImageIO.read(getClass().getResource("/picture/boy_left_2.png"));
-            right1 = ImageIO.read(getClass().getResource("/picture/boy_right_1.png"));
-            right2 = ImageIO.read(getClass().getResource("/picture/boy_right_2.png"));
-            tri = ImageIO.read(getClass().getResource("/picture/tri.png"));
-            door = ImageIO.read(getClass().getResource("/picture/door.png"));
+    // public void getplayerImage() {
+    //     try {
+    //         up1 = ImageIO.read(getClass().getResource("/picture/boy_up_1.png"));
+    //         up2 = ImageIO.read(getClass().getResource("/picture/boy_up_2.png"));
+    //         down1 = ImageIO.read(getClass().getResource("/picture/boy_down_1.png"));
+    //         down2 = ImageIO.read(getClass().getResource("/picture/boy_down_2.png"));
+    //         left1 = ImageIO.read(getClass().getResource("/picture/boy_left_1.png"));
+    //         left2 = ImageIO.read(getClass().getResource("/picture/boy_left_2.png"));
+    //         right1 = ImageIO.read(getClass().getResource("/picture/boy_right_1.png"));
+    //         right2 = ImageIO.read(getClass().getResource("/picture/boy_right_2.png"));
+    //         tri = ImageIO.read(getClass().getResource("/picture/tri.png"));
+    //         door = ImageIO.read(getClass().getResource("/picture/door.png"));
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    //     } catch (IOException e) {
+    //         e.printStackTrace();
+    //     }
 
-    }
+    // }
 
     public void draw(Graphics2D g) {
-        BufferedImage image = null;
-        if (direction == "up") {
-            if (spriteNum == 1) {
-                image = up1;
-            }
-            if (spriteNum == 2) {
-                image = up2;
-            }
-        } else if (direction == "down") {
-            if (spriteNum == 1) {
-                image = down1;
-            }
-            if (spriteNum == 2) {
-                image = down2;
-            }
-        } else if (direction == "right") {
-            if (spriteNum == 1) {
-                image = right1;
-            }
-            if (spriteNum == 2) {
-                image = right2;
-            }
-        } else if (direction == "left") {
-            if (spriteNum == 1) {
-                image = left1;
-            }
-            if (spriteNum == 2) {
-                image = left2;
-            }
-        }
+        BufferedImage image = choosePlayer.get_image(transfer, direction, spriteNum);
+        
         if (worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
                 worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
                 worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
-                worldY - gp.tileSize < gp.player.worldY + gp.player.screenY)
+                worldY - gp.tileSize < gp.player.worldY + gp.player.screenY){
+                    g.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
 
-            g.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+                }
+
 
     }
 }

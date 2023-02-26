@@ -29,7 +29,7 @@ public class GamePanel extends JPanel implements Runnable {
     Sound sound = new Sound();
     public Thread gameThread;
     public Player player = new Player(this,keyBoard);
-    TilesMangaer tilesM = new TilesMangaer(this);
+    public TilesMangaer tilesM = new TilesMangaer(this);
     public collisionCheck cCheck = new collisionCheck(this);
     // Player start positions
     int playerX     = 100;
