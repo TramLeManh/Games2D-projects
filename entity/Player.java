@@ -56,27 +56,26 @@ public class Player extends Entity {
         direction = "down";
     }
     public void update() {
+        if (keyBoard.isOne == true) {            
+            transfer = false;
+            gp.tilesM.tile[2].collision = true;
+            gp.tilesM.tile[6].collision = false;
+                    if(worldY<560){
+                        transfer = true;
+                        gp.tilesM.tile[2].collision = false;
+                    }
+        }
         if (keyBoard.isTwo == true) {
             transfer = true;
             gp.tilesM.tile[2].collision = false;
             gp.tilesM.tile[6].collision = true;
-
-            System.out.println("x: " + worldX + " y: " + worldY);
-            if(worldY<800){
+            if(worldY>560&&worldY<848){
                 transfer = false;
                 gp.tilesM.tile[6].collision = false;
 
             }
         }
-        if (keyBoard.isOne == true) {            
-            transfer = false;
-            gp.tilesM.tile[2].collision = true;
-            gp.tilesM.tile[6].collision = false;
-                    if(worldY<320+5*gp.tileSize){
-                        transfer = true;
-                        gp.tilesM.tile[2].collision = false;
-                    }
-        }
+       
         if (keyBoard.downPress == true || keyBoard.upPress == true || keyBoard.rightPress|| keyBoard.leftPress == true) {
             if ( keyBoard.upPress == true) {
                 direction = "up";
@@ -143,6 +142,11 @@ public class Player extends Entity {
             gp.object[index] = null;
             gp.gameThread = null;
 
+        }
+        if(objectName == "apple"){
+            gp.playSE(2);
+            gp.object[index] = null;
+            speed+=1;
         }
         }
     }
