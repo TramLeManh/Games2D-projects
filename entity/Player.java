@@ -117,12 +117,20 @@ public class Player extends Entity {
         if(index != -1){
         String objectName = gp.object[index].name;
         if(objectName == "key"){
+            gp.playSE(1);
             ++Key_count;
             gp.object[index] =  null;
 
         }
         if(objectName=="door"&&Key_count ==2){
+            gp.playSE(3);
+
             gp.object[index] =  null;
+        }
+        if(objectName == "chest"){
+            gp.object[index] = null;
+            gp.gameThread = null;
+
         }
         }
     }

@@ -52,6 +52,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
     public void setupGame(){
         aSetter.set_object();
+        playMusic(0);
     }
 
 
@@ -59,9 +60,6 @@ public class GamePanel extends JPanel implements Runnable {
         gameThread = new Thread(this);
         gameThread.start();
 
-    }
-    public void start(){
-        playMusic();
     }
     private void FPS(){
         double drawInterval = 1000000000/FPS;
@@ -115,13 +113,16 @@ public class GamePanel extends JPanel implements Runnable {
         playerG.dispose();
        
     }
-    public void playMusic(){
-        sound.setFile();
+    public void playMusic(int number){
+        sound.setFile(number);
         sound.play();
         sound.loop();
     }
     public void stopMusic(){
         sound.stop();
     }
-
+    public void playSE(int number){
+        sound.setFile(number);
+        sound.play();
+    }
 }

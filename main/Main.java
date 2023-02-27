@@ -13,7 +13,6 @@ public class Main {
         w.setLocationRelativeTo(null);
         w.setVisible(true);
         gamePanel.startGameThread();
-        gamePanel.playMusic();
         gamePanel.setupGame();
     }
 }
