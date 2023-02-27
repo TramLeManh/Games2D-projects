@@ -1,6 +1,7 @@
 package main;
 
 import object.object_Key;
+import object.object_apple;
 import object.object_chest;
 import object.object_door;
 
@@ -38,6 +39,10 @@ public class object_set {
         gp.object[6] = new object_door();
         gp.object[6].worldX = 15*gp.tileSize;//23
         gp.object[6].worldY = 26*gp.tileSize;//42
+
+        gp.object[7] = new object_apple();
+        gp.object[7].worldX = 37*gp.tileSize;//23
+        gp.object[7].worldY = 47*gp.tileSize;//42
  
     }    
 }
