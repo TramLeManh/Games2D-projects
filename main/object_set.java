@@ -32,6 +32,8 @@ public class object_set {
         gp.object[4].worldX = 10*gp.tileSize;
         gp.object[4].worldY = 13*gp.tileSize;
 
+      
+
         gp.object[5] = new object_Key();
         gp.object[5].worldX = 38*gp.tileSize;//23
         gp.object[5].worldY = 14*gp.tileSize;//42

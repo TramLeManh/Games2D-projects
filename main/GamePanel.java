@@ -13,6 +13,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 public class GamePanel extends JPanel implements Runnable {
+    public boolean end = false;
     final int originalTileSize = 16;
     final int scale = 3;
     public final int tileSize = originalTileSize * scale; /* 48*48 */
@@ -53,6 +54,9 @@ public class GamePanel extends JPanel implements Runnable {
     public void setupGame(){
         aSetter.set_object();
         playMusic(0);
+        if(end){
+            playMusic(4);
+        }
     }
 
 

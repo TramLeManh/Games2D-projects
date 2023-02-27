@@ -56,11 +56,13 @@ public class Player extends Entity {
         direction = "down";
     }
     public void update() {
-        if (keyBoard.isOne == true) {            
+        if (keyBoard.isOne == true) {  
+            System.out.println("x" + worldX + " y" + worldY);
+            
             transfer = false;
             gp.tilesM.tile[2].collision = true;
             gp.tilesM.tile[6].collision = false;
-                    if(worldY<560){
+                    if(worldY>319&&worldY<560){
                         transfer = true;
                         gp.tilesM.tile[2].collision = false;
                     }
@@ -69,7 +71,7 @@ public class Player extends Entity {
             transfer = true;
             gp.tilesM.tile[2].collision = false;
             gp.tilesM.tile[6].collision = true;
-            if(worldY>560&&worldY<848){
+            if(worldY>560&&worldY<848&&worldX>1720){
                 transfer = false;
                 gp.tilesM.tile[6].collision = false;
 
@@ -125,6 +127,7 @@ public class Player extends Entity {
         if(index != -1){
         String objectName = gp.object[index].name;
         if(objectName == "key"){
+            
             gp.playSE(1);
             ++Key_count;
             gp.object[index] =  null;
@@ -132,6 +135,7 @@ public class Player extends Entity {
         }
         if(objectName=="door"){
             if(Key_count>0){
+
                 gp.playSE(3);
                 gp.object[index] =  null;
                 --Key_count;
@@ -139,6 +143,7 @@ public class Player extends Entity {
           
         }
         if(objectName == "chest"){
+            gp.playSE(4);
             gp.object[index] = null;
             gp.gameThread = null;
 

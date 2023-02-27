@@ -10,8 +10,10 @@ public class Sound {
     public Sound(){
         music[0] = getClass().getResource("/sound/background.wav");
         music[1] = getClass().getResource("/sound/coin.wav");
-        music[2] = getClass().getResource("/sound/fanfare.wav");
+        music[2] = getClass().getResource("/sound/powerup.wav");
         music[3] = getClass().getResource("/sound/unlock.wav");
+        music[4] = getClass().getResource("/sound/endgame.wav");
+
     }
     public void setFile(int number) {
         try {
