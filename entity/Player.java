@@ -59,10 +59,19 @@ public class Player extends Entity {
         if (keyBoard.isTwo == true) {
             transfer = true;
             gp.tilesM.tile[2].collision = false;
+            gp.tilesM.tile[6].collision = true;
+
+            System.out.println("x: " + worldX + " y: " + worldY);
+            if(worldY<800){
+                transfer = false;
+                gp.tilesM.tile[6].collision = false;
+
+            }
         }
         if (keyBoard.isOne == true) {            
             transfer = false;
             gp.tilesM.tile[2].collision = true;
+            gp.tilesM.tile[6].collision = false;
                     if(worldY<320+5*gp.tileSize){
                         transfer = true;
                         gp.tilesM.tile[2].collision = false;
@@ -122,10 +131,13 @@ public class Player extends Entity {
             gp.object[index] =  null;
 
         }
-        if(objectName=="door"&&Key_count ==2){
-            gp.playSE(3);
-
-            gp.object[index] =  null;
+        if(objectName=="door"){
+            if(Key_count>0){
+                gp.playSE(3);
+                gp.object[index] =  null;
+                --Key_count;
+            }
+          
         }
         if(objectName == "chest"){
             gp.object[index] = null;

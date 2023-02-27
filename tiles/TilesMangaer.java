@@ -79,6 +79,9 @@ public class TilesMangaer extends Tiles {
             
             tile[5] = new Tiles();
             tile[5].image = ImageIO.read(getClass().getResource("/picture/tiles/sand.png"));
+            tile[6] = new Tiles();
+            tile[6].image = ImageIO.read(getClass().getResource("/picture/tiles/lava.png"));
+            tile[6].collision =false;
         } catch (IOException e) {
             e.printStackTrace();
         }

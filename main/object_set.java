@@ -30,6 +30,14 @@ public class object_set {
         gp.object[4] = new object_chest();
         gp.object[4].worldX = 10*gp.tileSize;
         gp.object[4].worldY = 13*gp.tileSize;
+
+        gp.object[5] = new object_Key();
+        gp.object[5].worldX = 38*gp.tileSize;//23
+        gp.object[5].worldY = 14*gp.tileSize;//42
+
+        gp.object[6] = new object_door();
+        gp.object[6].worldX = 15*gp.tileSize;//23
+        gp.object[6].worldY = 26*gp.tileSize;//42
  
     }    
 }
