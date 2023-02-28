@@ -6,7 +6,7 @@ public class Main {
         JFrame w = new JFrame();
         w.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         w.setResizable(false);
-        w.setTitle("First 2D Games");/*Set tittle */
+        w.setTitle("The adventure of Fire Boy and Water Boy");/*Set tittle */
         GamePanel gamePanel = new GamePanel();
         w.add(gamePanel);
         w.pack();
