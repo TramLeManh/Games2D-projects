@@ -3,6 +3,7 @@ package tiles;
 
 import main.GamePanel;
 import main.keyControl;
+import main.tools;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -58,38 +59,34 @@ public class TilesMangaer extends Tiles {
     }
 
     private void getImage() {
-        try {
-            tile[0] = new Tiles();
-            tile[0].image = ImageIO.read(getClass().getResource("/picture/tiles/grass.png"));
+             setup(0,"grass", false);
+            setup(1,"wall", true);
+            setup(2,"water", true);
+            setup(3,"earth", false);
+            setup(4,"tree", true);
+            setup(5,"sand", false);
+            setup(6,"lava", true);//lava.collison =false;
 
-            tile[1] = new Tiles();
-            tile[1].image = ImageIO.read(getClass().getResource("/picture/tiles/wall.png"));
-            tile[1].collision =true;
-
-            tile[2] = new Tiles();
-            tile[2].image = ImageIO.read(getClass().getResource("/picture/tiles/water.png"));
-            tile[2].collision =true;
-
-            tile[3] = new Tiles();
-            tile[3].image = ImageIO.read(getClass().getResource("/picture/tiles/earth.png"));
-            
-            tile[4] = new Tiles();
-            tile[4].image = ImageIO.read(getClass().getResource("/picture/tiles/tree.png"));
-            tile[4].collision = true;
-            
-            tile[5] = new Tiles();
-            tile[5].image = ImageIO.read(getClass().getResource("/picture/tiles/sand.png"));
-            tile[6] = new Tiles();
-            tile[6].image = ImageIO.read(getClass().getResource("/picture/tiles/lava.png"));
-            tile[6].collision =false;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public void update() {
 
     }
+    public void setup(int index, String ImagePath, boolean IsCollision) {
+        tools uTools = new tools();
+        try {
+            tile[index] = new Tiles();
+            tile[index].image = ImageIO.read(getClass().getResourceAsStream("/picture/tiles/"+ImagePath+".png"));
+            tile[index].image = uTools.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
+            tile[index].collision = IsCollision;
+
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
     public void draw(Graphics2D g2) {
         // g2.drawImage(tiles[0].image,0,0,gp.tileSize,gp.tileSize,);
