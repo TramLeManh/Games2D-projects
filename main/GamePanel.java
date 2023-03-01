@@ -32,11 +32,12 @@ public class GamePanel extends JPanel implements Runnable {
     Sound sound = new Sound();
     public Thread gameThread;
     public Player player = new Player(this,keyBoard);
+    public question questions = new  question(this);
     public TilesMangaer tilesM = new TilesMangaer(this);
     public collisionCheck cCheck = new collisionCheck(this);
     public SuperObject object[] = new SuperObject[20];//create ten block objects
     public object_set  aSetter = new object_set(this);
-
+    public boolean questions_run = false;
     // Player start positions
     int playerX     = 100;
     int playerY     = 100;
@@ -103,17 +104,25 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
         Graphics2D playerG = (Graphics2D) g;
         //tile
-        tilesM.draw(playerG);
+       
         //object
-        for(int i = 0; i < object.length; i++){
-           if(object[i] != null){
-            object[i].draw(playerG,this);
-           }
-        }
+       
         //collision
         // cCheck.draw(playerG);
         //player
-        player.draw(playerG);
+        if(questions_run){
+            questions.draw(playerG);
+          
+        }
+        else{
+            tilesM.draw(playerG);
+            player.draw(playerG);
+            for(int i = 0; i < object.length; i++){
+                if(object[i] != null){
+                 object[i].draw(playerG,this);
+                }
+             }
+        }
         playerG.dispose();
        
     }

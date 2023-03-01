@@ -29,9 +29,7 @@ public class Player extends Entity {
     private BufferedImage down2;
     private BufferedImage right1;
     private BufferedImage right2;
-    private BufferedImage tri;
-    private BufferedImage door;
-
+    
     public Player(GamePanel gp, keyControl keyBoard) {
         this.gp = gp;
         this.keyBoard = keyBoard;
@@ -57,7 +55,7 @@ public class Player extends Entity {
     }
     public void update() {
         if (keyBoard.isOne == true) {  
-            
+            gp.questions_run = false;
             transfer = false;
             gp.tilesM.tile[2].collision = true;
             gp.tilesM.tile[6].collision = false;
@@ -134,7 +132,6 @@ public class Player extends Entity {
         }
         if(objectName=="door"){
             if(Key_count>0){
-
                 gp.playSE(3);
                 gp.object[index] =  null;
                 --Key_count;
@@ -151,6 +148,7 @@ public class Player extends Entity {
             gp.playSE(2);
             gp.object[index] = null;
             speed+=1;
+            gp.questions_run = true;
         }
         }
     }
