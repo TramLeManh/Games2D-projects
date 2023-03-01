@@ -13,7 +13,7 @@ import javax.imageio.ImageIO;
 import java.awt.Color;
 
 public class Player extends Entity {
-    choosePlayer choosePlayer = new choosePlayer();
+    choosePlayer chooseSprite = new choosePlayer();
     private boolean transfer = false;
     public final int screenX;
     public final int screenY;
@@ -57,7 +57,6 @@ public class Player extends Entity {
     }
     public void update() {
         if (keyBoard.isOne == true) {  
-            System.out.println("x" + worldX + " y" + worldY);
             
             transfer = false;
             gp.tilesM.tile[2].collision = true;
@@ -176,15 +175,8 @@ public class Player extends Entity {
     // }
 
     public void draw(Graphics2D g) {
-        BufferedImage image = choosePlayer.get_image(transfer, direction, spriteNum);
-        
-        if (worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
-                worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
-                worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
-                worldY - gp.tileSize < gp.player.worldY + gp.player.screenY){
-                    g.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
-
-                }
+        BufferedImage images = chooseSprite.get_image(transfer, direction, spriteNum);
+        g.drawImage(images,screenX, screenY,null);
 
 
     }
