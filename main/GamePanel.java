@@ -94,7 +94,9 @@ public class GamePanel extends JPanel implements Runnable {
     public void run() {
         FPS();
     }
-
+    /**  
+    * Update class where update keyboard
+    */    
     public void update() {
      player.update();
     }
