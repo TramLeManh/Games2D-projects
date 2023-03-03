@@ -6,9 +6,9 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import java.awt.Color;
-public class question {
+public class a {
     GamePanel gp;
-    public question(GamePanel gp){
+    public a(GamePanel gp){
         this.gp = gp;
         get_image();
     }

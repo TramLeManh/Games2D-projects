@@ -32,7 +32,7 @@ public class GamePanel extends JPanel implements Runnable {
     Sound sound = new Sound();
     public Thread gameThread;
     public Player player = new Player(this,keyBoard);
-    public question questions = new  question(this);
+    public a questions = new  a(this);
     public TilesMangaer tilesM = new TilesMangaer(this);
     public collisionCheck cCheck = new collisionCheck(this);
     public SuperObject object[] = new SuperObject[20];//create ten block objects
