@@ -6,32 +6,15 @@ import main.keyControl;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
-import java.awt.Color;
 
 public class Player extends Entity {
     choosePlayer chooseSprite = new choosePlayer();
     private boolean transfer = false;
     public final int screenX;
     public final int screenY;
-    private boolean run;
     private int Key_count = 0;
     GamePanel gp;
     keyControl keyBoard;
-    private BufferedImage up1;
-    private BufferedImage up2;
-    private BufferedImage down1;
-    private BufferedImage left2;
-    private BufferedImage left1;
-    private BufferedImage down2;
-    private BufferedImage right1;
-    private BufferedImage right2;
-    private BufferedImage tri;
-    private BufferedImage door;
-
     public Player(GamePanel gp, keyControl keyBoard) {
         this.gp = gp;
         this.keyBoard = keyBoard;

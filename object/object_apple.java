@@ -1,5 +1,4 @@
 package object;
-import main.GamePanel;
 import javax.imageio.ImageIO;
 public class object_apple extends SuperObject {
     public object_apple(){

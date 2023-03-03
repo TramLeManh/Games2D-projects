@@ -1,5 +1,4 @@
 package object;
-import java.io.IOException;
 import javax.imageio.ImageIO;
 public class object_Key extends SuperObject{
     public object_Key(){

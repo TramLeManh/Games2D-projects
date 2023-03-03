@@ -6,16 +6,12 @@ import main.keyControl;
 import main.tools;
 
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import javax.imageio.ImageIO;
-
-import java.awt.Color;
 
 public class TilesMangaer extends Tiles {
     GamePanel gp;
@@ -92,8 +88,6 @@ public class TilesMangaer extends Tiles {
         // g2.drawImage(tiles[0].image,0,0,gp.tileSize,gp.tileSize,);
         int worldCol = 0;
         int worldRow = 0;
-        int x = 0;
-        int y = 0;
         int tileNumber = mapTileNumber[worldCol][worldRow];
         while (worldCol < gp.maxWorldCol && worldRow < gp.maxWorldRow) {
             tileNumber = mapTileNumber[worldCol][worldRow];

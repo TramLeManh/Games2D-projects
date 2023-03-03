@@ -1,12 +1,9 @@
 package entity;
 
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import javax.imageio.ImageIO;
-import entity.Player;
 import main.tools;
 import main.GamePanel;
-import java.io.IOException;
 
 public class choosePlayer {
    public choosePlayer() {

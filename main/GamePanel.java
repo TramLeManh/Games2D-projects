@@ -3,7 +3,6 @@ import object.SuperObject;
 import java.awt.Color;
 import java.awt.Dimension;
 
-import javax.security.auth.Subject;
 import javax.swing.JPanel;
 import tiles.TilesMangaer;
 
@@ -71,7 +70,6 @@ public class GamePanel extends JPanel implements Runnable {
         long lastTime = System.nanoTime();
         long currentTime;
         long timer = 0;
-        int drawCount = 0;
         while(gameThread!= null){
             currentTime = System.nanoTime();
             delta += (currentTime-lastTime)/drawInterval;
@@ -81,10 +79,8 @@ public class GamePanel extends JPanel implements Runnable {
                 update();
                 repaint();
                 delta--;
-                drawCount++;
             }
             if(timer>=1000000000){
-                drawCount = 0;
                 timer = 0;
             }
         }
@@ -104,17 +100,17 @@ public class GamePanel extends JPanel implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D playerG = (Graphics2D) g;
-        //tile
+        //draw map
+
         tilesM.draw(playerG);
-        //object
+       
+        //draw object
         for(int i = 0; i < object.length; i++){
            if(object[i] != null){
             object[i].draw(playerG,this);
            }
         }
-        //collision
-        // cCheck.draw(playerG);
-        //player
+        //draw player
         player.draw(playerG);
         playerG.dispose();
        
