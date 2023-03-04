@@ -61,7 +61,7 @@ public class TilesMangaer extends Tiles {
             setup(3,"earth", false);
             setup(4,"tree", true);
             setup(5,"sand", false);
-            setup(6,"lava", true);//lava.collison =false;
+            setup(6,"lava", false);//lava.collison =false;
 
     }
 
