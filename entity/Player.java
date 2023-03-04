@@ -40,14 +40,23 @@ public class Player extends Entity {
     }
     public void update() {
         if (keyBoard.isOne == true) {  
-            
+
             transfer = false;
+            System.out.println("x" + worldX + " y" + worldY);
             gp.tilesM.tile[2].collision = true;
             gp.tilesM.tile[6].collision = false;
                     if(worldY>319&&worldY<560){
                         transfer = true;
                         gp.tilesM.tile[2].collision = false;
                     }
+        }
+        //detect text when collide river
+        if(worldY == 560 &keyBoard.upPress == true&&transfer == false&&worldX<1212&&worldX>1004) {
+            // System.out.println("Please change character");
+            gp.detection = true;
+        }
+        else if(keyBoard.downPress == true||keyBoard.rightPress == true || keyBoard.leftPress == true||transfer == true) {
+            gp.detection = false;
         }
         if (keyBoard.isTwo == true) {
             transfer = true;
@@ -109,8 +118,8 @@ public class Player extends Entity {
         if(index != -1){
         String objectName = gp.object[index].name;
         if(objectName == "key"){
-            
             gp.playSE(1);
+            // gp.playSE(1);
             ++Key_count;
             gp.object[index] =  null;
 
@@ -122,12 +131,17 @@ public class Player extends Entity {
                 gp.object[index] =  null;
                 --Key_count;
             }
+            else{
+                System.out.println("Can not enter");
+            }
+
           
         }
         if(objectName == "chest"){
+            gp.stopMusic();
             gp.playSE(4);
             gp.object[index] = null;
-            gp.gameThread = null;
+            gp.gameThread = null; 
 
         }
         if(objectName == "apple"){

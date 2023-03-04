@@ -12,6 +12,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 public class GamePanel extends JPanel implements Runnable {
+    public boolean detection = false;
+
     public boolean end = false;
     final int originalTileSize = 16;
     final int scale = 3;
@@ -28,7 +30,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     int FPS = 60;
     keyControl keyBoard = new keyControl();
-    Sound sound = new Sound();
+    Sound music = new Sound();
+    Sound SoundEffect = new Sound();
+    UI ui = new UI(this);
     public Thread gameThread;
     public Player player = new Player(this,keyBoard);
     public TilesMangaer tilesM = new TilesMangaer(this);
@@ -53,9 +57,6 @@ public class GamePanel extends JPanel implements Runnable {
     public void setupGame(){
         aSetter.set_object();
         playMusic(0);
-        if(end){
-            playMusic(4);
-        }
     }
 
 
@@ -112,19 +113,21 @@ public class GamePanel extends JPanel implements Runnable {
         }
         //draw player
         player.draw(playerG);
+        //draw UI
+        ui.draw(playerG);
         playerG.dispose();
        
     }
     public void playMusic(int number){
-        sound.setFile(number);
-        sound.play();
-        sound.loop();
+        music.setFile(number);
+        music.play();
+        music.loop();
     }
     public void stopMusic(){
-        sound.stop();
+        music.stop();
     }
     public void playSE(int number){
-        sound.setFile(number);
-        sound.play();
+        SoundEffect.setFile(number);
+        SoundEffect.play();
     }
 }
