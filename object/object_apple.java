@@ -1,5 +1,7 @@
 package object;
 import javax.imageio.ImageIO;
+
+import main.GamePanel;
 public class object_apple extends SuperObject {
     public object_apple(){
         name = "apple";
@@ -8,5 +10,9 @@ public class object_apple extends SuperObject {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        text = "You got a apple";
+        detection = false;
+
+
     }
 }

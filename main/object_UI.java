@@ -1,18 +1,16 @@
 package main;
 import java.awt.*;
-public class UI {
+public class object_UI {
     GamePanel gp;
     Graphics2D g2;
     public String text = " ";
 
-    public UI(GamePanel gp){
+    public object_UI(GamePanel gp){
         this.gp = gp;
     }
     public void draw(Graphics2D g2){
         this.g2 = g2;
-        if(gp.detection){
-            drawScreen(text);
-        }
+        drawScreen(text);
     }
     public void drawScreen(String text){
         int x = gp.tileSize *2;

@@ -16,6 +16,7 @@ public class Player extends Entity {
     GamePanel gp;
     keyControl keyBoard;
     public int global_index = 0;
+    private boolean isBlock = true;
     public Player(GamePanel gp, keyControl keyBoard) {
         this.gp = gp;
         this.keyBoard = keyBoard;
@@ -35,7 +36,6 @@ public class Player extends Entity {
     }
     public void SetAnnouncements() {
         announcements[0] = "You hit water,please change character";
-        announcements[1] = "You get a key";
         
     }
     public void announce(int index,boolean detection) {
@@ -75,9 +75,12 @@ public class Player extends Entity {
             // System.out.println("Please change character");
             announce(0,true);
 
+
         }
         else if(keyBoard.downPress == true||keyBoard.rightPress == true || keyBoard.leftPress == true||transfer == true) {
             announce(0,false);
+           gp.hit = false;
+
         }
       
         //movements
@@ -130,9 +133,12 @@ public class Player extends Entity {
         if(index != -1){
         String objectName = gp.object[index].name;
         if(objectName == "key"){
+
+            gp.object[index].detection = true;
             gp.playSE(1);
             // gp.playSE(1);
             ++Key_count;
+            gp.object[index] =  null;
 
         }
         if(objectName=="door"){
@@ -144,11 +150,13 @@ public class Player extends Entity {
             }
             else{
                 System.out.println("Can not enter");
-            }
-
-          
+            }          
+        }
+        if(objectName=="block"){
+                gp.object[index].collision  = isBlock;
         }
         if(objectName == "chest"){
+            gp.object[index].detection = true;
             gp.stopMusic();
             gp.playSE(4);
             gp.object[index] = null;
@@ -156,6 +164,8 @@ public class Player extends Entity {
 
         }
         if(objectName == "apple"){
+            gp.object[index].detection = true;
+
             gp.playSE(2);
             gp.object[index] = null;
             speed+=1;

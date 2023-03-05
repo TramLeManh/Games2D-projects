@@ -1,19 +1,26 @@
 package object;
 import java.awt.image.BufferedImage;
 import main.GamePanel;
+import main.UI;
+
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 
-public class SuperObject {
+public class SuperObject{
+    
     public Rectangle solidArea = new Rectangle(0, 0,48,48);
-    public boolean isBlock = true;
     public int solidAreaDefaultX,solidAreaDefaultY;
     public BufferedImage image;
      public int worldX, worldY;
      public boolean collision = false;
      public String name;
+     public String text;
+     public boolean detection  =true;
+
      public void draw(Graphics2D g,GamePanel gp) { 
+        gp.ui1.text = text;
+        gp.object_detection = detection;
         int screenX = worldX -gp.player.worldX + gp.player.screenX;
         int screenY = worldY -gp.player.worldY + gp.player.screenY;
         if (worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&

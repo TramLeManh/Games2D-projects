@@ -1,5 +1,6 @@
 package main;
 import object.SuperObject;
+
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -13,7 +14,7 @@ import java.awt.Graphics2D;
 
 public class GamePanel extends JPanel implements Runnable {
     public boolean detection = false;
-
+    public boolean object_detection = true;
     public boolean end = false;
     final int originalTileSize = 16;
     final int scale = 3;
@@ -33,6 +34,8 @@ public class GamePanel extends JPanel implements Runnable {
     Sound music = new Sound();
     Sound SoundEffect = new Sound();
     public UI ui = new UI(this);
+    public object_UI ui1 = new object_UI(this);
+    public boolean hit =true;
     public Thread gameThread;
     public Player player = new Player(this,keyBoard);
     public TilesMangaer tilesM = new TilesMangaer(this);
@@ -115,6 +118,9 @@ public class GamePanel extends JPanel implements Runnable {
         player.draw(playerG);
         //draw UI
         ui.draw(playerG);
+        if(object_detection){
+            ui1.draw(playerG);
+        }
         playerG.dispose();
        
     }

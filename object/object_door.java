@@ -2,7 +2,10 @@ package object;
 
 import javax.imageio.ImageIO;
 
+import main.GamePanel;
+
 public class object_door extends SuperObject{
+    GamePanel gp;
     public object_door(){
         name = "door";
         try {
@@ -11,5 +14,9 @@ public class object_door extends SuperObject{
             e.printStackTrace();
         } 
         collision = true;
+        text = "You enter a door";
+        detection = false;
+
+
     }
 }
