@@ -3,6 +3,7 @@ import java.awt.*;
 public class UI {
     GamePanel gp;
     Graphics2D g2;
+    public String text = " ";
     public UI(GamePanel gp){
         this.gp = gp;
     }
@@ -10,7 +11,6 @@ public class UI {
         this.g2 = g2;
         if(gp.detection){
             drawScreen();
-
         }
     }
     public void drawScreen(){
@@ -23,7 +23,7 @@ public class UI {
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,20F));
         x+= gp.tileSize;
         y+= gp.tileSize;
-        g2.drawString("Can not pass river. Please change character", x, y);;
+        g2.drawString(text, x, y);;
 
     }
     public void drawSubScreen(int x, int y, int width, int height){

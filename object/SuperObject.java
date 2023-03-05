@@ -7,6 +7,7 @@ import java.awt.Rectangle;
 
 public class SuperObject {
     public Rectangle solidArea = new Rectangle(0, 0,48,48);
+    public boolean isBlock = true;
     public int solidAreaDefaultX,solidAreaDefaultY;
     public BufferedImage image;
      public int worldX, worldY;

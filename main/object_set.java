@@ -2,6 +2,7 @@ package main;
 
 import object.object_Key;
 import object.object_apple;
+import object.object_block;
 import object.object_chest;
 import object.object_door;
 
@@ -45,6 +46,10 @@ public class object_set {
         gp.object[7] = new object_apple();
         gp.object[7].worldX = 37*gp.tileSize;//23
         gp.object[7].worldY = 47*gp.tileSize;//42
+
+        gp.object[8] = new object_block();
+        gp.object[8].worldX = 25*gp.tileSize;
+        gp.object[8].worldY = 9*gp.tileSize;
         /*Make a block object Tao 1 vật cản vô hình 16*16 ghi đè phần cần cản gp.object[i].collision */
     }    
 }

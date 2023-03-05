@@ -15,6 +15,7 @@ public class Player extends Entity {
     private int Key_count = 0;
     GamePanel gp;
     keyControl keyBoard;
+    public int global_index = 0;
     public Player(GamePanel gp, keyControl keyBoard) {
         this.gp = gp;
         this.keyBoard = keyBoard;
@@ -22,6 +23,7 @@ public class Player extends Entity {
         screenY = gp.screenHeight / 2 - (gp.tileSize / 2);
         // solid
         setDefultValues();
+        SetAnnouncements();
         solidArea = new Rectangle();
         solidArea.x = 8;
         solidArea.y = 16;
@@ -30,6 +32,15 @@ public class Player extends Entity {
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
 
+    }
+    public void SetAnnouncements() {
+        announcements[0] = "You hit water,please change character";
+        announcements[1] = "You get a key";
+        
+    }
+    public void announce(int index,boolean detection) {
+        gp.ui.text = announcements[index];
+        gp.detection = detection;
     }
 
     public void setDefultValues() {
@@ -40,7 +51,6 @@ public class Player extends Entity {
     }
     public void update() {
         if (keyBoard.isOne == true) {  
-
             transfer = false;
             System.out.println("x" + worldX + " y" + worldY);
             gp.tilesM.tile[2].collision = true;
@@ -49,14 +59,6 @@ public class Player extends Entity {
                         transfer = true;
                         gp.tilesM.tile[2].collision = false;
                     }
-        }
-        //detect text when collide river
-        if(worldY == 560 &keyBoard.upPress == true&&transfer == false&&worldX<1212&&worldX>1004) {
-            // System.out.println("Please change character");
-            gp.detection = true;
-        }
-        else if(keyBoard.downPress == true||keyBoard.rightPress == true || keyBoard.leftPress == true||transfer == true) {
-            gp.detection = false;
         }
         if (keyBoard.isTwo == true) {
             transfer = true;
@@ -68,7 +70,17 @@ public class Player extends Entity {
 
             }
         }
-       
+        //detect text when collide river
+        if(worldY == 560 &keyBoard.upPress == true&&transfer == false&&worldX<1212&&worldX>1004) {
+            // System.out.println("Please change character");
+            announce(0,true);
+
+        }
+        else if(keyBoard.downPress == true||keyBoard.rightPress == true || keyBoard.leftPress == true||transfer == true) {
+            announce(0,false);
+        }
+      
+        //movements
         if (keyBoard.downPress == true || keyBoard.upPress == true || keyBoard.rightPress|| keyBoard.leftPress == true) {
             if ( keyBoard.upPress == true) {
                 direction = "up";
@@ -121,7 +133,6 @@ public class Player extends Entity {
             gp.playSE(1);
             // gp.playSE(1);
             ++Key_count;
-            gp.object[index] =  null;
 
         }
         if(objectName=="door"){
@@ -152,29 +163,9 @@ public class Player extends Entity {
         }
     }
 
-    // public void getplayerImage() {
-    //     try {
-    //         up1 = ImageIO.read(getClass().getResource("/picture/boy_up_1.png"));
-    //         up2 = ImageIO.read(getClass().getResource("/picture/boy_up_2.png"));
-    //         down1 = ImageIO.read(getClass().getResource("/picture/boy_down_1.png"));
-    //         down2 = ImageIO.read(getClass().getResource("/picture/boy_down_2.png"));
-    //         left1 = ImageIO.read(getClass().getResource("/picture/boy_left_1.png"));
-    //         left2 = ImageIO.read(getClass().getResource("/picture/boy_left_2.png"));
-    //         right1 = ImageIO.read(getClass().getResource("/picture/boy_right_1.png"));
-    //         right2 = ImageIO.read(getClass().getResource("/picture/boy_right_2.png"));
-    //         tri = ImageIO.read(getClass().getResource("/picture/tri.png"));
-    //         door = ImageIO.read(getClass().getResource("/picture/door.png"));
-
-    //     } catch (IOException e) {
-    //         e.printStackTrace();
-    //     }
-
-    // }
 
     public void draw(Graphics2D g) {
         BufferedImage images = chooseSprite.get_image(transfer, direction, spriteNum);
         g.drawImage(images,screenX, screenY,null);
-
-
     }
 }

@@ -11,4 +11,7 @@ public class Entity {
     public Rectangle solidArea;
     public boolean collisionEnabled = false;
     public int solidAreaDefaultX,solidAreaDefaultY;
+    String announcements[] = new String[20];
+    public void announce() {}
+
 }   

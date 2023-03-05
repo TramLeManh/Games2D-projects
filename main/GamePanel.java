@@ -32,7 +32,7 @@ public class GamePanel extends JPanel implements Runnable {
     keyControl keyBoard = new keyControl();
     Sound music = new Sound();
     Sound SoundEffect = new Sound();
-    UI ui = new UI(this);
+    public UI ui = new UI(this);
     public Thread gameThread;
     public Player player = new Player(this,keyBoard);
     public TilesMangaer tilesM = new TilesMangaer(this);
