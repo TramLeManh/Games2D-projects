@@ -55,7 +55,7 @@ public class TilesMangaer extends Tiles {
     }
 
     private void getImage() {
-             setup(0,"grass", false);
+            setup(0,"grass", true);
             setup(1,"wall", true);
             setup(2,"water", true);
             setup(3,"earth", false);

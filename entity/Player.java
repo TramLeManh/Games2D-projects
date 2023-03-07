@@ -118,7 +118,7 @@ public class Player extends Entity {
                     worldX -= speed;
                 }
             }
-            if (spriteCounter > 5) {
+            if (spriteCounter > 4) {
                 if (spriteNum == 1) {
                     spriteNum = 2;
                 } else if (spriteNum == 2) {
