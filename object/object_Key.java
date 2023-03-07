@@ -10,6 +10,7 @@ public class object_Key extends SuperObject{
         } catch (Exception e) {
             e.printStackTrace();
         }
+        size = 48;
     }
  
    
