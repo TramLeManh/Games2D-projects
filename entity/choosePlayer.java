@@ -1,58 +1,63 @@
 package entity;
 
-import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import javax.imageio.ImageIO;
-import entity.Player;
+import main.tools;
+import main.GamePanel;
 
 public class choosePlayer {
    public choosePlayer() {
-      getplayerImage();
+      this.getplayerImage();
    }
-
-   private BufferedImage up11;
-   private BufferedImage up12;
-   private BufferedImage down11;
-   private BufferedImage left12;
-   private BufferedImage left11;
-   private BufferedImage down12;
-   private BufferedImage right11;
-   private BufferedImage right12;
-   private BufferedImage up21;
-   private BufferedImage up22;
-   private BufferedImage down21;
-   private BufferedImage left22;
-   private BufferedImage left21;
-   private BufferedImage down22;
-   private BufferedImage right21;
-   private BufferedImage right22;
+   GamePanel gp;
+   public BufferedImage up11;
+   public BufferedImage up12;
+   public BufferedImage down11;
+   public BufferedImage left12;
+   public BufferedImage left11;
+   public BufferedImage down12;
+   public BufferedImage right11;
+   public BufferedImage right12;
+   public BufferedImage up21;
+   public BufferedImage up22;
+   public BufferedImage down21;
+   public BufferedImage left22;
+   public BufferedImage left21;
+   public BufferedImage down22;
+   public BufferedImage right21;
+   public BufferedImage right22;
 
    private void getplayerImage() {
+      up11 =setup("1_up_1");
+      up12 = setup("1_up_2");
+      down11 = setup("1_down_1");
+      down12 = setup("1_down_2");
+      left11 = setup("1_left_1");
+      left12 = setup("1_left_2");
+      right11 = setup("1_right_1");
+      right12 = setup("1_right_2");
+      // player2
+      up21 = setup("2_up_1");
+      up22 = setup("2_up_2");
+      down21 = setup("2_down_1");
+      down22 = setup("2_down_2");
+      left21 = setup("2_left_1");
+      left22 = setup("2_left_2");
+      right21 = setup("2_right_1");
+      right22 = setup("2_right_2");
+   }
+   public BufferedImage setup(String imageName) {
+      tools Utool = new tools();
+      BufferedImage image = null;
       try {
-         // player1
-         up11 = ImageIO.read(getClass().getResource("/picture/player1/boy_up_1.png"));
-         up12 = ImageIO.read(getClass().getResource("/picture/player1/boy_up_2.png"));
-         down11 = ImageIO.read(getClass().getResource("/picture/player1/boy_down_1.png"));
-         down12 = ImageIO.read(getClass().getResource("/picture/player1/boy_down_2.png"));
-         left11 = ImageIO.read(getClass().getResource("/picture/player1/boy_left_1.png"));
-         left12 = ImageIO.read(getClass().getResource("/picture/player1/boy_left_2.png"));
-         right11 = ImageIO.read(getClass().getResource("/picture/player1/boy_right_1.png"));
-         right12 = ImageIO.read(getClass().getResource("/picture/player1/boy_right_2.png"));
-         // player2
-         up21 = ImageIO.read(getClass().getResource("/picture/player2/boy_up_1.png"));
-         up22 = ImageIO.read(getClass().getResource("/picture/player2/boy_up_2.png"));
-         down21 = ImageIO.read(getClass().getResource("/picture/player2/boy_down_1.png"));
-         down22 = ImageIO.read(getClass().getResource("/picture/player2/boy_down_2.png"));
-         left21 = ImageIO.read(getClass().getResource("/picture/player2/boy_left_1.png"));
-         left22 = ImageIO.read(getClass().getResource("/picture/player2/boy_left_2.png"));
-         right21 = ImageIO.read(getClass().getResource("/picture/player2/boy_right_1.png"));
-         right22 = ImageIO.read(getClass().getResource("/picture/player2/boy_right_2.png"));
-
-      } catch (IOException e) {
+         image =  ImageIO.read(getClass().getResourceAsStream("/picture/players/"+ imageName +".png"));
+         image = Utool.scaleImage(image,48,48);
+      } catch (Exception e) {
          e.printStackTrace();
       }
+      return image;
    }
+
 
    public BufferedImage get_image(boolean transfer, String direction, int spritenumber) {
       if (transfer) {

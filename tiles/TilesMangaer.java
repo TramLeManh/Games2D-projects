@@ -3,18 +3,15 @@ package tiles;
 
 import main.GamePanel;
 import main.keyControl;
+import main.tools;
 
 import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import javax.imageio.ImageIO;
-
-import java.awt.Color;
 
 public class TilesMangaer extends Tiles {
     GamePanel gp;
@@ -58,42 +55,39 @@ public class TilesMangaer extends Tiles {
     }
 
     private void getImage() {
-        try {
-            tile[0] = new Tiles();
-            tile[0].image = ImageIO.read(getClass().getResource("/picture/tiles/grass.png"));
+            setup(0,"grass", true);
+            setup(1,"wall", true);
+            setup(2,"water", true);
+            setup(3,"earth", false);
+            setup(4,"tree", true);
+            setup(5,"sand", false);
+            setup(6,"lava", false);//lava.collison =false;
 
-            tile[1] = new Tiles();
-            tile[1].image = ImageIO.read(getClass().getResource("/picture/tiles/wall.png"));
-            tile[1].collision =true;
-
-            tile[2] = new Tiles();
-            tile[2].image = ImageIO.read(getClass().getResource("/picture/tiles/water.png"));
-            tile[2].collision =true;
-
-            tile[3] = new Tiles();
-            tile[3].image = ImageIO.read(getClass().getResource("/picture/tiles/earth.png"));
-            
-            tile[4] = new Tiles();
-            tile[4].image = ImageIO.read(getClass().getResource("/picture/tiles/tree.png"));
-            tile[4].collision = true;
-            
-            tile[5] = new Tiles();
-            tile[5].image = ImageIO.read(getClass().getResource("/picture/tiles/sand.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public void update() {
 
     }
+    public void setup(int index, String ImagePath, boolean IsCollision) {
+        tools uTools = new tools();
+        try {
+            tile[index] = new Tiles();
+            tile[index].image = ImageIO.read(getClass().getResourceAsStream("/picture/tiles/"+ImagePath+".png"));
+            tile[index].image = uTools.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
+            tile[index].collision = IsCollision;
+
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
 
     public void draw(Graphics2D g2) {
         // g2.drawImage(tiles[0].image,0,0,gp.tileSize,gp.tileSize,);
         int worldCol = 0;
         int worldRow = 0;
-        int x = 0;
-        int y = 0;
         int tileNumber = mapTileNumber[worldCol][worldRow];
         while (worldCol < gp.maxWorldCol && worldRow < gp.maxWorldRow) {
             tileNumber = mapTileNumber[worldCol][worldRow];
@@ -101,7 +95,13 @@ public class TilesMangaer extends Tiles {
             int worldY = worldRow*gp.tileSize;
             int screenX = worldX -gp.player.worldX + gp.player.screenX;
             int screenY = worldY -gp.player.worldY + gp.player.screenY;
-            g2.drawImage(tile[tileNumber].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+            if (worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
+            worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
+            worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
+            worldY - gp.tileSize < gp.player.worldY + gp.player.screenY){
+                g2.drawImage(tile[tileNumber].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+
+            }
             worldCol++;
             if (worldCol == gp.maxWorldCol) {
                 worldCol = 0;

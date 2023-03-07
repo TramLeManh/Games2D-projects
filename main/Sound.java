@@ -8,11 +8,16 @@ public class Sound {
     Clip clip;
     URL music[] = new URL[20];
     public Sound(){
-        music[0] = getClass().getResource("/sound/BlueBoyAdventure.wav");
+        music[0] = getClass().getResource("/sound/background.wav");
+        music[1] = getClass().getResource("/sound/coin.wav");
+        music[2] = getClass().getResource("/sound/powerup.wav");
+        music[3] = getClass().getResource("/sound/unlock.wav");
+        music[4] = getClass().getResource("/sound/endgame.wav");
+
     }
-    public void setFile() {
+    public void setFile(int number) {
         try {
-            AudioInputStream ais = AudioSystem.getAudioInputStream(music[0]);
+            AudioInputStream ais = AudioSystem.getAudioInputStream(music[number]);
             clip = AudioSystem.getClip();
             clip.open(ais);
         } catch (Exception e) {
