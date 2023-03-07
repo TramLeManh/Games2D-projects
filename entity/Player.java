@@ -134,7 +134,6 @@ public class Player extends Entity {
         String objectName = gp.object[index].name;
         if(objectName == "key"){
 
-            gp.object[index].detection = true;
             gp.playSE(1);
             // gp.playSE(1);
             ++Key_count;
@@ -143,7 +142,6 @@ public class Player extends Entity {
         }
         if(objectName=="door"){
             if(Key_count>0){
-
                 gp.playSE(3);
                 gp.object[index] =  null;
                 --Key_count;
@@ -156,7 +154,6 @@ public class Player extends Entity {
                 gp.object[index].collision  = isBlock;
         }
         if(objectName == "chest"){
-            gp.object[index].detection = true;
             gp.stopMusic();
             gp.playSE(4);
             gp.object[index] = null;
@@ -164,8 +161,6 @@ public class Player extends Entity {
 
         }
         if(objectName == "apple"){
-            gp.object[index].detection = true;
-
             gp.playSE(2);
             gp.object[index] = null;
             speed+=1;
@@ -178,4 +173,4 @@ public class Player extends Entity {
         BufferedImage images = chooseSprite.get_image(transfer, direction, spriteNum);
         g.drawImage(images,screenX, screenY,null);
     }
-}
+}   

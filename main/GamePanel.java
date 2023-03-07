@@ -34,7 +34,6 @@ public class GamePanel extends JPanel implements Runnable {
     Sound music = new Sound();
     Sound SoundEffect = new Sound();
     public UI ui = new UI(this);
-    public object_UI ui1 = new object_UI(this);
     public boolean hit =true;
     public Thread gameThread;
     public Player player = new Player(this,keyBoard);
@@ -118,9 +117,6 @@ public class GamePanel extends JPanel implements Runnable {
         player.draw(playerG);
         //draw UI
         ui.draw(playerG);
-        if(object_detection){
-            ui1.draw(playerG);
-        }
         playerG.dispose();
        
     }

@@ -15,12 +15,10 @@ public class SuperObject{
      public int worldX, worldY;
      public boolean collision = false;
      public String name;
-     public String text;
-     public boolean detection  =true;
+
 
      public void draw(Graphics2D g,GamePanel gp) { 
-        gp.ui1.text = text;
-        gp.object_detection = detection;
+      
         int screenX = worldX -gp.player.worldX + gp.player.screenX;
         int screenY = worldY -gp.player.worldY + gp.player.screenY;
         if (worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&

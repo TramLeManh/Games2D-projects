@@ -12,8 +12,7 @@ public class object_chest extends SuperObject {
             e.printStackTrace();
         }
         collision = true;
-        text = "You got a apple";
-        detection = false;
+       
 
 
     }

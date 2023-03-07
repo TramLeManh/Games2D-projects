@@ -10,8 +10,6 @@ public class object_Key extends SuperObject{
         } catch (Exception e) {
             e.printStackTrace();
         }
-        text = "You got a key";
-        detection = true;
     }
  
    

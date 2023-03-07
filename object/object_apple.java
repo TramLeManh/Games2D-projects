@@ -10,8 +10,6 @@ public class object_apple extends SuperObject {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        text = "You got a apple";
-        detection = false;
 
 
     }
