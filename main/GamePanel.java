@@ -39,6 +39,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Player player = new Player(this,keyBoard);
     public TilesMangaer tilesM = new TilesMangaer(this);
     public collisionCheck cCheck = new collisionCheck(this);
+    //Superobject Gamepannel 
     public SuperObject object[] = new SuperObject[20];//create ten block objects
     public object_set  aSetter = new object_set(this);
 
