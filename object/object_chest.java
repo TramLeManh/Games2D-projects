@@ -13,6 +13,7 @@ public class object_chest extends SuperObject {
         }
         collision = true;
         size = 48;
+
        
 
 

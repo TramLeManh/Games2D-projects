@@ -6,11 +6,10 @@ public class object_apple extends SuperObject {
     public object_apple(){
         name = "apple";
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/picture/object/question.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/picture/object/question1.png"));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        size = 16;
 
 
     }
