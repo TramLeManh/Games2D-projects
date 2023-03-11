@@ -63,9 +63,11 @@ public class collisionCheck {
                             entity.solidArea.y-=entity.speed;
                             if(entity.solidArea.intersects(gp.object[i].solidArea)){
                                 if(gp.object[i].collision==true){
+
                                     entity.collisionEnabled = true;
                                 }
                                 if(player==true){
+
                                     index = i;
                                 }
                             }

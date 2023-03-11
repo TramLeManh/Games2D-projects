@@ -10,8 +10,7 @@ public class object_apple extends SuperObject {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        size = 48-16;
-
+        size = 16*2;
 
     }
 }

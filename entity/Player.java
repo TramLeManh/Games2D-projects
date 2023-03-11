@@ -52,7 +52,7 @@ public class Player extends Entity {
     public void update() {
         if (keyBoard.isOne == true) {  
             transfer = false;
-            System.out.println("x" + worldX + " y" + worldY);
+            System.out.println("x" + (gp.player.worldX+gp.player.solidArea.x) + " y" +  (gp.player.worldY+gp.player.solidArea.y));
             gp.tilesM.tile[2].collision = true;
             gp.tilesM.tile[6].collision = false;
                     if(worldY>319&&worldY<560){
@@ -71,12 +71,14 @@ public class Player extends Entity {
             }
         }
         //detect text when collide river
-        if(worldY == 560 &keyBoard.upPress == true&&transfer == false&&worldX<1212&&worldX>1004) {
+        if(false)
+         {
             // System.out.println("Please change character");
             announce(0,true);
 
 
         }
+       
         else if(keyBoard.downPress == true||keyBoard.rightPress == true || keyBoard.leftPress == true||transfer == true) {
             announce(0,false);
            gp.hit = false;
@@ -106,6 +108,7 @@ public class Player extends Entity {
             // if collision
             if (collisionEnabled == false) {
                 if (direction == "up") {
+                    
                     worldY -= speed;
                 }
                 if (direction == "down") {
@@ -130,6 +133,7 @@ public class Player extends Entity {
 
     }
     public void pickupObject(int index) {
+       
         if(index != -1){
         String objectName = gp.object[index].name;
         if(objectName == "key"){
