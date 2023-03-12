@@ -10,7 +10,7 @@ public class UI {
     }
     public void draw(Graphics2D g2){
         this.g2 = g2;
-        if(gp.detection){
+        if(gp.gamestate == gp.dialogueState){
             drawScreen(text);
         }
     }

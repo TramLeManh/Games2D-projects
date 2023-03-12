@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 
 public class Player extends Entity {
     choosePlayer chooseSprite = new choosePlayer();
-    private boolean transfer = false;
+    public boolean transfer = false;
     public final int screenX;
     public final int screenY;
     private int Key_count = 0;
@@ -27,7 +27,7 @@ public class Player extends Entity {
         SetAnnouncements();
         solidArea = new Rectangle();
         solidArea.x = 8;
-        solidArea.y = 16;
+        solidArea.y = 10;
         solidArea.width = 32;
         solidArea.height = 32;
         solidAreaDefaultX = solidArea.x;
@@ -84,7 +84,7 @@ public class Player extends Entity {
            gp.hit = false;
 
         }
-      
+        
         //movements
         if (keyBoard.downPress == true || keyBoard.upPress == true || keyBoard.rightPress|| keyBoard.leftPress == true) {
             if ( keyBoard.upPress == true) {
@@ -101,6 +101,7 @@ public class Player extends Entity {
             // check collision
             collisionEnabled = false;
             gp.cCheck.checkTile(this);
+            gp.eventH.checkEvent();
             //object collision
             int index = gp.cCheck.checkObject(this, true);
             pickupObject(index);
@@ -137,7 +138,7 @@ public class Player extends Entity {
         if(index != -1){
         String objectName = gp.object[index].name;
         if(objectName == "key"){
-
+            gp.gamestate = gp.dialogueState;
             gp.playSE(1);
             // gp.playSE(1);
             ++Key_count;
@@ -171,7 +172,7 @@ public class Player extends Entity {
         }
         }
     }
-
+   
 
     public void draw(Graphics2D g) {
         BufferedImage images = chooseSprite.get_image(transfer, direction, spriteNum);
