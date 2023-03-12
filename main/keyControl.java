@@ -5,10 +5,11 @@ import java.awt.event.KeyListener;
 
 
 public class keyControl implements KeyListener {
-    public boolean upPress, downPress, rightPress, leftPress,spacePress;
+    public boolean upPress, downPress, rightPress, leftPress;
     public boolean isFall;
     public boolean isOne,isTwo;
     GamePanel gp;
+    public boolean isSpace;
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -24,6 +25,9 @@ public class keyControl implements KeyListener {
         if (key_code == KeyEvent.VK_D || key_code == KeyEvent.VK_RIGHT) {
             rightPress = true;
 
+        }
+        if(key_code==KeyEvent.VK_SPACE) {
+            isSpace = true;
         }
 
         if(key_code==KeyEvent.VK_1){
@@ -64,6 +68,9 @@ public class keyControl implements KeyListener {
         
         if(key_code==KeyEvent.VK_1){
             isOne = false;
+        }
+        if(key_code==KeyEvent.VK_SPACE) {
+            isSpace = false;
         }
 
     }

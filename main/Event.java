@@ -36,4 +36,7 @@ public class Event {
         eventRectangle.y = defultY;
         return hit;
     }
+    public void draw(Graphics2D g2){
+        
+    }
 }

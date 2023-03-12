@@ -13,6 +13,8 @@ public class Player extends Entity {
     public final int screenX;
     public final int screenY;
     private int Key_count = 0;
+    private boolean isMove = true;
+
     GamePanel gp;
     keyControl keyBoard;
     public int global_index = 0;
@@ -36,11 +38,15 @@ public class Player extends Entity {
     }
     public void SetAnnouncements() {
         announcements[0] = "You hit water,please change character";
+        announcements[1] ="You got a key";
+        announcements[2] = "speed up";
         
     }
-    public void announce(int index,boolean detection) {
+    public void announce(int index) {
         gp.ui.text = announcements[index];
-        gp.detection = detection;
+        gp.gamestate =gp.dialogueState;
+        isMove = false;
+        
     }
 
     public void setDefultValues() {
@@ -50,6 +56,10 @@ public class Player extends Entity {
         direction = "down";
     }
     public void update() {
+        if(keyBoard.isSpace==true) {
+            gp.gamestate =gp.playState;
+            isMove = true;
+        }
         if (keyBoard.isOne == true) {  
             transfer = false;
             System.out.println("x" + (gp.player.worldX+gp.player.solidArea.x) + " y" +  (gp.player.worldY+gp.player.solidArea.y));
@@ -70,22 +80,14 @@ public class Player extends Entity {
 
             }
         }
+
         //detect text when collide river
-        if(false)
-         {
-            // System.out.println("Please change character");
-            announce(0,true);
 
-
-        }
        
-        else if(keyBoard.downPress == true||keyBoard.rightPress == true || keyBoard.leftPress == true||transfer == true) {
-            announce(0,false);
-           gp.hit = false;
 
-        }
         
         //movements
+        if(isMove){
         if (keyBoard.downPress == true || keyBoard.upPress == true || keyBoard.rightPress|| keyBoard.leftPress == true) {
             if ( keyBoard.upPress == true) {
                 direction = "up";
@@ -95,8 +97,6 @@ public class Player extends Entity {
                 direction = "right";
             } else if (keyBoard.leftPress == true) {
                 direction = "left";
-            } else if (keyBoard.spacePress == true) {
-                System.out.println("worldX: " + worldX + "Y: " + worldY);
             }
             // check collision
             collisionEnabled = false;
@@ -131,14 +131,14 @@ public class Player extends Entity {
                 spriteCounter = 0;
             }
         }
-
+    }
     }
     public void pickupObject(int index) {
        
         if(index != -1){
         String objectName = gp.object[index].name;
         if(objectName == "key"){
-            gp.gamestate = gp.dialogueState;
+           announce(1);
             gp.playSE(1);
             // gp.playSE(1);
             ++Key_count;
@@ -166,6 +166,8 @@ public class Player extends Entity {
 
         }
         if(objectName == "apple"){
+            announce(2);
+
             gp.playSE(2);
             gp.object[index] = null;
             speed+=1;

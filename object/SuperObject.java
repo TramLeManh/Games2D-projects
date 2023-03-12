@@ -16,6 +16,7 @@ public class SuperObject{
      public boolean collision = false;
      public String name;
      public int size;
+     public String text;
 
 
      public void draw(Graphics2D g,GamePanel gp) { 
@@ -28,6 +29,5 @@ public class SuperObject{
         worldY - gp.tileSize < gp.player.worldY + gp.player.screenY){
             g.drawImage(image, screenX, screenY,size,size, null);
         }
-
 }
 }
