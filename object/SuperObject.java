@@ -1,7 +1,6 @@
 package object;
 import java.awt.image.BufferedImage;
 import main.GamePanel;
-import main.UI;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;

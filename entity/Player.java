@@ -16,9 +16,8 @@ public class Player extends Entity {
     private boolean isMove = true;
 
     GamePanel gp;
-    keyControl keyBoard;
+    public keyControl keyBoard;
     public int global_index = 0;
-    private boolean isBlock = true;
     public Player(GamePanel gp, keyControl keyBoard) {
         this.gp = gp;
         this.keyBoard = keyBoard;
@@ -48,6 +47,11 @@ public class Player extends Entity {
         isMove = false;
         
     }
+    public void announce(String text){
+        gp.ui.text = text;
+        gp.gamestate =gp.dialogueState;
+        isMove = false;
+    }
 
     public void setDefultValues() {
         worldX = gp.tileSize * 23;
@@ -65,29 +69,39 @@ public class Player extends Entity {
             System.out.println("x" + (gp.player.worldX+gp.player.solidArea.x) + " y" +  (gp.player.worldY+gp.player.solidArea.y));
             gp.tilesM.tile[2].collision = true;
             gp.tilesM.tile[6].collision = false;
-                    if(worldY>319&&worldY<560){
+                   
+                        if(worldY>319&&worldY<560 ){
                         transfer = true;
                         gp.tilesM.tile[2].collision = false;
                     }
         }
+        // if(keyBoard.upPress == true&&gp.eventH.checkPlace()&&transfer ==  false){
+        //     gp.eventH.collisionAnnouce();
+        // }
+        // else if(keyBoard.downPress||keyBoard.rightPress||keyBoard.leftPress||transfer ==true){
+        //     gp.gamestate = gp.playState;
+        // }
         if (keyBoard.isTwo == true) {
             transfer = true;
             gp.tilesM.tile[2].collision = false;
             gp.tilesM.tile[6].collision = true;
+            
             if(worldY>560&&worldY<848&&worldX>1720){
                 transfer = false;
                 gp.tilesM.tile[6].collision = false;
 
             }
         }
+        gp.eventH.setAnnouncement();
 
         //detect text when collide river
 
        
 
-        
+
         //movements
         if(isMove){
+
         if (keyBoard.downPress == true || keyBoard.upPress == true || keyBoard.rightPress|| keyBoard.leftPress == true) {
             if ( keyBoard.upPress == true) {
                 direction = "up";
@@ -99,13 +113,19 @@ public class Player extends Entity {
                 direction = "left";
             }
             // check collision
+
             collisionEnabled = false;
-            gp.cCheck.checkTile(this);
             gp.eventH.checkEvent();
+
+            gp.cCheck.checkTile(this);
+
             //object collision
             int index = gp.cCheck.checkObject(this, true);
+
             pickupObject(index);
+
             spriteCounter++;
+            gp.eventH.checkEvent();
             // if collision
             if (collisionEnabled == false) {
                 if (direction == "up") {
@@ -152,22 +172,22 @@ public class Player extends Entity {
                 --Key_count;
             }
             else{
-                System.out.println("Can not enter");
+                announce("Can not enter door");
             }          
         }
-        if(objectName=="block"){
-                gp.object[index].collision  = isBlock;
-        }
+        
         if(objectName == "chest"){
+            gp.ui.text ="Victory";
+            gp.gamestate =gp.dialogueState;
             gp.stopMusic();
             gp.playSE(4);
             gp.object[index] = null;
+           
             gp.gameThread = null; 
 
         }
-        if(objectName == "apple"){
+        if(objectName == "speedUp"){
             announce(2);
-
             gp.playSE(2);
             gp.object[index] = null;
             speed+=1;
