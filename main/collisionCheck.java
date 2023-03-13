@@ -19,7 +19,7 @@ public class collisionCheck {
         int entityBottomRow = entityBottomWorldY/gp.tileSize;
         int tileNum1, tileNum2;
         if(entity.direction == "up"){
-            entityTopRow =(entityTopWorldY-entity.speed)/gp.tileSize;
+            entityTopRow =(entityTopWorldY-entity.speed) /gp.tileSize;
             tileNum1 = gp.tilesM.mapTileNumber[entityLeftCol][entityTopRow];
             tileNum2 = gp.tilesM.mapTileNumber[entityRightCol][entityTopRow];
             if(gp.tilesM.tile[tileNum1].collision== true|| gp.tilesM.tile[tileNum2].collision== true){
@@ -63,9 +63,11 @@ public class collisionCheck {
                             entity.solidArea.y-=entity.speed;
                             if(entity.solidArea.intersects(gp.object[i].solidArea)){
                                 if(gp.object[i].collision==true){
+
                                     entity.collisionEnabled = true;
                                 }
                                 if(player==true){
+
                                     index = i;
                                 }
                             }

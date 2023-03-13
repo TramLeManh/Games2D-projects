@@ -11,6 +11,7 @@ import entity.Player;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.beans.EventHandler;
 
 public class GamePanel extends JPanel implements Runnable {
     public boolean detection = false;
@@ -25,9 +26,14 @@ public class GamePanel extends JPanel implements Runnable {
     public final int screenHeight = tileSize * maxScreenRow;//576
     // world settings
     public final int maxWorldCol = 50;
-    public final int maxWorldRow = 55;
+    public final int maxWorldRow = 56;
     public final int worldWidth = maxWorldCol*tileSize;
     public final int worldHeight = maxWorldRow*tileSize;
+    //gamestate
+    public int gamestate;
+    public final int playState = 1;
+    public final int dialogueState = 2;
+    
 
     int FPS = 60;
     keyControl keyBoard = new keyControl();
@@ -39,6 +45,8 @@ public class GamePanel extends JPanel implements Runnable {
     public Player player = new Player(this,keyBoard);
     public TilesMangaer tilesM = new TilesMangaer(this);
     public collisionCheck cCheck = new collisionCheck(this);
+    public Event eventH  = new Event(this);
+    //Superobject Gamepannel 
     public SuperObject object[] = new SuperObject[20];//create ten block objects
     public object_set  aSetter = new object_set(this);
 

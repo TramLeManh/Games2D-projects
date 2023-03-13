@@ -12,6 +12,8 @@ public class object_chest extends SuperObject {
             e.printStackTrace();
         }
         collision = true;
+        size = 48;
+
        
 
 

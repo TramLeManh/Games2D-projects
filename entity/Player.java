@@ -9,14 +9,15 @@ import java.awt.image.BufferedImage;
 
 public class Player extends Entity {
     choosePlayer chooseSprite = new choosePlayer();
-    private boolean transfer = false;
+    public boolean transfer = false;
     public final int screenX;
     public final int screenY;
     private int Key_count = 0;
+    private boolean isMove = true;
+
     GamePanel gp;
-    keyControl keyBoard;
+    public keyControl keyBoard;
     public int global_index = 0;
-    private boolean isBlock = true;
     public Player(GamePanel gp, keyControl keyBoard) {
         this.gp = gp;
         this.keyBoard = keyBoard;
@@ -27,7 +28,7 @@ public class Player extends Entity {
         SetAnnouncements();
         solidArea = new Rectangle();
         solidArea.x = 8;
-        solidArea.y = 16;
+        solidArea.y = 10;
         solidArea.width = 32;
         solidArea.height = 32;
         solidAreaDefaultX = solidArea.x;
@@ -36,11 +37,20 @@ public class Player extends Entity {
     }
     public void SetAnnouncements() {
         announcements[0] = "You hit water,please change character";
+        announcements[1] ="You got a key";
+        announcements[2] = "speed up";
         
     }
-    public void announce(int index,boolean detection) {
+    public void announce(int index) {
         gp.ui.text = announcements[index];
-        gp.detection = detection;
+        gp.gamestate =gp.dialogueState;
+        isMove = false;
+        
+    }
+    public void announce(String text){
+        gp.ui.text = text;
+        gp.gamestate =gp.dialogueState;
+        isMove = false;
     }
 
     public void setDefultValues() {
@@ -50,40 +60,48 @@ public class Player extends Entity {
         direction = "down";
     }
     public void update() {
+        if(keyBoard.isSpace==true) {
+            gp.gamestate =gp.playState;
+            isMove = true;
+        }
         if (keyBoard.isOne == true) {  
             transfer = false;
-            System.out.println("x" + worldX + " y" + worldY);
+            System.out.println("x" + (gp.player.worldX+gp.player.solidArea.x) + " y" +  (gp.player.worldY+gp.player.solidArea.y));
             gp.tilesM.tile[2].collision = true;
             gp.tilesM.tile[6].collision = false;
-                    if(worldY>319&&worldY<560){
+                   
+                        if(worldY>319&&worldY<560 ){
                         transfer = true;
                         gp.tilesM.tile[2].collision = false;
                     }
         }
+        // if(keyBoard.upPress == true&&gp.eventH.checkPlace()&&transfer ==  false){
+        //     gp.eventH.collisionAnnouce();
+        // }
+        // else if(keyBoard.downPress||keyBoard.rightPress||keyBoard.leftPress||transfer ==true){
+        //     gp.gamestate = gp.playState;
+        // }
         if (keyBoard.isTwo == true) {
             transfer = true;
             gp.tilesM.tile[2].collision = false;
             gp.tilesM.tile[6].collision = true;
+            
             if(worldY>560&&worldY<848&&worldX>1720){
                 transfer = false;
                 gp.tilesM.tile[6].collision = false;
 
             }
         }
+        gp.eventH.setAnnouncement();
+
         //detect text when collide river
-        if(worldY == 560 &keyBoard.upPress == true&&transfer == false&&worldX<1212&&worldX>1004) {
-            // System.out.println("Please change character");
-            announce(0,true);
+
+       
 
 
-        }
-        else if(keyBoard.downPress == true||keyBoard.rightPress == true || keyBoard.leftPress == true||transfer == true) {
-            announce(0,false);
-           gp.hit = false;
-
-        }
-      
         //movements
+        if(isMove){
+
         if (keyBoard.downPress == true || keyBoard.upPress == true || keyBoard.rightPress|| keyBoard.leftPress == true) {
             if ( keyBoard.upPress == true) {
                 direction = "up";
@@ -93,19 +111,25 @@ public class Player extends Entity {
                 direction = "right";
             } else if (keyBoard.leftPress == true) {
                 direction = "left";
-            } else if (keyBoard.spacePress == true) {
-                System.out.println("worldX: " + worldX + "Y: " + worldY);
             }
             // check collision
+
             collisionEnabled = false;
+            gp.eventH.checkEvent();
+
             gp.cCheck.checkTile(this);
+
             //object collision
             int index = gp.cCheck.checkObject(this, true);
+
             pickupObject(index);
+
             spriteCounter++;
+            gp.eventH.checkEvent();
             // if collision
             if (collisionEnabled == false) {
                 if (direction == "up") {
+                    
                     worldY -= speed;
                 }
                 if (direction == "down") {
@@ -127,13 +151,14 @@ public class Player extends Entity {
                 spriteCounter = 0;
             }
         }
-
+    }
     }
     public void pickupObject(int index) {
+       
         if(index != -1){
         String objectName = gp.object[index].name;
         if(objectName == "key"){
-
+           announce(1);
             gp.playSE(1);
             // gp.playSE(1);
             ++Key_count;
@@ -147,27 +172,29 @@ public class Player extends Entity {
                 --Key_count;
             }
             else{
-                System.out.println("Can not enter");
+                announce("Can not enter door");
             }          
         }
-        if(objectName=="block"){
-                gp.object[index].collision  = isBlock;
-        }
+        
         if(objectName == "chest"){
+            gp.ui.text ="Victory";
+            gp.gamestate =gp.dialogueState;
             gp.stopMusic();
             gp.playSE(4);
             gp.object[index] = null;
+           
             gp.gameThread = null; 
 
         }
-        if(objectName == "apple"){
+        if(objectName == "speedUp"){
+            announce(2);
             gp.playSE(2);
             gp.object[index] = null;
             speed+=1;
         }
         }
     }
-
+   
 
     public void draw(Graphics2D g) {
         BufferedImage images = chooseSprite.get_image(transfer, direction, spriteNum);

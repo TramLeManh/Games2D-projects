@@ -1,7 +1,7 @@
 package main;
 
 import object.object_Key;
-import object.object_apple;
+import object.object_speedUp;
 import object.object_chest;
 import object.object_door;
 
@@ -14,7 +14,7 @@ public class object_set {
     {
         gp.object[0] = new object_Key();
         gp.object[0].worldX = 25*gp.tileSize;
-        gp.object[0].worldY = 9*gp.tileSize;
+        gp.object[0].worldY = 10*gp.tileSize;
 
         gp.object[1] = new object_Key();
         gp.object[1].worldX = 23*gp.tileSize;//23
@@ -35,14 +35,14 @@ public class object_set {
       
 
         gp.object[5] = new object_Key();
-        gp.object[5].worldX = 38*gp.tileSize;//23
-        gp.object[5].worldY = 14*gp.tileSize;//42
+        gp.object[5].worldX = 38*gp.tileSize;//38
+        gp.object[5].worldY = 14*gp.tileSize;//14
 
         gp.object[6] = new object_door();
         gp.object[6].worldX = 15*gp.tileSize;//23
         gp.object[6].worldY = 26*gp.tileSize;//42
 
-        gp.object[7] = new object_apple();
+        gp.object[7] = new object_speedUp();
         gp.object[7].worldX = 37*gp.tileSize;//23
         gp.object[7].worldY = 47*gp.tileSize;//42
 

@@ -1,7 +1,6 @@
 package object;
 import java.awt.image.BufferedImage;
 import main.GamePanel;
-import main.UI;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -15,6 +14,8 @@ public class SuperObject{
      public int worldX, worldY;
      public boolean collision = false;
      public String name;
+     public int size;
+     public String text;
 
 
      public void draw(Graphics2D g,GamePanel gp) { 
@@ -25,8 +26,7 @@ public class SuperObject{
         worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
         worldY + gp.tileSize > gp.player.worldY - gp.player.screenY &&
         worldY - gp.tileSize < gp.player.worldY + gp.player.screenY){
-            g.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+            g.drawImage(image, screenX, screenY,size,size, null);
         }
-
 }
 }
