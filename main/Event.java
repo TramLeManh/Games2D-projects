@@ -54,7 +54,8 @@ public class Event {
             hit(25,12 , "up")){
             return true;
         }
-            break;}
+            break;
+            }
             return false;
         
     }
@@ -73,7 +74,7 @@ public class Event {
                 gp.ui.text = "You can not pass river. Please change character";
                 gp.gamestate =gp.dialogueState; 
             }
-            else if(gp.player.keyBoard.downPress||gp.player.keyBoard.rightPress||gp.player.keyBoard.leftPress||!gp.player.transfer||gp.player.keyBoard.isTwo){
+            else if(gp.player.keyBoard.downPress||gp.player.keyBoard.rightPress||gp.player.keyBoard.leftPress||gp.player.transfer||gp.player.keyBoard.isTwo){
                 gp.gamestate = gp.playState;
             }
         }
