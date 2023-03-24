@@ -19,6 +19,12 @@ public class Event {
         
     }
     public void checkEvent() {
+        if(hit(23,15 , "up")){
+            gp.stopMusic();
+        }
+        if(hit(23,18 , "down")){
+            gp.playSE(0);
+        }
     }
     public boolean hit(int eventCol, int eventRow,String direction){
         boolean hit = false;
