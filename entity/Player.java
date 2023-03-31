@@ -93,8 +93,6 @@ public class Player extends Entity {
             }
         }
         gp.eventH.setAnnouncement();
-        // gp.eventH.checkEvent();
-
         //detect text when collide river
 
        
