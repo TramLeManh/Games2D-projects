@@ -64,6 +64,7 @@ public class Player extends Entity {
         if(keyBoard.isSpace==true) {
             gp.gamestate =gp.playState;
             isMove = true;
+            System.out.println("x: "+worldX/48+"y: "+worldY/48);
         }
         if (keyBoard.isOne == true) {
             transfer = false;
@@ -161,7 +162,13 @@ public class Player extends Entity {
         if(index != -1){
         String objectName = gp.object[index].name;
         if(objectName == "key"){
-           
+            gp.eventH.teleport(23, 23);
+
+            if(index == 0){
+                gp.object[8] = new object_Key();
+                gp.object[8].worldX = 20*gp.tileSize;
+                gp.object[8].worldY = 10*gp.tileSize;
+            }
     
            announce(1);
             gp.playSE(1);

@@ -20,6 +20,10 @@ public class Event {
     }
     public void checkEvent() {
     }
+    public void teleport(int x,int y){
+        gp.player.worldX = x*gp.tileSize;
+        gp.player.worldY = y*gp.tileSize;
+    }
     public boolean hit(int eventCol, int eventRow,String direction){
         boolean hit = false;
         gp.player.solidArea.x = gp.player.worldX + gp.player.solidArea.x;
