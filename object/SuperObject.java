@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 
-public class SuperObject{
+public abstract class SuperObject{
     
     public Rectangle solidArea = new Rectangle(0, 0,48,48);
     public int solidAreaDefaultX,solidAreaDefaultY;
