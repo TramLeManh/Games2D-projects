@@ -2,6 +2,7 @@ package entity;
 
 import main.GamePanel;
 import main.keyControl;
+import object.object_Key;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -64,7 +65,7 @@ public class Player extends Entity {
             gp.gamestate =gp.playState;
             isMove = true;
         }
-        if (keyBoard.isOne == true) {  
+        if (keyBoard.isOne == true) {
             transfer = false;
             System.out.println("x" + (gp.player.worldX+gp.player.solidArea.x) + " y" +  (gp.player.worldY+gp.player.solidArea.y));
             gp.tilesM.tile[2].collision = true;
@@ -82,6 +83,9 @@ public class Player extends Entity {
         //     gp.gamestate = gp.playState;
         // }
         if (keyBoard.isTwo == true) {
+            gp.stopMusic();
+
+
             transfer = true;
             gp.tilesM.tile[2].collision = false;
             gp.tilesM.tile[6].collision = true;
@@ -157,6 +161,8 @@ public class Player extends Entity {
         if(index != -1){
         String objectName = gp.object[index].name;
         if(objectName == "key"){
+           
+    
            announce(1);
             gp.playSE(1);
             // gp.playSE(1);

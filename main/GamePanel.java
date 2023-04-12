@@ -49,7 +49,7 @@ public class GamePanel extends JPanel implements Runnable {
     //Superobject Gamepannel 
     public SuperObject object[] = new SuperObject[20];//create ten block objects
     public object_set  aSetter = new object_set(this);
-    public boolean replayMusic =false;
+    public boolean playMusic =true;
 
     // Player start positions
     int playerX     = 100;
@@ -67,8 +67,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
     public void setupGame(){
         aSetter.set_object();
-        playMusic(0);
-        if(replayMusic){
+        if(playMusic){
             playMusic(0);
 
         }
@@ -118,13 +117,14 @@ public class GamePanel extends JPanel implements Runnable {
         //draw map
 
         tilesM.draw(playerG);
-       
+
         //draw object
         for(int i = 0; i < object.length; i++){
            if(object[i] != null){
             object[i].draw(playerG,this);
            }
         }
+
         //draw player
         player.draw(playerG);
         //draw UI
