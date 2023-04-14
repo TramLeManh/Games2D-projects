@@ -18,8 +18,31 @@ public class Event {
         defultY = eventRectangle.y;
         
     }
+    private boolean run =true;
     public void checkEvent() {
+     //check collide music
+        if(hit(23,24,"up")||hit(23,24,"down")){
+                gp.stopMusic();
+        }
+        if(hit(23,23,"up")&&!run){
+            gp.playMusic(0);
+            run = true;
+        }
+        if(hit(23,25,"down")&&run){
+            gp.playMusic(1);
+            run = false;
+        }
+      
     }
+      
+        
+      
+        // if(hit(23,25,"up")){
+        //     gp.stopMusic();
+        //     gp.playMusic(0);
+        //     run =true;
+        // }
+       
     public void teleport(int x,int y){
         gp.player.worldX = x*gp.tileSize;
         gp.player.worldY = y*gp.tileSize;
