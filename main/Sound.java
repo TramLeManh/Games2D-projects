@@ -22,6 +22,13 @@ public class Sound {
             clip.open(ais);
         } catch (Exception e) {
         }
+    }public void setFile(String name) {
+        try {
+            AudioInputStream ais = AudioSystem.getAudioInputStream(getClass().getResource("/sound/"+name+".wav"));
+            clip = AudioSystem.getClip();
+            clip.open(ais);
+        } catch (Exception e) {
+        }
     }
     public void play(){
         clip.start();
