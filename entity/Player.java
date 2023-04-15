@@ -61,6 +61,8 @@ public class Player extends Entity {
         direction = "down";
     }
     public void update() {
+        gp.eventH.checkEvent();
+
         if(keyBoard.isSpace==true) {
             gp.gamestate =gp.playState;
             isMove = true;
@@ -84,7 +86,6 @@ public class Player extends Entity {
         //     gp.gamestate = gp.playState;
         // }
         if (keyBoard.isTwo == true) {
-            gp.stopMusic();
 
 
             transfer = true;
@@ -128,7 +129,7 @@ public class Player extends Entity {
             pickupObject(index);
 
             spriteCounter++;
-            gp.eventH.checkEvent();
+            // gp.eventH.checkEvent();
             // if collision
             if (collisionEnabled == false) {
                 if (direction == "up") {

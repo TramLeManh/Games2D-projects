@@ -19,20 +19,22 @@ public class Event {
         
     }
     private boolean run =true;
+   
     public void checkEvent() {
+        
      //check collide music
-        if(hit(23,24,"up")||hit(23,24,"down")){
+        if(hit(23,24,"up")&&run){
                 gp.stopMusic();
+                gp.playMusic(0);
+                run = false;
         }
-        if(hit(23,23,"up")&&!run){
-            gp.playMusic(0);
+        if(hit(23,24,"down")&&!run){
+            gp.stopMusic();
+
+            gp.playMusic(1);
             run = true;
         }
-        if(hit(23,25,"down")&&run){
-            gp.playMusic(1);
-            run = false;
-        }
-      
+        
     }
       
         
