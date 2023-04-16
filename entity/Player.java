@@ -15,6 +15,7 @@ public class Player extends Entity {
     public final int screenY;
     private int Key_count = 0;
     private boolean isMove = true;
+    private String objectName;
 
     GamePanel gp;
     public keyControl keyBoard;
@@ -45,14 +46,16 @@ public class Player extends Entity {
 
     }
 
-    public void announce(int index) {
+    public void announce(int index,boolean isSpace) {
+        gp.ui.setSpace(isSpace);
         gp.ui.text = announcements[index];
         gp.gamestate = gp.dialogueState;
         isMove = false;
 
     }
 
-    public void announce(String text) {
+    public void announce(String text, boolean isSpace) {
+        gp.ui.setSpace(isSpace);
         gp.ui.text = text;
         gp.gamestate = gp.dialogueState;
         isMove = false;
@@ -72,6 +75,7 @@ public class Player extends Entity {
             gp.gamestate = gp.playState;
             isMove = true;
             System.out.println("x: " + worldX / 48 + "y: " + worldY / 48);
+            gp.ui.setGetKey(false);
         }
         if (keyBoard.isOne == true) {
             transfer = false;
@@ -159,9 +163,10 @@ public class Player extends Entity {
     public void pickupObject(int index) {
 
         if (index != -1) {
-            String objectName = gp.object[index].name;
+            objectName = gp.object[index].name;
             if (objectName == "key") {
                 // gp.eventH.teleport(23, 23);
+                gp.ui.setGetKey(true);
 
                 if (index == 0) {
                     gp.object[8] = new object_Key();
@@ -169,7 +174,7 @@ public class Player extends Entity {
                     gp.object[8].worldY = 10 * gp.tileSize;
                 }
 
-                announce(1);
+                announce(1,true);
                 gp.playSE("coin");
                 // gp.playSE(1);
                 ++Key_count;
@@ -181,13 +186,15 @@ public class Player extends Entity {
                     gp.playSE(3);
                     gp.object[index] = null;
                     --Key_count;
+
                 } else {
-                    announce("Can not enter door");
+                    announce("You do not have enough keys to enter the door",true);
                 }
             }
 
             if (objectName == "chest") {
                 gp.ui.text = "Victory";
+                gp.ui.setSpace(false);
                 gp.gamestate = gp.dialogueState;
                 gp.stopMusic();
                 gp.playSE("endgame");
@@ -197,7 +204,7 @@ public class Player extends Entity {
 
             }
             if (objectName == "speedUp") {
-                announce(2);
+                announce(2,true);
                 gp.playSE(2);
                 gp.object[index] = null;
             }
@@ -207,5 +214,11 @@ public class Player extends Entity {
     public void draw(Graphics2D g) {
         BufferedImage images = chooseSprite.get_image(transfer, direction, spriteNum);
         g.drawImage(images, screenX, screenY, null);
+    }
+    public int getKey_count() {
+        return Key_count;
+    }
+    public String getObjectName() {
+        return objectName;
     }
 }

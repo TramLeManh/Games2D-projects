@@ -34,6 +34,7 @@ public class Event {
 
     public void checkEvent() {
         musicEvent(23, 20, "sea", "road");
+        looseKey();
     }
 
     private void musicEvent(int x, int y, String music_up, String music_down) {
@@ -47,8 +48,13 @@ public class Event {
             run = true;
         }
     }
+    private void looseKey(){
+        if(gp.eventH.hit(14,26, "left")) {
+            gp.ui.setLooseKey(false);
+        }
+    }
   
-    private boolean hit(int eventCol, int eventRow, String direction) {
+    public boolean hit(int eventCol, int eventRow, String direction) {
         boolean hit = false;
         gp.player.solidArea.x = gp.player.worldX + gp.player.solidArea.x;
         gp.player.solidArea.y = gp.player.worldY + gp.player.solidArea.y;
@@ -92,6 +98,7 @@ public class Event {
         if (gp.eventH.checkPlace(1)) {
             if (gp.player.keyBoard.upPress == true && gp.player.transfer == true) {
                 gp.ui.text = "You can not pass lava. Please change character";
+                gp.ui.setSpace(false); 
                 gp.gamestate = gp.dialogueState;
             } else if (gp.player.keyBoard.downPress || gp.player.keyBoard.rightPress || gp.player.keyBoard.leftPress
                     || !gp.player.transfer || gp.player.keyBoard.isOne) {
@@ -101,6 +108,7 @@ public class Event {
         if (gp.eventH.checkPlace(2)) {
             if (gp.player.keyBoard.upPress == true && gp.player.transfer == false) {
                 gp.ui.text = "You can not pass river. Please change character";
+                gp.ui.setSpace(false); 
                 gp.gamestate = gp.dialogueState;
             } else if (gp.player.keyBoard.downPress || gp.player.keyBoard.rightPress || gp.player.keyBoard.leftPress
                     || gp.player.transfer || gp.player.keyBoard.isTwo) {
