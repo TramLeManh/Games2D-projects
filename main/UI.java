@@ -24,7 +24,9 @@ public class UI {
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,20F));
         x+= gp.tileSize;
         y+= gp.tileSize;
-        g2.drawString(text, x, y);;
+        g2.drawString(text, x, y);
+        g2.drawString("press space", width-x, height-y);
+
 
     }
     public void drawSubScreen(int x, int y, int width, int height){

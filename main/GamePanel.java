@@ -67,10 +67,8 @@ public class GamePanel extends JPanel implements Runnable {
     }
     public void setupGame(){
         aSetter.set_object();
-        if(playMusic){
-            playMusic(0);
+        playMusic("road");
 
-        }
     }
 
 
