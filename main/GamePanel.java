@@ -35,7 +35,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int dialogueState = 2;
     
 
-    int FPS = 50;
+    int FPS = 60;
     keyControl keyBoard = new keyControl();
     Sound music = new Sound();
     Sound SoundEffect = new Sound();
