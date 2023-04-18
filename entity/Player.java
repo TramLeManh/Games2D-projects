@@ -14,7 +14,7 @@ public class Player extends Entity {
     public final int screenX;
     public final int screenY;
     private int Key_count = 0;
-    private boolean isMove = true;
+    public boolean isMove = true;
     private String objectName;
 
     GamePanel gp;
@@ -51,6 +51,9 @@ public class Player extends Entity {
         gp.ui.text = announcements[index];
         gp.gamestate = gp.dialogueState;
         isMove = false;
+        if (objectName == "key") {
+            gp.ui.setGetKey(true);
+        }
 
     }
 
@@ -59,6 +62,9 @@ public class Player extends Entity {
         gp.ui.text = text;
         gp.gamestate = gp.dialogueState;
         isMove = false;
+        if (objectName == "key") {
+            gp.ui.setGetKey(true);
+        }
     }
 
     public void setDefultValues() {
@@ -75,7 +81,6 @@ public class Player extends Entity {
             gp.gamestate = gp.playState;
             isMove = true;
             System.out.println("x: " + worldX / 48 + "y: " + worldY / 48);
-            gp.ui.setGetKey(false);
         }
         if (keyBoard.isOne == true) {
             transfer = false;
@@ -166,14 +171,11 @@ public class Player extends Entity {
             objectName = gp.object[index].name;
             if (objectName == "key") {
                 // gp.eventH.teleport(23, 23);
-                gp.ui.setGetKey(true);
-
-                if (index == 0) {
-                    gp.object[8] = new object_Key();
-                    gp.object[8].worldX = 20 * gp.tileSize;
-                    gp.object[8].worldY = 10 * gp.tileSize;
-                }
-
+                // if (index == 0) {
+                //     gp.object[8] = new object_Key();
+                //     gp.object[8].worldX = 20 * gp.tileSize;
+                //     gp.object[8].worldY = 10 * gp.tileSize;
+                // }
                 announce(1,true);
                 gp.playSE("coin");
                 // gp.playSE(1);
@@ -204,9 +206,10 @@ public class Player extends Entity {
 
             }
             if (objectName == "speedUp") {
-                announce(2,true);
+                // announce(2,true);
                 gp.playSE(2);
                 gp.object[index] = null;
+                gp.quizz.Quizz("Private can acess anywhere");
             }
         }
     }

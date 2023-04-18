@@ -6,6 +6,7 @@ import java.awt.event.KeyListener;
 
 public class keyControl implements KeyListener {
     public boolean upPress, downPress, rightPress, leftPress;
+    public boolean tPress,fPress;
     public boolean isFall;
     public boolean isOne,isTwo;
     GamePanel gp;
@@ -24,7 +25,6 @@ public class keyControl implements KeyListener {
         }
         if (key_code == KeyEvent.VK_D || key_code == KeyEvent.VK_RIGHT) {
             rightPress = true;
-
         }
         if(key_code==KeyEvent.VK_SPACE) {
             isSpace = true;
@@ -43,6 +43,14 @@ public class keyControl implements KeyListener {
         if(key_code ==KeyEvent.VK_2){
         isTwo =true;
         }
+        if(key_code ==KeyEvent.VK_F){
+            fPress =true;
+        }
+        if(key_code ==KeyEvent.VK_T){
+            tPress =true;
+        }
+        
+
 
 
     }
@@ -65,14 +73,17 @@ public class keyControl implements KeyListener {
         if(key_code ==KeyEvent.VK_2){
             isTwo = false;
         }
-        
         if(key_code==KeyEvent.VK_1){
             isOne = false;
         }
         if(key_code==KeyEvent.VK_SPACE) {
             isSpace = false;
         }
-
+        if(key_code ==KeyEvent.VK_F){
+            fPress =false;
+        }
+        if(key_code ==KeyEvent.VK_T){
+            tPress =false;
+        }
     }
-
 }
