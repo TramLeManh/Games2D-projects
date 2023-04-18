@@ -25,25 +25,23 @@ public class UI {
         this.getKey = getKey;
     }
     public void draw(Graphics2D g2){
-
         this.g2 = g2;
         if(gp.gamestate == gp.dialogueState){
             drawScreen(text);
-            if(getKey){
-                Font font = new Font("Arial", Font.BOLD, 15);
-                g2.setFont(font);
-                g2.setColor(Color.black);
-                g2.drawString("+1 key", gp.player.screenX+40, gp.player.screenY);
-            }
+            getKey(g2);
            
-        }else{
-            hasKey(g2);
         }
-        if(looseKey){
+        if(gp.gamestate == gp.playState){
+            hasKey(g2);
+            getKey = false;
+        }
+    }
+    public void getKey(Graphics2D g2){
+        if(getKey){
             Font font = new Font("Arial", Font.BOLD, 15);
             g2.setFont(font);
             g2.setColor(Color.black);
-            g2.drawString("-1 key", gp.player.screenX+40, gp.player.screenY);
+            g2.drawString("+1 key", gp.player.screenX+40, gp.player.screenY);
         }
     }
     public void drawScreen(String text){

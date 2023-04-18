@@ -30,10 +30,10 @@ public class GamePanel extends JPanel implements Runnable {
     public final int worldWidth = maxWorldCol*tileSize;
     public final int worldHeight = maxWorldRow*tileSize;
     //gamestate
-    public int gamestate;
+    public int gamestate = 1;
     public final int playState = 1;
     public final int dialogueState = 2;
-    
+    public final int quizzState = 3;
 
     int FPS = 60;
     keyControl keyBoard = new keyControl();
@@ -50,6 +50,7 @@ public class GamePanel extends JPanel implements Runnable {
     public SuperObject object[] = new SuperObject[20];//create ten block objects
     public object_set  aSetter = new object_set(this);
     public boolean playMusic = true;
+    public questions quizz = new questions(this,keyBoard);
 
     // Player start positions
     int playerX     = 100;
@@ -107,6 +108,7 @@ public class GamePanel extends JPanel implements Runnable {
     */    
     public void update() {
      player.update();
+     quizz.update();
     }
 
     public void paintComponent(Graphics g) {
@@ -127,6 +129,7 @@ public class GamePanel extends JPanel implements Runnable {
         player.draw(playerG);
         //draw UI
         ui.draw(playerG);
+        quizz.draw(playerG);
         playerG.dispose();
        
     }
