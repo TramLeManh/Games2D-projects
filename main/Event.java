@@ -29,9 +29,6 @@ public class Event {
     public void ModeSpeed(int number){
         gp.player.speed += number;
     }
-
-
-
     public void checkEvent() {
         musicEvent(23, 20, "sea", "road");
         looseKey();

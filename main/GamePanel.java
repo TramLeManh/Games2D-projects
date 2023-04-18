@@ -49,7 +49,7 @@ public class GamePanel extends JPanel implements Runnable {
     //Superobject Gamepannel 
     public SuperObject object[] = new SuperObject[20];//create ten block objects
     public object_set  aSetter = new object_set(this);
-    public boolean playMusic =true;
+    public boolean playMusic = true;
 
     // Player start positions
     int playerX     = 100;
