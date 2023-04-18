@@ -33,6 +33,7 @@ public class questions {
                 System.out.println("t");
                 gp.gamestate = gp.playState;
                 gp.player.announce("Speed up", true);
+                gp.player.speed+=1;
 
 
             }
