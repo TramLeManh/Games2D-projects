@@ -53,7 +53,6 @@ public void drawSubScreen(int x, int y, int width, int height){
         g2.setColor(Color.white);//viền
         g2.setStroke(new BasicStroke(5));
         g2.drawRoundRect(x+5, y+5,width-10 ,height-10,25, 25);
-
 }
 public void drawScreen(String text){
     int x = gp.tileSize *2;
