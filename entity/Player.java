@@ -209,7 +209,7 @@ public class Player extends Entity {
                 // announce(2,true);
                 gp.playSE(2);
                 gp.object[index] = null;
-                gp.quizz.Quizz("Private can acess anywhere");
+                gp.quizz.Quizz("Minh đẹp trai");
             }
         }
     }

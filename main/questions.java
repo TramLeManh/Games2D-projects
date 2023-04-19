@@ -32,7 +32,8 @@ public class questions {
                 //do something
                 System.out.println("t");
                 gp.gamestate = gp.playState;
-                gp.player.announce("Speed up", true);
+                gp.player.announce("wrong", true);
+
                 gp.player.speed+=1;
 
 
@@ -42,6 +43,8 @@ public class questions {
                 System.out.println("f");
                 gp.gamestate = gp.playState;
                 gp.player.announce("wrong", true);
+                gp.player.announce("Speed up", true);
+
             }
         }
        
