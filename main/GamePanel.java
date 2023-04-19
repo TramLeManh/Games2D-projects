@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 import tiles.TilesMangaer;
 
 import entity.Player;
@@ -65,6 +67,7 @@ public class GamePanel extends JPanel implements Runnable {
         // Insert Keyboard:
         this.addKeyListener(keyBoard);
         this.setFocusable(true);
+    
     }
     public void setupGame(){
         aSetter.set_object();
@@ -109,6 +112,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void update() {
      player.update();
      quizz.update();
+
     }
 
     public void paintComponent(Graphics g) {
