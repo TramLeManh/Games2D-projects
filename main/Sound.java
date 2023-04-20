@@ -13,6 +13,7 @@ public class Sound {
         music[2] = getClass().getResource("/sound/powerup.wav");
         music[3] = getClass().getResource("/sound/unlock.wav");
         music[4] = getClass().getResource("/sound/endgame.wav");
+        music[5] = getClass().getResource("/sound/teleport.wav");
 
     }
     public void setFile(int number) {

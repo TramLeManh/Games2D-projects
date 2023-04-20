@@ -23,8 +23,12 @@ public class Event {
     }
 
     public void teleport(int x, int y) {
+        gp.playSE("teleport");
         gp.player.worldX = x * gp.tileSize;
         gp.player.worldY = y * gp.tileSize;
+        gp.player.direction = "up";
+
+
     }
     public void ModeSpeed(int number){
         gp.player.speed += number;
@@ -50,7 +54,6 @@ public class Event {
             gp.ui.setLooseKey(false);
         }
     }
-  
     public boolean hit(int eventCol, int eventRow, String direction) {
         boolean hit = false;
         gp.player.solidArea.x = gp.player.worldX + gp.player.solidArea.x;

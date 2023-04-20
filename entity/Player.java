@@ -112,7 +112,6 @@ public class Player extends Entity {
 
         // movements
         if (isMove) {
-
             if (keyBoard.downPress == true || keyBoard.upPress == true || keyBoard.rightPress
                     || keyBoard.leftPress == true) {
                 if (keyBoard.upPress == true) {
@@ -153,7 +152,7 @@ public class Player extends Entity {
                         worldX -= speed;
                     }
                 }
-                if (spriteCounter > 4) {
+                if (spriteCounter > 5) {
                     if (spriteNum == 1) {
                         spriteNum = 2;
                     } else if (spriteNum == 2) {
@@ -206,11 +205,14 @@ public class Player extends Entity {
 
             }
             if (objectName == "speedUp") {
+                   
+               gp.eventH.teleport(23, 23);
                 // announce(2,true);
-                gp.playSE(2);
+                // gp.playSE(2);
                 gp.object[index] = null;
-                gp.quizz.Quizz("Minh đẹp trai");
+                // gp.quizz.Quizz("Minh đẹp trai");
             }
+
         }
     }
 
