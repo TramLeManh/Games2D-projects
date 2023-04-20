@@ -96,26 +96,49 @@ public class Event {
 
     public void setAnnouncement() {
         if (gp.eventH.checkPlace(1)) {
-            if (gp.player.keyBoard.upPress == true && gp.player.transfer == true) {
+            if (gp.player.keyBoard.upPress == true && gp.player.getTransfer() == true) {
                 gp.ui.text = "You can not pass lava. Please change character";
                 gp.ui.setSpace(false); 
                 gp.gamestate = gp.dialogueState;
             } else if (gp.player.keyBoard.downPress || gp.player.keyBoard.rightPress || gp.player.keyBoard.leftPress
-                    || !gp.player.transfer || gp.player.keyBoard.isOne) {
+                    || !gp.player.getTransfer() || gp.player.keyBoard.isOne) {
                 gp.gamestate = gp.playState;
             }
         }
         if (gp.eventH.checkPlace(2)) {
-            if (gp.player.keyBoard.upPress == true && gp.player.transfer == false) {
+            if (gp.player.keyBoard.upPress == true && gp.player.getTransfer() == false) {
                 gp.ui.text = "You can not pass river. Please change character";
                 gp.ui.setSpace(false); 
                 gp.gamestate = gp.dialogueState;
             } else if (gp.player.keyBoard.downPress || gp.player.keyBoard.rightPress || gp.player.keyBoard.leftPress
-                    || gp.player.transfer || gp.player.keyBoard.isTwo) {
+                    || gp.player.getTransfer() || gp.player.keyBoard.isTwo) {
                 gp.gamestate = gp.playState;
             }
         }
 
     }
-
+    public void switchPlayer(int worldX,int worldY){
+        if (gp.keyBoard.isOne == true) {
+            gp.player.setTransfer(false);
+            System.out.println("x" + (gp.player.worldX + gp.player.solidArea.x) + " y"
+                    + (gp.player.worldY + gp.player.solidArea.y));
+            gp.tilesM.tile[2].collision = true;
+            gp.tilesM.tile[6].collision = false;
+            //prevent user to transfer when in lava
+            if (worldY > 319 && worldY < 560) {
+                gp.player.setTransfer(true);
+                gp.tilesM.tile[2].collision = false;
+            }
+        }
+        if (gp.keyBoard.isTwo == true) {
+            gp.player.setTransfer(true);
+            gp.tilesM.tile[2].collision = false;
+            gp.tilesM.tile[6].collision = true;
+                        //prevent user to transfer when in pool
+            if (worldY > 560 && worldY < 848 && worldX > 1720) {
+                gp.player.setTransfer(false);
+                gp.tilesM.tile[6].collision = false;
+            }
+        }
+    }
 }

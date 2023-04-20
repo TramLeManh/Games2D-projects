@@ -16,4 +16,15 @@ double drawInterval = 1000000000/FPS;
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
+    
+spawn another object in map
+            if(objectName =="key"){
+                //specify keys
+                // if (index == 0) {
+                    //     gp.object[10] = new object_Key();
+                    //     gp.object[10].worldX = 20 * gp.tileSize;
+                    //     gp.object[10].worldY = 10 * gp.tileSize;
+                    // }
+
+            }
+       

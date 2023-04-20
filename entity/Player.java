@@ -10,12 +10,13 @@ import java.awt.image.BufferedImage;
 
 public class Player extends Entity {
     choosePlayer chooseSprite = new choosePlayer();
-    public boolean transfer = false;
+    private boolean transfer = false;
     public final int screenX;
     public final int screenY;
     private int Key_count = 0;
     public boolean isMove = true;
     private String objectName;
+    private int object_index = 20;
 
     GamePanel gp;
     public keyControl keyBoard;
@@ -38,7 +39,12 @@ public class Player extends Entity {
         solidAreaDefaultY = solidArea.y;
 
     }
-
+    public void setTransfer(boolean transfer) {
+        this.transfer = transfer;
+    }
+    public boolean getTransfer() {
+        return this.transfer;
+    }
     public void SetAnnouncements() {
         announcements[0] = "You hit water,please change character";
         announcements[1] = "You got a key";
@@ -70,7 +76,7 @@ public class Player extends Entity {
     public void setDefultValues() {
         worldX = gp.tileSize * 23;
         worldY = gp.tileSize * 23;
-        speed = 4;
+        speed = 3;
         direction = "down";
     }
 
@@ -82,31 +88,32 @@ public class Player extends Entity {
             isMove = true;
             System.out.println("x: " + worldX / 48 + "y: " + worldY / 48);
         }
-        if (keyBoard.isOne == true) {
-            transfer = false;
-            System.out.println("x" + (gp.player.worldX + gp.player.solidArea.x) + " y"
-                    + (gp.player.worldY + gp.player.solidArea.y));
-            gp.tilesM.tile[2].collision = true;
-            gp.tilesM.tile[6].collision = false;
-            //prevent user to transfer when in lava
-            if (worldY > 319 && worldY < 560) {
-                transfer = true;
-                gp.tilesM.tile[2].collision = false;
-            }
-        }
+        gp.eventH.switchPlayer(worldX, worldY);
+        // if (keyBoard.isOne == true) {
+        //     transfer = false;
+        //     System.out.println("x" + (gp.player.worldX + gp.player.solidArea.x) + " y"
+        //             + (gp.player.worldY + gp.player.solidArea.y));
+        //     gp.tilesM.tile[2].collision = true;
+        //     gp.tilesM.tile[6].collision = false;
+        //     //prevent user to transfer when in lava
+        //     if (worldY > 319 && worldY < 560) {
+        //         transfer = true;
+        //         gp.tilesM.tile[2].collision = false;
+        //     }
+        // }
       
-        if (keyBoard.isTwo == true) {
-            transfer = true;
-            gp.tilesM.tile[2].collision = false;
-            gp.tilesM.tile[6].collision = true;
-                        //prevent user to transfer when in pool
+        // if (keyBoard.isTwo == true) {
+        //     transfer = true;
+        //     gp.tilesM.tile[2].collision = false;
+        //     gp.tilesM.tile[6].collision = true;
+        //                 //prevent user to transfer when in pool
 
-            if (worldY > 560 && worldY < 848 && worldX > 1720) {
-                transfer = false;
-                gp.tilesM.tile[6].collision = false;
+        //     if (worldY > 560 && worldY < 848 && worldX > 1720) {
+        //         transfer = false;
+        //         gp.tilesM.tile[6].collision = false;
 
-            }
-        }
+        //     }
+        // }
         gp.eventH.setAnnouncement();
         // detect text when collide river
 
@@ -165,16 +172,9 @@ public class Player extends Entity {
     }
 
     public void pickupObject(int index) {
-
         if (index != -1) {
             objectName = gp.object[index].name;
             if (objectName == "key") {
-                // gp.eventH.teleport(23, 23);
-                // if (index == 0) {
-                //     gp.object[8] = new object_Key();
-                //     gp.object[8].worldX = 20 * gp.tileSize;
-                //     gp.object[8].worldY = 10 * gp.tileSize;
-                // }
                 announce(1,true);
                 gp.playSE("coin");
                 // gp.playSE(1);
@@ -194,13 +194,11 @@ public class Player extends Entity {
             }
 
             if (objectName == "chest") {
-                gp.ui.text = "Victory";
-                gp.ui.setSpace(false);
+                announce("Victory", false);
                 gp.gamestate = gp.dialogueState;
                 gp.stopMusic();
                 gp.playSE("endgame");
                 gp.object[index] = null;
-
                 gp.gameThread = null;
 
             }
@@ -213,6 +211,14 @@ public class Player extends Entity {
                 // gp.quizz.Quizz("Minh đẹp trai");
             }
 
+        }
+    }
+    private void addObject(String name,int x,int y){
+        object_index++;
+        if(name == "key"){
+            gp.object[object_index] = new object_Key();
+            gp.object[object_index].worldX = x * gp.tileSize;
+            gp.object[object_index].worldY = y * gp.tileSize;
         }
     }
 
