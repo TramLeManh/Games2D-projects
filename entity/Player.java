@@ -203,7 +203,6 @@ public class Player extends Entity {
 
             }
             if (objectName == "speedUp") {
-                   
                gp.eventH.teleport(23, 23);
                 // announce(2,true);
                 // gp.playSE(2);
@@ -226,6 +225,7 @@ public class Player extends Entity {
         BufferedImage images = chooseSprite.get_image(transfer, direction, spriteNum);
         g.drawImage(images, screenX, screenY, null);
     }
+    //set get
     public int getKey_count() {
         return Key_count;
     }
