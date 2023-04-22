@@ -203,11 +203,11 @@ public class Player extends Entity {
 
             }
             if (objectName == "speedUp") {
-               gp.eventH.teleport(23, 23);
+            //    gp.eventH.teleport(23, 23);
                 // announce(2,true);
                 // gp.playSE(2);
                 gp.object[index] = null;
-                // gp.quizz.Quizz("Minh đẹp trai");
+                gp.quizz.Quizz("private can acess everywhere");
             }
 
         }
