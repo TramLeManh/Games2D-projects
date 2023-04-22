@@ -4,13 +4,15 @@ import java.awt.image.BufferedImage;
 
 import entity.choosePlayer;
 import object.object_Key;
+import UI.startScreen;
 public class UI {
     GamePanel gp;
     Graphics2D g2;
     private BufferedImage key_picture;
     private boolean isSpace;
     private boolean getKey;
-    private choosePlayer playerImage = new choosePlayer();;
+    protected choosePlayer playerImage = new choosePlayer();
+    private startScreen startScreen = new startScreen(gp,g2);
 
     public String text = " ";
     private boolean looseKey = false;
@@ -31,34 +33,14 @@ public class UI {
         if(gp.gamestate == gp.dialogueState){
             drawScreen(text);
             getKey();
-           
         }
         if(gp.gamestate == gp.playState){
             hasKey();
             getKey = false;
         }
         if(gp.gamestate == gp.startState){
-            startScreen();
+            startScreen.draw();
         }
-    }
-    public void startScreen(){
-
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
-        String text = "My first game";
-        int x = LocateCenterText(text);
-        int y =gp.tileSize*3;
-        g2.setColor(new Color(69, 69, 69));
-        g2.drawString(text, x+4, y+4);//draw shadow 
-        g2.setColor(Color.WHITE);
-        g2.drawString(text, x, y);
-        //draw image
-        x = gp.screenWidth/2-gp.tileSize;
-        y += gp.tileSize*2;
-         //
-        g2.drawImage(playerImage.get_image(true,"down",1),x, y,gp.tileSize*2,gp.tileSize*2,null);
-        x = gp.screenWidth/2+gp.tileSize;
-         //
-        g2.drawImage(playerImage.get_image(false,"down",1),x, y,gp.tileSize*2,gp.tileSize*2,null);
     }
     public void getKey(){
         if(getKey){
@@ -105,7 +87,7 @@ public class UI {
         g2.setStroke(new BasicStroke(5));
         g2.drawRoundRect(x+5, y+5,width-10 ,height-10,25, 25);
 }
-    private int LocateCenterText(String text)
+    protected int LocateCenterText(String text)
     {
         int length =(int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
         int x = gp.screenWidth/2-length/2; 
