@@ -1,9 +1,10 @@
-package main;
+package TextSreen;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 
+import main.GamePanel;
 import main.keyControl;
 public class questions {
     GamePanel gp;
@@ -33,10 +34,7 @@ public class questions {
                 System.out.println("t");
                 gp.gamestate = gp.playState;
                 gp.player.announce("wrong", true);
-
                 gp.player.speed+=1;
-
-
             }
             if(keyBoard.fPress== true){
                 //do something

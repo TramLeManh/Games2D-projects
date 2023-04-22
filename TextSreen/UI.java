@@ -1,8 +1,10 @@
-package main;
+package TextSreen;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
 import entity.choosePlayer;
+import main.GamePanel;
 import object.object_Key;
 public class UI {
     GamePanel gp;
@@ -10,14 +12,17 @@ public class UI {
     private BufferedImage key_picture;
     private boolean isSpace;
     private boolean getKey;
+    public int startCommand = 0;
     public choosePlayer playerImage = new choosePlayer();
+    public startScreen startScreen  ;
 
     public String text = " ";
     private boolean looseKey = false;
     public UI(GamePanel gp){
         this.gp = gp;
-
+        startScreen  = new startScreen(gp);
     }
+  
     public void setSpace(boolean isSpace) {
         this.isSpace = isSpace;
     }
@@ -30,7 +35,7 @@ public class UI {
     public void draw(Graphics2D g2){
         this.g2 = g2;
         if(gp.gamestate == gp.startState){
-            startScreen();
+            startScreen.display(g2);
         }
         else if(gp.gamestate == gp.dialogueState){
             drawScreen(text);
@@ -40,8 +45,6 @@ public class UI {
             hasKey();
             getKey = false;
         }
-       
-       
     }
     public void getKey(){
         if(getKey){
@@ -57,36 +60,16 @@ public class UI {
         int width = gp.screenWidth - (4*gp.tileSize);
         int height = (4*gp.tileSize);
         drawSubScreen(x, y, width, height);
-
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,20F));
         x+= gp.tileSize;
         y+= gp.tileSize;
         g2.drawString(text, x, y);
         if(isSpace){
             g2.drawString("press space to continue", width-150, height);
-
         }
     }
 
-    public void startScreen(){
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
-        String text = "My first game";
-        int x = LocateCenterText(text);
-        int y =gp.tileSize*3;
-        g2.setColor(new Color(69, 69, 69));
-        g2.drawString(text, x+4, y+4);//draw shadow 
-        g2.setColor(Color.WHITE);
-        g2.drawString(text, x, y);
-        //draw image
-        g2.drawLine(gp.screenWidth/2, 0, gp.screenWidth/2, gp.screenHeight);
-        x = (gp.screenWidth/2)-2*gp.tileSize;
-        y += gp.tileSize;
-         //
-        g2.drawImage(playerImage.get_image(true,"down",1),x, y,gp.tileSize*2,gp.tileSize*2,null);
-        x +=2*gp.tileSize;
-         //
-        g2.drawImage(playerImage.get_image(false,"down",1),x, y,gp.tileSize*2,gp.tileSize*2,null);
-    }    
+  
    
     // g2.drawString("x " +gp.player.getKey_count(), gp.player.screenX+40, gp.player.screenY);// 74 65
 

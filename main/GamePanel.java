@@ -1,5 +1,6 @@
 package main;
 import object.SuperObject;
+import sound.Sound;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -7,6 +8,8 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import TextSreen.UI;
+import TextSreen.questions;
 import tiles.TilesMangaer;
 
 import entity.Player;
@@ -39,7 +42,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int quizzState = 4;
 
     int FPS = 60;
-    keyControl keyBoard = new keyControl();
+    keyControl keyBoard = new keyControl(this);
     Sound music = new Sound();
     Sound SoundEffect = new Sound();
     public UI ui = new UI(this);
