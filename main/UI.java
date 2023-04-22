@@ -2,6 +2,7 @@ package main;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+import entity.choosePlayer;
 import object.object_Key;
 public class UI {
     GamePanel gp;
@@ -9,6 +10,7 @@ public class UI {
     private BufferedImage key_picture;
     private boolean isSpace;
     private boolean getKey;
+    private choosePlayer playerImage = new choosePlayer();;
 
     public String text = " ";
     private boolean looseKey = false;
@@ -28,15 +30,37 @@ public class UI {
         this.g2 = g2;
         if(gp.gamestate == gp.dialogueState){
             drawScreen(text);
-            getKey(g2);
+            getKey();
            
         }
         if(gp.gamestate == gp.playState){
-            hasKey(g2);
+            hasKey();
             getKey = false;
         }
+        if(gp.gamestate == gp.startState){
+            startScreen();
+        }
     }
-    public void getKey(Graphics2D g2){
+    public void startScreen(){
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,96F));
+        String text = "My first game";
+        int x = LocateCenterText(text);
+        int y =gp.tileSize*3;
+        g2.setColor(new Color(69, 69, 69));
+        g2.drawString(text, x+4, y+4);//draw shadow 
+        g2.setColor(Color.WHITE);
+        g2.drawString(text, x, y);
+        //draw image
+        x = gp.screenWidth/2-gp.tileSize;
+        y += gp.tileSize*2;
+         //
+        g2.drawImage(playerImage.get_image(true,"down",1),x, y,gp.tileSize*2,gp.tileSize*2,null);
+        x = gp.screenWidth/2+gp.tileSize;
+         //
+        g2.drawImage(playerImage.get_image(false,"down",1),x, y,gp.tileSize*2,gp.tileSize*2,null);
+    }
+    public void getKey(){
         if(getKey){
             Font font = new Font("Arial", Font.BOLD, 15);
             g2.setFont(font);
@@ -63,7 +87,7 @@ public class UI {
     }
     // g2.drawString("x " +gp.player.getKey_count(), gp.player.screenX+40, gp.player.screenY);// 74 65
 
-    public void hasKey(Graphics2D g2){
+    public void hasKey(){
         Font font = new Font("Arial", Font.PLAIN, 40);
         object_Key key  = new object_Key();
         key_picture = key.image;
@@ -80,6 +104,11 @@ public class UI {
         g2.setColor(Color.white);//viền
         g2.setStroke(new BasicStroke(5));
         g2.drawRoundRect(x+5, y+5,width-10 ,height-10,25, 25);
-
 }
+    private int LocateCenterText(String text)
+    {
+        int length =(int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+        int x = gp.screenWidth/2-length/2; 
+        return x;
+    }
 }

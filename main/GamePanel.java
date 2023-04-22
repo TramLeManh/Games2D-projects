@@ -32,9 +32,10 @@ public class GamePanel extends JPanel implements Runnable {
     public final int worldWidth = maxWorldCol*tileSize;
     public final int worldHeight = maxWorldRow*tileSize;
     //gamestate
-    public int gamestate = 1;
+    public int gamestate = 3;
     public final int playState = 1;
     public final int dialogueState = 2;
+    public final int startState = 3;
     public final int quizzState = 3;
 
     int FPS = 60;
@@ -62,7 +63,7 @@ public class GamePanel extends JPanel implements Runnable {
     public GamePanel() {
         // set Background
         this.setPreferredSize(new Dimension(16*48, 12*48));
-        this.setBackground(Color.decode("#8F00FF"));/* getHSBColor() */ /* decode hex code */
+        this.setBackground(new Color(70,120,80));/* getHSBColor() */ /* decode hex code */ /*Color.decode("#000000") */
         this.setDoubleBuffered(true);
         // Insert Keyboard:
         this.addKeyListener(keyBoard);
@@ -72,7 +73,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void setupGame(){
         aSetter.set_object();
         playMusic("road");
-
+        gamestate = 3;
     }
 
 
@@ -117,24 +118,31 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Graphics2D playerG = (Graphics2D) g;
-        //draw map
-
-        tilesM.draw(playerG);
-
-        //draw object
-        for(int i = 0; i < object.length; i++){
-           if(object[i] != null){
-            object[i].draw(playerG,this);
-           }
+        Graphics2D g2 = (Graphics2D) g;
+        if(gamestate == startState){
+            ui.draw(g2);
         }
-
-        //draw player
-        player.draw(playerG);
-        //draw UI
-        ui.draw(playerG);
-        quizz.draw(playerG);
-        playerG.dispose();
+        else{
+           
+            //draw map
+    
+            tilesM.draw(g2);
+    
+            //draw object
+            for(int i = 0; i < object.length; i++){
+               if(object[i] != null){
+                object[i].draw(g2,this);
+               }
+            }
+    
+            //draw player
+            player.draw(g2);
+            //draw UI
+            ui.draw(g2);
+            quizz.draw(g2);
+            g2.dispose();
+        }
+       
        
     }
     public void playMusic(int number){
