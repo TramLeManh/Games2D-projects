@@ -11,13 +11,13 @@ public class UI {
     private BufferedImage key_picture;
     private boolean isSpace;
     private boolean getKey;
-    protected choosePlayer playerImage = new choosePlayer();
-    private startScreen startScreen = new startScreen(gp,g2);
+    public choosePlayer playerImage = new choosePlayer();
 
     public String text = " ";
     private boolean looseKey = false;
     public UI(GamePanel gp){
         this.gp = gp;
+
     }
     public void setSpace(boolean isSpace) {
         this.isSpace = isSpace;
@@ -30,17 +30,20 @@ public class UI {
     }
     public void draw(Graphics2D g2){
         this.g2 = g2;
-        if(gp.gamestate == gp.dialogueState){
+        if(gp.gamestate == gp.startState){
+            startScreen startScreen = new startScreen(gp,g2);
+            startScreen.draw();
+        }
+        else if(gp.gamestate == gp.dialogueState){
             drawScreen(text);
             getKey();
         }
-        if(gp.gamestate == gp.playState){
+        else if(gp.gamestate == gp.playState){
             hasKey();
             getKey = false;
         }
-        if(gp.gamestate == gp.startState){
-            startScreen.draw();
-        }
+       
+       
     }
     public void getKey(){
         if(getKey){
@@ -87,7 +90,7 @@ public class UI {
         g2.setStroke(new BasicStroke(5));
         g2.drawRoundRect(x+5, y+5,width-10 ,height-10,25, 25);
 }
-    protected int LocateCenterText(String text)
+    public int LocateCenterText(String text)
     {
         int length =(int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
         int x = gp.screenWidth/2-length/2; 

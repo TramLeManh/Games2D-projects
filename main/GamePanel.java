@@ -32,11 +32,11 @@ public class GamePanel extends JPanel implements Runnable {
     public final int worldWidth = maxWorldCol*tileSize;
     public final int worldHeight = maxWorldRow*tileSize;
     //gamestate
-    public int gamestate = 3;
+    public int gamestate;
     public final int playState = 1;
     public final int dialogueState = 2;
     public final int startState = 3;
-    public final int quizzState = 3;
+    public final int quizzState = 4;
 
     int FPS = 60;
     keyControl keyBoard = new keyControl();
@@ -71,9 +71,12 @@ public class GamePanel extends JPanel implements Runnable {
     
     }
     public void setupGame(){
+        gamestate = startState;
+
         aSetter.set_object();
+
         playMusic("road");
-        gamestate = 1;
+
     }
 
 
