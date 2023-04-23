@@ -78,7 +78,6 @@ public class GamePanel extends JPanel implements Runnable {
 
         aSetter.set_object();
 
-        playMusic("road");
 
     }
 

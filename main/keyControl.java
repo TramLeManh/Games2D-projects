@@ -32,13 +32,21 @@ public class keyControl implements KeyListener {
             }
             if (key_code == KeyEvent.VK_S || key_code == KeyEvent.VK_DOWN) {
                 gp.ui.startScreen.command++;
-                if(gp.ui.startScreen.command>2){
+                if(gp.ui.startScreen.command>3){
                     gp.ui.startScreen.command = 0;
                 }
             }
             if(gp.ui.startScreen.command == 0){
                 if(key_code==KeyEvent.VK_SPACE){
                     gp.gamestate = gp.playState;
+                    gp.playMusic("road");
+
+                }
+            }
+            if(gp.ui.startScreen.command == 3){
+                if(key_code==KeyEvent.VK_SPACE){
+                 System.exit(0);
+
                 }
             }
         }

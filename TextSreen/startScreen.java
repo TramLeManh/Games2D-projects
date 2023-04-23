@@ -68,7 +68,7 @@ public class startScreen {
 
         text = "INSTRUCTIONS";
         x = LocateCenterText(text);
-        y += 2 * gp.tileSize;
+        y += gp.tileSize;
         if(command == 1){
                    g2.drawString(">", x - gp.tileSize, y);
         }
@@ -76,15 +76,21 @@ public class startScreen {
 
         g2.drawString(text, x, y);
 
-        text = "QUIT";
+        text = "ABOUT";
         x = LocateCenterText(text);
-        y += 2 * gp.tileSize;
+        y +=gp.tileSize;
         g2.drawString(text, x, y);
         if(command == 2){
                    g2.drawString(">", x - gp.tileSize, y);
         }
+        text = "QUIT";
+        x = LocateCenterText(text);
+        y +=gp.tileSize;
+        g2.drawString(text, x, y);
+        if(command == 3){
+                   g2.drawString(">", x - gp.tileSize, y);
+        }
 
     }
-
    
 }
