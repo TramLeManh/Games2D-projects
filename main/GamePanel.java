@@ -1,5 +1,6 @@
 package main;
 import object.SuperObject;
+import sound.Sound;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -7,6 +8,8 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import TextSreen.UI;
+import TextSreen.questions;
 import tiles.TilesMangaer;
 
 import entity.Player;
@@ -32,13 +35,14 @@ public class GamePanel extends JPanel implements Runnable {
     public final int worldWidth = maxWorldCol*tileSize;
     public final int worldHeight = maxWorldRow*tileSize;
     //gamestate
-    public int gamestate = 1;
+    public int gamestate;
     public final int playState = 1;
     public final int dialogueState = 2;
-    public final int quizzState = 3;
+    public final int startState = 3;
+    public final int quizzState = 4;
 
     int FPS = 60;
-    keyControl keyBoard = new keyControl();
+    keyControl keyBoard = new keyControl(this);
     Sound music = new Sound();
     Sound SoundEffect = new Sound();
     public UI ui = new UI(this);
@@ -62,7 +66,7 @@ public class GamePanel extends JPanel implements Runnable {
     public GamePanel() {
         // set Background
         this.setPreferredSize(new Dimension(16*48, 12*48));
-        this.setBackground(Color.decode("#8F00FF"));/* getHSBColor() */ /* decode hex code */
+        this.setBackground(new Color(70,120,80));/* getHSBColor() */ /* decode hex code */ /*Color.decode("#000000") */
         this.setDoubleBuffered(true);
         // Insert Keyboard:
         this.addKeyListener(keyBoard);
@@ -70,8 +74,10 @@ public class GamePanel extends JPanel implements Runnable {
     
     }
     public void setupGame(){
+        gamestate = startState;
+
         aSetter.set_object();
-        playMusic("road");
+
 
     }
 
@@ -117,24 +123,31 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Graphics2D playerG = (Graphics2D) g;
-        //draw map
-
-        tilesM.draw(playerG);
-
-        //draw object
-        for(int i = 0; i < object.length; i++){
-           if(object[i] != null){
-            object[i].draw(playerG,this);
-           }
+        Graphics2D g2 = (Graphics2D) g;
+        if(gamestate == startState){
+            ui.draw(g2);
         }
-
-        //draw player
-        player.draw(playerG);
-        //draw UI
-        ui.draw(playerG);
-        quizz.draw(playerG);
-        playerG.dispose();
+        else{
+           
+            //draw map
+    
+            tilesM.draw(g2);
+    
+            //draw object
+            for(int i = 0; i < object.length; i++){
+               if(object[i] != null){
+                object[i].draw(g2,this);
+               }
+            }
+    
+            //draw player
+            player.draw(g2);
+            //draw UI
+            ui.draw(g2);
+            quizz.draw(g2);
+            g2.dispose();
+        }
+       
        
     }
     public void playMusic(int number){

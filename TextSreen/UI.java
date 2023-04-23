@@ -1,7 +1,10 @@
-package main;
+package TextSreen;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+import entity.choosePlayer;
+import main.GamePanel;
 import object.object_Key;
 public class UI {
     GamePanel gp;
@@ -9,12 +12,17 @@ public class UI {
     private BufferedImage key_picture;
     private boolean isSpace;
     private boolean getKey;
+    public int startCommand = 0;
+    public choosePlayer playerImage = new choosePlayer();
+    public startScreen startScreen  ;
 
     public String text = " ";
     private boolean looseKey = false;
     public UI(GamePanel gp){
         this.gp = gp;
+        startScreen  = new startScreen(gp);
     }
+  
     public void setSpace(boolean isSpace) {
         this.isSpace = isSpace;
     }
@@ -26,17 +34,19 @@ public class UI {
     }
     public void draw(Graphics2D g2){
         this.g2 = g2;
-        if(gp.gamestate == gp.dialogueState){
-            drawScreen(text);
-            getKey(g2);
-           
+        if(gp.gamestate == gp.startState){
+            startScreen.display(g2);
         }
-        if(gp.gamestate == gp.playState){
-            hasKey(g2);
+        else if(gp.gamestate == gp.dialogueState){
+            drawScreen(text);
+            getKey();
+        }
+        else if(gp.gamestate == gp.playState){
+            hasKey();
             getKey = false;
         }
     }
-    public void getKey(Graphics2D g2){
+    public void getKey(){
         if(getKey){
             Font font = new Font("Arial", Font.BOLD, 15);
             g2.setFont(font);
@@ -50,20 +60,20 @@ public class UI {
         int width = gp.screenWidth - (4*gp.tileSize);
         int height = (4*gp.tileSize);
         drawSubScreen(x, y, width, height);
-
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,20F));
         x+= gp.tileSize;
         y+= gp.tileSize;
         g2.drawString(text, x, y);
         if(isSpace){
             g2.drawString("press space to continue", width-150, height);
-
         }
-
     }
+
+  
+   
     // g2.drawString("x " +gp.player.getKey_count(), gp.player.screenX+40, gp.player.screenY);// 74 65
 
-    public void hasKey(Graphics2D g2){
+    public void hasKey(){
         Font font = new Font("Arial", Font.PLAIN, 40);
         object_Key key  = new object_Key();
         key_picture = key.image;
@@ -80,6 +90,11 @@ public class UI {
         g2.setColor(Color.white);//viền
         g2.setStroke(new BasicStroke(5));
         g2.drawRoundRect(x+5, y+5,width-10 ,height-10,25, 25);
-
 }
+    public int LocateCenterText(String text)
+    {
+        int length =(int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+        int x = gp.screenWidth/2-length/2; 
+        return x;
+    }
 }
