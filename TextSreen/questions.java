@@ -42,7 +42,6 @@ public class questions {
                 gp.gamestate = gp.playState;
                 gp.player.announce("wrong", true);
                 gp.player.announce("Speed up", true);
-
             }
         }
        

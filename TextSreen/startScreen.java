@@ -34,8 +34,12 @@ public class startScreen {
     public void display(Graphics2D g2) {
         this.g2 = g2;
         if(drawSubScreen){
-            drawScreen(screen_text);
-            pause = true;
+            if(command == 3){
+                drawScreen1(screen_text);
+            }else{
+                drawScreen(screen_text);
+                pause = true;
+            }
         }
         else{
             g2.setFont(g2.getFont().deriveFont(Font.BOLD, 96F));
@@ -106,11 +110,8 @@ public class startScreen {
         if(command == 3){
                    g2.drawString(">", x - gp.tileSize, y);
                    g2.drawString("<", x +3*gp.tileSize, y);
-
+                   screen_text = "Are you sure want to quit?";
         }
-
-        
-
     }
     public void drawScreen(String text){
         int x = gp.tileSize *2;
@@ -123,7 +124,18 @@ public class startScreen {
         y+= gp.tileSize;
         g2.drawString(text, x, y);
         g2.drawString("press space to continue", width-150, height);
-
+    }
+    public void drawScreen1(String text){
+        int x = gp.tileSize *2;
+        int y = gp.tileSize *3;
+        int width = gp.screenWidth - (4*gp.tileSize);
+        int height = (4*gp.tileSize);
+        drawSubScreen(x, y, width, height);
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,20F));
+        x+= gp.tileSize;
+        y+= gp.tileSize;
+        g2.drawString(text, x, y);
+        g2.drawString("(Y/N)", width, height+100);
     }
     
     public void drawSubScreen(int x, int y, int width, int height){
