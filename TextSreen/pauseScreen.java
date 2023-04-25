@@ -37,6 +37,7 @@ public class pauseScreen implements UI_interface {
             if(command == 3||command == 1){
                 drawScreen1(screen_text);
             }else{
+                drawScreen(screen_text);
                 pause =true;         
             }
         }
@@ -98,7 +99,7 @@ public class pauseScreen implements UI_interface {
         if(command == 2){
                    g2.drawString(">", x - gp.tileSize, y);
                    g2.drawString("<", x +8*gp.tileSize, y);
-
+                    screen_text = "instructions";
         }
         text = "QUIT";
         x = LocateCenterText(text);

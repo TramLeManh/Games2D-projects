@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import TextSreen.UI;
-import TextSreen.questions;
+import TextSreen.quizz.questions;
 import tiles.TilesMangaer;
 
 import entity.Player;
