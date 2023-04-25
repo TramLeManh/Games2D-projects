@@ -28,8 +28,9 @@ public class Player extends Entity {
         screenX = gp.screenWidth / 2 - (gp.tileSize / 2);
         screenY = gp.screenHeight / 2 - (gp.tileSize / 2);
         // solid
-        setDefultValues();
         SetAnnouncements();
+        setDefultValues();
+
         solidArea = new Rectangle();
         solidArea.x = 8;
         solidArea.y = 10;
@@ -78,6 +79,8 @@ public class Player extends Entity {
         worldY = gp.tileSize * 23;
         speed = 3;
         direction = "down";
+        transfer = false; 
+      
     }
 
     public void update() {
@@ -87,6 +90,13 @@ public class Player extends Entity {
             gp.gamestate = gp.playState;
             isMove = true;
             System.out.println("x: " + worldX / 48 + "y: " + worldY / 48);
+        }
+        if((gp.gamestate==gp.dialogueState||gp.gamestate==gp.playState)){
+            if(keyBoard.pPress==true){
+                gp.gamestate = gp.pauseState;
+                gp.stopMusic();
+            }
+         
         }
         gp.eventH.switchPlayer(worldX, worldY);
         // if (keyBoard.isOne == true) {
@@ -169,6 +179,19 @@ public class Player extends Entity {
                 }
             }
         }
+    }
+    public void reset(){
+        gp.tilesM.tile[2].collision = true;//water
+        gp.tilesM.tile[6].collision = false;//lava
+        worldX = gp.tileSize * 23;
+        worldY = gp.tileSize * 23;
+        speed = 3;
+        direction = "down";
+        Key_count = 0;
+        isMove = true;
+        transfer = false;
+        gp.gamestate = gp.playState;
+
     }
 
     public void pickupObject(int index) {

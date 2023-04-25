@@ -9,15 +9,15 @@ import java.awt.Graphics2D;
 import entity.choosePlayer;
 import main.GamePanel;
 
-public class startScreen implements UI_interface {
-    public boolean pause = false;
+public class pauseScreen implements UI_interface {
     GamePanel gp;
     Graphics2D g2;
     public choosePlayer playerImage = new choosePlayer();
     public int command;
     public boolean drawSubScreen;
+    public boolean pause;
   
-    public startScreen(GamePanel gp) {
+    public pauseScreen(GamePanel gp) {
         this.gp = gp;
         
     }
@@ -34,16 +34,15 @@ public class startScreen implements UI_interface {
     public void draw(Graphics2D g2) {
         this.g2 = g2;
         if(drawSubScreen){
-            if(command == 3){
+            if(command == 3||command == 1){
                 drawScreen1(screen_text);
             }else{
-                drawScreen(screen_text);
-                pause = true;
+                pause =true;         
             }
         }
         else{
             g2.setFont(g2.getFont().deriveFont(Font.BOLD, 96F));
-            String text = "My first game";
+            String text = "Pause Menu";
             int x = LocateCenterText(text);
             int y = gp.tileSize * 3;
             g2.setColor(new Color(69, 69, 69));
@@ -70,37 +69,35 @@ public class startScreen implements UI_interface {
 
     private void menu(Graphics2D g2, int x, int y) {
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 48F));
-        String text = "START GAME";
+        String text = "RESEUM";
         x = LocateCenterText(text);
         y += gp.tileSize * 3.5;
         g2.drawString(text, x, y);
         if(command == 0){
                    g2.drawString(">", x - gp.tileSize, y);
-                   g2.drawString("<", x + 7*gp.tileSize, y);
+                   g2.drawString("<", x + 5*gp.tileSize, y);
 
         }
 
-        text = "INSTRUCTIONS";
+        text = "RESTART";
         x = LocateCenterText(text);
         y += gp.tileSize;
         if(command == 1){
                    g2.drawString(">", x - gp.tileSize, y);
-                   g2.drawString("<", x + 8*gp.tileSize, y);
-                   screen_text = "Instruction";
-
+                   g2.drawString("<", x + 5*gp.tileSize, y);
+                   screen_text = "Are you sure want to restart the game?";
                 }
 
 
         g2.drawString(text, x, y);
 
-        text = "ABOUT";
+        text = "INSTRUCTIONS";
         x = LocateCenterText(text);
         y +=gp.tileSize;
         g2.drawString(text, x, y);
         if(command == 2){
                    g2.drawString(">", x - gp.tileSize, y);
-                   g2.drawString("<", x +4*gp.tileSize, y);
-                   screen_text = "About";
+                   g2.drawString("<", x +8*gp.tileSize, y);
 
         }
         text = "QUIT";

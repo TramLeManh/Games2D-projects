@@ -40,6 +40,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int dialogueState = 2;
     public final int startState = 3;
     public final int quizzState = 4;
+    public final int pauseState = 5;
 
     int FPS = 60;
     keyControl keyBoard = new keyControl(this);
@@ -54,7 +55,8 @@ public class GamePanel extends JPanel implements Runnable {
     public Event eventH  = new Event(this);
     //Superobject Gamepannel 
     public SuperObject object[] = new SuperObject[20];//create ten block objects
-    public object_set  aSetter = new object_set(this);
+    public object_set  objects = new object_set(this);
+    public map map = new map(this);
     public boolean playMusic = true;
     public questions quizz = new questions(this,keyBoard);
 
@@ -75,8 +77,10 @@ public class GamePanel extends JPanel implements Runnable {
     }
     public void setupGame(){
         gamestate = startState;
-
-        aSetter.set_object();
+        objects.setup();
+        if(gamestate == playState){
+            map.set();
+        }
 
 
     }
@@ -124,29 +128,32 @@ public class GamePanel extends JPanel implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        if(gamestate == startState){
-            ui.draw(g2);
-        }
-        else{
-           
-            //draw map
+             //draw map
+             if(gamestate == playState||gamestate==dialogueState||gamestate == quizzState){
+                tilesM.draw(g2);
     
-            tilesM.draw(g2);
-    
-            //draw object
-            for(int i = 0; i < object.length; i++){
-               if(object[i] != null){
-                object[i].draw(g2,this);
-               }
-            }
-    
-            //draw player
-            player.draw(g2);
-            //draw UI
-            ui.draw(g2);
-            quizz.draw(g2);
-            g2.dispose();
-        }
+                //draw object
+                for(int i = 0; i < object.length; i++){
+                   if(object[i] != null){
+                    object[i].draw(g2,this);
+                   }
+                }
+        
+                //draw player
+                player.draw(g2);
+                //draw UI
+                ui.draw(g2);
+                quizz.draw(g2);
+                g2.dispose();   
+             }
+             else if(gamestate==startState){
+                ui.startScreen.draw(g2);
+             }
+             else if(gamestate==pauseState){
+                ui.pauseScreen.draw(g2);
+             }
+            
+
        
        
     }

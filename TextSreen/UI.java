@@ -15,12 +15,14 @@ public class UI {
     public int startCommand = 0;
     public choosePlayer playerImage = new choosePlayer();
     public startScreen startScreen  ;
+    public pauseScreen pauseScreen;
 
     public String text = " ";
     private boolean looseKey = false;
     public UI(GamePanel gp){
         this.gp = gp;
         startScreen  = new startScreen(gp);
+        pauseScreen = new pauseScreen(gp);
     }
   
     public void setSpace(boolean isSpace) {
@@ -34,10 +36,8 @@ public class UI {
     }
     public void draw(Graphics2D g2){
         this.g2 = g2;
-        if(gp.gamestate == gp.startState){
-            startScreen.display(g2);
-        }
-        else if(gp.gamestate == gp.dialogueState){
+       
+        if(gp.gamestate == gp.dialogueState){
             drawScreen(text);
             getKey();
         }
@@ -45,6 +45,7 @@ public class UI {
             hasKey();
             getKey = false;
         }
+
     }
     public void getKey(){
         if(getKey){

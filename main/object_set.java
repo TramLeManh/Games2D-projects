@@ -10,7 +10,7 @@ public class object_set {
     public object_set(GamePanel gp) {
         this.gp = gp;
     }
-    public void set_object() 
+    public void setup() 
     {
         gp.object[0] = new object_Key();
         gp.object[0].worldX = 25*gp.tileSize;

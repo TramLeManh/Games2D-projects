@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 
 import main.GamePanel;
 import main.keyControl;
-public class questions {
+public class questions implements UI_interface {
     GamePanel gp;
     Graphics2D g2;
     private int  width,height;
@@ -34,7 +34,6 @@ public class questions {
                 System.out.println("t");
                 gp.gamestate = gp.playState;
                 gp.player.announce("wrong", true);
-                gp.player.speed+=1;
             }
             if(keyBoard.fPress== true){
                 //do something
@@ -42,6 +41,7 @@ public class questions {
                 gp.gamestate = gp.playState;
                 gp.player.announce("wrong", true);
                 gp.player.announce("Speed up", true);
+                gp.player.speed+=2;
             }
         }
        
@@ -68,5 +68,5 @@ public void drawScreen(String text){
     g2.drawString(text, x, y);
     g2.drawString("press T or F", width-150, height);
 
-}
-}
+}}
+
