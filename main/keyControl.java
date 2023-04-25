@@ -24,31 +24,38 @@ public class keyControl implements KeyListener {
         int key_code = e.getKeyCode();
 
         if( gp.gamestate == gp.startState){
-            if (key_code == KeyEvent.VK_W || key_code == KeyEvent.VK_UP) {
-                gp.ui.startScreen.command--;
-                if(gp.ui.startScreen.command<0){
-                    gp.ui.startScreen.command = 2;
+            if(!gp.ui.startScreen.pause){
+                if (key_code == KeyEvent.VK_W || key_code == KeyEvent.VK_UP) {
+                    gp.ui.startScreen.command--;
+                    if(gp.ui.startScreen.command<0){
+                        gp.ui.startScreen.command = 2;
+                    }
+                }
+                if (key_code == KeyEvent.VK_S || key_code == KeyEvent.VK_DOWN) {
+                    gp.ui.startScreen.command++;
+                    if(gp.ui.startScreen.command>3){
+                        gp.ui.startScreen.command = 0;
+                    }
+                }
+                if(gp.ui.startScreen.command == 0&&key_code==KeyEvent.VK_SPACE){
+                
+                        gp.gamestate = gp.playState;
+                        gp.playMusic("road");
+    
+                }
+                if(gp.ui.startScreen.command == 3&&key_code==KeyEvent.VK_SPACE){
+                     System.exit(0);
+                }
+                else if(key_code==KeyEvent.VK_SPACE){
+                    gp.ui.startScreen.drawSubScreen = true;
                 }
             }
-            if (key_code == KeyEvent.VK_S || key_code == KeyEvent.VK_DOWN) {
-                gp.ui.startScreen.command++;
-                if(gp.ui.startScreen.command>3){
-                    gp.ui.startScreen.command = 0;
-                }
-            }
-            if(gp.ui.startScreen.command == 0){
-                if(key_code==KeyEvent.VK_SPACE){
-                    gp.gamestate = gp.playState;
-                    gp.playMusic("road");
+            if(gp.ui.startScreen.pause&&key_code==KeyEvent.VK_SPACE){
+                gp.ui.startScreen.pause = false;
+                gp.ui.startScreen.drawSubScreen = false;
 
-                }
             }
-            if(gp.ui.startScreen.command == 3){
-                if(key_code==KeyEvent.VK_SPACE){
-                 System.exit(0);
-
-                }
-            }
+           
         }
        else{
             if (key_code == KeyEvent.VK_A|| key_code== KeyEvent.VK_LEFT ) {
