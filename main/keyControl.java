@@ -43,6 +43,7 @@ public class keyControl implements KeyListener {
                 }
                 else if(key_code == KeyEvent.VK_SPACE){
                     gp.ui.startScreen.drawSubScreen = true;
+                    gp.ui.startScreen.pause = true;
 
                 }
             }
