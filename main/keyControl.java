@@ -25,12 +25,10 @@ public class keyControl implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int key_code = e.getKeyCode();
         if (gp.gamestate == gp.startState) {
-           startState(key_code);
-        }
-        else if(gp.gamestate== gp.pauseState) {
+            startState(key_code);
+        } else if (gp.gamestate == gp.pauseState) {
             pauseState(key_code);
-        }
-        else if(gp.gamestate== gp.playState||gp.gamestate == gp.dialogueState){
+        } else if (gp.gamestate == gp.playState || gp.gamestate == gp.dialogueState) {
             if (key_code == KeyEvent.VK_A || key_code == KeyEvent.VK_LEFT) {
                 leftPress = true;
             }
@@ -57,9 +55,8 @@ public class keyControl implements KeyListener {
             if (key_code == KeyEvent.VK_2) {
                 isTwo = true;
             }
-           
-        }
-        else if(gp.gamestate==gp.quizzState){
+
+        } else if (gp.gamestate == gp.quizzState) {
             if (key_code == KeyEvent.VK_F) {
                 fPress = true;
             }
@@ -105,7 +102,7 @@ public class keyControl implements KeyListener {
         }
     }
 
-    public void startState(int key_code){
+    public void startState(int key_code) {
         if (!gp.ui.startScreen.pause) {
             if (key_code == KeyEvent.VK_W || key_code == KeyEvent.VK_UP) {
                 gp.ui.startScreen.command--;
@@ -144,7 +141,8 @@ public class keyControl implements KeyListener {
 
         }
     }
-    public void pauseState(int key_code){
+
+    public void pauseState(int key_code) {
         if (!gp.ui.pauseScreen.pause) {
             if (key_code == KeyEvent.VK_W || key_code == KeyEvent.VK_UP) {
                 gp.ui.pauseScreen.command--;
@@ -159,7 +157,7 @@ public class keyControl implements KeyListener {
                 }
             }
             if (gp.ui.pauseScreen.command == 0 && key_code == KeyEvent.VK_SPACE) {
-                gp.gamestate = gp.playState;/*//dk choi nhac lại khi chuyển vùng */
+                gp.gamestate = gp.playState;/* //dk choi nhac lại khi chuyển vùng */
             } else if (key_code == KeyEvent.VK_SPACE) {
                 gp.ui.pauseScreen.drawSubScreen = true;
                 gp.ui.pauseScreen.pause = true;
@@ -170,12 +168,11 @@ public class keyControl implements KeyListener {
             gp.ui.pauseScreen.pause = false;
         }
         if (gp.ui.pauseScreen.drawSubScreen) {
-            if (gp.ui.pauseScreen.command == 3||gp.ui.pauseScreen.command == 1) {
+            if (gp.ui.pauseScreen.command == 3 || gp.ui.pauseScreen.command == 1) {
                 if (key_code == KeyEvent.VK_Y) {
-                    if(gp.ui.pauseScreen.command == 3){
+                    if (gp.ui.pauseScreen.command == 3) {
                         System.exit(0);
-                    }
-                    else{
+                    } else {
                         gp.map.reset();
                         gp.gamestate = gp.playState;
                     }
