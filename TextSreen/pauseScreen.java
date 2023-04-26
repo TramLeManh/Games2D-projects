@@ -70,7 +70,7 @@ public class pauseScreen implements UI_interface {
 
     private void menu(Graphics2D g2, int x, int y) {
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 48F));
-        String text = "RESEUM";
+        String text = "RESUME";
         x = LocateCenterText(text);
         y += gp.tileSize * 3.5;
         g2.drawString(text, x, y);

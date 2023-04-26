@@ -44,6 +44,7 @@ public class questions implements UI_interface {
                 // do something
                 if (questions[i].answer) {
                     gp.player.announce("correct", true);
+                    
 
                 } else if(!questions[i].answer){
                     gp.player.announce("wrong", true);
@@ -95,8 +96,8 @@ public class questions implements UI_interface {
     public void setup() {
         //questions
         questions[0] = new setQuestions();
-        questions[0].text = "Hello";
-        questions[0].answer = true;//answer
+        questions[0].text = "We can acess private variables anywhere";
+        questions[0].answer = false ;//fanswer
         questions[0].action = 0;//by default 0 is random evert or khác 0 chọn event cụ thể
 
         questions[1] = new setQuestions();
@@ -104,7 +105,7 @@ public class questions implements UI_interface {
         questions[1].answer = true;
         questions[1].action = 0;
     }
-
+ 
     public void events(int i) {
         if (i == 0) {
             // random

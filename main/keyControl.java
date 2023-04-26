@@ -177,6 +177,8 @@ public class keyControl implements KeyListener {
                         gp.gamestate = gp.playState;
                         gp.ui.pauseScreen.drawSubScreen = false;
                         gp.ui.pauseScreen.command = 0;
+                        gp.ui.pauseScreen.pause = false;
+
 
                     }
                 }
