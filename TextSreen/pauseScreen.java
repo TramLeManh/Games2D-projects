@@ -37,6 +37,7 @@ public class pauseScreen implements UI_interface {
             if(command == 3||command == 1){
                 drawScreen1(screen_text);
             }else{
+                drawScreen(screen_text);
                 pause =true;         
             }
         }
@@ -69,7 +70,7 @@ public class pauseScreen implements UI_interface {
 
     private void menu(Graphics2D g2, int x, int y) {
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 48F));
-        String text = "RESEUM";
+        String text = "RESUME";
         x = LocateCenterText(text);
         y += gp.tileSize * 3.5;
         g2.drawString(text, x, y);
@@ -98,7 +99,7 @@ public class pauseScreen implements UI_interface {
         if(command == 2){
                    g2.drawString(">", x - gp.tileSize, y);
                    g2.drawString("<", x +8*gp.tileSize, y);
-
+                    screen_text = "instructions";
         }
         text = "QUIT";
         x = LocateCenterText(text);

@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import TextSreen.UI;
-import TextSreen.questions;
+import TextSreen.quizz.questions;
 import tiles.TilesMangaer;
 
 import entity.Player;
@@ -31,7 +31,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int screenHeight = tileSize * maxScreenRow;//576
     // world settings
     public final int maxWorldCol = 50;
-    public final int maxWorldRow = 56;
+    public final int maxWorldRow = 56;//56
     public final int worldWidth = maxWorldCol*tileSize;
     public final int worldHeight = maxWorldRow*tileSize;
     //gamestate

@@ -175,11 +175,17 @@ public class keyControl implements KeyListener {
                     } else {
                         gp.map.reset();
                         gp.gamestate = gp.playState;
+                        gp.ui.pauseScreen.drawSubScreen = false;
+                        gp.ui.pauseScreen.command = 0;
+                        gp.ui.pauseScreen.pause = false;
+
+
                     }
                 }
                 if (key_code == KeyEvent.VK_N) {
                     gp.ui.pauseScreen.command = 0;
                     gp.ui.pauseScreen.drawSubScreen = false;
+                    gp.ui.pauseScreen.pause = false;
                 }
             }
 
