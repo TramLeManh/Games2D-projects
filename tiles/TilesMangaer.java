@@ -2,7 +2,6 @@ package tiles;
 
 
 import main.GamePanel;
-import main.keyControl;
 import main.tools;
 
 import java.awt.Graphics2D;
@@ -12,6 +11,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import javax.imageio.ImageIO;
+
+import KeyBoard.keyControl;
 
 public class TilesMangaer extends Tiles {
     GamePanel gp;

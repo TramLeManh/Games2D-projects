@@ -5,9 +5,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 
+import KeyBoard.keyControl;
 import TextSreen.UI_interface;
 import main.GamePanel;
-import main.keyControl;
 
 public class questions implements UI_interface {
     GamePanel gp;

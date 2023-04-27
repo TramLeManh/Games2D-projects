@@ -1,12 +1,13 @@
 package entity;
 
 import main.GamePanel;
-import main.keyControl;
 import object.object_Key;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+
+import KeyBoard.keyControl;
 
 public class Player extends Entity {
     choosePlayer chooseSprite = new choosePlayer();
