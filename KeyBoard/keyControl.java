@@ -31,33 +31,7 @@ public class keyControl implements KeyListener {
         } else if (gp.gamestate == gp.pauseState) {
             pauseState(key_code);
         } else if (gp.gamestate == gp.playState || gp.gamestate == gp.dialogueState) {
-            if (key_code == KeyEvent.VK_A || key_code == KeyEvent.VK_LEFT) {
-                leftPress = true;
-            }
-            if (key_code == KeyEvent.VK_D || key_code == KeyEvent.VK_RIGHT) {
-                rightPress = true;
-            }
-            if (key_code == KeyEvent.VK_SPACE) {
-                isSpace = true;
-            }
-
-            if (key_code == KeyEvent.VK_1) {
-                isOne = true;
-            }
-            if (key_code == KeyEvent.VK_P) {
-                pPress = true;
-            }
-            if (key_code == KeyEvent.VK_S || key_code == KeyEvent.VK_DOWN) {
-                downPress = true;
-
-            }
-            if (key_code == KeyEvent.VK_W || key_code == KeyEvent.VK_UP) {
-                upPress = true;
-            }
-            if (key_code == KeyEvent.VK_2) {
-                isTwo = true;
-            }
-
+            
         } else if (gp.gamestate == gp.quizzState) {
             if (key_code == KeyEvent.VK_F) {
                 fPress = true;

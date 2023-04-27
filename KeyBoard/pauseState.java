@@ -2,7 +2,14 @@ package KeyBoard;
 
 import java.awt.event.KeyEvent;
 
+import main.GamePanel;
+
 public class pauseState extends keyBoard {
+
+    public pauseState(GamePanel gp) {
+        super(gp);
+    }
+
 
     @Override
     public void keyPressed(KeyEvent e) {

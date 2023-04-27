@@ -8,7 +8,9 @@ import java.awt.event.KeyListener;
 
 public abstract class keyBoard  implements KeyListener{
     GamePanel gp;
-
+    public keyBoard(GamePanel gp) {
+        this.gp = gp;
+    }
     @Override
     public abstract void keyTyped(KeyEvent e);
 

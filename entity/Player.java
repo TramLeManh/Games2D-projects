@@ -7,7 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-import KeyBoard.keyControl;
+import KeyBoard.keyBoard;
 
 public class Player extends Entity {
     choosePlayer chooseSprite = new choosePlayer();
@@ -20,10 +20,10 @@ public class Player extends Entity {
     private int object_index = 20;
 
     GamePanel gp;
-    public keyControl keyBoard;
+    public keyBoard keyBoard;
     public int global_index = 0;
 
-    public Player(GamePanel gp, keyControl keyBoard) {
+    public Player(GamePanel gp,keyBoard keyBoard) {
         this.gp = gp;
         this.keyBoard = keyBoard;
         screenX = gp.screenWidth / 2 - (gp.tileSize / 2);

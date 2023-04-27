@@ -8,7 +8,7 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import KeyBoard.keyControl;
+import KeyBoard.keyBoard;
 import TextSreen.UI;
 import TextSreen.quizz.questions;
 import tiles.TilesMangaer;
@@ -44,13 +44,15 @@ public class GamePanel extends JPanel implements Runnable {
     public final int pauseState = 5;
 
     int FPS = 60;
-    keyControl keyBoard = new keyControl(this);
+    // keyControl keyBoard = new keyControl(this); 
+    keyBoard[] keyBoard = new keyBoard[4];
+    keyBoard[0] = new playState(this);
     Sound music = new Sound();
     Sound SoundEffect = new Sound();
     public UI ui = new UI(this);
     public boolean hit =true;
     public Thread gameThread;
-    public Player player = new Player(this,keyBoard);
+    public Player player = new Player(this,keyBoard[0]);
     public TilesMangaer tilesM = new TilesMangaer(this);
     public collisionCheck cCheck = new collisionCheck(this);
     public Event eventH  = new Event(this);
@@ -59,7 +61,7 @@ public class GamePanel extends JPanel implements Runnable {
     public object_set  objects = new object_set(this);
     public map map = new map(this);
     public boolean playMusic = true;
-    public questions quizz = new questions(this,keyBoard);
+    // public questions quizz = new questions(this,keyBoard);
 
     // Player start positions
     int playerX     = 100;
