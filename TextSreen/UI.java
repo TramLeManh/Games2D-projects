@@ -2,6 +2,8 @@ package TextSreen;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 
 import Font.Fonts;
 import entity.choosePlayer;
@@ -26,7 +28,16 @@ public class UI {
         this.gp = gp;
         startScreen  = new startScreen(gp);
         pauseScreen = new pauseScreen(gp);
-        font_text = font.getFont();
+        try{
+            InputStream file = getClass().getResourceAsStream("Font/font.ttf");
+            font_text =  Font.createFont(Font.TRUETYPE_FONT, file);
+           
+
+        }catch(FontFormatException e){
+            e.printStackTrace();
+        }catch(IOException e){
+            e.printStackTrace();
+        }        
     }
   
     public void setSpace(boolean isSpace) {

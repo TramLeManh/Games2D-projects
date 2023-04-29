@@ -8,12 +8,12 @@ import java.io.InputStream;
 public class Fonts {
     private Font f;
     public Fonts() {
-        loadFont();
+        // loadFont();
     }
     private void loadFont() {
         try{
-            InputStream file = getClass().getResourceAsStream("Font/font.ttf");
-            f =  Font.createFont(Font.TRUETYPE_FONT, file);
+            InputStream files = getClass().getResourceAsStream("Font/x12y16pxMaruMonica.ttf");
+            f =  Font.createFont(Font.TRUETYPE_FONT, files);
            
 
         }catch(FontFormatException e){
