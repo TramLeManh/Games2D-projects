@@ -3,6 +3,7 @@ package TextSreen;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+import Font.Fonts;
 import entity.choosePlayer;
 import main.GamePanel;
 import object.object_Key;
@@ -14,15 +15,18 @@ public class UI {
     private boolean getKey;
     public int startCommand = 0;
     public choosePlayer playerImage = new choosePlayer();
+    public Fonts font = new Fonts();
     public startScreen startScreen  ;
     public pauseScreen pauseScreen;
 
     public String text = " ";
+    private Font font_text;
     private boolean looseKey = false;
     public UI(GamePanel gp){
         this.gp = gp;
         startScreen  = new startScreen(gp);
         pauseScreen = new pauseScreen(gp);
+        font_text = font.getFont();
     }
   
     public void setSpace(boolean isSpace) {
@@ -36,6 +40,7 @@ public class UI {
     }
     public void draw(Graphics2D g2){
         this.g2 = g2;
+        g2.setFont(font_text);
        
         if(gp.gamestate == gp.dialogueState){
             drawScreen(text);
@@ -49,8 +54,7 @@ public class UI {
     }
     public void getKey(){
         if(getKey){
-            Font font = new Font("Arial", Font.BOLD, 15);
-            g2.setFont(font);
+            g2.setFont(font_text);
             g2.setColor(Color.black);
             g2.drawString("+1 key", gp.player.screenX+40, gp.player.screenY);
         }
