@@ -28,16 +28,19 @@ public class UI {
         this.gp = gp;
         startScreen  = new startScreen(gp);
         pauseScreen = new pauseScreen(gp);
-        try{
-            InputStream file = getClass().getResourceAsStream("Font/font.ttf");
-            font_text =  Font.createFont(Font.TRUETYPE_FONT, file);
+        font_text = font.getFont();
+        //   try{
+        //     InputStream file = getClass().getResourceAsStream("/Font/a.ttf");
+        //     font_text =  Font.createFont(Font.TRUETYPE_FONT, file);
+           
            
 
-        }catch(FontFormatException e){
-            e.printStackTrace();
-        }catch(IOException e){
-            e.printStackTrace();
-        }        
+        // }catch(FontFormatException e){
+        //     e.printStackTrace();
+        // }catch(IOException e){
+        //     e.printStackTrace();
+        // }      
+        
     }
   
     public void setSpace(boolean isSpace) {
@@ -100,7 +103,7 @@ public class UI {
     }
     public void drawSubScreen(int x, int y, int width, int height){
         Color color = new Color(0,0,100,100);
-        g2.setColor(color);//nền trong
+        g2.setColor(Color.black);//nền trong
         g2.fillRoundRect(x, y,width ,height,35, 35);
 
         g2.setColor(Color.white);//viền
