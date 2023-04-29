@@ -14,6 +14,7 @@ public class Sound {
         music[3] = getClass().getResource("/sound/unlock.wav");
         music[4] = getClass().getResource("/sound/endgame.wav");
         music[5] = getClass().getResource("/sound/teleport.wav");
+        music[6] = getClass().getResource("/sound/fanfare.wav");
 
     }
     public void setFile(int number) {
