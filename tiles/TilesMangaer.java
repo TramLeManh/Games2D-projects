@@ -63,7 +63,6 @@ public class TilesMangaer extends Tiles {
             setup(4,"tree", false);
             setup(5,"sand", false);
             setup(6,"lava", false);//lava.collison =false;
-
     }
 
     public void update() {
