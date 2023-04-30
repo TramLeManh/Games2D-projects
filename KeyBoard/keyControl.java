@@ -13,9 +13,12 @@ public class keyControl implements KeyListener {
     public boolean pPress;
     GamePanel gp;
     public boolean isSpace;
+    private KeyBoard startState, pauseState;
 
     public keyControl(GamePanel gp) {
         this.gp = gp;
+        startState = new startState(gp);
+        pauseState = new pauseState(gp);
     }
 
     @Override
@@ -26,10 +29,11 @@ public class keyControl implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int key_code = e.getKeyCode();
+
         if (gp.gamestate == gp.startState) {
-            startState(key_code);
+            startState.keyPressed(key_code);
         } else if (gp.gamestate == gp.pauseState) {
-            pauseState(key_code);
+            pauseState.keyPressed(key_code);
         } else if (gp.gamestate == gp.playState || gp.gamestate == gp.dialogueState) {
             if (key_code == KeyEvent.VK_A || key_code == KeyEvent.VK_LEFT) {
                 leftPress = true;
@@ -105,90 +109,7 @@ public class keyControl implements KeyListener {
     }
 
     public void startState(int key_code) {
-        if (!gp.ui.startScreen.pause) {
-            if (key_code == KeyEvent.VK_W || key_code == KeyEvent.VK_UP) {
-                gp.ui.startScreen.command--;
-                if (gp.ui.startScreen.command < 0) {
-                    gp.ui.startScreen.command = 3;
-                }
-            }
-            if (key_code == KeyEvent.VK_S || key_code == KeyEvent.VK_DOWN) {
-                gp.ui.startScreen.command++;
-                if (gp.ui.startScreen.command > 3) {
-                    gp.ui.startScreen.command = 0;
-                }
-            }
-            if (gp.ui.startScreen.command == 0 && key_code == KeyEvent.VK_SPACE) {
-                gp.gamestate = gp.playState;
-                gp.playMusic("road");
-            } else if (key_code == KeyEvent.VK_SPACE) {
-                gp.ui.startScreen.drawSubScreen = true;
-                gp.ui.startScreen.pause = true;
 
-            }
-        } else if (key_code == KeyEvent.VK_SPACE && gp.ui.startScreen.pause) {
-            gp.ui.startScreen.drawSubScreen = false;
-            gp.ui.startScreen.pause = false;
-        }
-        if (gp.ui.startScreen.drawSubScreen) {
-            if (gp.ui.startScreen.command == 3) {
-                if (key_code == KeyEvent.VK_Y) {
-                    System.exit(0);
-                }
-                if (key_code == KeyEvent.VK_N) {
-                    gp.ui.startScreen.command = 0;
-                    gp.ui.startScreen.drawSubScreen = false;
-                }
-            }
-
-        }
     }
 
-    public void pauseState(int key_code) {
-        if (!gp.ui.pauseScreen.pause) {
-            if (key_code == KeyEvent.VK_W || key_code == KeyEvent.VK_UP) {
-                gp.ui.pauseScreen.command--;
-                if (gp.ui.pauseScreen.command < 0) {
-                    gp.ui.pauseScreen.command = 3;
-                }
-            }
-            if (key_code == KeyEvent.VK_S || key_code == KeyEvent.VK_DOWN) {
-                gp.ui.pauseScreen.command++;
-                if (gp.ui.pauseScreen.command > 3) {
-                    gp.ui.pauseScreen.command = 0;
-                }
-            }
-            if (gp.ui.pauseScreen.command == 0 && key_code == KeyEvent.VK_SPACE) {
-                gp.gamestate = gp.playState;/* //dk choi nhac lại khi chuyển vùng */
-            } else if (key_code == KeyEvent.VK_SPACE) {
-                gp.ui.pauseScreen.drawSubScreen = true;
-                gp.ui.pauseScreen.pause = true;
-
-            }
-        } else if (key_code == KeyEvent.VK_SPACE && gp.ui.pauseScreen.pause) {
-            gp.ui.pauseScreen.drawSubScreen = false;
-            gp.ui.pauseScreen.pause = false;
-        }
-        if (gp.ui.pauseScreen.drawSubScreen) {
-            if (gp.ui.pauseScreen.command == 3 || gp.ui.pauseScreen.command == 1) {
-                if (key_code == KeyEvent.VK_Y) {
-                    if (gp.ui.pauseScreen.command == 3) {
-                        System.exit(0);
-                    } else {
-                        gp.map.reset();
-                        gp.gamestate = gp.playState;
-                        gp.ui.pauseScreen.drawSubScreen = false;
-                        gp.ui.pauseScreen.command = 0;
-                        gp.ui.pauseScreen.pause = false;
-                    }
-                }
-                if (key_code == KeyEvent.VK_N) {
-                    gp.ui.pauseScreen.command = 0;
-                    gp.ui.pauseScreen.drawSubScreen = false;
-                    gp.ui.pauseScreen.pause = false;
-                }
-            }
-
-        }
-    }
 }
