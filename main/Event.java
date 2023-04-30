@@ -122,23 +122,23 @@ public class Event {
             gp.player.setTransfer(false);
             System.out.println("x" + (gp.player.worldX + gp.player.solidArea.x) + " y"
                     + (gp.player.worldY + gp.player.solidArea.y));
-            gp.tilesM.tile[2].collision = true;
-            gp.tilesM.tile[6].collision = false;
+            gp.tilesM.tile[6].collision = true;
+            gp.tilesM.tile[5].collision = false;
             //prevent user to transfer when in lava
-            if (worldY > 319 && worldY < 560) {
-                gp.player.setTransfer(true);
-                gp.tilesM.tile[2].collision = false;
-            }
+            // if (worldY > 319 && worldY < 560) {
+            //     gp.player.setTransfer(true);
+            //     gp.tilesM.tile[2].collision = false;
+            // }
         }
         if (gp.keyBoard.isTwo == true) {
             gp.player.setTransfer(true);
-            gp.tilesM.tile[2].collision = false;
-            gp.tilesM.tile[6].collision = true;
+            gp.tilesM.tile[6].collision = false;
+            gp.tilesM.tile[5].collision = true;
                         //prevent user to transfer when in pool
-            if (worldY > 560 && worldY < 848 && worldX > 1720) {
-                gp.player.setTransfer(false);
-                gp.tilesM.tile[6].collision = false;
-            }
+            // if (worldY > 560 && worldY < 848 && worldX > 1720) {
+            //     gp.player.setTransfer(false);
+            //     gp.tilesM.tile[6].collision = false;
+            // }
         }
     }
 }
