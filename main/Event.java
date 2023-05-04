@@ -133,7 +133,7 @@ public class Event {
         if (gp.keyBoard.isTwo == true) {
             gp.player.setTransfer(true);
             gp.tilesM.tile[6].collision = false;
-            gp.tilesM.tile[5].collision = true;
+            gp.tilesM.tile[5W].collision = true;
                         //prevent user to transfer when in pool
             // if (worldY > 560 && worldY < 848 && worldX > 1720) {
             //     gp.player.setTransfer(false);
