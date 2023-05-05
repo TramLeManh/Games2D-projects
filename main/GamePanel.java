@@ -32,13 +32,13 @@ public class GamePanel extends JPanel implements Runnable {
     public TilesMangaer tilesM = new TilesMangaer(this);
     public collisionCheck cCheck = new collisionCheck(this);
     // Player start positions
-    int playerX     = 100;
-    int playerY     = 100;
-    int playerSpeed = 4;
+    // int playerX     = 100;
+    // int playerY     = 100;
+    // int playerSpeed = 4;
 
     public GamePanel() {
         // set Background
-        this.setPreferredSize(new Dimension(16*48, 12*48));
+        this.setPreferredSize(new Dimension(20*48, 12*48));
         this.setBackground(Color.decode("#8F00FF"));/* getHSBColor() */ /* decode hex code */
         this.setDoubleBuffered(true);
         // Insert Keyboard:

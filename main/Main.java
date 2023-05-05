@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args){
         JFrame w = new JFrame();
         w.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        w.setResizable(false);
+        w.setResizable(true);
         w.setTitle("First 2D Games");/*Set tittle */
         GamePanel gamePanel = new GamePanel();
         w.add(gamePanel);
