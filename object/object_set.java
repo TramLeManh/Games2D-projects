@@ -1,9 +1,6 @@
-package main;
+package object;
 
-import object.object_Key;
-import object.object_speedUp;
-import object.object_chest;
-import object.object_door;
+import main.GamePanel;
 
 public class object_set {
     GamePanel gp;

@@ -2,7 +2,10 @@ package TextSreen;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 
+import Font.Fonts;
 import entity.choosePlayer;
 import main.GamePanel;
 import object.object_Key;
@@ -14,15 +17,30 @@ public class UI {
     private boolean getKey;
     public int startCommand = 0;
     public choosePlayer playerImage = new choosePlayer();
+    public Fonts font = new Fonts();
     public startScreen startScreen  ;
     public pauseScreen pauseScreen;
 
     public String text = " ";
+    private Font font_text;
     private boolean looseKey = false;
     public UI(GamePanel gp){
         this.gp = gp;
         startScreen  = new startScreen(gp);
         pauseScreen = new pauseScreen(gp);
+        font_text = font.getFont();
+        //   try{
+        //     InputStream file = getClass().getResourceAsStream("/Font/a.ttf");
+        //     font_text =  Font.createFont(Font.TRUETYPE_FONT, file);
+           
+           
+
+        // }catch(FontFormatException e){
+        //     e.printStackTrace();
+        // }catch(IOException e){
+        //     e.printStackTrace();
+        // }      
+        
     }
   
     public void setSpace(boolean isSpace) {
@@ -36,6 +54,7 @@ public class UI {
     }
     public void draw(Graphics2D g2){
         this.g2 = g2;
+        g2.setFont(font_text);
        
         if(gp.gamestate == gp.dialogueState){
             drawScreen(text);
@@ -49,8 +68,7 @@ public class UI {
     }
     public void getKey(){
         if(getKey){
-            Font font = new Font("Arial", Font.BOLD, 15);
-            g2.setFont(font);
+            g2.setFont(font_text);
             g2.setColor(Color.black);
             g2.drawString("+1 key", gp.player.screenX+40, gp.player.screenY);
         }
@@ -85,7 +103,7 @@ public class UI {
     }
     public void drawSubScreen(int x, int y, int width, int height){
         Color color = new Color(0,0,100,100);
-        g2.setColor(color);//nền trong
+        g2.setColor(Color.black);//nền trong
         g2.fillRoundRect(x, y,width ,height,35, 35);
 
         g2.setColor(Color.white);//viền

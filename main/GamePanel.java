@@ -1,5 +1,6 @@
 package main;
 import object.SuperObject;
+import object.object_set;
 import sound.Sound;
 
 import java.awt.Color;
@@ -8,6 +9,7 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Events.Event;
 import KeyBoard.keyControl;
 import TextSreen.UI;
 import TextSreen.quizz.questions;
@@ -31,8 +33,8 @@ public class GamePanel extends JPanel implements Runnable {
     public final int screenWidth = tileSize * maxScreenCol;//768
     public final int screenHeight = tileSize * maxScreenRow;//576
     // world settings
-    public final int maxWorldCol = 50;
-    public final int maxWorldRow = 56;//56
+    public final int maxWorldCol = 100;
+    public final int maxWorldRow = 100;//56
     public final int worldWidth = maxWorldCol*tileSize;
     public final int worldHeight = maxWorldRow*tileSize;
     //gamestate
@@ -44,7 +46,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int pauseState = 5;
 
     int FPS = 60;
-    keyControl keyBoard = new keyControl(this);
+    public keyControl keyBoard = new keyControl(this);
     Sound music = new Sound();
     Sound SoundEffect = new Sound();
     public UI ui = new UI(this);
@@ -53,7 +55,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Player player = new Player(this,keyBoard);
     public TilesMangaer tilesM = new TilesMangaer(this);
     public collisionCheck cCheck = new collisionCheck(this);
-    public Event eventH  = new Event(this);
+    public Event eventH  = new Event(this,player);
     //Superobject Gamepannel 
     public SuperObject object[] = new SuperObject[20];//create ten block objects
     public object_set  objects = new object_set(this);
@@ -64,7 +66,7 @@ public class GamePanel extends JPanel implements Runnable {
     // Player start positions
     int playerX     = 100;
     int playerY     = 100;
-    int playerSpeed = 4;
+    int playerSpeed = 5;
 
     public GamePanel() {
         // set Background
