@@ -4,19 +4,23 @@ import java.awt.*;
 
 import entity.Player;
 import main.GamePanel;
+import object.object_Key;
 
-public class Event {
-    GamePanel gp;
+public class SuperEvent { 
+    public static GamePanel gp;
     Rectangle eventRectangle;
     int defultX, defultY;
     private boolean run = true;
-    private Player player;
+    public static Player player;
     private pickObjects getObjects;
     private switchPlayer switchPlayer;
+    private int object_index  = 15;
+    public boolean clear = false;
 
 
-    public Event(GamePanel gp,Player player) {
+    public SuperEvent(GamePanel gp,Player player) {
         this.gp = gp;
+        this.player = player;
         eventRectangle = new Rectangle();
         eventRectangle.x = 23;
         eventRectangle.y = 23;
@@ -24,11 +28,17 @@ public class Event {
         eventRectangle.height = 2;
         defultX = eventRectangle.x;
         defultY = eventRectangle.y;
-        getObjects = new pickObjects(gp,player);
         switchPlayer = new switchPlayer(gp,this);
+        getObjects = new pickObjects(gp);
     }
+    public SuperEvent(GamePanel gp) {
+    }
+   
     public void randomEvent(){
 
+    }
+    public SuperEvent() {
+        super();
     }
     //*list of events */
     public void teleport(int x, int y) {
@@ -37,16 +47,24 @@ public class Event {
         gp.player.worldY = y * gp.tileSize;
         gp.player.direction = "up";
     }
+    public void pickObjects(){
+        int index = gp.cCheck.checkObject(player, true);
+        if (index != -1) {
+            String objectName = gp.object[index].name;
+            getObjects.set(objectName,index);          
+        }
+
+        
+    }
     public void ModeSpeed(int number){
         gp.player.speed += number;
     }
     public void loseKey(){
         gp.player.setKey_count(gp.player.getKey_count()-1);
-
     }
     public void checkEvent(int worldX, int worldY) {
         musicEvent(23, 20, "sea", "road");
-        getObjects.set();
+        pickObjects();
         switchPlayer.set(worldX,worldY);
     }
     private void musicEvent(int x, int y, String music_up, String music_down) {
@@ -82,6 +100,19 @@ public class Event {
         eventRectangle.y = defultY;
         return hit;
     }
+    public void addObject(String name,int x,int y){
+        object_index++;
+        if(name == "key"){
+            gp.object[object_index] = new object_Key();
+            gp.object[object_index].worldX = x * gp.tileSize;
+            gp.object[object_index].worldY = y * gp.tileSize;
+        }
+    }
+    public void announce(String text,boolean isSpace) {
+        gp.player.announce(text,isSpace);
+
+    }
+   
 
    
 }

@@ -3,36 +3,32 @@ package Events;
 import entity.Player;
 import main.GamePanel;
 
-public class pickObjects {
-    private GamePanel gp;
-    private Player player;
-    private String objectName;
+public class pickObjects extends SuperEvent{
+  
+    // private String objectName;
     private String announcements[];
-    public pickObjects(GamePanel gp,Player player) {
+    private GamePanel gp;
+    private int index = 0;
+    public pickObjects (GamePanel gp)  {
         this.gp = gp;
-        // SetAnnouncements();
-        this.player = player;
-
     }
-    public void set() {
-        int index = gp.cCheck.checkObject(player, true);
-        if (index != -1) {
-            objectName = gp.object[index].name;
+    public void set(String objectName, int index) {
+        this.index = index;
             if (objectName == "key") {
-                player.announce("You got a key",true);
+                announce("You got a key",true);
                 gp.playSE("coin");
                 // gp.playSE(1);
-                player.setKey_count(player.getKey_count()+1);;
-                gp.object[index] = null;
-
+                player.setKey_count(player.getKey_count()+1);
+                clear();
             }
             if (objectName == "door") {
                 if (player.getKey_count() > 0) {
                     gp.playSE(3);
-                    gp.object[index] = null;
-                    player.setKey_count(player.getKey_count()-1);               
-                } else {
-                    player.announce("You do not have enough keys to enter the door",true);
+                    // gp.object[index] = null;
+                    player.setKey_count(player.getKey_count()-1);     
+                    clear();          
+                } else{
+                    announce("You do not have enough keys to enter the door",true);
                 }
             }
             if (objectName == "chest") {
@@ -40,19 +36,27 @@ public class pickObjects {
                 gp.gamestate = gp.dialogueState;
                 gp.stopMusic();
                 gp.playSE("endgame");
-                gp.object[index] = null;
+                // gp.object[index] = null;
                 gp.gameThread = null;
             }
             if (objectName == "speedUp") {
-            //    gp.eventH.teleport(23, 23);
-                // announce(2,true);
-                // gp.playSE(2);
-                gp.object[index] = null;
-                gp.gamestate =gp.quizzState;
+                
+                if(false) {
+                    System.out.println("2");
+                    gp.object[8].collision = false;
+                }
+                else{
+                    gp.gamestate =gp.quizzState;
+                    clear();
+                }
             }
+        }
+
+        public void clear(){
+            gp.object[index] = null;
 
         }
     }
  
   
-}
+

@@ -3,9 +3,9 @@ package Events;
 import main.GamePanel;
 
 public class switchPlayer {
-    private Event event;
+    private SuperEvent event;
     private GamePanel gp;
-    public switchPlayer(GamePanel gp, Event event) {
+    public switchPlayer(GamePanel gp, SuperEvent event) {
         this.gp = gp;
         this.event = event;
       

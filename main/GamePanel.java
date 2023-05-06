@@ -9,10 +9,10 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import Events.Event;
+import Events.SuperEvent;
+import Events.questions;
 import KeyBoard.keyControl;
 import TextSreen.UI;
-import TextSreen.quizz.questions;
 import tiles.TilesMangaer;
 
 import entity.Player;
@@ -55,7 +55,7 @@ public class GamePanel extends JPanel implements Runnable {
     public Player player = new Player(this,keyBoard);
     public TilesMangaer tilesM = new TilesMangaer(this);
     public collisionCheck cCheck = new collisionCheck(this);
-    public Event eventH  = new Event(this,player);
+    public SuperEvent eventH  = new SuperEvent(this,player);
     //Superobject Gamepannel 
     public SuperObject object[] = new SuperObject[20];//create ten block objects
     public object_set  objects = new object_set(this);

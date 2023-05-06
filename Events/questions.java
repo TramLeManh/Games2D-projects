@@ -1,4 +1,4 @@
-package TextSreen.quizz;
+package Events;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 
 import KeyBoard.keyControl;
 import TextSreen.UI_interface;
+import TextSreen.quizz.setQuestions;
 import main.GamePanel;
 
 public class questions implements UI_interface {
@@ -15,13 +16,13 @@ public class questions implements UI_interface {
     public int i = 0;
     private int width, height;
     private keyControl keyBoard;
-    private Events events;
+    private Quizz_Events events;
     public setQuestions questions[] = new setQuestions[10];
 
     public questions(GamePanel gp, keyControl keyBoard) {
         this.gp = gp;
         this.keyBoard = keyBoard;
-        events = new Events(gp);
+        events = new Quizz_Events();
         setQuestions question[] = new setQuestions[10];
         setup();
         //set up i random questions, or default
@@ -44,10 +45,16 @@ public class questions implements UI_interface {
                 // do something
                 if (questions[i].answer) {
                     gp.player.announce("correct", true);
+                    events.ModeSpeed(5);
+                    events.setObject();
                     
 
                 } else if(!questions[i].answer){
                     gp.player.announce("wrong", true);
+                    events.ModeSpeed(5);
+                    events.setObject();
+
+
 
                 }
                 i++;//reset i to  zero in order out of array
@@ -56,9 +63,15 @@ public class questions implements UI_interface {
                 // do something
                 if (questions[i].answer = true) {
                     gp.player.announce("correct", true);
+                    events.ModeSpeed(5);
+                    events.setObject();
+
+
 
                 }  else if(!questions[i].answer) {
                     gp.player.announce("wrong", true);
+                    events.ModeSpeed(5);
+                    events.setObject();
 
                 }
                 i++;
@@ -112,7 +125,7 @@ public class questions implements UI_interface {
         }
         switch (i) {
             case 1:
-                events.speedUp(3);
+                events.ModeSpeed(3);
         }
     }
 }

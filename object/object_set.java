@@ -14,9 +14,9 @@ public class object_set {
         gp.object[0].worldY = 10*gp.tileSize;
 
 
-        gp.object[1] = new object_Key();
-        gp.object[1].worldX = 23*gp.tileSize;//23
-        gp.object[1].worldY = 42*gp.tileSize;//42
+        // gp.object[1] = new object_Key();
+        // gp.object[1].worldX = 23*gp.tileSize;//23
+        // gp.object[1].worldY = 42*gp.tileSize;//42
 
         gp.object[2] = new object_door();
         gp.object[2].worldX = 8*gp.tileSize;
@@ -43,6 +43,10 @@ public class object_set {
         gp.object[7] = new object_speedUp();
         gp.object[7].worldX = 37*gp.tileSize;//23
         gp.object[7].worldY = 47*gp.tileSize;//42
+
+        gp.object[8] = new object_speedUp();
+        gp.object[8].worldX = 24*gp.tileSize;//23
+        gp.object[8].worldY = 42*gp.tileSize;//42
 
        
         /*Make a block object Tao 1 vật cản vô hình 16*16 ghi đè phần cần cản gp.object[i].collision */

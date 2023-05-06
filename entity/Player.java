@@ -143,14 +143,7 @@ public class Player extends Entity {
         transfer = false;
         gp.gamestate = gp.playState;
     }
-    private void addObject(String name,int x,int y){
-        object_index++;
-        if(name == "key"){
-            gp.object[object_index] = new object_Key();
-            gp.object[object_index].worldX = x * gp.tileSize;
-            gp.object[object_index].worldY = y * gp.tileSize;
-        }
-    }
+    
 
   
     //set get
