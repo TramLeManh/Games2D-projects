@@ -47,8 +47,6 @@ public class questions implements UI_interface {
                     gp.player.announce("correct", true);
                     events.ModeSpeed(5);
                     events.setObject();
-                    
-
                 } else if(!questions[i].answer){
                     gp.player.announce("wrong", true);
                     events.ModeSpeed(5);

@@ -6,19 +6,23 @@ import java.awt.event.KeyListener;
 import main.GamePanel;
 
 public class keyControl implements KeyListener {
-    public boolean upPress, downPress, rightPress, leftPress;
-    public boolean tPress, fPress;
+    public static boolean upPress, downPress, rightPress, leftPress,isSpace;
+    public static boolean tPress, fPress;
     public boolean isFall;
-    public boolean isOne, isTwo;
+    public static boolean isOne, isTwo;
     public boolean pPress;
-    GamePanel gp;
-    public boolean isSpace;
-    private KeyBoard startState, pauseState;
+    protected static GamePanel gp;
+    private KeyBoard startState, pauseState, playState;
 
     public keyControl(GamePanel gp) {
         this.gp = gp;
-        startState = new startState(gp);
-        pauseState = new pauseState(gp);
+        startState = new startState();
+        pauseState = new pauseState();
+        playState = new playState();
+    }
+
+    public keyControl() {
+        super();
     }
 
     @Override
@@ -35,32 +39,7 @@ public class keyControl implements KeyListener {
         } else if (gp.gamestate == gp.pauseState) {
             pauseState.keyPressed(key_code);
         } else if (gp.gamestate == gp.playState || gp.gamestate == gp.dialogueState) {
-            if (key_code == KeyEvent.VK_A || key_code == KeyEvent.VK_LEFT) {
-                leftPress = true;
-            }
-            if (key_code == KeyEvent.VK_D || key_code == KeyEvent.VK_RIGHT) {
-                rightPress = true;
-            }
-            if (key_code == KeyEvent.VK_SPACE) {
-                isSpace = true;
-            }
-
-            if (key_code == KeyEvent.VK_1) {
-                isOne = true;
-            }
-            if (key_code == KeyEvent.VK_P) {
-                pPress = true;
-            }
-            if (key_code == KeyEvent.VK_S || key_code == KeyEvent.VK_DOWN) {
-                downPress = true;
-
-            }
-            if (key_code == KeyEvent.VK_W || key_code == KeyEvent.VK_UP) {
-                upPress = true;
-            }
-            if (key_code == KeyEvent.VK_2) {
-                isTwo = true;
-            }
+            playState.keyPressed(key_code);
 
         } else if (gp.gamestate == gp.quizzState) {
             if (key_code == KeyEvent.VK_F) {
@@ -76,40 +55,11 @@ public class keyControl implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
         int key_code = e.getKeyCode();
-        if (key_code == KeyEvent.VK_A || key_code == KeyEvent.VK_LEFT) {
-            leftPress = false;
-        }
-        if (key_code == KeyEvent.VK_P) {
-            pPress = false;
-        }
-        if (key_code == KeyEvent.VK_D || key_code == KeyEvent.VK_RIGHT) {
-            rightPress = false;
-        }
-        if (key_code == KeyEvent.VK_S || key_code == KeyEvent.VK_DOWN) {
-            downPress = false;
-        }
-        if (key_code == KeyEvent.VK_W || key_code == KeyEvent.VK_UP) {
-            upPress = false;
-        }
-        if (key_code == KeyEvent.VK_2) {
-            isTwo = false;
-        }
-        if (key_code == KeyEvent.VK_1) {
-            isOne = false;
-        }
-        if (key_code == KeyEvent.VK_SPACE) {
-            isSpace = false;
-        }
-        if (key_code == KeyEvent.VK_F) {
-            fPress = false;
-        }
-        if (key_code == KeyEvent.VK_T) {
-            tPress = false;
-        }
+        playState.keyReleased(key_code);
+
     }
 
     public void startState(int key_code) {
-
     }
 
 }

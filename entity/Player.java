@@ -45,8 +45,8 @@ public class Player extends Entity {
 
     }
     public void setDefultValues() {
-        worldX = gp.tileSize * 24;
-        worldY = gp.tileSize * 41;
+        worldX = gp.tileSize * 22;
+        worldY = gp.tileSize * 35;
         speed = 3;
         direction = "down";
         transfer = false; 
@@ -89,6 +89,8 @@ public class Player extends Entity {
                 gp.cCheck.checkTile(this);
 
                 // object collision
+                gp.eventH.pickObjects();
+
                 spriteCounter++;
                 // gp.eventH.checkEvent();
                 // if collision
@@ -115,6 +117,7 @@ public class Player extends Entity {
                     }
                     spriteCounter = 0;
                 }
+
             }
         }
     }

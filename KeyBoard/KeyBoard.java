@@ -5,7 +5,7 @@ package KeyBoard;
 
 import main.GamePanel;
 
-public interface KeyBoard  {
+public interface KeyBoard{
 
 
 

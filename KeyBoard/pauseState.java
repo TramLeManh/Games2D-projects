@@ -4,13 +4,7 @@ import java.awt.event.KeyEvent;
 
 import main.GamePanel;
 
-public class pauseState implements KeyBoard {
-    private GamePanel gp;
-
-    public pauseState(GamePanel gp) {
-        this.gp = gp;
-    }
-
+public class pauseState extends keyControl implements KeyBoard {
     @Override
     public void keyPressed(int key_code) {
         if (!gp.ui.pauseScreen.pause) {

@@ -19,8 +19,8 @@ public class object_set {
         // gp.object[1].worldY = 42*gp.tileSize;//42
 
         gp.object[2] = new object_door();
-        gp.object[2].worldX = 8*gp.tileSize;
-        gp.object[2].worldY = 33*gp.tileSize;
+        gp.object[2].worldX = 22*gp.tileSize;
+        gp.object[2].worldY = 32*gp.tileSize;
 
         gp.object[3] = new object_door();
         gp.object[3].worldX = 10*gp.tileSize;

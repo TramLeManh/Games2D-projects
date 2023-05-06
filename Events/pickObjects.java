@@ -41,14 +41,10 @@ public class pickObjects extends SuperEvent{
             }
             if (objectName == "speedUp") {
                 
-                if(false) {
-                    System.out.println("2");
-                    gp.object[8].collision = false;
-                }
-                else{
-                    gp.gamestate =gp.quizzState;
+              
+                    // gp.gamestate =gp.quizzState;
+                    teleport(10, 10);
                     clear();
-                }
             }
         }
 

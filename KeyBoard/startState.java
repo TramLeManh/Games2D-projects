@@ -5,11 +5,8 @@ import java.awt.event.KeyListener;
 import main.GamePanel;
 
 
-public class startState implements KeyBoard  {
-    private GamePanel gp;
-    public startState(GamePanel gp) {
-        this.gp = gp;
-    }
+public class startState extends keyControl implements KeyBoard  {
+  
     
 
     public void keyPressed(int key_code) {
