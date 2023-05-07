@@ -7,15 +7,14 @@ public class pickObjects extends SuperEvent{
   
     // private String objectName;
     private String announcements[];
-    private GamePanel gp;
+
     private int index = 0;
-    public pickObjects (GamePanel gp)  {
-        this.gp = gp;
+    public pickObjects ()  {
     }
     public void set(String objectName, int index) {
         this.index = index;
             if (objectName == "key") {
-                announce("You got a key",true);
+                announce("You got a key");
                 gp.playSE("coin");
                 // gp.playSE(1);
                 player.setKey_count(player.getKey_count()+1);
@@ -28,12 +27,12 @@ public class pickObjects extends SuperEvent{
                     player.setKey_count(player.getKey_count()-1);     
                     clear();          
                 } else{
-                    announce("You do not have enough keys to enter the door ",true);
+                    announce("You do not have enough keys to enter the door ");
                 }
             }
             if (objectName == "chest") {
-                player.announce("Victory", false);
-                gp.gamestate = gp.dialogueState;
+                announce1("Victory");
+                gp.gamestate = gp.announceState;
                 gp.stopMusic();
                 gp.playSE("endgame");
                 // gp.object[index] = null;
@@ -43,7 +42,7 @@ public class pickObjects extends SuperEvent{
                 
               
                     gp.gamestate =gp.quizzState;
-                    teleport(10, 10);
+                    // teleport(10, 10);
                     
                     clear();
             }
@@ -51,7 +50,6 @@ public class pickObjects extends SuperEvent{
 
         public void clear(){
             gp.object[index] = null;
-
         }
     }
  

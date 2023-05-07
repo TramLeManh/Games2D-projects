@@ -8,11 +8,11 @@ public class Quizz_Events extends SuperEvent {
     }
    
     public void ModeSpeed(int i){
-        announce("Speed up", true);
+        announce("Speed up");
         super.ModeSpeed(5);
     }
     public void setObject(){
-        announce("There is something on the water may help you....", true);
+        announce("There is something on the water may help you....");
         addObject("key",26,45);
     }
 }

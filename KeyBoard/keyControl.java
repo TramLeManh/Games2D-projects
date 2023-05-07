@@ -10,7 +10,7 @@ public class keyControl implements KeyListener {
     public static boolean tPress, fPress;
     public boolean isFall;
     public static boolean isOne, isTwo;
-    public boolean pPress;
+    public static boolean pPress;
     protected static GamePanel gp;
     private KeyBoard startState, pauseState, playState;
 
@@ -38,7 +38,7 @@ public class keyControl implements KeyListener {
             startState.keyPressed(key_code);
         } else if (gp.gamestate == gp.pauseState) {
             pauseState.keyPressed(key_code);
-        } else if (gp.gamestate == gp.playState || gp.gamestate == gp.dialogueState) {
+        } else if (gp.gamestate == gp.playState || gp.gamestate == gp.announceState) {
             playState.keyPressed(key_code);
 
         } else if (gp.gamestate == gp.quizzState) {

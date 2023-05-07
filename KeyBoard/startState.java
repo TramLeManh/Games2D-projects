@@ -10,39 +10,40 @@ public class startState extends keyControl implements KeyBoard  {
     
 
     public void keyPressed(int key_code) {
-        if (!gp.ui.startScreen.pause) {
+        if (!gp.start.pause) {
             if (key_code == KeyEvent.VK_W || key_code == KeyEvent.VK_UP) {
-                gp.ui.startScreen.command--;
-                if (gp.ui.startScreen.command < 0) {
-                    gp.ui.startScreen.command = 3;
+                gp.start.command--;
+                if (gp.start.command < 0) {
+                    gp.start.command = 3;
                 }
             }
             if (key_code == KeyEvent.VK_S || key_code == KeyEvent.VK_DOWN) {
-                gp.ui.startScreen.command++;
-                if (gp.ui.startScreen.command > 3) {
-                    gp.ui.startScreen.command = 0;
+                gp.start.command++;
+                if (gp.start.command > 3) {
+                    gp.start.command = 0;
                 }
             }
-            if (gp.ui.startScreen.command == 0 && key_code == KeyEvent.VK_SPACE) {
+            if (gp.start.command == 0 && key_code == KeyEvent.VK_SPACE) {
                 gp.gamestate = gp.playState;
                 gp.playMusic("road");
             } else if (key_code == KeyEvent.VK_SPACE) {
-                gp.ui.startScreen.drawSubScreen = true;
-                gp.ui.startScreen.pause = true;
+                gp.start.drawSubScreen = true;
+                gp.start.pause = true;
 
             }
-        } else if (key_code == KeyEvent.VK_SPACE && gp.ui.startScreen.pause) {
-            gp.ui.startScreen.drawSubScreen = false;
-            gp.ui.startScreen.pause = false;
+        } else if (key_code == KeyEvent.VK_SPACE && gp.start.pause) {
+            gp.start.drawSubScreen = false;
+            gp.start.pause = false;
         }
-        if (gp.ui.startScreen.drawSubScreen) {
-            if (gp.ui.startScreen.command == 3) {
+        if (gp.start.drawSubScreen) {
+            if (gp.start.command == 3) {
                 if (key_code == KeyEvent.VK_Y) {
                     System.exit(0);
                 }
                 if (key_code == KeyEvent.VK_N) {
-                    gp.ui.startScreen.command = 0;
-                    gp.ui.startScreen.drawSubScreen = false;
+                    gp.start.command = 0;
+                    gp.start.drawSubScreen = false;
+                    gp.start.pause = false;
                 }
             }
 

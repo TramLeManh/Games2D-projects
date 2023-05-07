@@ -8,15 +8,15 @@ import object.object_Key;
 
 public class SuperEvent {
     public static GamePanel gp;
-    Rectangle eventRectangle;
+    public static  Rectangle eventRectangle;
     int defultX, defultY;
     private boolean run = true;
     public static Player player;
     private pickObjects getObjects;
-    private switchPlayer switchPlayer;
     private int object_index = 15;
     public boolean clear = false;
-
+    protected static String objectName;
+    public switchPlayer switchPlayer;
     public SuperEvent(GamePanel gp, Player player) {
         this.gp = gp;
         this.player = player;
@@ -27,8 +27,11 @@ public class SuperEvent {
         eventRectangle.height = 2;
         defultX = eventRectangle.x;
         defultY = eventRectangle.y;
-        switchPlayer = new switchPlayer(gp, this);
-        getObjects = new pickObjects(gp);
+        switchPlayer = new switchPlayer();
+        getObjects = new pickObjects();
+    }
+    public static String getObjectName() {
+        return objectName;
     }
 
     public SuperEvent(GamePanel gp) {
@@ -53,7 +56,7 @@ public class SuperEvent {
     public void pickObjects() {
             int index = gp.cCheck.checkObject(player, true);
             if (index != -1) {
-                String objectName = gp.object[index].name;
+                objectName = gp.object[index].name;
                 getObjects.set(objectName, index);
             }
     }
@@ -68,7 +71,9 @@ public class SuperEvent {
 
     public void checkEvent(int worldX, int worldY) {
         musicEvent(23, 20, "sea", "road");
-        switchPlayer.set(worldX, worldY);
+        // switchPlayer.set(worldX, worldY);
+        switchPlayer.set(player.worldX, player.worldY);
+
     }
 
     private void musicEvent(int x, int y, String music_up, String music_down) {
@@ -83,11 +88,7 @@ public class SuperEvent {
         }
     }
 
-    private void looseKey() {
-        if (gp.eventH.hit(14, 26, "left")) {
-            gp.ui.setLooseKey(false);
-        }
-    }
+    
 
     public boolean hit(int eventCol, int eventRow, String direction) {
         boolean hit = false;
@@ -115,10 +116,15 @@ public class SuperEvent {
             gp.object[object_index].worldY = y * gp.tileSize;
         }
     }
-
-    public void announce(String text, boolean isSpace) {
-        gp.player.announce(text, isSpace);
-
+    public void announce(String text) {
+        gp.announce.text = text;
+        gp.gamestate = gp.announceState;
+        gp.player.isMove = false;
+    }
+    public void announce1(String text) {
+        gp.announce.text = text;
+        gp.gamestate = gp.announceState;
+        gp.announce.sub_text = " ";
     }
 
 }

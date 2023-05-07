@@ -60,7 +60,7 @@ public class Player extends Entity {
             isMove = true;
             System.out.println("x: " + worldX / 48 + "y: " + worldY / 48);
         }
-        if((gp.gamestate==gp.dialogueState||gp.gamestate==gp.playState)){
+        if((gp.gamestate==gp.announceState||gp.gamestate==gp.playState)){
             if(keyBoard.pPress==true){
                 gp.gamestate = gp.pauseState;
                 gp.stopMusic();
@@ -156,23 +156,6 @@ public class Player extends Entity {
     public String getObjectName() {
         return objectName;
     }
-    public void announce(int index,boolean isSpace) {
-        gp.ui.setSpace(isSpace);
-        gp.ui.text = announcements[index];
-        gp.gamestate = gp.dialogueState;
-        gp.player.isMove = false;
-        if (objectName == "key") {
-            gp.ui.setGetKey(true);
-        }
-
-    }
-    public void announce(String text, boolean isSpace) {
-        gp.ui.setSpace(isSpace);
-        gp.ui.text = text;
-        gp.gamestate = gp.dialogueState;
-        gp.player.isMove = false;
-        if (objectName == "key") {
-            gp.ui.setGetKey(true);
-        }
-    }
+    
+   
 }

@@ -10,9 +10,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import Events.SuperEvent;
-import Events.questions;
 import KeyBoard.keyControl;
-import TextSreen.UI;
+import TextSreen.SuperUI;
+import TextSreen.announceState;
+import TextSreen.pauseScreen;
+import TextSreen.playState;
+import TextSreen.quizzState;
+import TextSreen.startScreen;
 import tiles.TilesMangaer;
 
 import entity.Player;
@@ -40,7 +44,7 @@ public class GamePanel extends JPanel implements Runnable {
     //gamestate
     public int gamestate;
     public final int playState = 1;
-    public final int dialogueState = 2;
+    public final int announceState = 2;
     public final int startState = 3;
     public final int quizzState = 4;
     public final int pauseState = 5;
@@ -49,7 +53,6 @@ public class GamePanel extends JPanel implements Runnable {
     public keyControl keyBoard = new keyControl(this);
     Sound music = new Sound();
     Sound SoundEffect = new Sound();
-    public UI ui = new UI(this);
     public boolean hit =true;
     public Thread gameThread;
     public Player player = new Player(this,keyBoard);
@@ -61,7 +64,14 @@ public class GamePanel extends JPanel implements Runnable {
     public object_set  objects = new object_set(this);
     public map map = new map(this);
     public boolean playMusic = true;
-    public questions quizz = new questions(this,keyBoard);
+    public quizzState quizz = new quizzState(this,keyBoard);
+    public Graphics2D g2;
+    playState play = new playState(this);
+    public announceState announce = new announceState(this);
+    public startScreen start = new startScreen(this);
+    public pauseScreen pause = new pauseScreen(this);
+
+
 
     // Player start positions
     int playerX     = 100;
@@ -131,8 +141,12 @@ public class GamePanel extends JPanel implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-             //draw map
-             if(gamestate == playState||gamestate==dialogueState||gamestate == quizzState){
+        this.g2 = g2;
+
+        // ui1.drawScreen("2");
+        // ui.draw(g2);
+            //  //draw map
+             if(gamestate == playState||gamestate==announceState||gamestate == quizzState){
                 tilesM.draw(g2);
     
                 //draw object
@@ -145,15 +159,16 @@ public class GamePanel extends JPanel implements Runnable {
                 //draw player
                 player.draw(g2);
                 //draw UI
-                ui.draw(g2);
                 quizz.draw(g2);
+                play.draw(g2);
+                announce.draw(g2);
                 g2.dispose();   
              }
              else if(gamestate==startState){
-                ui.startScreen.draw(g2);
+                start.draw(g2);
              }
              else if(gamestate==pauseState){
-                ui.pauseScreen.draw(g2);
+                pause.draw(g2);
              }
             
 
