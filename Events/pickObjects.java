@@ -28,7 +28,7 @@ public class pickObjects extends SuperEvent{
                     player.setKey_count(player.getKey_count()-1);     
                     clear();          
                 } else{
-                    announce("You do not have enough keys to enter the door",true);
+                    announce("You do not have enough keys to enter the door ",true);
                 }
             }
             if (objectName == "chest") {
@@ -42,8 +42,9 @@ public class pickObjects extends SuperEvent{
             if (objectName == "speedUp") {
                 
               
-                    // gp.gamestate =gp.quizzState;
+                    gp.gamestate =gp.quizzState;
                     teleport(10, 10);
+                    
                     clear();
             }
         }

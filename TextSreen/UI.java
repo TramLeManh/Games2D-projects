@@ -102,13 +102,12 @@ public class UI {
         g2.drawString("x " +gp.player.getKey_count(),74,65);// 74 65
     }
     public void drawSubScreen(int x, int y, int width, int height){
-        Color color = new Color(0,0,100,100);
-        g2.setColor(Color.black);//nền trong
-        g2.fillRoundRect(x, y,width ,height,35, 35);
-
-        g2.setColor(Color.white);//viền
+        Color color = new Color(0, 0, 100, 100);
+        g2.setColor(color);// nền trong
+        g2.fillRoundRect(x, y, width, height, 35, 35);
+        g2.setColor(Color.white);// viền
         g2.setStroke(new BasicStroke(5));
-        g2.drawRoundRect(x+5, y+5,width-10 ,height-10,25, 25);
+        g2.drawRoundRect(x + 5, y + 5, width - 10, height - 10, 25, 25);
 }
     public int LocateCenterText(String text)
     {
