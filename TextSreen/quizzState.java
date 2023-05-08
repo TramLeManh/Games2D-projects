@@ -48,10 +48,13 @@ public class quizzState extends SuperUI {
                     drawScreen("correct");
                     events.ModeSpeed(5);
                     events.setObject();
+                    events.nextState(gp.playState);
                 } else if (!questions[i].answer) {
                     gp.eventH.announce("wrong");
                     events.ModeSpeed(5);
                     events.setObject();
+                    events.nextState(gp.playState);
+
 
                 }
                 i++;// reset i to zero in order out of array
@@ -62,11 +65,15 @@ public class quizzState extends SuperUI {
                     gp.eventH.announce("correct");
                     events.ModeSpeed(5);
                     events.setObject();
+                    events.nextState(gp.playState);
+
 
                 } else if (!questions[i].answer) {
                     gp.eventH.announce("wrong");
                     events.ModeSpeed(5);
                     events.setObject();
+                    events.nextState(gp.playState);
+
 
                 }
                 i++;
