@@ -17,6 +17,7 @@ public class SuperEvent {
     public boolean clear = false;
     protected static String objectName;
     public switchPlayer switchPlayer;
+    public static int state;
     public SuperEvent(GamePanel gp, Player player) {
         this.gp = gp;
         this.player = player;
@@ -82,6 +83,7 @@ public class SuperEvent {
         musicEvent(23, 20, "sea", "road");
         // switchPlayer.set(worldX, worldY);
         switchPlayer.set(player.worldX, player.worldY);
+        setState();
 
     }
 
@@ -139,6 +141,15 @@ public class SuperEvent {
         gp.announce.text = text;
         gp.gamestate = gp.announceState;
         gp.announce.sub_text = " ";
+    }
+    public void nextState(int state){
+        this.state = state;
+    }
+    private void setState(){
+        if (gp.keyBoard.isSpace == true) {
+            player.isMove = true;
+            gp.gamestate = state;
+        }
     }
 
 }

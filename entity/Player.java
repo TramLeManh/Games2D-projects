@@ -55,11 +55,7 @@ public class Player extends Entity {
     public void update() {
         gp.eventH.checkEvent(worldX, worldY);
         //keyBoard player
-        if (keyBoard.isSpace == true) {
-            gp.gamestate = gp.playState;
-            isMove = true;
-            System.out.println("x: " + worldX / 48 + "y: " + worldY / 48);
-        }
+        
         if((gp.gamestate==gp.announceState||gp.gamestate==gp.playState)){
             if(keyBoard.pPress==true){
                 gp.gamestate = gp.pauseState;
@@ -67,7 +63,6 @@ public class Player extends Entity {
             }
         }
       
-
 
         // movements
         if (isMove) {

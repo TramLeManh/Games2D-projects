@@ -11,6 +11,7 @@ public class object_speedUp extends SuperObject {
             e.printStackTrace();
         }
         size = 16*2;
+        collision = true;
 
     }
 }
