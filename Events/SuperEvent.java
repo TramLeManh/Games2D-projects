@@ -46,6 +46,11 @@ public class SuperEvent {
     }
 
     // *list of events */
+    /**
+    Teleport the player to some where in map
+    @param x : locate X
+    @param y : locate Y
+     */
     public void teleport(int x, int y) {
         gp.playSE("teleport");
         gp.player.worldX = x * gp.tileSize;
@@ -60,7 +65,11 @@ public class SuperEvent {
                 getObjects.set(objectName, index);
             }
     }
-
+   /**
+    Modify player Sped
+    @param number > 0: increase speed
+    @param number < 0: decrease speed
+     */
     public void ModeSpeed(int number) {
         gp.player.speed += number;
     }
@@ -107,7 +116,12 @@ public class SuperEvent {
         eventRectangle.y = defultY;
         return hit;
     }
-
+    /**
+     Add a object in the map
+    @param name : object name
+    @param x : locate X
+    @param y: locate Y
+  */
     public void addObject(String name, int x, int y) {
         object_index++;
         if (name == "key") {

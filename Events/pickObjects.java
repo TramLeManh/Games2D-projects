@@ -28,6 +28,7 @@ public class pickObjects extends SuperEvent{
                     clear();          
                 } else{
                     announce("You do not have enough keys to enter the door ");
+                    announce("Next");
                 }
             }
             if (objectName == "chest") {
@@ -39,15 +40,18 @@ public class pickObjects extends SuperEvent{
                 gp.gameThread = null;
             }
             if (objectName == "speedUp") {
-                
-              
-                    gp.gamestate =gp.quizzState;
-                    // teleport(10, 10);
-                    
-                    clear();
+                gp.gamestate = gp.quizzState;
+                announce("2");
+                announce("3");
+                // teleport(10, 10);
+                // clear();
             }
         }
 
+
+        /**
+         * remove the object
+        */
         public void clear(){
             gp.object[index] = null;
         }
