@@ -45,8 +45,8 @@ public class Player extends Entity {
 
     }
     public void setDefultValues() {
-        worldX = gp.tileSize * 22;
-        worldY = gp.tileSize * 35;
+        worldX = gp.tileSize * 49;
+        worldY = gp.tileSize * 31;
         speed = 3;
         direction = "down";
         transfer = false; 
@@ -55,19 +55,14 @@ public class Player extends Entity {
     public void update() {
         gp.eventH.checkEvent(worldX, worldY);
         //keyBoard player
-        if (keyBoard.isSpace == true) {
-            gp.gamestate = gp.playState;
-            isMove = true;
-            System.out.println("x: " + worldX / 48 + "y: " + worldY / 48);
-        }
-        if((gp.gamestate==gp.dialogueState||gp.gamestate==gp.playState)){
+        
+        if((gp.gamestate==gp.announceState||gp.gamestate==gp.playState)){
             if(keyBoard.pPress==true){
                 gp.gamestate = gp.pauseState;
                 gp.stopMusic();
             }
         }
       
-
 
         // movements
         if (isMove) {
@@ -156,23 +151,6 @@ public class Player extends Entity {
     public String getObjectName() {
         return objectName;
     }
-    public void announce(int index,boolean isSpace) {
-        gp.ui.setSpace(isSpace);
-        gp.ui.text = announcements[index];
-        gp.gamestate = gp.dialogueState;
-        gp.player.isMove = false;
-        if (objectName == "key") {
-            gp.ui.setGetKey(true);
-        }
-
-    }
-    public void announce(String text, boolean isSpace) {
-        gp.ui.setSpace(isSpace);
-        gp.ui.text = text;
-        gp.gamestate = gp.dialogueState;
-        gp.player.isMove = false;
-        if (objectName == "key") {
-            gp.ui.setGetKey(true);
-        }
-    }
+    
+   
 }

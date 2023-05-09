@@ -8,15 +8,18 @@ import object.object_Key;
 
 public class SuperEvent {
     public static GamePanel gp;
-    Rectangle eventRectangle;
+    public static  Rectangle eventRectangle;
+    private boolean isContinue = false;
     int defultX, defultY;
     private boolean run = true;
     public static Player player;
     private pickObjects getObjects;
-    private switchPlayer switchPlayer;
     private int object_index = 15;
     public boolean clear = false;
-
+    protected static String objectName;
+    public switchPlayer switchPlayer;
+    public static int state = 1;
+    public static  String text = " ";
     public SuperEvent(GamePanel gp, Player player) {
         this.gp = gp;
         this.player = player;
@@ -27,8 +30,11 @@ public class SuperEvent {
         eventRectangle.height = 2;
         defultX = eventRectangle.x;
         defultY = eventRectangle.y;
-        switchPlayer = new switchPlayer(gp, this);
-        getObjects = new pickObjects(gp);
+        switchPlayer = new switchPlayer();
+        getObjects = new pickObjects();
+    }
+    public static String getObjectName() {
+        return objectName;
     }
 
     public SuperEvent(GamePanel gp) {
@@ -43,6 +49,11 @@ public class SuperEvent {
     }
 
     // *list of events */
+    /**
+    Teleport the player to some where in map
+    @param x : locate X
+    @param y : locate Y
+     */
     public void teleport(int x, int y) {
         gp.playSE("teleport");
         gp.player.worldX = x * gp.tileSize;
@@ -53,11 +64,15 @@ public class SuperEvent {
     public void pickObjects() {
             int index = gp.cCheck.checkObject(player, true);
             if (index != -1) {
-                String objectName = gp.object[index].name;
+                objectName = gp.object[index].name;
                 getObjects.set(objectName, index);
             }
     }
-
+   /**
+    Modify player Sped
+    @param number > 0: increase speed
+    @param number < 0: decrease speed
+     */
     public void ModeSpeed(int number) {
         gp.player.speed += number;
     }
@@ -68,7 +83,10 @@ public class SuperEvent {
 
     public void checkEvent(int worldX, int worldY) {
         musicEvent(23, 20, "sea", "road");
-        switchPlayer.set(worldX, worldY);
+        // switchPlayer.set(worldX, worldY);
+        switchPlayer.set(player.worldX, player.worldY);
+        setState();
+
     }
 
     private void musicEvent(int x, int y, String music_up, String music_down) {
@@ -83,11 +101,7 @@ public class SuperEvent {
         }
     }
 
-    private void looseKey() {
-        if (gp.eventH.hit(14, 26, "left")) {
-            gp.ui.setLooseKey(false);
-        }
-    }
+    
 
     public boolean hit(int eventCol, int eventRow, String direction) {
         boolean hit = false;
@@ -106,7 +120,12 @@ public class SuperEvent {
         eventRectangle.y = defultY;
         return hit;
     }
-
+    /**
+     Add a object in the map
+    @param name : object name
+    @param x : locate X
+    @param y: locate Y
+  */
     public void addObject(String name, int x, int y) {
         object_index++;
         if (name == "key") {
@@ -115,10 +134,34 @@ public class SuperEvent {
             gp.object[object_index].worldY = y * gp.tileSize;
         }
     }
+    public void announce(String text) {
+        gp.announce.text = text;
+        gp.gamestate = gp.announceState;
+        gp.player.isMove = false;
+    }
 
-    public void announce(String text, boolean isSpace) {
-        gp.player.announce(text, isSpace);
+    public void continue_announce(String text) {
+        this.text = text;
+    }
 
+
+    public void announce1(String text) {
+        gp.announce.text = text;
+        gp.gamestate = gp.announceState;
+        gp.announce.sub_text = " ";
+    }
+    public void nextState(int states){
+        state = states;
+    }
+    private void setState(){
+
+        if (gp.keyBoard.isSpace == true) {
+            gp.gamestate = state;
+            player.isMove = true;
+            gp.gamestate = state;
+            System.out.println(player.worldX/48 + " " + player.worldY/48);
+        }
+        
     }
 
 }

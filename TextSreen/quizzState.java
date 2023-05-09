@@ -1,31 +1,31 @@
-package Events;
+package TextSreen;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 
+import Events.Quizz_Events;
 import KeyBoard.keyControl;
-import TextSreen.UI_interface;
 import TextSreen.quizz.setQuestions;
 import main.GamePanel;
 
-public class questions implements UI_interface {
-    GamePanel gp;
-    Graphics2D g2;
+public class quizzState extends SuperUI {
     public int i = 0;
     private int width, height;
     private keyControl keyBoard;
     private Quizz_Events events;
     public setQuestions questions[] = new setQuestions[10];
 
-    public questions(GamePanel gp, keyControl keyBoard) {
-        this.gp = gp;
+    public quizzState(GamePanel gp, keyControl keyBoard) {
+        super(gp, g2);
         this.keyBoard = keyBoard;
         events = new Quizz_Events();
         setQuestions question[] = new setQuestions[10];
         setup();
-        //set up i random questions, or default
+        sub_text = "press T or F";
+        word_length = 20;
+        // set up i random questions, or default
     }
 
     private String text = " ";
@@ -38,38 +38,42 @@ public class questions implements UI_interface {
         }
     }
 
+    /* */
     public void update() {
         if (gp.gamestate == gp.quizzState) {
             gp.player.isMove = false;
             if (keyBoard.tPress == true) {
                 // do something
                 if (questions[i].answer) {
-                    gp.player.announce("correct", true);
+                    drawScreen("correct");
                     events.ModeSpeed(5);
                     events.setObject();
-                } else if(!questions[i].answer){
-                    gp.player.announce("wrong", true);
+                    events.nextState(gp.playState);
+                } else if (!questions[i].answer) {
+                    gp.eventH.announce("wrong");
                     events.ModeSpeed(5);
                     events.setObject();
-
+                    events.nextState(gp.playState);
 
 
                 }
-                i++;//reset i to  zero in order out of array
+                i++;// reset i to zero in order out of array
             }
             if (keyBoard.fPress == true) {
                 // do something
                 if (questions[i].answer = true) {
-                    gp.player.announce("correct", true);
+                    gp.eventH.announce("correct");
                     events.ModeSpeed(5);
                     events.setObject();
+                    events.nextState(gp.playState);
 
 
-
-                }  else if(!questions[i].answer) {
-                    gp.player.announce("wrong", true);
+                } else if (!questions[i].answer) {
+                    gp.eventH.announce("wrong");
                     events.ModeSpeed(5);
                     events.setObject();
+                    events.nextState(gp.playState);
+
 
                 }
                 i++;
@@ -79,44 +83,20 @@ public class questions implements UI_interface {
 
     }
 
-    // edit questions
-    public void drawSubScreen(int x, int y, int width, int height) {
-        Color color = new Color(0, 0, 100, 100);
-        g2.setColor(color);// nền trong
-        g2.fillRoundRect(x, y, width, height, 35, 35);
-        g2.setColor(Color.white);// viền
-        g2.setStroke(new BasicStroke(5));
-        g2.drawRoundRect(x + 5, y + 5, width - 10, height - 10, 25, 25);
-    }
-
-    public void drawScreen(String text) {
-        int x = gp.tileSize * 2;
-        int y = gp.tileSize / 2;
-        width = gp.screenWidth - (4 * gp.tileSize);
-        height = (4 * gp.tileSize);
-        drawSubScreen(x, y, width, height);
-
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 20F));
-        x += gp.tileSize;
-        y += gp.tileSize;
-        g2.drawString(text, x, y);
-        g2.drawString("press T or F", width - 150, height);
-
-    }
-
+    /* Events */
     public void setup() {
-        //questions
+        // questions
         questions[0] = new setQuestions();
-        questions[0].text = "We can acess private variables anywhere";
-        questions[0].answer = false ;//fanswer
-        questions[0].action = 0;//by default 0 is random evert or khác 0 chọn event cụ thể
+        questions[0].text = "";
+        questions[0].answer = false;// fanswer
+        questions[0].action = 0;// by default 0 is random evert or khác 0 chọn event cụ thể
 
         questions[1] = new setQuestions();
         questions[1].text = "Chào";
         questions[1].answer = true;
         questions[1].action = 0;
     }
- 
+
     public void events(int i) {
         if (i == 0) {
             // random
