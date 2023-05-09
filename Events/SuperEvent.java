@@ -18,7 +18,7 @@ public class SuperEvent {
     public boolean clear = false;
     protected static String objectName;
     public switchPlayer switchPlayer;
-    public static int state;
+    public static int state = 1;
     public static  String text = " ";
     public SuperEvent(GamePanel gp, Player player) {
         this.gp = gp;
@@ -159,6 +159,7 @@ public class SuperEvent {
             gp.gamestate = state;
             player.isMove = true;
             gp.gamestate = state;
+            System.out.println(player.worldX/48 + " " + player.worldY/48);
         }
         
     }

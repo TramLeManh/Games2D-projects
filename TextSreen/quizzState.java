@@ -87,7 +87,7 @@ public class quizzState extends SuperUI {
     public void setup() {
         // questions
         questions[0] = new setQuestions();
-        questions[0].text = "Duck bệu đỏ bạc ?";
+        questions[0].text = "";
         questions[0].answer = false;// fanswer
         questions[0].action = 0;// by default 0 is random evert or khác 0 chọn event cụ thể
 
