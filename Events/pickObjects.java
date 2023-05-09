@@ -43,8 +43,7 @@ public class pickObjects extends SuperEvent{
             if (objectName == "speedUp") {
                 // gp.gamestate = gp.quizzState;
                 announce("Here is your question");
-                continue_announce("2");
-                nextState(gp.playState);
+                nextState(gp.quizzState);
                 clear();
 
                 

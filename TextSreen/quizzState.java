@@ -65,7 +65,6 @@ public class quizzState extends SuperUI {
                     gp.eventH.announce("correct");
                     events.ModeSpeed(5);
                     events.setObject();
-                    events.announce("");
                     events.nextState(gp.playState);
 
 

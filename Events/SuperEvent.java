@@ -150,19 +150,17 @@ public class SuperEvent {
         gp.gamestate = gp.announceState;
         gp.announce.sub_text = " ";
     }
-    public void nextState(int state){
-        this.state = state;
+    public void nextState(int states){
+        state = states;
     }
     private void setState(){
-        if (gp.keyBoard.isSpace == true &&gp.gamestate == gp.playState) {
+
+        if (gp.keyBoard.isSpace == true) {
+            gp.gamestate = state;
             player.isMove = true;
             gp.gamestate = state;
         }
-        if (gp.keyBoard.isSpace == true &&gp.gamestate == gp.announceState) {
-            gp.announce.text = text;
-
-
-        }
+        
     }
 
 }

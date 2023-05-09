@@ -48,9 +48,11 @@ public class keyControl implements KeyListener {
             if (key_code == KeyEvent.VK_T) {
                 tPress = true;
             }
-        }
+            if(key_code == KeyEvent.VK_SPACE) {
+                isSpace = true;
+            }
 
-    }
+    }}
 
     @Override
     public void keyReleased(KeyEvent e) {
