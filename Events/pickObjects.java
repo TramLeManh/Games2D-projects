@@ -1,5 +1,6 @@
 package Events;
 
+import KeyBoard.playState;
 import entity.Player;
 import main.GamePanel;
 
@@ -40,11 +41,12 @@ public class pickObjects extends SuperEvent{
                 gp.gameThread = null;
             }
             if (objectName == "speedUp") {
-                clear();
                 // gp.gamestate = gp.quizzState;
                 announce("Here is your question");
                 continue_announce("2");
-                continue_announce("3");
+                nextState(gp.playState);
+                clear();
+
                 
                 // teleport(10, 10);
                 // clear();

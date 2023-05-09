@@ -19,6 +19,7 @@ public class SuperEvent {
     protected static String objectName;
     public switchPlayer switchPlayer;
     public static int state;
+    public static  String text = " ";
     public SuperEvent(GamePanel gp, Player player) {
         this.gp = gp;
         this.player = player;
@@ -140,7 +141,7 @@ public class SuperEvent {
     }
 
     public void continue_announce(String text) {
-        gp.announce.text = text;
+        this.text = text;
     }
 
 
@@ -158,8 +159,8 @@ public class SuperEvent {
             gp.gamestate = state;
         }
         if (gp.keyBoard.isSpace == true &&gp.gamestate == gp.announceState) {
-            gp.announce.text = " ";
-            
+            gp.announce.text = text;
+
 
         }
     }
