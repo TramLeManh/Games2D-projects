@@ -43,7 +43,9 @@ public class pickObjects extends SuperEvent{
                 clear();
                 // gp.gamestate = gp.quizzState;
                 announce("Here is your question");
-                nextState(gp.quizzState);
+                continue_announce("2");
+                continue_announce("3");
+                
                 // teleport(10, 10);
                 // clear();
             }

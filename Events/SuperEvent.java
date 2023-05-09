@@ -9,6 +9,7 @@ import object.object_Key;
 public class SuperEvent {
     public static GamePanel gp;
     public static  Rectangle eventRectangle;
+    private boolean isContinue = false;
     int defultX, defultY;
     private boolean run = true;
     public static Player player;
@@ -137,6 +138,12 @@ public class SuperEvent {
         gp.gamestate = gp.announceState;
         gp.player.isMove = false;
     }
+
+    public void continue_announce(String text) {
+        gp.announce.text = text;
+    }
+
+
     public void announce1(String text) {
         gp.announce.text = text;
         gp.gamestate = gp.announceState;
@@ -146,9 +153,14 @@ public class SuperEvent {
         this.state = state;
     }
     private void setState(){
-        if (gp.keyBoard.isSpace == true) {
+        if (gp.keyBoard.isSpace == true &&gp.gamestate == gp.playState) {
             player.isMove = true;
             gp.gamestate = state;
+        }
+        if (gp.keyBoard.isSpace == true &&gp.gamestate == gp.announceState) {
+            gp.announce.text = " ";
+            
+
         }
     }
 
