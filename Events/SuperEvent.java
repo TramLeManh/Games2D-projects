@@ -20,6 +20,10 @@ public class SuperEvent {
     public switchPlayer switchPlayer;
     public static int state = 1;
     public static  String text = " ";
+    public static int next_state;
+    public static int max_announce;
+    public static String annouces[];
+    private int i = 0;
     public SuperEvent(GamePanel gp, Player player) {
         this.gp = gp;
         this.player = player;
@@ -164,4 +168,11 @@ public class SuperEvent {
         
     }
 
-}
+   
+
+   
+
+        }
+        
+
+

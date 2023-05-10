@@ -8,7 +8,7 @@ public class switchPlayer extends SuperEvent{
     private boolean checkPlace(int index) {
         switch (index) {
             case 1:
-                if (hit(38, 18, "up")) {
+                if (hit(32, 27, "right")) {
                     return true;
                 }
                 break;
@@ -18,7 +18,7 @@ public class switchPlayer extends SuperEvent{
                 hit(39, 34, "down") ||
                 hit(22, 12, "up") ||
                 hit(24, 12, "up") ||
-                hit(25, 12, "up")) {
+                hit(25, 35, "right")) {
                     return true;
                 }
                 break;
@@ -29,7 +29,7 @@ public class switchPlayer extends SuperEvent{
 /* need update code */
     public void setAnnouncement() {
         if (checkPlace(1)) {
-            if (gp.player.keyBoard.downPress == true && gp.player.getTransfer() == true) {
+            if (gp.player.keyBoard.rightPress == true && gp.player.getTransfer() == true) {
         
                 announce("You can not pass lava. Please change character");
             } else if ( gp.player.keyBoard.rightPress || gp.player.keyBoard.leftPress
@@ -38,7 +38,7 @@ public class switchPlayer extends SuperEvent{
             }
         }
         if (checkPlace(2)) {
-            if (gp.player.keyBoard.downPress == true && gp.player.getTransfer() == false) {
+            if (gp.player.keyBoard.rightPress == true && gp.player.getTransfer() == false) {
             
                 announce("You can not pass river. Please change character");
 

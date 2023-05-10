@@ -14,7 +14,7 @@ public class announceState extends SuperUI{
     }
     public void draw(Graphics2D g2) { //
         this.g2 = g2;
-        if(gp.gamestate == gp.announceState){
+        if(gp.gamestate == gp.announceState||gp.gamestate == gp.announceState1){
             drawScreen();
             if(gp.eventH.getObjectName()=="key"){
                 g2.drawString("+1 key", gp.player.screenX+40, gp.player.screenY);

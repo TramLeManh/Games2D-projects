@@ -8,10 +8,11 @@ public class pickObjects extends SuperEvent{
   
     // private String objectName;
     private String announcements[];
-
+    public String[] text = new String[10];
     private int index = 0;
+    private int next_state;
     public pickObjects ()  {
-    }
+    }  
     public void set(String objectName, int index) {
         this.index = index;
             if (objectName == "key") {
@@ -42,8 +43,9 @@ public class pickObjects extends SuperEvent{
             }
             if (objectName == "speedUp") {
                 // gp.gamestate = gp.quizzState;
-                announce("Here is your question");
-                nextState(gp.quizzState);
+                // announce("Here is your question");
+                // nextState(gp.quizzState);
+                set();
                 clear();
 
                 
@@ -59,6 +61,12 @@ public class pickObjects extends SuperEvent{
         public void clear(){
             gp.object[index] = null;
         }
+        public void set(){
+            text[0] = "0";
+            text[1] = "1";
+            text[2] = "2";
+        }
+        
     }
  
   

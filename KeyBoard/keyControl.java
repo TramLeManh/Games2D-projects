@@ -38,7 +38,7 @@ public class keyControl implements KeyListener {
             startState.keyPressed(key_code);
         } else if (gp.gamestate == gp.pauseState) {
             pauseState.keyPressed(key_code);
-        } else if (gp.gamestate == gp.playState || gp.gamestate == gp.announceState) {
+        } else if (gp.gamestate == gp.playState || gp.gamestate == gp.announceState||gp.gamestate == gp.announceState1) {
             playState.keyPressed(key_code);
 
         } else if (gp.gamestate == gp.quizzState) {

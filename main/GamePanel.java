@@ -48,6 +48,7 @@ public class GamePanel extends JPanel implements Runnable {
     public final int startState = 3;
     public final int quizzState = 4;
     public final int pauseState = 5;
+    public final int announceState1 = 6;
 
     int FPS = 60;
     public keyControl keyBoard = new keyControl(this);
@@ -146,7 +147,7 @@ public class GamePanel extends JPanel implements Runnable {
         // ui1.drawScreen("2");
         // ui.draw(g2);
             //  //draw map
-             if(gamestate == playState||gamestate==announceState||gamestate == quizzState){
+             if(gamestate == playState||gamestate==announceState||gamestate == quizzState||gamestate== announceState1){
                 tilesM.draw(g2);
     
                 //draw object

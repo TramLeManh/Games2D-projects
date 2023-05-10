@@ -40,9 +40,9 @@ public class object_set {
         // gp.object[6].worldX = 15*gp.tileSize;//23
         // gp.object[6].worldY = 26*gp.tileSize;//42
 
-        // gp.object[7] = new object_speedUp();
-        // gp.object[7].worldX = 37*gp.tileSize;//23
-        // gp.object[7].worldY = 47*gp.tileSize;//42
+        gp.object[7] = new object_speedUp();
+        gp.object[7].worldX = 49*gp.tileSize;//23
+        gp.object[7].worldY = 30*gp.tileSize;//42
 
         // gp.object[8] = new object_speedUp();
         // gp.object[8].worldX = 24*gp.tileSize;//23
