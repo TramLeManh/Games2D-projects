@@ -117,13 +117,16 @@ public class startScreen implements UI_interface {
         int x = gp.tileSize *2;
         int y = gp.tileSize /2;
         int width = gp.screenWidth - (4*gp.tileSize);
-        int height = (11*gp.tileSize);
+        int height = (11*gp.tileSize);//11
         drawSubScreen(x, y, width, height);
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,20F));
         x+= gp.tileSize;
         y+= gp.tileSize;
         g2.drawString(text, x, y);
+        g2.drawImage(playerImage.get_image(true, "down", 1), x+10,y+10,  gp.tileSize * 2, gp.tileSize * 2, null);
+
         g2.drawString("press space to continue", width-150, height);
+
     }
     public void drawScreen1(String text){
         int x = gp.tileSize *2;
