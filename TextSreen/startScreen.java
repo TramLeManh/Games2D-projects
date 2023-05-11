@@ -125,7 +125,7 @@ public class startScreen implements UI_interface {
         y+= gp.tileSize;
         g2.drawString(text, x, y);
         // g2.drawImage(playerImage.get_image(true, "down", 1), width,height,null);
-        g2.setColor(Color.black);
+        // g2.setColor(Color.black);
         g2.drawRect(48*2+20,y+10,gp.screenWidth - (4*gp.tileSize)-40 , height-110);
         
 
