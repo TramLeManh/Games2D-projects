@@ -120,10 +120,14 @@ public class startScreen implements UI_interface {
         int height = (11*gp.tileSize);//11
         drawSubScreen(x, y, width, height);
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,20F));
-        x+= gp.tileSize;
+        // x+= gp.tileSize;
+        x = LocateCenterText(text);
         y+= gp.tileSize;
         g2.drawString(text, x, y);
-        g2.drawImage(playerImage.get_image(true, "down", 1), x+10,y+10,  gp.tileSize * 2, gp.tileSize * 2, null);
+        // g2.drawImage(playerImage.get_image(true, "down", 1), width,height,null);
+        g2.setColor(Color.black);
+        g2.drawRect(48*2+20,y+10,gp.screenWidth - (4*gp.tileSize)-40 , height-110);
+        
 
         g2.drawString("press space to continue", width-150, height);
 
