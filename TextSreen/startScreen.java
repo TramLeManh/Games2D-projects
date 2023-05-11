@@ -8,12 +8,14 @@ import java.awt.Graphics2D;
 
 import entity.choosePlayer;
 import main.GamePanel;
+import picture.picture;
 
 public class startScreen implements UI_interface {
     public boolean pause = false;
     GamePanel gp;
     Graphics2D g2;
     public choosePlayer playerImage = new choosePlayer();
+    public picture pictures = new picture();
     public int command;
     public boolean drawSubScreen;
   
@@ -124,13 +126,13 @@ public class startScreen implements UI_interface {
         x = LocateCenterText(text);
         y+= gp.tileSize;
         g2.drawString(text, x, y);
-        // g2.drawImage(playerImage.get_image(true, "down", 1), width,height,null);
+        g2.drawImage(pictures.get("back"),48*2+20,y+10,null);
         // g2.setColor(Color.black);
-        g2.drawRect(48*2+20,y+10,gp.screenWidth - (4*gp.tileSize)-40 , height-110);
+        g2.drawRect(48*2+20,y+ 10,gp.screenWidth - (4*gp.tileSize)-40 , height-110);
         
 
         g2.drawString("press space to continue", width-150, height);
-
+//536 418
     }
     public void drawScreen1(String text){
         int x = gp.tileSize *2;
