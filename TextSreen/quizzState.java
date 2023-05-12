@@ -4,18 +4,23 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.util.Random;
 
 import Events.Quizz_Events;
 import KeyBoard.keyControl;
 import TextSreen.quizz.setQuestions;
 import main.GamePanel;
+import object.prince;
 
 public class quizzState extends SuperUI {
-    public int i = 0;
     private int width, height;
     private keyControl keyBoard;
     private Quizz_Events events;
     public setQuestions questions[] = new setQuestions[10];
+    private static int a = 0;
+    private Random random = new Random();
+    private int i = random.nextInt(3);
+
 
     public quizzState(GamePanel gp, keyControl keyBoard) {
         super(gp, g2);
@@ -27,6 +32,33 @@ public class quizzState extends SuperUI {
         word_length = 20;
         // set up i random questions, or default
     }
+    public void setup() {
+        // questions
+        questions[0] = new setQuestions();
+        questions[0].text = "Final varible can not be change";
+        questions[0].answer = true;// fanswer
+
+        questions[1] = new setQuestions();
+        questions[1].text = "Public can acess anywhere";
+        questions[1].answer = true;
+
+        questions[2] = new setQuestions();
+        questions[2].text = "1+1=3";
+        questions[2].answer = false;//
+
+
+        questions[3] = new setQuestions();
+        questions[3].text = "1+4=5";
+        questions[3].answer = true;
+
+        questions[4] = new setQuestions();
+        questions[4].text = "Tri dep trai";
+        questions[4].answer = false;
+        
+        questions[5] = new setQuestions();
+        questions[5].text = "Oop is easy";
+        questions[5].answer = false;
+    }
 
     private String text = " ";
 
@@ -35,6 +67,7 @@ public class quizzState extends SuperUI {
 
         if (gp.gamestate == gp.quizzState) {
             drawScreen(questions[i].text);
+
         }
     }
 
@@ -42,68 +75,57 @@ public class quizzState extends SuperUI {
     public void update() {
         if (gp.gamestate == gp.quizzState) {
             gp.player.isMove = false;
-            if (keyBoard.tPress == true) {
-                // do something
-                if (questions[i].answer) {
-                    drawScreen("correct");
-                    events.ModeSpeed(5);
-                    events.setObject();
-                    events.nextState(gp.playState);
-                } else if (!questions[i].answer) {
-                    gp.eventH.announce("wrong");
-                    events.ModeSpeed(5);
-                    events.setObject();
-                    events.nextState(gp.playState);
+            text=questions[i].text;  
+                if(keyBoard.tPress==true){
+                    if(questions[i].answer == true){
+                        System.out.println(i+" "+questions[i].answer);
+
+                        events.announce("correct");
+                        events.clear_object();
+                        i = random.nextInt(6);
+
+                        System.out.println("clear");
+                        // i = random.nextInt(6);
 
 
-                }
-                i++;// reset i to zero in order out of array
-            }
-            if (keyBoard.fPress == true) {
-                // do something
-                if (questions[i].answer = true) {
-                    gp.eventH.announce("correct");
-                    events.ModeSpeed(5);
-                    events.setObject();
-                    events.nextState(gp.playState);
+                    }
+                    else if(questions[i].answer == false){
+                        System.out.println(i+" "+questions[i].answer);
 
+                        events.announce("wrong");
+                        i = random.nextInt(6);
 
-                } else if (!questions[i].answer) {
-                    gp.eventH.announce("wrong");
-                    events.ModeSpeed(5);
-                    events.setObject();
-                    events.nextState(gp.playState);
-
+                    }
+                    keyBoard.tPress = false;
 
                 }
-                i++;
+                if(keyBoard.fPress==true){
+                    if(questions[i].answer == true){
+                        System.out.println(i+" "+questions[i].answer);
+
+                        events.announce("wrong");
+                        i = random.nextInt(6);
+
+                    }
+                    else if(questions[i].answer == false){
+                        System.out.println(i+" "+questions[i].answer);
+
+                        events.announce("correct");
+                        events.clear_object();
+                        i = random.nextInt(6);
+
+                    }
+                    keyBoard.fPress = false;
+                }
+                }
+
 
             }
-        }
 
-    }
+    // do something
+    // reset i to zero in order out of array
 
     /* Events */
-    public void setup() {
-        // questions
-        questions[0] = new setQuestions();
-        questions[0].text = "";
-        questions[0].answer = false;// fanswer
-        questions[0].action = 0;// by default 0 is random evert or khác 0 chọn event cụ thể
+    
 
-        questions[1] = new setQuestions();
-        questions[1].text = "Chào";
-        questions[1].answer = true;
-        questions[1].action = 0;
-    }
-
-    public void events(int i) {
-        if (i == 0) {
-            // random
-        }
-        switch (i) {
-            case 1:
-                events.ModeSpeed(3);
-        }
-    }
 }

@@ -13,7 +13,7 @@ public class pickObjects extends SuperEvent{
     private int next_state;
     public pickObjects ()  {
     }  
-    public void set(String objectName, int index) {
+    public void set(String objectName,int index){ 
         this.index = index;
             if (objectName == "key") {
                 announce("You got a key");
@@ -33,24 +33,30 @@ public class pickObjects extends SuperEvent{
                     nextState(gp.playState);
                 }
             }
-            if (objectName == "chest") {
-                announce1("Victory");
-                gp.gamestate = gp.announceState;
-                gp.stopMusic();
-                gp.playSE("endgame");
-                // gp.object[index] = null;
-                gp.gameThread = null;
-            }
-            if (objectName == "speedUp") {
-                // gp.gamestate = gp.quizzState;
-                // announce("Here is your question");
-                // nextState(gp.quizzState);
-                teleport(10, 10);
+            
+            if (index == 0||index == 1||index == 2) {
+                teleport(18, 37);
                 clear();
-
-                
-                // teleport(10, 10);
-                // clear();
+            }
+            if(index == 3){
+                teleport(49, 16);
+                clear();
+            }
+            if(index == 4){
+                teleport(59, 8);
+                clear();
+            }
+            if(objectName == "prince"&&index ==5){
+                // announce("Victory");
+                // gp.stopMusic();
+                // gp.playMusic("endgame");
+                // gp.gameThread = null;
+                // gp.gamestate = gp.quizzState;
+                System.out.println("2");
+                gp.gamestate = gp.quizzState;
+            }
+            if(objectName == "question"){
+                gp.gamestate = gp.quizzState;
             }
         }
 
@@ -58,15 +64,16 @@ public class pickObjects extends SuperEvent{
         /**
          * remove the object
         */
-        public void clear(){
-            gp.object[index] = null;
-        }
+        
         public void set(){
             text[0] = "0";
             text[1] = "1";
             text[2] = "2";
         }
-        
+        public  void clear(){
+            gp.object[index] = null;
+        }
+    
     }
  
   

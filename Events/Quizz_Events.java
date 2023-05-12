@@ -12,7 +12,6 @@ public class Quizz_Events extends SuperEvent {
         super.ModeSpeed(5);
     }
     public void setObject(){
-        announce("There is something on the water may help you....");
         addObject("key",26,45);
     }
 }

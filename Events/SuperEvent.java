@@ -13,7 +13,7 @@ public class SuperEvent {
     int defultX, defultY;
     private boolean run = true;
     public static Player player;
-    private pickObjects getObjects;
+    public static pickObjects getObjects;
     private int object_index = 15;
     public boolean clear = false;
     protected static String objectName;
@@ -23,7 +23,7 @@ public class SuperEvent {
     public static int next_state;
     public static int max_announce;
     public static String annouces[];
-    private int i = 0;
+    private int index = 0;
     public SuperEvent(GamePanel gp, Player player) {
         this.gp = gp;
         this.player = player;
@@ -66,10 +66,10 @@ public class SuperEvent {
     }
 
     public void pickObjects() {
-            int index = gp.cCheck.checkObject(player, true);
+            index = gp.cCheck.checkObject(player, true);
             if (index != -1) {
                 objectName = gp.object[index].name;
-                getObjects.set(objectName, index);
+                getObjects.set(objectName,index);
             }
     }
    /**
@@ -167,9 +167,10 @@ public class SuperEvent {
         }
         
     }
-
+    public void clear_object(){
+        getObjects.clear();
+    }
    
-
    
 
         }
