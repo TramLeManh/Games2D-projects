@@ -13,10 +13,10 @@ import Events.SuperEvent;
 import KeyBoard.keyControl;
 import TextSreen.SuperUI;
 import TextSreen.announceState;
-import TextSreen.pauseScreen;
 import TextSreen.playState;
 import TextSreen.quizzState;
-import TextSreen.startScreen;
+import TextSreen.Screens.pauseScreen;
+import TextSreen.Screens.startScreen;
 import tiles.TilesMangaer;
 
 import entity.Player;

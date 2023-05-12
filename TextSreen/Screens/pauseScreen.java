@@ -1,4 +1,4 @@
-package TextSreen;
+package TextSreen.Screens;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+import TextSreen.UI_interface;
 import entity.choosePlayer;
 import main.GamePanel;
 

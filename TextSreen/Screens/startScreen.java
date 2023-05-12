@@ -1,4 +1,4 @@
-package TextSreen;
+package TextSreen.Screens;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+import TextSreen.UI_interface;
 import entity.choosePlayer;
 import main.GamePanel;
 import picture.picture;
@@ -90,7 +91,7 @@ public class startScreen implements UI_interface {
                    g2.drawString("<", x + 8*gp.tileSize, y);
                    screen_text = "Instruction";
 
-                }
+                }                   
 
 
         g2.drawString(text, x, y);
@@ -128,7 +129,7 @@ public class startScreen implements UI_interface {
         g2.drawString(text, x, y);
         g2.drawImage(pictures.get("back"),48*2+20,y+10,null);
         // g2.setColor(Color.black);
-        g2.drawRect(48*2+20,y+ 10,gp.screenWidth - (4*gp.tileSize)-40 , height-110);
+        // g2.drawRect(48*2+20,y+ 10,gp.screenWidth - (4*gp.tileSize)-40 , height-110);
         
 
         g2.drawString("press space to continue", width-150, height);
@@ -148,11 +149,11 @@ public class startScreen implements UI_interface {
     }
     
     public void drawSubScreen(int x, int y, int width, int height){
-        Color color = new Color(0,0,100,100);
-        g2.setColor(color);//nền trong
+        // Color color = new Color(0,0,100,100);
+        g2.setColor(Color.white);//nền trong
         g2.fillRoundRect(x, y,width ,height,35, 35);
 
-        g2.setColor(Color.white);//viền
+        g2.setColor(Color.black);//viền
         g2.setStroke(new BasicStroke(5));
         g2.drawRoundRect(x+5, y+5,width-10 ,height-10,25, 25);
 }}
