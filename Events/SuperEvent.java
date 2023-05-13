@@ -64,6 +64,18 @@ public class SuperEvent {
         gp.player.worldY = y * gp.tileSize;
         gp.player.direction = "up";
     }
+     /**
+    Teleport the player to some where in map
+    @param x : locate X
+    @param y : locate Y
+    @param  direction : "up","left","right","down"
+     */
+    public void teleport(int x, int y,String direction) {
+        gp.playSE("teleport");
+        gp.player.worldX = x * gp.tileSize;
+        gp.player.worldY = y * gp.tileSize;
+        gp.player.direction = direction;
+    }
 
     public void pickObjects() {
             index = gp.cCheck.checkObject(player, true);
@@ -170,7 +182,9 @@ public class SuperEvent {
     public void clear_object(){
         getObjects.clear();
     }
-   
+    public int getObjectIndex(){
+        return getObjects.getIndex();
+    }
    
 
         }

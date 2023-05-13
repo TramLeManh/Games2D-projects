@@ -10,7 +10,8 @@ public class pickObjects extends SuperEvent{
     private String announcements[];
     public String[] text = new String[10];
     private int index = 0;
-    private int next_state;
+    private int next_state; 
+    private String name;
     public pickObjects ()  {
     }  
     public void set(String objectName,int index){ 
@@ -22,17 +23,17 @@ public class pickObjects extends SuperEvent{
                 player.setKey_count(player.getKey_count()+1);
                 clear();
             }
-            if (objectName == "door") {
-                if (player.getKey_count() > 0) {
-                    gp.playSE(3);
-                    // gp.object[index] = null;
-                    player.setKey_count(player.getKey_count()-1);     
-                    clear();          
-                } else{
-                    announce("You do not have enough keys to enter the door ");
-                    nextState(gp.playState);
-                }
-            }
+            // if (objectName == "door") {
+            //     if (player.getKey_count() > 0) {
+            //         gp.playSE(3);
+            //         // gp.object[index] = null;
+            //         player.setKey_count(player.getKey_count()-1);     
+            //         clear();          
+            //     } else{
+            //         announce("You do not have enough keys to enter the door ");
+            //         nextState(gp.playState);
+            //     }
+            // }
             
             if (index == 0||index == 1||index == 2) {
                 teleport(18, 37);
@@ -47,16 +48,41 @@ public class pickObjects extends SuperEvent{
                 clear();
             }
             if(objectName == "prince"&&index ==5){
-                // announce("Victory");
-                // gp.stopMusic();
-                // gp.playMusic("endgame");
-                // gp.gameThread = null;
+                announce("Victory");
+                gp.stopMusic();
+                gp.playMusic("endgame");
+                gp.gameThread = null;
+                // System.out.println("2");
                 // gp.gamestate = gp.quizzState;
-                System.out.println("2");
-                gp.gamestate = gp.quizzState;
             }
             if(objectName == "question"){
                 gp.gamestate = gp.quizzState;
+           }
+            if(objectName == "door"){
+                if(index == 15){//29 79
+                    teleport(44, 62,"right");
+                    System.out.println(getObjectIndex());
+                }
+                if(index == 16){//29 79
+                    teleport(44, 71,"right");
+                    System.out.println(getObjectIndex());
+                }
+                if(index == 17){//29 79
+                    teleport(44,80,"right");
+                    System.out.println(getObjectIndex());
+                }
+                if(index == 18){//29 79
+                    teleport(70,74,"right");
+                    System.out.println(getObjectIndex());
+                }
+                if(index == 19){//29 79
+                    teleport(56,84,"right");
+                    System.out.println(getObjectIndex());
+                }
+                if(index == 20){//29 79
+                    teleport(65,74,"right");
+                    System.out.println(getObjectIndex());
+                }
             }
         }
 
@@ -73,6 +99,12 @@ public class pickObjects extends SuperEvent{
         public  void clear(){
             gp.object[index] = null;
         }
+       public int getIndex() {
+           return index;
+       }
+       public String getName() {
+           return name;
+       }
     
     }
  

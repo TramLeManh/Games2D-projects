@@ -61,7 +61,7 @@ public class GamePanel extends JPanel implements Runnable {
     public collisionCheck cCheck = new collisionCheck(this);
     public SuperEvent eventH  = new SuperEvent(this,player);
     //Superobject Gamepannel 
-    public SuperObject object[] = new SuperObject[20];//create ten block objects
+    public SuperObject object[] = new SuperObject[40];//create ten block objects
     public object_set  objects = new object_set(this);
     public map map = new map(this);
     public boolean playMusic = true;

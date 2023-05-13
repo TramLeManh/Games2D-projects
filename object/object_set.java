@@ -62,6 +62,44 @@ public class object_set {
         gp.object[12].worldX = 72*gp.tileSize;
         gp.object[12].worldY = 74*gp.tileSize;
 
+        //
+        gp.object[13] = new object_question();
+        gp.object[13].worldX = 30*gp.tileSize;
+        gp.object[13].worldY = 84*gp.tileSize;
+
+        gp.object[14] = new object_question();
+        gp.object[14].worldX = 32*gp.tileSize;
+        gp.object[14].worldY = 84*gp.tileSize;
+        
+
+        //79
+        gp.object[15] = new object_door();
+        gp.object[15].worldX = 29*gp.tileSize;
+        gp.object[15].worldY = 79*gp.tileSize;
+
+        
+        gp.object[16] = new object_door();
+        gp.object[16].worldX = 31*gp.tileSize;
+        gp.object[16].worldY = 79*gp.tileSize;
+
+        
+        gp.object[17] = new object_door();
+        gp.object[17].worldX = 33*gp.tileSize;
+        gp.object[17].worldY = 79*gp.tileSize;
+
+        gp.object[18] = new object_door();
+        gp.object[18].worldX = 57*gp.tileSize;
+        gp.object[18].worldY = 82*gp.tileSize;
+
+        gp.object[19] = new object_door();
+        gp.object[19].worldX = 62*gp.tileSize;
+        gp.object[19].worldY = 82*gp.tileSize;
+
+        gp.object[20] = new object_door();
+        gp.object[20].worldX = 67*gp.tileSize;
+        gp.object[20].worldY = 82*gp.tileSize;
+
+
 
 
 

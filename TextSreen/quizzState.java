@@ -79,8 +79,7 @@ public class quizzState extends SuperUI {
                 if(keyBoard.tPress==true){
                     if(questions[i].answer == true){
                         System.out.println(i+" "+questions[i].answer);
-
-                        events.announce("correct");
+                        events.correct();
                         events.clear_object();
                         i = random.nextInt(6);
 
@@ -91,8 +90,7 @@ public class quizzState extends SuperUI {
                     }
                     else if(questions[i].answer == false){
                         System.out.println(i+" "+questions[i].answer);
-
-                        events.announce("wrong");
+                        events.wrong();
                         i = random.nextInt(6);
 
                     }
@@ -103,14 +101,15 @@ public class quizzState extends SuperUI {
                     if(questions[i].answer == true){
                         System.out.println(i+" "+questions[i].answer);
 
-                        events.announce("wrong");
+                        events.wrong();
                         i = random.nextInt(6);
 
                     }
                     else if(questions[i].answer == false){
                         System.out.println(i+" "+questions[i].answer);
 
-                        events.announce("correct");
+                        events.correct();
+
                         events.clear_object();
                         i = random.nextInt(6);
 

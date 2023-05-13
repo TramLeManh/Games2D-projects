@@ -10,7 +10,7 @@ public class object_question extends SuperObject {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        size = 16*2;
+        size = 48;
         collision = true;
 
     }
