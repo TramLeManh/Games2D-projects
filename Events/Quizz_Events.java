@@ -4,6 +4,8 @@ import entity.Player;
 import main.GamePanel;
 
 public class Quizz_Events extends SuperEvent {
+    private int x;
+    private int y;
     public Quizz_Events() {
     }
    
@@ -21,7 +23,15 @@ public class Quizz_Events extends SuperEvent {
             }
             else{
                 announce("Correct, you can pass");
+                clear_object();
 
+            }
+        }
+        if(objectName=="doll"){
+            if(Keys()>-1){
+                announce("Correct. There is something may help you in the North pool");
+                Key1();
+                isDoll = false;
             }
         }
         
@@ -31,8 +41,27 @@ public class Quizz_Events extends SuperEvent {
         if(objectName=="question"){
             announce("Wrong, you can not pass");
         }
+        if(objectName=="doll"){
+            if(Keys()== 0){
+                announce("Wrong. Here is suprised for you");
+                setTeleport(52, 29);
+            }
+            if(Keys()==1){
+                announce("Wrong and go away. I will take your key as punnish");
+                loseKey();
+                setTeleport(52, 29);
 
 
+            }
+        }
+    }
+    public void teleport() {
+        super.teleport(x, y,"right");
+    }
+    public void setTeleport(int x, int y){
+        this.x = x;
+        this.y = y;
+        teleport = true;
     }
 }
  

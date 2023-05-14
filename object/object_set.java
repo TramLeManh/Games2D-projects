@@ -99,6 +99,22 @@ public class object_set {
         gp.object[20].worldX = 67*gp.tileSize;
         gp.object[20].worldY = 82*gp.tileSize;
 
+        gp.object[21] = new object_doll();//witch
+        gp.object[21].worldX = 35*gp.tileSize;
+        gp.object[21].worldY = 51*gp.tileSize;
+
+        gp.object[22] = new oldman();//witch
+        gp.object[22].worldX = 83*gp.tileSize;
+        gp.object[22].worldY = 44*gp.tileSize;
+
+        gp.object[23] = new object_Key();
+        gp.object[23].worldX = 63*gp.tileSize;
+        gp.object[23].worldY = 16*gp.tileSize;//fake key
+
+        
+
+
+
 
 
 

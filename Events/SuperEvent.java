@@ -14,7 +14,7 @@ public class SuperEvent {
     private boolean run = true;
     public static Player player;
     public static pickObjects getObjects;
-    private int object_index = 15;
+    private int object_index = 30;
     public boolean clear = false;
     protected static String objectName;
     public switchPlayer switchPlayer;
@@ -23,7 +23,9 @@ public class SuperEvent {
     public static int next_state;
     public static int max_announce;
     public static String annouces[];
+    public static boolean isDoll = true;
     private int index = 0;
+    public static  boolean teleport = false; 
     public SuperEvent(GamePanel gp, Player player) {
         this.gp = gp;
         this.player = player;
@@ -96,14 +98,20 @@ public class SuperEvent {
     public void loseKey() {
         gp.player.setKey_count(gp.player.getKey_count() - 1);
     }
+    public void addKey(){
+        gp.player.setKey_count(gp.player.getKey_count() + 1);
+
+    }
 
     public void checkEvent(int worldX, int worldY) {
         musicEvent(23, 20, "sea", "road");
         // switchPlayer.set(worldX, worldY);
         switchPlayer.set(player.worldX, player.worldY);
-        setState();
-
+        if (gp.keyBoard.isSpace == true) {
+            setState();
+         }
     }
+  
 
     private void musicEvent(int x, int y, String music_up, String music_down) {
         if (hit(x, y, "up") && run) {
@@ -143,7 +151,6 @@ public class SuperEvent {
     @param y: locate Y
   */
     public void addObject(String name, int x, int y) {
-        object_index++;
         if (name == "key") {
             gp.object[object_index] = new object_Key();
             gp.object[object_index].worldX = x * gp.tileSize;
@@ -169,15 +176,9 @@ public class SuperEvent {
     public void nextState(int states){
         state = states;
     }
-    private void setState(){
-
-        if (gp.keyBoard.isSpace == true) {
+    protected void setState(){
             gp.gamestate = state;
-            player.isMove = true;
-            gp.gamestate = state;
-            System.out.println(player.worldX/48 + " " + player.worldY/48);
-        }
-        
+            player.isMove = true;        
     }
     public void clear_object(){
         getObjects.clear();
@@ -185,6 +186,19 @@ public class SuperEvent {
     public int getObjectIndex(){
         return getObjects.getIndex();
     }
+    public int Keys(){
+        return player.getKey_count();
+    }
+    public void Key1() {
+            gp.object[30] = new object_Key();
+            gp.object[30].worldX = 60 * gp.tileSize;
+            gp.object[30].worldY = 16 * gp.tileSize;
+    }
+    public void Key2() {
+        gp.object[31] = new object_Key();
+        gp.object[31].worldX = 62 * gp.tileSize;
+        gp.object[31].worldY = 43 * gp.tileSize;
+}
    
 
         }

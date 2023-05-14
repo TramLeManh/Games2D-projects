@@ -17,11 +17,17 @@ public class pickObjects extends SuperEvent{
     public void set(String objectName,int index){ 
         this.index = index;
             if (objectName == "key") {
+                if(index == 23){
+                    gp.playSE("coin");
+                    announce("This is a fake key :))");
+                    clear();
+                }
+                else{
                 announce("You got a key");
                 gp.playSE("coin");
                 // gp.playSE(1);
                 player.setKey_count(player.getKey_count()+1);
-                clear();
+                clear();}
             }
             // if (objectName == "door") {
             //     if (player.getKey_count() > 0) {
@@ -83,7 +89,33 @@ public class pickObjects extends SuperEvent{
                     teleport(65,74,"right");
                     System.out.println(getObjectIndex());
                 }
+            
             }
+            if(objectName=="oldman"){
+                if(Keys()==0){
+                announce("Hello, there is something in the lava");
+                Key2();
+            }
+            if((gp.object[31]==null)&&(gp.object[30]==null)&&Keys()==1){
+                announce("You again. Here is a key and speed up. Go find princess");
+                addKey();
+                ModeSpeed(2);
+            }
+            if(Keys()==1&&(gp.object[30]==null)){
+                announce("find your princess");
+            }
+            if(Keys()==1&&isDoll==false){
+               announce("Here is some power"); 
+               ModeSpeed(2);
+        }}
+        if(objectName=="doll"){
+            if(isDoll==true){
+                gp.gamestate = gp.quizzState;
+            }
+            else if(isDoll==false){
+                announce("Stay away frome me");
+            }
+        }
         }
 
 

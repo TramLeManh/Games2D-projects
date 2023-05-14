@@ -67,7 +67,6 @@ public class quizzState extends SuperUI {
 
         if (gp.gamestate == gp.quizzState) {
             drawScreen(questions[i].text);
-
         }
     }
 
@@ -80,7 +79,6 @@ public class quizzState extends SuperUI {
                     if(questions[i].answer == true){
                         System.out.println(i+" "+questions[i].answer);
                         events.correct();
-                        events.clear_object();
                         i = random.nextInt(6);
 
                         System.out.println("clear");
@@ -110,12 +108,15 @@ public class quizzState extends SuperUI {
 
                         events.correct();
 
-                        events.clear_object();
                         i = random.nextInt(6);
 
                     }
                     keyBoard.fPress = false;
                 }
+                }
+                if(events.teleport == true&&keyBoard.isSpace==true) {
+                    events.teleport();
+                    events.teleport = false;
                 }
 
 
