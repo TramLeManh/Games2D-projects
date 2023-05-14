@@ -5,6 +5,7 @@ import java.awt.*;
 import entity.Player;
 import main.GamePanel;
 import object.object_Key;
+import object.portal;
 
 public class SuperEvent {
     public static GamePanel gp;
@@ -14,7 +15,7 @@ public class SuperEvent {
     private boolean run = true;
     public static Player player;
     public static pickObjects getObjects;
-    private int object_index = 30;
+    private int object_index = 35;
     public boolean clear = false;
     protected static String objectName;
     public switchPlayer switchPlayer;
@@ -74,9 +75,10 @@ public class SuperEvent {
      */
     public void teleport(int x, int y,String direction) {
         gp.playSE("teleport");
+        gp.player.direction = direction;
+
         gp.player.worldX = x * gp.tileSize;
         gp.player.worldY = y * gp.tileSize;
-        gp.player.direction = direction;
     }
 
     public void pickObjects() {
@@ -102,17 +104,25 @@ public class SuperEvent {
         gp.player.setKey_count(gp.player.getKey_count() + 1);
 
     }
-
+//*Put in update */
     public void checkEvent(int worldX, int worldY) {
         musicEvent(23, 20, "sea", "road");
         switchPlayer.set(worldX, worldY);
         // switchPlayer.set(player.worldX, player.worldY);
         if (gp.keyBoard.isSpace == true) {
             setState();
+            
          }
+         if(getObjects.chest_temp== true&&gp.keyBoard.isSpace == true) {
+            teleport(51,29);  
+            getObjects.chest_temp = false;
+        }
     }
   
 
+    private Object getObjects() {
+        return null;
+    }
     private void musicEvent(int x, int y, String music_up, String music_down) {
         if (hit(x, y, "up") && run) {
             gp.stopMusic();
@@ -150,11 +160,11 @@ public class SuperEvent {
     @param x : locate X
     @param y: locate Y
   */
-    public void addObject(String name, int x, int y) {
-        if (name == "key") {
-            gp.object[object_index] = new object_Key();
-            gp.object[object_index].worldX = x * gp.tileSize;
-            gp.object[object_index].worldY = y * gp.tileSize;
+    public void addObject(String name, int x, int y,int index) {
+        if (name == "portal") {
+            gp.object[index] = new portal();
+            gp.object[index].worldX = x * gp.tileSize;
+            gp.object[index].worldY = y * gp.tileSize;
         }
     }
     public void announce(String text) {

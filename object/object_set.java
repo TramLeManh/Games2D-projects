@@ -73,29 +73,29 @@ public class object_set {
         
 
         //79
-        gp.object[15] = new object_door();
+        gp.object[15] = new portal();
         gp.object[15].worldX = 29*gp.tileSize;
         gp.object[15].worldY = 79*gp.tileSize;
 
         
-        gp.object[16] = new object_door();
+        gp.object[16] = new portal();
         gp.object[16].worldX = 31*gp.tileSize;
         gp.object[16].worldY = 79*gp.tileSize;
 
         
-        gp.object[17] = new object_door();
+        gp.object[17] = new portal();
         gp.object[17].worldX = 33*gp.tileSize;
         gp.object[17].worldY = 79*gp.tileSize;
 
-        gp.object[18] = new object_door();
+        gp.object[18] = new portal();
         gp.object[18].worldX = 57*gp.tileSize;
         gp.object[18].worldY = 82*gp.tileSize;
 
-        gp.object[19] = new object_door();
+        gp.object[19] = new portal();
         gp.object[19].worldX = 62*gp.tileSize;
         gp.object[19].worldY = 82*gp.tileSize;
 
-        gp.object[20] = new object_door();
+        gp.object[20] = new portal();
         gp.object[20].worldX = 67*gp.tileSize;
         gp.object[20].worldY = 82*gp.tileSize;
 
@@ -107,10 +107,26 @@ public class object_set {
         gp.object[22].worldX = 83*gp.tileSize;
         gp.object[22].worldY = 44*gp.tileSize;
 
-        gp.object[23] = new object_Key();
+        gp.object[23] = new object_Key();//66 13
         gp.object[23].worldX = 63*gp.tileSize;
         gp.object[23].worldY = 16*gp.tileSize;//fake key
 
+        gp.object[24] = new prince();//66 13
+        gp.object[24].worldX = 77*gp.tileSize;
+        gp.object[24].worldY = 8*gp.tileSize;//fake key
+
+        gp.object[25] = new object_chest();//66 13
+        gp.object[25].worldX = 79*gp.tileSize;
+        gp.object[25].worldY = 10*gp.tileSize;//fake key
+
+        gp.object[26] = new object_door();//66 13
+        gp.object[26].worldX = 77*gp.tileSize;
+        gp.object[26].worldY = 11*gp.tileSize;//fake key
+
+        gp.object[27] = new object_door();//66 13
+        gp.object[27].worldX = 77*gp.tileSize;
+        gp.object[27].worldY = 28*gp.tileSize;//fake key
+       
         
 
 

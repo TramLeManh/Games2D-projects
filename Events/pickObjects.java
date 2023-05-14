@@ -12,6 +12,8 @@ public class pickObjects extends SuperEvent{
     private int index = 0;
     private int next_state; 
     private String name;
+    public  boolean chest_temp = false;
+
     public pickObjects ()  {
     }  
     public void set(String objectName,int index){ 
@@ -29,17 +31,18 @@ public class pickObjects extends SuperEvent{
                 player.setKey_count(player.getKey_count()+1);
                 clear();}
             }
-            // if (objectName == "door") {
-            //     if (player.getKey_count() > 0) {
-            //         gp.playSE(3);
-            //         // gp.object[index] = null;
-            //         player.setKey_count(player.getKey_count()-1);     
-            //         clear();          
-            //     } else{
-            //         announce("You do not have enough keys to enter the door ");
-            //         nextState(gp.playState);
-            //     }
-            // }
+            if (objectName == "door") {
+                if(index == 26||index ==27)
+                if (player.getKey_count() > 0) {
+                    gp.playSE(3);
+                    // gp.object[index] = null;
+                    player.setKey_count(player.getKey_count()-1);     
+                    clear();          
+                } else{
+                    announce("You do not have enough keys to enter the door ");
+                    nextState(gp.playState);
+                }
+            }
             
             if (index == 0||index == 1||index == 2) {
                 teleport(18, 37);
@@ -53,18 +56,31 @@ public class pickObjects extends SuperEvent{
                 teleport(59, 8);
                 clear();
             }
-            if(objectName == "prince"&&index ==5){
+            if(objectName == "prince"){
+                if(index ==5){
                 announce("Victory");
                 gp.stopMusic();
                 gp.playMusic("endgame");
                 gp.gameThread = null;
                 // System.out.println("2");
-                // gp.gamestate = gp.quizzState;
+                // gp.gamestate = gp.quizzState; 
             }
+                if(index ==24){
+                    announce("This a fake princess. She is somewhere in the world.");
+                        addObject("portal", 77, 6,35);
+                        clear();
+              
+            }
+
+        }
+                if(index ==25){
+                    announce("You got a chess prince. Here is your prize.");
+                    chest_temp = true;
+                }
             if(objectName == "question"){
                 gp.gamestate = gp.quizzState;
            }
-            if(objectName == "door"){
+            if(objectName == "portal"){
                 if(index == 15){//29 79
                     teleport(44, 62,"right");
                     System.out.println(getObjectIndex());
@@ -89,13 +105,20 @@ public class pickObjects extends SuperEvent{
                     teleport(65,74,"right");
                     System.out.println(getObjectIndex());
                 }
+                if(index == 35){
+                    teleport(14,62,"down");
+                }
             
             }
             if(objectName=="oldman"){
-                if(Keys()==0){
+                if(Keys()==0&&gp.object[27]!=null){
                 announce("Hello, there is something in the lava");
                 Key2();
             }
+                if(Keys()==0&&gp.object[27]==null){
+                    announce("It's a lovely day");
+
+                }
             if((gp.object[31]==null)&&(gp.object[30]==null)&&Keys()==1){
                 announce("You again. Here is a key and speed up. Go find princess");
                 addKey();
@@ -113,7 +136,7 @@ public class pickObjects extends SuperEvent{
                 gp.gamestate = gp.quizzState;
             }
             else if(isDoll==false){
-                announce("Stay away frome me");
+                announce("I can not help you anymore.");
             }
         }
         }
@@ -137,7 +160,10 @@ public class pickObjects extends SuperEvent{
        public String getName() {
            return name;
        }
-    
+       
+       public void add_portal(){
+
+       }    
     }
  
   

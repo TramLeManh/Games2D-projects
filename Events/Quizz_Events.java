@@ -13,9 +13,7 @@ public class Quizz_Events extends SuperEvent {
         announce("Speed up");
         super.ModeSpeed(5);
     }
-    public void setObject(){
-        addObject("key",26,45);
-    }
+    
     public void correct(){
         if(objectName=="question"){
             if(getObjectIndex()==13||getObjectIndex()==14){
