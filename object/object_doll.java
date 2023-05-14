@@ -11,7 +11,7 @@ public class object_doll extends SuperObject{
             e.printStackTrace();
         } 
         collision = true;
-        size = 48+16;
+        size = 48;
 
 
     }

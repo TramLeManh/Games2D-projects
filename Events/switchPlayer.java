@@ -8,17 +8,16 @@ public class switchPlayer extends SuperEvent{
     private boolean checkPlace(int index) {
         switch (index) {
             case 1:
-                if (hit(32, 27, "right")) {
+                if (hit(60, 41,"down")||
+                hit(61, 41,"down")||
+                hit(62, 41,"down")||
+                hit(63, 41  ,"down")) {
                     return true;
                 }
                 break;
             case 2:
 
-                if (hit(40, 34, "down") ||
-                hit(39, 34, "down") ||
-                hit(22, 12, "up") ||
-                hit(24, 12, "up") ||
-                hit(25, 35, "right")) {
+                if (hit(60,19,"up")||hit(61,19,"up")||hit(62,19,"up")||hit(63,19,"up")) {
                     return true;
                 }
                 break;
@@ -29,8 +28,8 @@ public class switchPlayer extends SuperEvent{
 /* need update code */
     public void setAnnouncement() {
         if (checkPlace(1)) {
-            if (gp.player.keyBoard.rightPress == true && gp.player.getTransfer() == true) {
-        
+            if (gp.player.keyBoard.downPress == true && gp.player.getTransfer() == true) {
+    
                 announce("You can not pass lava. Please change character");
             } else if ( gp.player.keyBoard.rightPress || gp.player.keyBoard.leftPress
                     || !gp.player.getTransfer() || gp.player.keyBoard.isOne) {
@@ -38,7 +37,7 @@ public class switchPlayer extends SuperEvent{
             }
         }
         if (checkPlace(2)) {
-            if (gp.player.keyBoard.rightPress == true && gp.player.getTransfer() == false) {
+            if (gp.player.keyBoard.upPress == true && gp.player.getTransfer() == false) {
             
                 announce("You can not pass river. Please change character");
 
@@ -54,8 +53,6 @@ public class switchPlayer extends SuperEvent{
         setAnnouncement();
         if (gp.keyBoard.isOne == true) {
             gp.player.setTransfer(false);
-            System.out.println("x" + (gp.player.worldX + gp.player.solidArea.x) + " y"
-                    + (gp.player.worldY + gp.player.solidArea.y));
             gp.tilesM.tile[6].collision = true;
             gp.tilesM.tile[5].collision = false;
             //pruser to transfer when in lava

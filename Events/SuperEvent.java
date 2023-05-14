@@ -105,8 +105,8 @@ public class SuperEvent {
 
     public void checkEvent(int worldX, int worldY) {
         musicEvent(23, 20, "sea", "road");
-        // switchPlayer.set(worldX, worldY);
-        switchPlayer.set(player.worldX, player.worldY);
+        switchPlayer.set(worldX, worldY);
+        // switchPlayer.set(player.worldX, player.worldY);
         if (gp.keyBoard.isSpace == true) {
             setState();
          }
