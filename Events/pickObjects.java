@@ -76,7 +76,7 @@ public class pickObjects extends SuperEvent{
                     System.out.println(getObjectIndex());
                 }
                 if(index == 19){//29 79
-                    teleport(56,84,"right");
+                    teleport(56,64,"right");
                     System.out.println(getObjectIndex());
                 }
                 if(index == 20){//29 79
