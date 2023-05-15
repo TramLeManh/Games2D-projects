@@ -106,7 +106,6 @@ public class SuperEvent {
     }
 //*Put in update */
     public void checkEvent(int worldX, int worldY) {
-        musicEvent(23, 20, "sea", "road");
         switchPlayer.set(worldX, worldY);
         // switchPlayer.set(player.worldX, player.worldY);
         if (gp.keyBoard.isSpace == true) {
@@ -123,14 +122,14 @@ public class SuperEvent {
     private Object getObjects() {
         return null;
     }
-    private void musicEvent(int x, int y, String music_up, String music_down) {
-        if (hit(x, y, "up") && run) {
+    public void musicEvent(int x, int y, String music_left, String music_right) {
+        if (hit(x, y, "left") && run) {
             gp.stopMusic();
-            gp.playMusic(music_up);
+            gp.playMusic(music_left);
             run = false;
-        } else if (hit(x, y, "down") && !run) {
+        } else if (hit(x, y, "right") && !run) {
             gp.stopMusic();
-            gp.playMusic(music_down);
+            gp.playMusic(music_right);
             run = true;
         }
     }

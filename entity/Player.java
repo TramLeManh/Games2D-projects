@@ -45,8 +45,8 @@ public class Player extends Entity {
 
     }
     public void setDefultValues() {
-        worldX = gp.tileSize * 77;
-        worldY = gp.tileSize * 10  ;
+        worldX = gp.tileSize * 60;
+        worldY = gp.tileSize * 51  ;
         speed = 3;
         direction = "down";
         transfer = false; 
@@ -54,6 +54,8 @@ public class Player extends Entity {
     }
     public void update() {
         gp.eventH.checkEvent(worldX, worldY);
+        gp.eventH.musicEvent(51, 58, "squidGame", "sea");
+        ;
         //keyBoard player
         
         if((gp.gamestate==gp.announceState||gp.gamestate==gp.playState)){
