@@ -1,7 +1,5 @@
 package object;
 import javax.imageio.ImageIO;
-
-import main.GamePanel;
 public class object_question extends SuperObject {
     public object_question(){
         name = "question";

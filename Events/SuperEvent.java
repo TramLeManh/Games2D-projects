@@ -2,6 +2,7 @@ package Events;
 
 import java.awt.*;
 
+import KeyBoard.keyControl;
 import entity.Player;
 import main.GamePanel;
 import object.object_Key;
@@ -10,17 +11,15 @@ import object.portal;
 public class SuperEvent {
     public static GamePanel gp;
     public  Rectangle eventRectangle;
-    private boolean isContinue = false;
     private int defultX, defultY;
     private boolean run = true;
     public static Player player;
     public static pickObjects getObjects;
-    private int object_index = 35;
     public boolean clear = false;
     protected static String objectName;
     public switchPlayer switchPlayer;
     public static int state = 1;
-    public static  String text = " ";
+    public  String text = " ";
     public static int next_state;
     public static int max_announce;
     public static String annouces[];
@@ -28,8 +27,8 @@ public class SuperEvent {
     private int index = 0;
     public static  boolean teleport = false; 
     public SuperEvent(GamePanel gp, Player player) {
-        this.gp = gp;
-        this.player = player;
+        SuperEvent.gp = gp;
+        SuperEvent.player = player;
         eventRectangle = new Rectangle();
         eventRectangle.x = 23;
         eventRectangle.y = 23;
@@ -110,22 +109,17 @@ public class SuperEvent {
 
         switchPlayer.set(worldX, worldY);
         // switchPlayer.set(player.worldX, player.worldY);
-        if (gp.keyBoard.isSpace == true) {
+        if (keyControl.isSpace == true) {
             setState();
             System.out.println("x"+worldX/48+"y"+worldY/48);
-            System.out.println(player.direction);
+
+            System.out.println(getObjectIndex());
             
          }
-         if(getObjects.chest_temp== true&&gp.keyBoard.isSpace == true) {
-            teleport(51,29);  
-            getObjects.chest_temp = false;
-        }
+        getObjects.nextTeleport();
     }
   
 
-    private Object getObjects() {
-        return null;
-    }
     public void musicEvent(int x, int y, String music_left, String music_right) {
         if (hit(58, 51, "left")) {
             System.out.println("2");
@@ -174,7 +168,7 @@ public class SuperEvent {
     }
     public void announce(String text) {
         gp.announce.text = text;
-        gp.gamestate = gp.announceState;
+        gp.setGamestate(gp.announceState);
         gp.player.isMove = false;
     }
 
@@ -183,17 +177,17 @@ public class SuperEvent {
     }
 
 
-    public void announce1(String text) {
+    public void announce(String text,String sub_text) {
         gp.announce.text = text;
-        gp.gamestate = gp.announceState;
-        gp.announce.sub_text = " ";
+        gp.setGamestate(gp.announceState);
+        gp.announce.sub_text = sub_text;
     }
     public void nextState(int states){
         state = states;
     }
     public void setState(){
-            gp.gamestate = state;
-            player.isMove = true;        
+        gp.setGamestate(state);
+        player.isMove = true;        
     }
     public void clear_object(){
         getObjects.clear();
@@ -214,6 +208,13 @@ public class SuperEvent {
         gp.object[31].worldX = 62 * gp.tileSize;
         gp.object[31].worldY = 43 * gp.tileSize;
 }
+    public void reset(){
+        run = true;
+        isDoll = true;
+        getObjects.setHaveToothpaste(false);
+    }
+
+
    
 
         }

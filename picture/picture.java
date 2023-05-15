@@ -14,4 +14,12 @@ public class picture {
         }
         return image;
      }
+     public BufferedImage get1(String imageName) {
+      try {
+         image =  ImageIO.read(getClass().getResourceAsStream("/picture/"+ imageName));
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+      return image;
+   }
 }

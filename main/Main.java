@@ -1,10 +1,14 @@
 package main;
 import javax.swing.JFrame;
+
+import picture.picture;
 /*w window */
 public class Main {
     public static void main(String[] args){
         JFrame w = new JFrame();
+        picture p = new picture();
         w.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        w.setIconImage(p.get("icon"));
         w.setResizable(false);
         w.setTitle("The adventure of Fire Boy and Water Boy");/*Set tittle */
         GamePanel gamePanel = new GamePanel();

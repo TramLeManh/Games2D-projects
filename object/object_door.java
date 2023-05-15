@@ -10,6 +10,7 @@ public class object_door extends SuperObject{
             e.printStackTrace();
         }
         size = 48;
+        collision = true;
     }
  
    

@@ -3,9 +3,9 @@ package TextSreen.Screens;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+import Font.Fonts;
 import TextSreen.UI_interface;
 import entity.choosePlayer;
 import main.GamePanel;
@@ -19,6 +19,8 @@ public class startScreen implements UI_interface {
     public picture pictures = new picture();
     public int command;
     public boolean drawSubScreen;
+    private Fonts font = new Fonts();
+
   
     public startScreen(GamePanel gp) {
         this.gp = gp;
@@ -27,13 +29,6 @@ public class startScreen implements UI_interface {
     private String screen_text;
 
  
-    private void setArrow(int x, int y) {
-     
-    
-                g2.drawString(">", x - gp.tileSize, y);
-
-        }
-
     public void draw(Graphics2D g2) {
         this.g2 = g2;
         if(drawSubScreen){
@@ -45,7 +40,7 @@ public class startScreen implements UI_interface {
             }
         }
         else{
-            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 96F));
+            g2.setFont(font.getFont().deriveFont(Font.BOLD, 96F));
             String text = "My first game";
             int x = LocateCenterText(text);
             int y = gp.tileSize * 3;
@@ -72,14 +67,14 @@ public class startScreen implements UI_interface {
     }
 
     private void menu(Graphics2D g2, int x, int y) {
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 48F));
+        g2.setFont(font.getFont().deriveFont(Font.BOLD, 48F));
         String text = "START GAME";
         x = LocateCenterText(text);
         y += gp.tileSize * 3.5;
         g2.drawString(text, x, y);
         if(command == 0){
                    g2.drawString(">", x - gp.tileSize, y);
-                   g2.drawString("<", x + 7*gp.tileSize, y);
+                   g2.drawString("<", x + 5*gp.tileSize, y);
 
         }
 
@@ -88,7 +83,7 @@ public class startScreen implements UI_interface {
         y += gp.tileSize;
         if(command == 1){
                    g2.drawString(">", x - gp.tileSize, y);
-                   g2.drawString("<", x + 8*gp.tileSize, y);
+                   g2.drawString("<", x +6*gp.tileSize, y);
                    screen_text = "Instruction";
 
                 }                   
@@ -102,7 +97,7 @@ public class startScreen implements UI_interface {
         g2.drawString(text, x, y);
         if(command == 2){
                    g2.drawString(">", x - gp.tileSize, y);
-                   g2.drawString("<", x +4*gp.tileSize, y);
+                   g2.drawString("<", x +3*gp.tileSize, y);
                    screen_text = "About";
 
         }
@@ -112,7 +107,7 @@ public class startScreen implements UI_interface {
         g2.drawString(text, x, y);
         if(command == 3){
                    g2.drawString(">", x - gp.tileSize, y);
-                   g2.drawString("<", x +3*gp.tileSize, y);
+                   g2.drawString("<", x + 2*gp.tileSize, y);
                    screen_text = "Are you sure want to quit?";
         }
     }
@@ -122,7 +117,7 @@ public class startScreen implements UI_interface {
         int width = gp.screenWidth - (4*gp.tileSize);
         int height = (11*gp.tileSize);//11
         drawSubScreen(x, y, width, height);
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,20F));
+        g2.setFont(font.getFont().deriveFont(Font.BOLD,20F));
         // x+= gp.tileSize;
         x = LocateCenterText(text);
         y+= gp.tileSize;

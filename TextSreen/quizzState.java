@@ -1,32 +1,24 @@
 package TextSreen;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics2D;
 import java.util.Random;
 
 import Events.Quizz_Events;
+import Events.SuperEvent;
 import KeyBoard.keyControl;
 import TextSreen.quizz.setQuestions;
 import main.GamePanel;
-import object.prince;
 
 public class quizzState extends SuperUI {
-    private int width, height;
-    private keyControl keyBoard;
     private Quizz_Events events;
     public setQuestions questions[] = new setQuestions[10];
-    private static int a = 0;
     private Random random = new Random();
     private int i = random.nextInt(3);
 
 
     public quizzState(GamePanel gp, keyControl keyBoard) {
         super(gp, g2);
-        this.keyBoard = keyBoard;
         events = new Quizz_Events();
-        setQuestions question[] = new setQuestions[10];
         setup();
         sub_text = "press T or F";
         word_length = 20;
@@ -64,10 +56,8 @@ public class quizzState extends SuperUI {
         questions[6].answer = false;
     }
 
-    private String text = " ";
-
     public void draw(Graphics2D g2) {
-        this.g2 = g2;
+        SuperUI.g2 = g2;
 
         if (gp.gamestate == gp.quizzState) {
             drawScreen(questions[i].text);
@@ -78,17 +68,15 @@ public class quizzState extends SuperUI {
     public void update() {
         if (gp.gamestate == gp.quizzState) {
             gp.player.isMove = false;
-            if (events.getObjectName()=="monster"){
+            if (SuperEvent.getObjectName()=="monster"){
                 i = 6;
-            }else{
-                text=questions[i].text;  
+            }else{  
             }
-                if(keyBoard.tPress==true){
+            if(keyControl.tPress==true){
                     if(questions[i].answer == true){
                         System.out.println(i+" "+questions[i].answer);
                         events.correct();
                         i = random.nextInt(6);
-
                         System.out.println("clear");
                         // i = random.nextInt(6);
 
@@ -100,10 +88,10 @@ public class quizzState extends SuperUI {
                         i = random.nextInt(6);
 
                     }
-                    keyBoard.tPress = false;
+                    keyControl.tPress = false;
 
                 }
-                if(keyBoard.fPress==true){
+                if(keyControl.fPress==true){
                     if(questions[i].answer == true){
                         System.out.println(i+" "+questions[i].answer);
 
@@ -119,10 +107,10 @@ public class quizzState extends SuperUI {
                         i = random.nextInt(6);
 
                     }
-                    keyBoard.fPress = false;
+                    keyControl.fPress = false;
                 }
                 }
-                if(events.teleport == true&&keyBoard.isSpace==true) {
+                if(events.teleport == true&&keyControl.isSpace==true) {
                     events.teleport();
                     events.teleport = false;
                 }

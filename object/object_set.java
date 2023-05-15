@@ -9,7 +9,7 @@ public class object_set {
     }
     public void setup() 
     {
-        gp.object[0] = new object_potion1();
+        gp.object[0] = new object_potion2();
         gp.object[0].worldX = 12*gp.tileSize;
         gp.object[0].worldY = 35*gp.tileSize;
 
@@ -107,29 +107,75 @@ public class object_set {
         gp.object[22].worldX = 83*gp.tileSize;
         gp.object[22].worldY = 44*gp.tileSize;
 
-        gp.object[23] = new object_Key();//66 13
+        gp.object[23] = new object_Key();
         gp.object[23].worldX = 63*gp.tileSize;
-        gp.object[23].worldY = 16*gp.tileSize;//fake key
+        gp.object[23].worldY = 16*gp.tileSize;
 
-        gp.object[24] = new prince();//66 13
+        gp.object[24] = new prince();
         gp.object[24].worldX = 77*gp.tileSize;
-        gp.object[24].worldY = 8*gp.tileSize;//fake key
+        gp.object[24].worldY = 8*gp.tileSize;
 
-        gp.object[25] = new object_chest();//66 13
+        gp.object[25] = new object_chest();
         gp.object[25].worldX = 79*gp.tileSize;
-        gp.object[25].worldY = 10*gp.tileSize;//fake key
+        gp.object[25].worldY = 10*gp.tileSize;
 
-        gp.object[26] = new object_door();//66 13
+        gp.object[26] = new object_door();
         gp.object[26].worldX = 77*gp.tileSize;
-        gp.object[26].worldY = 11*gp.tileSize;//fake key
+        gp.object[26].worldY = 11*gp.tileSize;
 
-        gp.object[27] = new object_door();//66 13
+        gp.object[27] = new object_door();
         gp.object[27].worldX = 77*gp.tileSize;
-        gp.object[27].worldY = 28*gp.tileSize;//fake key
+        gp.object[27].worldY = 28*gp.tileSize;
 
         gp.object[28] = new monster();//66 13
         gp.object[28].worldX = 89*gp.tileSize;
-        gp.object[28].worldY = 62*gp.tileSize;//fake key
+        gp.object[28].worldY = 62*gp.tileSize;
+
+        gp.object[29] = new object_Key();
+        gp.object[29].worldX = 12*gp.tileSize;
+        gp.object[29].worldY = 37*gp.tileSize;
+
+        gp.object[30] = new apple();//66 13
+        gp.object[30].worldX = 9*gp.tileSize;
+        gp.object[30].worldY = 37*gp.tileSize;
+
+        gp.object[31] = new object_Key();
+        gp.object[31].worldX = 34*gp.tileSize;
+        gp.object[31].worldY = 33*gp.tileSize;
+
+        gp.object[32] = new oldman();
+        gp.object[32].worldX = 24*gp.tileSize;
+        gp.object[32].worldY = 29*gp.tileSize;
+
+        gp.object[33] = new object_chest();
+        gp.object[33].worldX = 28*gp.tileSize;
+        gp.object[33].worldY = 38*gp.tileSize;
+
+        gp.object[34] = new object_door();
+        gp.object[34].worldX = 50*gp.tileSize;
+        gp.object[34].worldY = 29*gp.tileSize;
+
+        
+        gp.object[35] = new monster();
+        gp.object[35].worldX = 44*gp.tileSize;
+        gp.object[35].worldY = 31*gp.tileSize;
+
+        gp.object[36] = new apple();
+        gp.object[36].worldX = 47*gp.tileSize;
+        gp.object[36].worldY = 15*gp.tileSize;
+
+        gp.object[37] = new object_Key();
+        gp.object[37].worldX = 49*gp.tileSize;
+        gp.object[37].worldY = 15*gp.tileSize;
+
+        gp.object[38] = new object_chest();
+        gp.object[38].worldX = 51*gp.tileSize;
+        gp.object[38].worldY = 15*gp.tileSize;
+
+        gp.object[39] = new object_chest();
+        gp.object[39].worldX = 26*gp.tileSize;
+        gp.object[39].worldY = 40*gp.tileSize;
+
 
         
        

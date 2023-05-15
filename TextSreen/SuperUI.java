@@ -18,8 +18,8 @@ public abstract class SuperUI {
     public Fonts font = new Fonts();
 
     public void drawSubScreen(int x, int y, int width, int height) {
-        g2.setFont(font.getFont());
-        Color color = new Color(0, 0, 100, 100);
+        g2.setFont(new Font("Serif", Font.ITALIC, 30));
+        Color color = new Color(0, 0, 0, 100);
         g2.setColor(color);// nền trong
         g2.fillRoundRect(x, y, width, height, 35, 35);
         g2.setColor(Color.white);// viền
@@ -34,7 +34,7 @@ public abstract class SuperUI {
     }
 
     public SuperUI(GamePanel gp, Graphics2D g2) {
-        this.gp = gp;
+        SuperUI.gp = gp;
         this.g2 = g2;
     }
 

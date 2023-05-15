@@ -1,6 +1,6 @@
 package Events ;
 
-import main.GamePanel;
+import KeyBoard.keyControl;
 
 public class switchPlayer extends SuperEvent{
     private SuperEvent event;
@@ -27,30 +27,30 @@ public class switchPlayer extends SuperEvent{
 /* need update code */
     public void setAnnouncement() {
         if (checkPlace(1)) {
-            if (gp.player.keyBoard.upPress == true && gp.player.getTransfer() == true) {
+            if (keyControl.upPress == true && gp.player.getTransfer() == true) {
     
                 announce("You can not pass lava. Please change character");
-            } else if ( gp.player.keyBoard.rightPress || gp.player.keyBoard.leftPress
-                    || !gp.player.getTransfer() || gp.player.keyBoard.isOne) {
-                gp.gamestate = gp.playState;
+            } else if ( keyControl.rightPress || keyControl.leftPress
+                    || !gp.player.getTransfer() || keyControl.isOne) {
+                gp.setGamestate(gp.playState);
             }
         }
         if (checkPlace(2)) {
-            if (gp.player.keyBoard.upPress == true && gp.player.getTransfer() == false) {
+            if (keyControl.upPress == true && gp.player.getTransfer() == false) {
             
                 announce("You can not pass river. Please change character");
 
-                gp.gamestate = gp.announceState;
-            } else if (gp.player.keyBoard.rightPress || gp.player.keyBoard.leftPress
-                    || gp.player.getTransfer() || gp.player.keyBoard.isTwo) {
-                gp.gamestate = gp.playState;
+                gp.setGamestate(gp.announceState);
+            } else if (keyControl.rightPress || keyControl.leftPress
+                    || gp.player.getTransfer() || keyControl.isTwo) {
+                gp.setGamestate(gp.playState);
             }
         }
 
     }
     public void set(int worldX,int worldY){
         setAnnouncement();
-        if (gp.keyBoard.isOne == true) {
+        if (keyControl.isOne == true) {
             gp.player.setTransfer(false);
             gp.tilesM.tile[6].collision = true;
             gp.tilesM.tile[5].collision = false;
@@ -60,7 +60,7 @@ public class switchPlayer extends SuperEvent{
             //     gp.tilesM.tile[2].collision = false;
             // }
         }
-        if (gp.keyBoard.isTwo == true) {
+        if (keyControl.isTwo == true) {
             gp.player.setTransfer(true);
             gp.tilesM.tile[6].collision = false;
             gp.tilesM.tile[5].collision = true;

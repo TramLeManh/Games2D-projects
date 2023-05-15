@@ -13,7 +13,7 @@ public class playState extends SuperUI{
         super(gp,g2);
     }
     public void draw(Graphics2D g2) { //
-        this.g2 = g2;
+        SuperUI.g2 = g2;
         if(gp.gamestate == gp.playState){
             hasKey();
         }

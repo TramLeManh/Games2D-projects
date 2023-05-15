@@ -15,6 +15,7 @@ public class map {
         gp.objects.setup();
         gp.player.reset();
         gp.playMusic("road");
+        gp.eventH.reset();
     }
     
 }
