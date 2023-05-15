@@ -58,6 +58,10 @@ public class quizzState extends SuperUI {
         questions[5] = new setQuestions();
         questions[5].text = "Oop is easy";
         questions[5].answer = false;
+
+        questions[6] = new setQuestions();
+        questions[6].text = "special Quizz";
+        questions[6].answer = false;
     }
 
     private String text = " ";
@@ -74,7 +78,11 @@ public class quizzState extends SuperUI {
     public void update() {
         if (gp.gamestate == gp.quizzState) {
             gp.player.isMove = false;
-            text=questions[i].text;  
+            if (events.getObjectName()=="monster"){
+                i = 6;
+            }else{
+                text=questions[i].text;  
+            }
                 if(keyBoard.tPress==true){
                     if(questions[i].answer == true){
                         System.out.println(i+" "+questions[i].answer);

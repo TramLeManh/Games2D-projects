@@ -126,6 +126,12 @@ public class object_set {
         gp.object[27] = new object_door();//66 13
         gp.object[27].worldX = 77*gp.tileSize;
         gp.object[27].worldY = 28*gp.tileSize;//fake key
+
+        gp.object[28] = new monster();//66 13
+        gp.object[28].worldX = 89*gp.tileSize;
+        gp.object[28].worldY = 62*gp.tileSize;//fake key
+
+        
        
         
 

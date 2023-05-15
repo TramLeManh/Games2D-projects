@@ -9,9 +9,9 @@ import object.portal;
 
 public class SuperEvent {
     public static GamePanel gp;
-    public static  Rectangle eventRectangle;
+    public  Rectangle eventRectangle;
     private boolean isContinue = false;
-    int defultX, defultY;
+    private int defultX, defultY;
     private boolean run = true;
     public static Player player;
     public static pickObjects getObjects;
@@ -37,7 +37,7 @@ public class SuperEvent {
         eventRectangle.height = 2;
         defultX = eventRectangle.x;
         defultY = eventRectangle.y;
-        switchPlayer = new switchPlayer();
+        switchPlayer = new switchPlayer(this);
         getObjects = new pickObjects();
     }
     public static String getObjectName() {
@@ -106,10 +106,14 @@ public class SuperEvent {
     }
 //*Put in update */
     public void checkEvent(int worldX, int worldY) {
+        musicEvent(51, 57, "squidGame", "sea");
+
         switchPlayer.set(worldX, worldY);
         // switchPlayer.set(player.worldX, player.worldY);
         if (gp.keyBoard.isSpace == true) {
             setState();
+            System.out.println("x"+worldX/48+"y"+worldY/48);
+            System.out.println(player.direction);
             
          }
          if(getObjects.chest_temp== true&&gp.keyBoard.isSpace == true) {
@@ -123,11 +127,12 @@ public class SuperEvent {
         return null;
     }
     public void musicEvent(int x, int y, String music_left, String music_right) {
-        if (hit(x, y, "left") && run) {
+        if (hit(58, 51, "left")) {
+            System.out.println("2");
             gp.stopMusic();
             gp.playMusic(music_left);
             run = false;
-        } else if (hit(x, y, "right") && !run) {
+        } else if (hit(58, 51, "right") && !run) {
             gp.stopMusic();
             gp.playMusic(music_right);
             run = true;
@@ -153,6 +158,7 @@ public class SuperEvent {
         eventRectangle.y = defultY;
         return hit;
     }
+    
     /**
      Add a object in the map
     @param name : object name
@@ -185,7 +191,7 @@ public class SuperEvent {
     public void nextState(int states){
         state = states;
     }
-    protected void setState(){
+    public void setState(){
             gp.gamestate = state;
             player.isMove = true;        
     }

@@ -18,6 +18,7 @@ public class Quizz_Events extends SuperEvent {
         if(objectName=="question"){
             if(getObjectIndex()==13||getObjectIndex()==14){
                 announce("correct. Please choose a portal to pass");
+                clear_object();
             }
             else{
                 announce("Correct, you can pass");
@@ -31,6 +32,10 @@ public class Quizz_Events extends SuperEvent {
                 Key1();
                 isDoll = false;
             }
+        }
+        if(objectName=="monster"){
+            announce("Correct, you can pass me");
+            clear_object();
         }
         
 
@@ -48,10 +53,18 @@ public class Quizz_Events extends SuperEvent {
                 announce("Wrong and go away. I will take your key as punnish");
                 loseKey();
                 setTeleport(52, 29);
-
-
             }
+        
         }
+        if(getObjectIndex()==13||getObjectIndex()==14){
+            announce("Wrong.");
+            setTeleport(15, 81);
+        }
+        if(objectName=="monster"){
+            announce("Wrong. You can not pass me. Here is your punnish");
+            setTeleport(44, 71);
+        }
+        
     }
     public void teleport() {
         super.teleport(x, y,"right");

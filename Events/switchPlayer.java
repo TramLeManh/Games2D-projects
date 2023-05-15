@@ -3,21 +3,20 @@ package Events ;
 import main.GamePanel;
 
 public class switchPlayer extends SuperEvent{
-    public switchPlayer() {
+    private SuperEvent event;
+    public switchPlayer(SuperEvent events) {
+        this.event = events;
     }
     private boolean checkPlace(int index) {
         switch (index) {
             case 1:
-                if (hit(60, 41,"down")||
-                hit(61, 41,"down")||
-                hit(62, 41,"down")||
-                hit(63, 41  ,"down")) {
+                if (event.hit(61, 46,"up")) {
                     return true;
                 }
                 break;
             case 2:
 
-                if (hit(60,19,"up")||hit(61,19,"up")||hit(62,19,"up")||hit(63,19,"up")) {
+                if (event.hit(60,19,"up")) {
                     return true;
                 }
                 break;
@@ -28,7 +27,7 @@ public class switchPlayer extends SuperEvent{
 /* need update code */
     public void setAnnouncement() {
         if (checkPlace(1)) {
-            if (gp.player.keyBoard.downPress == true && gp.player.getTransfer() == true) {
+            if (gp.player.keyBoard.upPress == true && gp.player.getTransfer() == true) {
     
                 announce("You can not pass lava. Please change character");
             } else if ( gp.player.keyBoard.rightPress || gp.player.keyBoard.leftPress

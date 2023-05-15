@@ -33,6 +33,8 @@ public class Player extends Entity {
 
     }
     public void DefultValues() {
+        this.gp = gp;
+        this.keyBoard = keyBoard;
         screenX = gp.screenWidth / 2 - (gp.tileSize / 2);
         screenY = gp.screenHeight / 2 - (gp.tileSize / 2);
         solidArea = new Rectangle();
@@ -45,8 +47,8 @@ public class Player extends Entity {
 
     }
     public void setDefultValues() {
-        worldX = gp.tileSize * 60;
-        worldY = gp.tileSize * 51  ;
+        worldX = gp.tileSize * 11;
+        worldY = gp.tileSize * 31  ;
         speed = 3;
         direction = "down";
         transfer = false; 
@@ -54,8 +56,6 @@ public class Player extends Entity {
     }
     public void update() {
         gp.eventH.checkEvent(worldX, worldY);
-        gp.eventH.musicEvent(51, 58, "squidGame", "sea");
-        ;
         //keyBoard player
         
         if((gp.gamestate==gp.announceState||gp.gamestate==gp.playState)){

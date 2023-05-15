@@ -139,6 +139,9 @@ public class pickObjects extends SuperEvent{
                 announce("I can not help you anymore.");
             }
         }
+        if(objectName=="monster"){
+            gp.gamestate = gp.quizzState;
+        }
         }
 
 
