@@ -40,8 +40,8 @@ public class Player extends Entity {
 
     }
     public void setDefultValues() {
-        worldX = gp.tileSize * 15;//15
-        worldY = gp.tileSize * 11 ;//11
+        worldX = gp.tileSize * 60;//15
+        worldY = gp.tileSize * 19 ;//11
         speed = 3;
         direction = "down";
         transfer = true; 
@@ -80,6 +80,8 @@ public class Player extends Entity {
 
                 // object collision
                 gp.eventH.pickObjects();
+                gp.eventH.switchPlayer.set(worldX, worldY);
+
 
                 spriteCounter++;
                 // gp.eventH.checkEvent();

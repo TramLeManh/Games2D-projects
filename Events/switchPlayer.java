@@ -16,7 +16,9 @@ public class switchPlayer extends SuperEvent{
                 break;
             case 2:
 
-                if (event.hit(60,19,"up")) {
+                if (event.hit(60,19,"up")||event.hit(61,19,"up")||
+                    event.hit(62,19,"up")||event.hit(62,19,"up")
+                    ||event.hit(63,19,"up")) {
                     return true;
                 }
                 break;
@@ -27,22 +29,19 @@ public class switchPlayer extends SuperEvent{
 /* need update code */
     public void setAnnouncement() {
         if (checkPlace(1)) {
-            if (keyControl.upPress == true && gp.player.getTransfer() == true) {
-    
+            if (gp.player.getTransfer() == true) {
                 announce("You can not pass lava. Please change character");
-            } else if ( keyControl.rightPress || keyControl.leftPress
-                    || !gp.player.getTransfer() || keyControl.isOne) {
+            } else if ( !gp.player.getTransfer() || keyControl.isSpace) {
                 gp.setGamestate(gp.playState);
             }
         }
         if (checkPlace(2)) {
-            if (keyControl.upPress == true && gp.player.getTransfer() == false) {
+            if (!gp.player.getTransfer()) {
             
                 announce("You can not pass river. Please change character");
 
-                gp.setGamestate(gp.announceState);
-            } else if (keyControl.rightPress || keyControl.leftPress
-                    || gp.player.getTransfer() || keyControl.isTwo) {
+                // gp.setGamestate(gp.announceState);
+            } else if (!gp.player.getTransfer() || keyControl.isSpace) {
                 gp.setGamestate(gp.playState);
             }
         }

@@ -19,7 +19,7 @@ public abstract class SuperUI {
 
     public void drawSubScreen(int x, int y, int width, int height) {
         g2.setFont(new Font("Serif", Font.ITALIC, 30));
-        Color color = new Color(0, 0, 0, 100);
+        Color color = new Color(0, 0, 0,200);
         g2.setColor(color);// nền trong
         g2.fillRoundRect(x, y, width, height, 35, 35);
         g2.setColor(Color.white);// viền
@@ -73,8 +73,6 @@ public abstract class SuperUI {
         }
         // g2.drawString(text, x, y);
         g2.drawString(this.sub_text, width - word_length, height);
-
-
     }
 
 }
