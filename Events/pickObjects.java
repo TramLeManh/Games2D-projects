@@ -248,7 +248,7 @@ public class pickObjects extends SuperEvent {
                 }
 
             } else  {
-                announce("Speed up");
+                announce("Speed up \n abc");
                 gp.playSE("powerUp");
                 ModeSpeed(+1);
                 clear();

@@ -50,7 +50,11 @@ public abstract class SuperUI {
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 20F));
         x += gp.tileSize;
         y += gp.tileSize;
-        g2.drawString(this.text, x, y);
+        // g2.drawString(this.text, x, y);
+        for(String line  :text.split("\n")){
+            g2.drawString(line,x,y);
+            y+=40;
+        }
         g2.drawString(this.sub_text, width - 150, height);
     }
 
@@ -63,8 +67,14 @@ public abstract class SuperUI {
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 20F));
         x += gp.tileSize;
         y += gp.tileSize;
-        g2.drawString(text, x, y);
+        for(String line :text.split("\n")){
+            g2.drawString(line,x,y);
+            y+=40;
+        }
+        // g2.drawString(text, x, y);
         g2.drawString(this.sub_text, width - word_length, height);
+
+
     }
 
 }
