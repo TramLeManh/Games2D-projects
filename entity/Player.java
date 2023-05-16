@@ -40,8 +40,8 @@ public class Player extends Entity {
 
     }
     public void setDefultValues() {
-        worldX = gp.tileSize * 60;//15
-        worldY = gp.tileSize * 19 ;//11
+        worldX = gp.tileSize * 15;//15
+        worldY = gp.tileSize * 14 ;//11
         speed = 3;
         direction = "down";
         transfer = true; 
@@ -57,7 +57,8 @@ public class Player extends Entity {
                 gp.stopMusic();
             }
         }
-      
+        gp.eventH.switchPlayer.set(worldX, worldY);
+ 
 
         // movements
         if (isMove) {
@@ -74,14 +75,15 @@ public class Player extends Entity {
                 }
                 // check collision
 
+                gp.eventH.pickObjects();
+
+
                 collisionEnabled = false;
 
                 gp.cCheck.checkTile(this);
 
                 // object collision
-                gp.eventH.pickObjects();
-                gp.eventH.switchPlayer.set(worldX, worldY);
-
+           
 
                 spriteCounter++;
                 // gp.eventH.checkEvent();

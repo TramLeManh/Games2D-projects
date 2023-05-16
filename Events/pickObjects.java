@@ -38,7 +38,7 @@ public class pickObjects extends SuperEvent {
         } else if (objectName == "door") {
             if (index == 26 || index == 27)
                 if (player.getKey_count() > 0) {
-
+  
                     gp.playSE("unlock");
                     // gp.object[index] = null;
                     player.setKey_count(player.getKey_count() - 1);
@@ -103,12 +103,12 @@ public class pickObjects extends SuperEvent {
             }
             if (index == 39) {
                 gp.playSE("chest");
-                announce("You got a dark magic that makes you lose speed");
+                announce("You have got a dark magic that makes you lose speed");
                 ModeSpeed(-1);
                 clear();
             }
             if (index == 38) {
-                if (Keys() == 1||Keys()==0&&(gp.object[31]==null||gp.object[29]==null)) {
+                if (Keys() == 1||(Keys()==0&&(gp.object[31]==null||gp.object[29]==null))) {
                     if (player.speed == 3) {
                         gp.playSE("chest");
                         announce("You got a key and buff up");
@@ -133,6 +133,11 @@ public class pickObjects extends SuperEvent {
                         announce("There is nothing inside the chess");
                         clear();
                     }
+                }
+                else if(Keys()==0&&(gp.object[31]!=null||gp.object[29]!=null)){
+                    gp.playSE("chest");
+                    announce("There is nothing inside the chess");
+                    clear();
                 }
             }
         }
@@ -180,13 +185,13 @@ public class pickObjects extends SuperEvent {
                     }
                     else if (player.speed == 3) {
                         announce("Thank you. Here is spped power as gift");
-                        ModeSpeed(+1);
+                        ModeSpeed(1);
                         gp.playSE("clear");
                         clear();
                     }
                     else if (player.speed == 2&&gp.object[30]!=null) {
                         announce("Thank you. Here is spped power as gift");
-                        ModeSpeed(+1);
+                        ModeSpeed(1);
                         gp.playSE("clear");
                         clear();
                     }

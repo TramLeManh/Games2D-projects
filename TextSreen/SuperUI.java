@@ -18,7 +18,7 @@ public abstract class SuperUI {
     public Fonts font = new Fonts();
 
     public void drawSubScreen(int x, int y, int width, int height) {
-        g2.setFont(new Font("Serif", Font.ITALIC, 30));
+        g2.setFont(new Font("Arial", Font.ITALIC, 30));
         Color color = new Color(0, 0, 0,200);
         g2.setColor(color);// nền trong
         g2.fillRoundRect(x, y, width, height, 35, 35);
@@ -47,7 +47,7 @@ public abstract class SuperUI {
         int width = gp.screenWidth - (4 * gp.tileSize);
         int height = (4 * gp.tileSize);
         drawSubScreen(x, y, width, height);
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 20F));
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 18F));
         x += gp.tileSize;
         y += gp.tileSize;
         // g2.drawString(this.text, x, y);
@@ -55,7 +55,7 @@ public abstract class SuperUI {
             g2.drawString(line,x,y);
             y+=40;
         }
-        g2.drawString(this.sub_text, width - 150, height);
+        g2.drawString(this.sub_text, width - 130, height);
     }
 
     public void drawScreen(String text) {
@@ -64,7 +64,7 @@ public abstract class SuperUI {
         int width = gp.screenWidth - (4 * gp.tileSize);
         int height = (4 * gp.tileSize);
         drawSubScreen(x, y, width, height);
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 20F));
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 18F));
         x += gp.tileSize;
         y += gp.tileSize;
         for(String line :text.split("\n")){

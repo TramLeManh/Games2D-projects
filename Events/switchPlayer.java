@@ -10,7 +10,7 @@ public class switchPlayer extends SuperEvent{
     private boolean checkPlace(int index) {
         switch (index) {
             case 1:
-                if (event.hit(61, 46,"up")) {
+                if (event.hit(61, 46,"up")||event.hit(42, 30,"up")) {
                     return true;
                 }
                 break;
@@ -35,7 +35,7 @@ public class switchPlayer extends SuperEvent{
                 gp.setGamestate(gp.playState);
             }
         }
-        if (checkPlace(2)) {
+        else if (checkPlace(2)) {
             if (!gp.player.getTransfer()) {
             
                 announce("You can not pass river. Please change character");

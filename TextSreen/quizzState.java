@@ -44,7 +44,7 @@ public class quizzState extends SuperUI {
         questions[3].answer = true;
 
         questions[4] = new setQuestions();
-        questions[4].text = "Tri dep trai";
+        questions[4].text = "One can devide by zero";
         questions[4].answer = false;
         
         questions[5] = new setQuestions();
@@ -52,8 +52,8 @@ public class quizzState extends SuperUI {
         questions[5].answer = false;
 
         questions[6] = new setQuestions();
-        questions[6].text = "special Quizz";
-        questions[6].answer = false;
+        questions[6].text = "A good developer should follow S.O.L.I.D principle";
+        questions[6].answer = true;
     }
 
     public void draw(Graphics2D g2) {

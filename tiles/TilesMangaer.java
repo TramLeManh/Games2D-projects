@@ -61,8 +61,8 @@ public class TilesMangaer extends Tiles {
             setup(2,"2.earth", false);
             setup(3,"3.wall", true);
             setup(4,"4.tree", true);
-            setup(5,"5.lava", false);
-            setup(6,"6.water", true);//lava.collison =false;
+            setup(5,"5.lava", true );
+            setup(6,"6.water", false) ;//lava.collison =false;
     }
 
     public void update() {
