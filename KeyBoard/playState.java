@@ -37,7 +37,7 @@ public class playState extends keyControl implements KeyBoard {
 
     @Override
     public void keyReleased(int key_code) {
-        if (((key_code == KeyEvent.VK_A || key_code == KeyEvent.VK_LEFT)) {
+        if (((key_code == KeyEvent.VK_A || key_code == KeyEvent.VK_LEFT))) {
             leftPress = false;
         }
         else if (key_code == KeyEvent.VK_P) {
