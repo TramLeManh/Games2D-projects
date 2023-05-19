@@ -40,8 +40,8 @@ public class Player extends Entity {
 
     }
     public void setDefultValues() {
-        worldX = gp.tileSize * 52 ;//15
-        worldY = gp.tileSize * 29 ;//11
+        worldX = gp.tileSize * 15 ;//15
+        worldY = gp.tileSize * 11 ;//11
         speed = 3;
         direction = "down";
         transfer = true; 
@@ -129,16 +129,17 @@ public class Player extends Entity {
         Key_count = key_count;
     }
     public void reset(){
-        gp.tilesM.tile[2].collision = true;//water
-        gp.tilesM.tile[6].collision = false;//lava
-        worldX = gp.tileSize * 15;//15
-        worldY = gp.tileSize * 11;//11
+        // gp.tilesM.tile[2].collision = true;//water
+        // gp.tilesM.tile[6].collision = false;//lava
+        // worldX = gp.tileSize * 15;//15
+        // worldY = gp.tileSize * 11;//11
         speed = 3;
         direction = "down";
         Key_count = 0;
         isMove = true;
-        transfer = true;
         gp.gamestate = gp.playState;
+        collisionEnabled = false;
+
     }
     
 

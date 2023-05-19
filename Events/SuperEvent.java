@@ -108,7 +108,7 @@ public class SuperEvent {
     }
 //*Put in update */
     public void checkEvent(int worldX, int worldY) {
-        musicEvent(51, 57, "squidGame", "sea");
+        musicEvent(51, 57, "squidGame", "road");
         // switchPlayer.set(worldX, worldY);
         // switchPlayer.set(player.worldX, player.worldY);
         if (keyControl.isSpace == true) {
