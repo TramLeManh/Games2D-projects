@@ -185,7 +185,7 @@ public class pickObjects extends SuperEvent {
                 teleport(14, 62, "down");
             }
 
-        } else if (objectName == "oldman") {
+        } else if (objectName == "oldman"&&player.direction == "right") {
             // if (index == 32) {
             //     if (!haveToothpaste) {
             //         announce("I lost the toothpaste. Can you please find it ?");

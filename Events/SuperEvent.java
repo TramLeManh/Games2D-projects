@@ -27,6 +27,7 @@ public class SuperEvent {
     public static boolean isDoll = true;
     public static boolean isMan = true;
     private int index = 0;
+    public boolean isFirst = true;
     public static  boolean teleport = false; 
     public SuperEvent(GamePanel gp, Player player) {
         SuperEvent.gp = gp;
@@ -213,6 +214,8 @@ public class SuperEvent {
         run = true;
         isDoll = true;
         getObjects.setHaveToothpaste(false);
+        isMan = true;
+        isFirst = true;
     }
 
 

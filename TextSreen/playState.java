@@ -38,7 +38,6 @@ public class playState extends SuperUI{
     public void time(){
         Font font = new Font("Arial", Font.PLAIN, 40);
         picture  p = new picture();
-        BufferedImage clock = p.get("clock");
 
         g2.setColor(Color.white);
         g2.setFont(font);

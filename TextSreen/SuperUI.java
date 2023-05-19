@@ -35,7 +35,7 @@ public abstract class SuperUI {
 
     public SuperUI(GamePanel gp, Graphics2D g2) {
         SuperUI.gp = gp;
-        this.g2 = g2;
+        SuperUI.g2 = g2;
     }
 
     public SuperUI(GamePanel gp) {
