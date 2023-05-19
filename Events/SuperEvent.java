@@ -198,14 +198,14 @@ public class SuperEvent {
         return player.getKey_count();
     }
     public void Key1() {
-            gp.object[30] = new object_Key();
-            gp.object[30].worldX = 60 * gp.tileSize;
-            gp.object[30].worldY = 16 * gp.tileSize;
+            gp.object[42] = new object_Key();
+            gp.object[42].worldX = 60 * gp.tileSize;
+            gp.object[42].worldY = 16 * gp.tileSize;
     }
     public void Key2() {
-        gp.object[31] = new object_Key();
-        gp.object[31].worldX = 62 * gp.tileSize;
-        gp.object[31].worldY = 43 * gp.tileSize;
+        gp.object[41] = new object_Key();
+        gp.object[41].worldX = 62 * gp.tileSize;
+        gp.object[41].worldY = 43 * gp.tileSize;
 }
     public void reset(){
         run = true;

@@ -11,7 +11,7 @@ import main.GamePanel;
 
 public class quizzState extends SuperUI {
     private Quizz_Events events;
-    public setQuestions questions[] = new setQuestions[10];
+    public setQuestions questions[] = new setQuestions[11];
     private Random random = new Random();
     private int i = random.nextInt(3);
 
@@ -27,33 +27,50 @@ public class quizzState extends SuperUI {
     public void setup() {
         // questions
         questions[0] = new setQuestions();
-        questions[0].text = "Final varible can not be change";
+        questions[0].text = "Final varible or final method can not be change";
         questions[0].answer = true;// fanswer
 
         questions[1] = new setQuestions();
-        questions[1].text = "Public can acess anywhere";
-        questions[1].answer = true;
+        questions[1].text = "int a = 4%2\n the result  a is 2 ";
+        questions[1].answer = true; 
 
         questions[2] = new setQuestions();
-        questions[2].text = "1+1=3";
-        questions[2].answer = false;//
+        questions[2].text = " High-level modules should depend on abstractions \n rather than concrete implementations";
+        questions[2].answer = true;//
 
 
         questions[3] = new setQuestions();
-        questions[3].text = "1+4=5";
-        questions[3].answer = true;
+        questions[3].text = "int a = 2 \n int b  = ++a + a; \n The result of b is 4  ";
+        questions[3].answer = false;
 
         questions[4] = new setQuestions();
-        questions[4].text = "One can devide by zero";
+        questions[4].text = "We can overide the final method ";
         questions[4].answer = false;
         
         questions[5] = new setQuestions();
-        questions[5].text = "Oop is easy";
+        questions[5].text = "You can extends abstract class \n without using abstract methods";
         questions[5].answer = false;
 
         questions[6] = new setQuestions();
-        questions[6].text = "A good developer should follow S.O.L.I.D principle";
+        questions[6].text = "You can use overide method without exntending class";
         questions[6].answer = true;
+
+        questions[7] = new setQuestions();
+        questions[7].text = "You can use overide method without exntending class";
+        questions[7].answer = true;
+
+        questions[8] = new setQuestions();
+        questions[8].text = "A software Class or module should be open for \n modification but closed for extension  ";
+        questions[8].answer = false;
+        
+        questions[9] = new setQuestions();
+        questions[9].text = "public class Student {\n public void registerStudent() { // some logic } \n public void calculate_Student_Results() { // some logic }} \n This is a good desgin";
+        questions[9].answer = false;
+        
+        questions[10] = new setQuestions();
+        questions[10].text = "Client should be forced to depend on methods it does not use";
+        questions[10].answer = false;
+        
     }
 
     public void draw(Graphics2D g2) {
@@ -70,13 +87,12 @@ public class quizzState extends SuperUI {
             gp.player.isMove = false;
             if (SuperEvent.getObjectName()=="monster"){
                 i = 6;
-            }else{  
             }
             if(keyControl.tPress==true){
                     if(questions[i].answer == true){
                         System.out.println(i+" "+questions[i].answer);
                         events.correct();
-                        i = random.nextInt(6);
+                        i = random.nextInt(11);
                         System.out.println("clear");
                         // i = random.nextInt(6);
 
@@ -85,7 +101,7 @@ public class quizzState extends SuperUI {
                     else if(questions[i].answer == false){
                         System.out.println(i+" "+questions[i].answer);
                         events.wrong();
-                        i = random.nextInt(6);
+                        i = random.nextInt(11);
 
                     }
                     keyControl.tPress = false;
@@ -96,7 +112,7 @@ public class quizzState extends SuperUI {
                         System.out.println(i+" "+questions[i].answer);
 
                         events.wrong();
-                        i = random.nextInt(6);
+                        i = random.nextInt(11);
 
                     }
                     else if(questions[i].answer == false){
@@ -104,7 +120,7 @@ public class quizzState extends SuperUI {
 
                         events.correct();
 
-                        i = random.nextInt(6);
+                        i = random.nextInt(11);
 
                     }
                     keyControl.fPress = false;

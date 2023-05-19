@@ -24,6 +24,8 @@ public class pickObjects extends SuperEvent {
                 clear();
 
             } else if (index == 37) {
+                gp.playSE("coin");
+
                 announce("This is cures key. Not the real one :))). Here its curse");
                 setTeleport(39, 24);
                 clear();
@@ -108,22 +110,22 @@ public class pickObjects extends SuperEvent {
                 clear();
             }
             if (index == 38) {
+                gp.playSE("chest");
                 if (Keys() == 1||(Keys()==0&&(gp.object[31]==null||gp.object[29]==null))) {
                     if (player.speed == 3) {
-                        gp.playSE("chest");
                         announce("You got a key and buff up");
-                        ModeSpeed(+1);
+                        gp.playSE("powerUp");  
+                        ModeSpeed(+1); 
                         addKey();
                         clear();
                     } else if (player.speed == 4) {
                         announce("You got a key");
                         gp.playSE("chest");
-
                         addKey();
                         clear();
                     }
                 } else if (Keys() == 2) {
-                    if (player.speed == 3) {
+                    if (player.speed == 3&&gp.object[42]==null) {
                         announce("You got a buff up");
                         ModeSpeed(+1);
                         gp.playSE("powerUp");
@@ -134,10 +136,18 @@ public class pickObjects extends SuperEvent {
                         clear();
                     }
                 }
-                else if(Keys()==0&&(gp.object[31]!=null||gp.object[29]!=null)){
-                    gp.playSE("chest");
-                    announce("There is nothing inside the chess");
-                    clear();
+                else if(Keys()==0&&(gp.object[31]!=null&&gp.object[29]!=null)){
+                    if(player.speed ==3&&gp.object[42]==null){
+                        announce("You got a buff up");
+                        gp.playSE("powerUp");
+                        ModeSpeed(+1);
+                        clear();
+                    }
+                    else{
+                        announce("There is nothing inside the chess");
+                        clear();
+                    }
+                   
                 }
             }
         }
@@ -189,7 +199,7 @@ public class pickObjects extends SuperEvent {
                         gp.playSE("clear");
                         clear();
                     }
-                    else if (player.speed == 2&&gp.object[30]!=null) {
+                    else if (player.speed == 2&&gp.object[42]!=null) {
                         announce("Thank you. Here is spped power as gift");
                         ModeSpeed(1);
                         gp.playSE("clear");
@@ -206,12 +216,12 @@ public class pickObjects extends SuperEvent {
                     announce("It's a lovely day");
 
                 }
-                if ((gp.object[31] == null) && (gp.object[30] == null) && Keys() == 1) {
+                if ((gp.object[41] == null) && (gp.object[42] == null) && Keys() == 1) {
                     announce("You again. Here is a key and speed up. Go find princess");
                     addKey();
                     ModeSpeed(2);
                 }
-                if (Keys() == 1 && (gp.object[30] == null)) {
+                if (Keys() == 1 && (gp.object[42] == null)) {
                     announce("find your princess");
                 }
                 if (Keys() == 1 && isDoll == false) {
@@ -237,15 +247,14 @@ public class pickObjects extends SuperEvent {
                         ModeSpeed(-1);
                         clear();
                     }
-                    {
-                        if (player.speed == 3) {
+    
+                        else if (player.speed == 3) {
                             announce("Here your ehance");
                             ModeSpeed(+1);
                             gp.playSE("powerUp");
                             clear();
-                        }
-                    }
-                }
+                        }             
+                       }
                 if (gp.object[38] == null) {
                     announce("It is a good apple");
                     gp.playSE("coin");

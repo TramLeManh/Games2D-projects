@@ -137,7 +137,7 @@ public class Player extends Entity {
         direction = "down";
         Key_count = 0;
         isMove = true;
-        transfer = false;
+        transfer = true;
         gp.gamestate = gp.playState;
     }
     
