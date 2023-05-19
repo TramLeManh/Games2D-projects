@@ -10,17 +10,14 @@ public class switchPlayer extends SuperEvent{
     private boolean checkPlace(int index) {
         switch (index) {
             case 1:
-                if (event.hit(61, 46,"up")||event.hit(42, 30,"up")) {
-                    return true;
-                }
+                // if (event.hit(61, 46,"up")||event.hit(42, 30,"up")) {
+                //     return true;
+                // }
                 break;
             case 2:
 
-                if (event.hit(60,19,"up")||event.hit(61,19,"up")||
-                    event.hit(62,19,"up")||event.hit(62,19,"up")
-                    ||event.hit(63,19,"up")) {
-                    return true;
-                }
+              
+                    
                 break;
         }
         return false;
