@@ -40,8 +40,8 @@ public class Player extends Entity {
 
     }
     public void setDefultValues() {
-        worldX = gp.tileSize * 15;//15
-        worldY = gp.tileSize * 14 ;//11
+        worldX = gp.tileSize * 52 ;//15
+        worldY = gp.tileSize * 29 ;//11
         speed = 3;
         direction = "down";
         transfer = true; 
@@ -131,8 +131,8 @@ public class Player extends Entity {
     public void reset(){
         gp.tilesM.tile[2].collision = true;//water
         gp.tilesM.tile[6].collision = false;//lava
-        worldX = gp.tileSize * 15;
-        worldY = gp.tileSize * 11;
+        worldX = gp.tileSize * 15;//15
+        worldY = gp.tileSize * 11;//11
         speed = 3;
         direction = "down";
         Key_count = 0;

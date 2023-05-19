@@ -28,11 +28,9 @@ public class Quizz_Events extends SuperEvent {
             }
         }
         if(objectName=="doll"){
-            if(Keys()>-1){
                 announce("Correct. There is something may help you in the North pool");
                 Key1();
                 isDoll = false;
-            }
         }
         if(objectName=="monster"){
             if(getObjectIndex() ==35){

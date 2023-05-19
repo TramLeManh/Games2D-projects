@@ -1,5 +1,6 @@
-package Events;
+package Events.pickObjects;
 
+import Events.SuperEvent;
 import KeyBoard.keyControl;
 
 public class pickObjects extends SuperEvent {
@@ -11,6 +12,7 @@ public class pickObjects extends SuperEvent {
     private int x;
     private int y;
     private boolean haveToothpaste = false;
+    private oldman oldman =  new oldman();
 
     public pickObjects() {
     }
@@ -84,13 +86,14 @@ public class pickObjects extends SuperEvent {
             else if (index == 24) {
                 announce("This a fake princess. She is somewhere in the world.");
                 addObject("portal", 77, 6, 35);
+                gp.playSE("clear");
                 clear();
 
             } 
 
         } else if (objectName == "chest") {
             if (index == 25) {
-                announce("You got a chess prince. Here is your prize.");
+                announce("You got a princess's chest. Here is your prize.");
                 gp.playSE("chest");
                 setTeleport(51, 29);
                 clear();
@@ -110,7 +113,6 @@ public class pickObjects extends SuperEvent {
                 clear();
             }
             if (index == 38) {
-                gp.playSE("chest");
                 if (Keys() == 1||(Keys()==0&&(gp.object[31]==null||gp.object[29]==null))) {
                     if (player.speed == 3) {
                         announce("You got a key and buff up");
@@ -125,7 +127,7 @@ public class pickObjects extends SuperEvent {
                         clear();
                     }
                 } else if (Keys() == 2) {
-                    if (player.speed == 3&&gp.object[42]==null) {
+                    if (player.speed == 3&&gp.object[32]==null) {
                         announce("You got a buff up");
                         ModeSpeed(+1);
                         gp.playSE("powerUp");
@@ -137,7 +139,7 @@ public class pickObjects extends SuperEvent {
                     }
                 }
                 else if(Keys()==0&&(gp.object[31]!=null&&gp.object[29]!=null)){
-                    if(player.speed ==3&&gp.object[42]==null){
+                    if(player.speed ==3&&gp.object[36]==null){
                         announce("You got a buff up");
                         gp.playSE("powerUp");
                         ModeSpeed(+1);
@@ -184,51 +186,52 @@ public class pickObjects extends SuperEvent {
             }
 
         } else if (objectName == "oldman") {
-            if (index == 32) {
-                if (!haveToothpaste) {
-                    announce("I lost the toothpaste. Can you please find it ?");
-                } else {
-                    if (player.speed == 4) {
-                        announce("Thank you. Have a nice day.");
-                        gp.playSE("clear");
-                        clear();
-                    }
-                    else if (player.speed == 3) {
-                        announce("Thank you. Here is spped power as gift");
-                        ModeSpeed(1);
-                        gp.playSE("clear");
-                        clear();
-                    }
-                    else if (player.speed == 2&&gp.object[42]!=null) {
-                        announce("Thank you. Here is spped power as gift");
-                        ModeSpeed(1);
-                        gp.playSE("clear");
-                        clear();
-                    }
-                }
+            // if (index == 32) {
+            //     if (!haveToothpaste) {
+            //         announce("I lost the toothpaste. Can you please find it ?");
+            //     } else {
+            //         if (player.speed == 4) {
+            //             announce("Thank you. Have a nice day.");
+            //             gp.playSE("clear");
+            //             clear();
+            //         }
+            //         else if (player.speed == 3) {
+            //             announce("Thank you. Here is spped power as gift");
+            //             ModeSpeed(1);
+            //             gp.playSE("clear");
+            //             clear();
+            //         }
+            //         else if (player.speed == 2&&gp.object[42]!=null) {
+            //             announce("Thank you. Here is spped power as gift");
+            //             ModeSpeed(1);
+            //             gp.playSE("clear");
+            //             clear();
+            //         }
+            //     }
 
-            } else {
-                if (Keys() == 0 && gp.object[27] != null) {
-                    announce("Hello, there is something in the lava");
-                    Key2();
-                }
-                if (Keys() == 0 && gp.object[27] == null) {
-                    announce("It's a lovely day");
+            // } else {
+            //     if (Keys() == 0 && gp.object[27] != null) {
+            //         announce("Hello, there is something in the lava");
+            //         Key2();
+            //     }
+            //     if (Keys() == 0 && gp.object[27] == null) {
+            //         announce("It's a lovely day");
 
-                }
-                if ((gp.object[41] == null) && (gp.object[42] == null) && Keys() == 1) {
-                    announce("You again. Here is a key and speed up. Go find princess");
-                    addKey();
-                    ModeSpeed(2);
-                }
-                if (Keys() == 1 && (gp.object[42] == null)) {
-                    announce("find your princess");
-                }
-                if (Keys() == 1 && isDoll == false) {
-                    announce("Here is some power");
-                    ModeSpeed(2);
-                }
-            }
+            //     }
+            //     if ((gp.object[41] == null) && (gp.object[42] == null) && Keys() == 1) {
+            //         announce("You again. Here is a key and speed up. Go find princess");
+            //         addKey();
+            //         ModeSpeed(2);
+            //     }
+            //     if (Keys() == 1 && (gp.object[42] == null)) {
+            //         announce("find your princess");
+            //     }
+            //     if (Keys() == 1 && isDoll == false) {
+            //         announce("Here is some power");
+            //         ModeSpeed(2);
+            //     }
+            // }
+            oldman.set(this,index);
         } else if (objectName == "doll") {
             if (isDoll == true) {
                 gp.setGamestate( gp.quizzState);
@@ -316,4 +319,8 @@ public class pickObjects extends SuperEvent {
     public void setHaveToothpaste(boolean haveToothpaste) {
         this.haveToothpaste = haveToothpaste;
     }
+    public boolean isHaveToothpaste() {
+        return haveToothpaste;
+    }
+    
 }

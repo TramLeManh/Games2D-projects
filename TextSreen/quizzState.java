@@ -32,7 +32,7 @@ public class quizzState extends SuperUI {
 
         questions[1] = new setQuestions();
         questions[1].text = "int a = 4%2\n the result  a is 2 ";
-        questions[1].answer = true; 
+        questions[1].answer = false; 
 
         questions[2] = new setQuestions();
         questions[2].text = " High-level modules should depend on abstractions \n rather than concrete implementations";

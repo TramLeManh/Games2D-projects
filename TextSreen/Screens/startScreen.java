@@ -122,7 +122,7 @@ public class startScreen implements UI_interface {
         x = LocateCenterText(text);
         y+= gp.tileSize;
         g2.drawString(text, x, y);
-        g2.drawImage(pictures.get("back"),48*2+20,y+10,null);
+        g2.drawImage(pictures.get("Instructions"),48*2+20,y+10,null);
         // g2.setColor(Color.black);
         // g2.drawRect(48*2+20,y+ 10,gp.screenWidth - (4*gp.tileSize)-40 , height-110);
         

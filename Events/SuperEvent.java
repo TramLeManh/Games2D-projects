@@ -2,6 +2,7 @@ package Events;
 
 import java.awt.*;
 
+import Events.pickObjects.pickObjects;
 import KeyBoard.keyControl;
 import entity.Player;
 import main.GamePanel;
@@ -24,6 +25,7 @@ public class SuperEvent {
     public static int max_announce;
     public static String annouces[];
     public static boolean isDoll = true;
+    public static boolean isMan = true;
     private int index = 0;
     public static  boolean teleport = false; 
     public SuperEvent(GamePanel gp, Player player) {
