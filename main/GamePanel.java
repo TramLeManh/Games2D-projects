@@ -7,23 +7,19 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-
 import Events.SuperEvent;
 import KeyBoard.keyControl;
-import TextSreen.SuperUI;
 import TextSreen.announceState;
-import TextSreen.pauseScreen;
 import TextSreen.playState;
 import TextSreen.quizzState;
-import TextSreen.startScreen;
+import TextSreen.Screens.pauseScreen;
+import TextSreen.Screens.startScreen;
 import tiles.TilesMangaer;
 
 import entity.Player;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.beans.EventHandler;
 
 public class GamePanel extends JPanel implements Runnable {
     public boolean detection = false;
@@ -31,6 +27,7 @@ public class GamePanel extends JPanel implements Runnable {
     public boolean end = false;
     final int originalTileSize = 16;
     final int scale = 3;
+    private int temp;
     public final int tileSize = originalTileSize * scale; /* 48*48 */
     public final int maxScreenCol = 16;//16
     public final int maxScreenRow = 12;//12
@@ -61,7 +58,7 @@ public class GamePanel extends JPanel implements Runnable {
     public collisionCheck cCheck = new collisionCheck(this);
     public SuperEvent eventH  = new SuperEvent(this,player);
     //Superobject Gamepannel 
-    public SuperObject object[] = new SuperObject[20];//create ten block objects
+    public SuperObject object[] = new SuperObject[50];//create ten block objects
     public object_set  objects = new object_set(this);
     public map map = new map(this);
     public boolean playMusic = true;
@@ -196,5 +193,11 @@ public class GamePanel extends JPanel implements Runnable {
     public void playSE(String name){
         SoundEffect.setFile(name);
         SoundEffect.play();
+    }
+    public void setGamestate(int gamestate) {
+        this.gamestate = gamestate;
+    }
+    public int getGamestate(){
+        return this.gamestate;
     }
 }

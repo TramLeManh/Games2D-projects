@@ -15,7 +15,7 @@ public class keyControl implements KeyListener {
     private KeyBoard startState, pauseState, playState;
 
     public keyControl(GamePanel gp) {
-        this.gp = gp;
+        keyControl.gp = gp;
         startState = new startState();
         pauseState = new pauseState();
         playState = new playState();

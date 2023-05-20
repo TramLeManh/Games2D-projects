@@ -2,8 +2,6 @@ package KeyBoard;
 
 import java.awt.event.KeyEvent;
 
-import main.GamePanel;
-
 public class pauseState extends keyControl implements KeyBoard {
     @Override
     public void keyPressed(int key_code) {
@@ -21,8 +19,8 @@ public class pauseState extends keyControl implements KeyBoard {
                 }
             }
             if (gp.pause.command == 0 && key_code == KeyEvent.VK_SPACE) {
-                gp.gamestate = gp.playState;/* //dk choi nhac lại khi chuyển vùng */
-                gp.playMusic(0);
+                gp.setGamestate(gp.playState);/* //dk choi nhac lại khi chuyển vùng */
+                // gp.playMusic(0);
             } else if (key_code == KeyEvent.VK_SPACE) {
                 gp.pause.drawSubScreen = true;
                 gp.pause.pause = true;
@@ -39,7 +37,7 @@ public class pauseState extends keyControl implements KeyBoard {
                         System.exit(0);
                     } else {
                         gp.map.reset();
-                        gp.gamestate = gp.playState;
+                        gp.setGamestate(gp.playState);
                         gp.pause.drawSubScreen = false;
                         gp.pause.command = 0;
                         gp.pause.pause = false;
@@ -56,7 +54,6 @@ public class pauseState extends keyControl implements KeyBoard {
     }
 
     public void keyReleased(int key_code) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'keyReleased'");
     }
 }

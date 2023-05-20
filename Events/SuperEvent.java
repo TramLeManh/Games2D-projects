@@ -2,31 +2,39 @@ package Events;
 
 import java.awt.*;
 
+import Events.pickObjects.pickObjects;
+import KeyBoard.keyControl;
 import entity.Player;
 import main.GamePanel;
 import object.object_Key;
+import object.object_door;
+import object.portal;
 
 public class SuperEvent {
     public static GamePanel gp;
-    public static  Rectangle eventRectangle;
-    private boolean isContinue = false;
-    int defultX, defultY;
+    public  Rectangle eventRectangle;
+    private int defultX, defultY;
     private boolean run = true;
     public static Player player;
-    private pickObjects getObjects;
-    private int object_index = 15;
+    public static pickObjects getObjects;
     public boolean clear = false;
     protected static String objectName;
     public switchPlayer switchPlayer;
     public static int state = 1;
-    public static  String text = " ";
+    public  String text = " ";
     public static int next_state;
     public static int max_announce;
     public static String annouces[];
-    private int i = 0;
+    public static boolean isDoll = true;
+    public static boolean isMan = true;
+    public static boolean isMonster = true;
+    private int index = 0;
+    public boolean isFirst = true;
+    public static  boolean teleport = false; 
+    public boolean closeDoor = false;
     public SuperEvent(GamePanel gp, Player player) {
-        this.gp = gp;
-        this.player = player;
+        SuperEvent.gp = gp;
+        SuperEvent.player = player;
         eventRectangle = new Rectangle();
         eventRectangle.x = 23;
         eventRectangle.y = 23;
@@ -34,7 +42,7 @@ public class SuperEvent {
         eventRectangle.height = 2;
         defultX = eventRectangle.x;
         defultY = eventRectangle.y;
-        switchPlayer = new switchPlayer();
+        switchPlayer = new switchPlayer(this);
         getObjects = new pickObjects();
     }
     public static String getObjectName() {
@@ -64,12 +72,25 @@ public class SuperEvent {
         gp.player.worldY = y * gp.tileSize;
         gp.player.direction = "up";
     }
+     /**
+    Teleport the player to some where in map
+    @param x : locate X
+    @param y : locate Y
+    @param  direction : "up","left","right","down"
+     */
+    public void teleport(int x, int y,String direction) {
+        gp.playSE("teleport");
+        gp.player.direction = direction;
+
+        gp.player.worldX = x * gp.tileSize;
+        gp.player.worldY = y * gp.tileSize;
+    }
 
     public void pickObjects() {
-            int index = gp.cCheck.checkObject(player, true);
+            index = gp.cCheck.checkObject(player, true);
             if (index != -1) {
                 objectName = gp.object[index].name;
-                getObjects.set(objectName, index);
+                getObjects.set(objectName,index);
             }
     }
    /**
@@ -84,23 +105,36 @@ public class SuperEvent {
     public void loseKey() {
         gp.player.setKey_count(gp.player.getKey_count() - 1);
     }
-
-    public void checkEvent(int worldX, int worldY) {
-        musicEvent(23, 20, "sea", "road");
-        // switchPlayer.set(worldX, worldY);
-        switchPlayer.set(player.worldX, player.worldY);
-        setState();
+    public void addKey(){
+        gp.player.setKey_count(gp.player.getKey_count() + 1);
 
     }
+//*Put in update */
+    public void checkEvent(int worldX, int worldY) {
+        musicEvent(51, 57, "squidGame", "road");
+        // switchPlayer.set(worldX, worldY);
+        // switchPlayer.set(player.worldX, player.worldY);
+        if (keyControl.isSpace == true) {
+            setState();
+            System.out.println("x"+worldX/48+"y"+worldY/48);
 
-    private void musicEvent(int x, int y, String music_up, String music_down) {
-        if (hit(x, y, "up") && run) {
+            System.out.println(getObjectIndex());
+            
+         }
+        getObjects.nextTeleport();
+        closeDoor();
+    }
+  
+
+    public void musicEvent(int x, int y, String music_left, String music_right) {
+        if (hit(58, 51, "left")) {
+            System.out.println("2");
             gp.stopMusic();
-            gp.playMusic(music_up);
+            gp.playMusic(music_left);
             run = false;
-        } else if (hit(x, y, "down") && !run) {
+        } else if (hit(58, 51, "right") && !run) {
             gp.stopMusic();
-            gp.playMusic(music_down);
+            gp.playMusic(music_right);
             run = true;
         }
     }
@@ -124,23 +158,23 @@ public class SuperEvent {
         eventRectangle.y = defultY;
         return hit;
     }
+    
     /**
      Add a object in the map
     @param name : object name
     @param x : locate X
     @param y: locate Y
   */
-    public void addObject(String name, int x, int y) {
-        object_index++;
-        if (name == "key") {
-            gp.object[object_index] = new object_Key();
-            gp.object[object_index].worldX = x * gp.tileSize;
-            gp.object[object_index].worldY = y * gp.tileSize;
+    public void addObject(String name, int x, int y,int index) {
+        if (name == "portal") {
+            gp.object[index] = new portal();
+            gp.object[index].worldX = x * gp.tileSize;
+            gp.object[index].worldY = y * gp.tileSize;
         }
     }
     public void announce(String text) {
         gp.announce.text = text;
-        gp.gamestate = gp.announceState;
+        gp.setGamestate(gp.announceState);
         gp.player.isMove = false;
     }
 
@@ -149,26 +183,58 @@ public class SuperEvent {
     }
 
 
-    public void announce1(String text) {
+    public void announce(String text,String sub_text) {
         gp.announce.text = text;
-        gp.gamestate = gp.announceState;
-        gp.announce.sub_text = " ";
+        gp.setGamestate(gp.announceState);
+        gp.announce.sub_text = sub_text;
     }
     public void nextState(int states){
         state = states;
     }
-    private void setState(){
-
-        if (gp.keyBoard.isSpace == true) {
-            gp.gamestate = state;
-            player.isMove = true;
-            gp.gamestate = state;
-            System.out.println(player.worldX/48 + " " + player.worldY/48);
+    public void setState(){
+        gp.setGamestate(state);
+        player.isMove = true;        
+    }
+    public void clear_object(){
+        getObjects.clear();
+    }
+    public int getObjectIndex(){
+        return getObjects.getIndex();
+    }
+    public int Keys(){
+        return player.getKey_count();
+    }
+    public void Key1() {
+            gp.object[42] = new object_Key();
+            gp.object[42].worldX = 60 * gp.tileSize;
+            gp.object[42].worldY = 16 * gp.tileSize;
+    }
+    public void Key2() {
+        gp.object[41] = new object_Key();
+        gp.object[41].worldX = 62 * gp.tileSize;
+        gp.object[41].worldY = 43 * gp.tileSize;
+}
+    public void reset(){
+        run = true;
+        isDoll = true;
+        getObjects.setHaveToothpaste(false);
+        isMan = true;
+        isFirst = true;
+        closeDoor = false;
+        isMonster = true;
+    }
+    public void closeDoor(){
+        if(hit(53,29,"right")&&!closeDoor){
+            gp.object[34] = new object_door();
+        gp.object[34].worldX = 50*gp.tileSize;
+        gp.object[34].worldY = 29*gp.tileSize;
+        gp.playSE("unlock");
+        closeDoor = true;
         }
         
+
     }
 
-   
 
    
 

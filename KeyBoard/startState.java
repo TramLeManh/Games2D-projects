@@ -1,8 +1,5 @@
 package KeyBoard;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
-import main.GamePanel;
 
 
 public class startState extends keyControl implements KeyBoard  {
@@ -24,7 +21,7 @@ public class startState extends keyControl implements KeyBoard  {
                 }
             }
             if (gp.start.command == 0 && key_code == KeyEvent.VK_SPACE) {
-                gp.gamestate = gp.playState;
+                gp.setGamestate(gp.playState);
                 gp.playMusic("road");
             } else if (key_code == KeyEvent.VK_SPACE) {
                 gp.start.drawSubScreen = true;

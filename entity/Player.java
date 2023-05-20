@@ -1,13 +1,10 @@
 package entity;
 
 import main.GamePanel;
-import object.object_Key;
-
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-import Events.pickObjects;
 import KeyBoard.keyControl;
 
 public class Player extends Entity {
@@ -18,8 +15,6 @@ public class Player extends Entity {
     private int Key_count = 0;
     public boolean isMove = true;
     private String objectName;
-    private int object_index = 20;
-
     GamePanel gp;
     public keyControl keyBoard;
     public int global_index = 0;
@@ -45,11 +40,11 @@ public class Player extends Entity {
 
     }
     public void setDefultValues() {
-        worldX = gp.tileSize * 49;
-        worldY = gp.tileSize * 31;
+        worldX = gp.tileSize * 15 ;//15
+        worldY = gp.tileSize * 11 ;//11
         speed = 3;
         direction = "down";
-        transfer = false; 
+        transfer = true; 
       
     }
     public void update() {
@@ -57,34 +52,38 @@ public class Player extends Entity {
         //keyBoard player
         
         if((gp.gamestate==gp.announceState||gp.gamestate==gp.playState)){
-            if(keyBoard.pPress==true){
+            if(keyControl.pPress==true){
                 gp.gamestate = gp.pauseState;
                 gp.stopMusic();
             }
         }
-      
+        gp.eventH.switchPlayer.set(worldX, worldY);
+ 
 
         // movements
         if (isMove) {
-            if (keyBoard.downPress == true || keyBoard.upPress == true || keyBoard.rightPress
-                    || keyBoard.leftPress == true) {
-                if (keyBoard.upPress == true) {
+            if (keyControl.downPress == true || keyControl.upPress == true || keyControl.rightPress
+                    || keyControl.leftPress == true) {
+                if (keyControl.upPress == true) {
                     direction = "up";
-                } else if (keyBoard.downPress == true) {
+                } else if (keyControl.downPress == true) {
                     direction = "down";
-                } else if (keyBoard.rightPress == true) {
+                } else if (keyControl.rightPress == true) {
                     direction = "right";
-                } else if (keyBoard.leftPress == true) {
+                } else if (keyControl.leftPress == true) {
                     direction = "left";
                 }
                 // check collision
+
+                gp.eventH.pickObjects();
+
 
                 collisionEnabled = false;
 
                 gp.cCheck.checkTile(this);
 
                 // object collision
-                gp.eventH.pickObjects();
+           
 
                 spriteCounter++;
                 // gp.eventH.checkEvent();
@@ -130,16 +129,18 @@ public class Player extends Entity {
         Key_count = key_count;
     }
     public void reset(){
-        gp.tilesM.tile[2].collision = true;//water
-        gp.tilesM.tile[6].collision = false;//lava
-        worldX = gp.tileSize * 23;
-        worldY = gp.tileSize * 23;
+        // gp.tilesM.tile[2].collision = true;//water
+        // gp.tilesM.tile[6].collision = false;//lava
+        // worldX = gp.tileSize * 15;//15
+        // worldY = gp.tileSize * 11;//11
         speed = 3;
         direction = "down";
         Key_count = 0;
         isMove = true;
-        transfer = false;
         gp.gamestate = gp.playState;
+        collisionEnabled = false;
+
+        
     }
     
 

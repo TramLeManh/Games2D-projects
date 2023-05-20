@@ -1,37 +1,94 @@
 package TextSreen;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics2D;
+import java.util.Random;
 
 import Events.Quizz_Events;
+import Events.SuperEvent;
 import KeyBoard.keyControl;
 import TextSreen.quizz.setQuestions;
 import main.GamePanel;
 
 public class quizzState extends SuperUI {
-    public int i = 0;
-    private int width, height;
-    private keyControl keyBoard;
     private Quizz_Events events;
-    public setQuestions questions[] = new setQuestions[10];
+    public setQuestions questions[] = new setQuestions[15];
+    private Random random = new Random();
+    private int i = random.nextInt(10);
+    private int z = getRandom(10, 13);
+
 
     public quizzState(GamePanel gp, keyControl keyBoard) {
         super(gp, g2);
-        this.keyBoard = keyBoard;
         events = new Quizz_Events();
-        setQuestions question[] = new setQuestions[10];
         setup();
         sub_text = "press T or F";
         word_length = 20;
         // set up i random questions, or default
     }
+    public void setup() {
+        // questions
+        questions[0] = new setQuestions();
+        questions[0].text = "Final varible or final method can not be change";
+        questions[0].answer = true;// fanswer
 
-    private String text = " ";
+        questions[1] = new setQuestions();
+        questions[1].text = "int a = 4%2\n the result  a is 2 ";
+        questions[1].answer = false; 
+
+        questions[2] = new setQuestions();
+        questions[2].text = " High-level modules should depend on abstractions \n rather than concrete implementations";
+        questions[2].answer = true;//
+
+
+        questions[3] = new setQuestions();
+        questions[3].text = "int a = 2 \n int b  = ++a + a; \n The result of b is 4  ";
+        questions[3].answer = false;
+
+        questions[4] = new setQuestions();
+        questions[4].text = "We can overide the final method ";
+        questions[4].answer = false;
+        
+        questions[5] = new setQuestions();
+        questions[5].text = "You can extends abstract class \n without using abstract methods";
+        questions[5].answer = false;
+
+        questions[6] = new setQuestions();
+        questions[6].text =  "Client should be forced to depend on methods it does not use";
+        questions[6].answer = true;
+
+        questions[7] = new setQuestions();
+        questions[7].text = "1+5=6";
+        questions[7].answer = true;
+
+        questions[8] = new setQuestions();
+        questions[8].text = "A software Class or module should be open for \n modification but closed for extension  ";
+        questions[8].answer = false;
+        
+        questions[9] = new setQuestions();
+        questions[9].text = "public class Student {\n public void registerStudent() { // some logic } \n public void calculate_Student_Results() { // some logic }} \n This is a good desgin";
+        questions[9].answer = false;
+        
+        questions[10] = new setQuestions();
+        questions[10].text = "You can use overide method without exntending class"; 
+        questions[10].answer = true;
+        
+        questions[11] = new setQuestions();
+        questions[11].text = "141570 can be devided by 5 "; 
+        questions[11].answer = true;
+
+        questions[12] = new setQuestions();
+        questions[12].text = "The Top-most class in java is the superclass that you create "; 
+        questions[12].answer = false; 
+
+        questions[13] = new setQuestions();
+        questions[13].text = " Molecules are smaller than electrons"; 
+        questions[13].answer = false; 
+
+       
+    }
 
     public void draw(Graphics2D g2) {
-        this.g2 = g2;
+        SuperUI.g2 = g2;
 
         if (gp.gamestate == gp.quizzState) {
             drawScreen(questions[i].text);
@@ -42,68 +99,65 @@ public class quizzState extends SuperUI {
     public void update() {
         if (gp.gamestate == gp.quizzState) {
             gp.player.isMove = false;
-            if (keyBoard.tPress == true) {
-                // do something
-                if (questions[i].answer) {
-                    drawScreen("correct");
-                    events.ModeSpeed(5);
-                    events.setObject();
-                    events.nextState(gp.playState);
-                } else if (!questions[i].answer) {
-                    gp.eventH.announce("wrong");
-                    events.ModeSpeed(5);
-                    events.setObject();
-                    events.nextState(gp.playState);
+            if (SuperEvent.getObjectName()=="monster"||SuperEvent.getObjectName()=="doll"){
+                i = z;
+            }
+            if(keyControl.tPress==true){
+                    if(questions[i].answer == true){
+                        System.out.println(i+" "+questions[i].answer);
+                        events.correct();
+                        i = random.nextInt(10);
+                        z = getRandom(10, 13);
+                        System.out.println("clear");
+                        // i = random.nextInt(6);
 
+
+                    }
+                    else if(questions[i].answer == false){
+                        System.out.println(i+" "+questions[i].answer);
+                        events.wrong();
+                        i = random.nextInt(11);
+                        z = getRandom(10, 13);
+
+
+                    }
+                    keyControl.tPress = false;
 
                 }
-                i++;// reset i to zero in order out of array
-            }
-            if (keyBoard.fPress == true) {
-                // do something
-                if (questions[i].answer = true) {
-                    gp.eventH.announce("correct");
-                    events.ModeSpeed(5);
-                    events.setObject();
-                    events.nextState(gp.playState);
+                if(keyControl.fPress==true){
+                    if(questions[i].answer == true){
+                        System.out.println(i+" "+questions[i].answer);
 
+                        events.wrong();
+                        i = random.nextInt(10);
 
-                } else if (!questions[i].answer) {
-                    gp.eventH.announce("wrong");
-                    events.ModeSpeed(5);
-                    events.setObject();
-                    events.nextState(gp.playState);
+                    }
+                    else if(questions[i].answer == false){
+                        System.out.println(i+" "+questions[i].answer);
 
+                        events.correct();
 
+                        i = random.nextInt(11);
+
+                    }
+                    keyControl.fPress = false;
                 }
-                i++;
+                }
+                if(events.teleport == true&&keyControl.isSpace==true) {
+                    events.teleport();
+                    events.teleport = false;
+                }
+
 
             }
-        }
 
-    }
+    // do something
+    // reset i to zero in order out of array
 
     /* Events */
-    public void setup() {
-        // questions
-        questions[0] = new setQuestions();
-        questions[0].text = "";
-        questions[0].answer = false;// fanswer
-        questions[0].action = 0;// by default 0 is random evert or khác 0 chọn event cụ thể
-
-        questions[1] = new setQuestions();
-        questions[1].text = "Chào";
-        questions[1].answer = true;
-        questions[1].action = 0;
+    private static int getRandom(int min, int max) {
+        Random random = new Random();
+        return random.nextInt(max+1 - min) + min;
     }
 
-    public void events(int i) {
-        if (i == 0) {
-            // random
-        }
-        switch (i) {
-            case 1:
-                events.ModeSpeed(3);
-        }
-    }
 }
