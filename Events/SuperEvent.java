@@ -27,7 +27,7 @@ public class SuperEvent {
     public static String annouces[];
     public static boolean isDoll = true;
     public static boolean isMan = true;
-    public boolean isMonster = true;
+    public static boolean isMonster = true;
     private int index = 0;
     public boolean isFirst = true;
     public static  boolean teleport = false; 

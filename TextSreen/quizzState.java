@@ -11,9 +11,10 @@ import main.GamePanel;
 
 public class quizzState extends SuperUI {
     private Quizz_Events events;
-    public setQuestions questions[] = new setQuestions[11];
+    public setQuestions questions[] = new setQuestions[15];
     private Random random = new Random();
-    private int i = random.nextInt(3);
+    private int i = random.nextInt(10);
+    private int z = getRandom(10, 13);
 
 
     public quizzState(GamePanel gp, keyControl keyBoard) {
@@ -52,11 +53,11 @@ public class quizzState extends SuperUI {
         questions[5].answer = false;
 
         questions[6] = new setQuestions();
-        questions[6].text = "You can use overide method without exntending class";
+        questions[6].text =  "Client should be forced to depend on methods it does not use";
         questions[6].answer = true;
 
         questions[7] = new setQuestions();
-        questions[7].text = "You can use overide method without exntending class";
+        questions[7].text = "1+5=6";
         questions[7].answer = true;
 
         questions[8] = new setQuestions();
@@ -68,9 +69,22 @@ public class quizzState extends SuperUI {
         questions[9].answer = false;
         
         questions[10] = new setQuestions();
-        questions[10].text = "Client should be forced to depend on methods it does not use";
-        questions[10].answer = false;
+        questions[10].text = "You can use overide method without exntending class"; 
+        questions[10].answer = true;
         
+        questions[11] = new setQuestions();
+        questions[11].text = "141570 can be devided by 5 "; 
+        questions[11].answer = true;
+
+        questions[12] = new setQuestions();
+        questions[12].text = "The Top-most class in java is the superclass that you create "; 
+        questions[12].answer = false; 
+
+        questions[13] = new setQuestions();
+        questions[13].text = " Molecules are smaller than electrons"; 
+        questions[13].answer = false; 
+
+       
     }
 
     public void draw(Graphics2D g2) {
@@ -85,14 +99,15 @@ public class quizzState extends SuperUI {
     public void update() {
         if (gp.gamestate == gp.quizzState) {
             gp.player.isMove = false;
-            if (SuperEvent.getObjectName()=="monster"){
-                i = 6;
+            if (SuperEvent.getObjectName()=="monster"||SuperEvent.getObjectName()=="doll"){
+                i = z;
             }
             if(keyControl.tPress==true){
                     if(questions[i].answer == true){
                         System.out.println(i+" "+questions[i].answer);
                         events.correct();
-                        i = random.nextInt(11);
+                        i = random.nextInt(10);
+                        z = getRandom(10, 13);
                         System.out.println("clear");
                         // i = random.nextInt(6);
 
@@ -102,6 +117,8 @@ public class quizzState extends SuperUI {
                         System.out.println(i+" "+questions[i].answer);
                         events.wrong();
                         i = random.nextInt(11);
+                        z = getRandom(10, 13);
+
 
                     }
                     keyControl.tPress = false;
@@ -112,7 +129,7 @@ public class quizzState extends SuperUI {
                         System.out.println(i+" "+questions[i].answer);
 
                         events.wrong();
-                        i = random.nextInt(11);
+                        i = random.nextInt(10);
 
                     }
                     else if(questions[i].answer == false){
@@ -138,6 +155,9 @@ public class quizzState extends SuperUI {
     // reset i to zero in order out of array
 
     /* Events */
-    
+    private static int getRandom(int min, int max) {
+        Random random = new Random();
+        return random.nextInt(max+1 - min) + min;
+    }
 
 }

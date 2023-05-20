@@ -15,7 +15,7 @@ public class Quizz_Events extends SuperEvent {
     public void correct(){
         if(objectName=="question"){
             if(getObjectIndex()==13||getObjectIndex()==14){
-                announce("correct. Please choose a portal to pass");
+                announce("Correct. Please choose a portal to pass");
                 gp.playSE("clear");
                 clear_object();
             }
@@ -28,7 +28,7 @@ public class Quizz_Events extends SuperEvent {
             }
         }
         if(objectName=="doll"){
-                announce("Correct. There is something may help you in the North pool");
+                announce("Correct. \nThere is something may help you in the North pool");
                 Key1();
                 isDoll = false;
         }
@@ -86,7 +86,7 @@ public class Quizz_Events extends SuperEvent {
             }
             else if(Keys()==0){
                 if(player.speed==4){
-                    announce("Wrong. Feel my  superpower....");
+                    announce("Wrong. Feel my  super power....");
                     nextState(gp.playState);
                     setTeleport(22,29);
                     ModeSpeed(-1);

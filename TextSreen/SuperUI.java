@@ -14,7 +14,6 @@ public abstract class SuperUI {
     public String sub_text = " ";
     public String text = " ";
     public int word_length;
-
     public Fonts font = new Fonts();
 
     public void drawSubScreen(int x, int y, int width, int height) {

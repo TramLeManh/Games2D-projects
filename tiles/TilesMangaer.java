@@ -30,7 +30,7 @@ public class TilesMangaer extends Tiles {
 
     public void loadMap() {
         try {
-            InputStream is = getClass().getResourceAsStream("/map/map1.txt");
+            InputStream is = getClass().getResourceAsStream("/map/map123.txt");
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             int row = 0;
             int col = 0;
@@ -64,6 +64,11 @@ public class TilesMangaer extends Tiles {
             setup(5,"5.lava", true );
             setup(6,"6.water", false) ;//lava.collison =false;
             setup(7,"7.squid", true) ;//lava.collison =false;
+            setup(8,"8.tree2", true);
+            setup(9,"9.tree3", true);
+            setup(10,"90.tree4", true);
+            setup(11,"91.duck", true);
+            
 
         }
 

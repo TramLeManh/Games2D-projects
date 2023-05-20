@@ -13,6 +13,7 @@ import picture.picture;
 
 public class playState extends SuperUI{
     private int minute = 0;
+    public  boolean timeStop = false;
 
     private double seconds;
     DecimalFormat dFormat = new DecimalFormat("0");
@@ -41,7 +42,9 @@ public class playState extends SuperUI{
 
         g2.setColor(Color.white);
         g2.setFont(font);
-        seconds += (double)1/60;
+        if(!timeStop){
+            seconds += (double)1/60;
+        }
         if(Double.compare(seconds,(double)59)==1){
                 System.out.println("2");
                 minute +=1;
@@ -55,8 +58,22 @@ public class playState extends SuperUI{
         text = minute+":"+dFormat.format(seconds);
         int place = LocateCenterText(text);
         g2.drawString(text, place, 65);
+        update();
 
 
     }
-}
+    public void resetTime() {
+        this.seconds = 0;
+        this.minute =0;
+    }
+    public void update(){
+
+        if(gp.keyBoard.pPress&&((gp.gamestate == gp.playState))){
+            timeStop = true;
+        }
+        else if(gp.keyBoard.pPress&&gp.gamestate == gp.pauseState){
+            timeStop = false;
+
+    }
+}}
     

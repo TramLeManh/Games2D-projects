@@ -70,7 +70,6 @@ public class oldman {
         announces[1] = "You should apply solid priciples";
         announces[2] = "Sometimes number 1 in this world is better";
         announces[3] = "OOP is very easy. Do you agree with me ?";
-
         announces[4] = "Here is a joke\nA man tells his doctor: “I’ m addicted to Twitter!” \n The doctor replies:“Sorry, I don’t follow you...” ";
     }
     public void random(){

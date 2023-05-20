@@ -206,51 +206,6 @@ public class pickObjects extends SuperEvent {
             }
 
         } else if (objectName == "oldman"&&player.direction == "right") {
-            // if (index == 32) {
-            //     if (!haveToothpaste) {
-            //         announce("I lost the toothpaste. Can you please find it ?");
-            //     } else {
-            //         if (player.speed == 4) {
-            //             announce("Thank you. Have a nice day.");
-            //             gp.playSE("clear");
-            //             clear();
-            //         }
-            //         else if (player.speed == 3) {
-            //             announce("Thank you. Here is spped power as gift");
-            //             ModeSpeed(1);
-            //             gp.playSE("clear");
-            //             clear();
-            //         }
-            //         else if (player.speed == 2&&gp.object[42]!=null) {
-            //             announce("Thank you. Here is spped power as gift");
-            //             ModeSpeed(1);
-            //             gp.playSE("clear");
-            //             clear();
-            //         }
-            //     }
-
-            // } else {
-            //     if (Keys() == 0 && gp.object[27] != null) {
-            //         announce("Hello, there is something in the lava");
-            //         Key2();
-            //     }
-            //     if (Keys() == 0 && gp.object[27] == null) {
-            //         announce("It's a lovely day");
-
-            //     }
-            //     if ((gp.object[41] == null) && (gp.object[42] == null) && Keys() == 1) {
-            //         announce("You again. Here is a key and speed up. Go find princess");
-            //         addKey();
-            //         ModeSpeed(2);
-            //     }
-            //     if (Keys() == 1 && (gp.object[42] == null)) {
-            //         announce("find your princess");
-            //     }
-            //     if (Keys() == 1 && isDoll == false) {
-            //         announce("Here is some power");
-            //         ModeSpeed(2);
-            //     }
-            // }
             oldman.set(this,index);
         } else if (objectName == "doll") {
             if (isDoll == true) {
@@ -302,11 +257,6 @@ public class pickObjects extends SuperEvent {
      * remove the object
      */
 
-    public void set() {
-        text[0] = "0";
-        text[1] = "1";
-        text[2] = "2";
-    }
 
     public void clear() {
         gp.object[index] = null;
