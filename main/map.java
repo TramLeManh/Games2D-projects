@@ -17,6 +17,7 @@ public class map {
         gp.playMusic("road");
         gp.eventH.reset();
         gp.tilesM.getImage();
+        
     }
     
 }

@@ -140,6 +140,7 @@ public class Player extends Entity {
         gp.gamestate = gp.playState;
         collisionEnabled = false;
 
+        
     }
     
 

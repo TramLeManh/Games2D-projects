@@ -144,8 +144,8 @@ public class object_set {
         gp.object[31].worldY = 33*gp.tileSize;
 
         gp.object[32] = new oldman();
-        gp.object[32].worldX = 24*gp.tileSize;
-        gp.object[32].worldY = 29*gp.tileSize;
+        gp.object[32].worldX = 28*gp.tileSize;
+        gp.object[32].worldY = 27*gp.tileSize;
 
         gp.object[33] = new object_chest();
         gp.object[33].worldX = 28*gp.tileSize;

@@ -81,11 +81,12 @@ public class Quizz_Events extends SuperEvent {
                 nextState(gp.playState);
                 loseKey();
                 clear_object();
+                isMonster = false;
             
             }
             else if(Keys()==0){
                 if(player.speed==4){
-                    announce("Wrong. Feel my power....");
+                    announce("Wrong. Feel my  superpower....");
                     nextState(gp.playState);
                     setTeleport(22,29);
                     ModeSpeed(-1);

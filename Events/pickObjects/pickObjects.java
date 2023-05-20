@@ -53,15 +53,22 @@ public class pickObjects extends SuperEvent {
                     nextState(gp.playState);
                 }
             if (index == 34) {
-                if (Keys() < 2) {
-                    announce("You need two keys to unlock the door");
+                if(!closeDoor){
+                    if (Keys() < 2) {
+                        announce("You need two keys to unlock the door");
+                    }
+                    if (Keys() == 2) {
+                        gp.playSE("unlock");
+                        clear();
+                        loseKey();
+                        loseKey();
+                        closeDoor= true;
+                    }
                 }
-                if (Keys() == 2) {
-                    gp.playSE("unlock");
-                    clear();
-                    loseKey();
-                    loseKey();
+                else if(closeDoor) {
+                    announce("You can not turn back");
                 }
+               
             }
         }
 
@@ -113,7 +120,7 @@ public class pickObjects extends SuperEvent {
                 clear();
             }
             if (index == 38) {
-                if (Keys() == 1||(Keys()==0&&(gp.object[31]==null||gp.object[29]==null))) {
+                if ((Keys() == 1||(Keys()==0)&&(gp.object[31]==null||gp.object[29]==null))&&!isMonster) {
                     if (player.speed == 3) {
                         announce("You got a key and buff up");
                         gp.playSE("powerUp");  
@@ -150,6 +157,19 @@ public class pickObjects extends SuperEvent {
                         clear();
                     }
                    
+                }
+                else{
+                    if(player.speed ==3){
+                        announce("You got a buff up");
+                        gp.playSE("powerUp");
+                        ModeSpeed(+1);
+                        clear();
+                    }
+                    else if(player.speed ==4){
+                        announce("There is nothing inside the chess");
+                        gp.playSE("chest");
+                        clear();
+                    }
                 }
             }
         }
@@ -245,14 +265,14 @@ public class pickObjects extends SuperEvent {
             if (index == 36) {
                 if (gp.object[38] != null) {
                     if (player.speed == 4) {
-                        announce("Loose speed");
+                        announce("You got a rot apple");
                         gp.playSE("powerDown");
                         ModeSpeed(-1);
                         clear();
                     }
     
                         else if (player.speed == 3) {
-                            announce("Here your ehance");
+                            announce("You got a magic apple");
                             ModeSpeed(+1);
                             gp.playSE("powerUp");
                             clear();
@@ -264,10 +284,14 @@ public class pickObjects extends SuperEvent {
                     clear();
                 }
 
-            } else  {
-                announce("Speed up \n abc");
+            } else if(player.speed !=4)  {
+                announce("Speed up");
                 gp.playSE("powerUp");
                 ModeSpeed(+1);
+                clear();
+            }
+            else{
+                announce("It is a good apple");
                 clear();
             }
         }

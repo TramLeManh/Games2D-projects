@@ -7,6 +7,7 @@ import KeyBoard.keyControl;
 import entity.Player;
 import main.GamePanel;
 import object.object_Key;
+import object.object_door;
 import object.portal;
 
 public class SuperEvent {
@@ -26,9 +27,11 @@ public class SuperEvent {
     public static String annouces[];
     public static boolean isDoll = true;
     public static boolean isMan = true;
+    public boolean isMonster = true;
     private int index = 0;
     public boolean isFirst = true;
     public static  boolean teleport = false; 
+    public boolean closeDoor = false;
     public SuperEvent(GamePanel gp, Player player) {
         SuperEvent.gp = gp;
         SuperEvent.player = player;
@@ -119,6 +122,7 @@ public class SuperEvent {
             
          }
         getObjects.nextTeleport();
+        closeDoor();
     }
   
 
@@ -216,6 +220,19 @@ public class SuperEvent {
         getObjects.setHaveToothpaste(false);
         isMan = true;
         isFirst = true;
+        closeDoor = false;
+        isMonster = true;
+    }
+    public void closeDoor(){
+        if(hit(53,29,"right")&&!closeDoor){
+            gp.object[34] = new object_door();
+        gp.object[34].worldX = 50*gp.tileSize;
+        gp.object[34].worldY = 29*gp.tileSize;
+        gp.playSE("unlock");
+        closeDoor = true;
+        }
+        
+
     }
 
 

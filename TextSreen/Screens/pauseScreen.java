@@ -10,9 +10,8 @@ import TextSreen.UI_interface;
 import entity.choosePlayer;
 import main.GamePanel;
 
-public class pauseScreen implements UI_interface {
-    GamePanel gp;
-    Graphics2D g2;
+public class pauseScreen extends Screens{
+  
     public choosePlayer playerImage = new choosePlayer();
     public int command;
     public boolean drawSubScreen;
@@ -21,8 +20,8 @@ public class pauseScreen implements UI_interface {
 
   
     public pauseScreen(GamePanel gp) {
-        this.gp = gp;
-        
+
+        super(gp,g2);
     }
     private String screen_text;
 
@@ -33,7 +32,7 @@ public class pauseScreen implements UI_interface {
             if(command == 3||command == 1){
                 drawScreen1(screen_text);
             }else{
-                drawScreen(screen_text);
+                drawScreen(screen_text,command-1);
                 pause =true;         
             }
         }
@@ -58,11 +57,7 @@ public class pauseScreen implements UI_interface {
             menu(g2, x, y);
         }
     }
-    private int LocateCenterText(String text) {
-        int length = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
-        int x = gp.screenWidth / 2 - length / 2;
-        return x;
-    }
+   
 
     private void menu(Graphics2D g2, int x, int y) {
         g2.setFont(font.getFont().deriveFont(Font.BOLD, 48F));
@@ -107,39 +102,6 @@ public class pauseScreen implements UI_interface {
                    screen_text = "Are you sure want to quit?";
         }
     }
-    public void drawScreen(String text){
-        int x = gp.tileSize *2;
-        int y = gp.tileSize /2;
-        int width = gp.screenWidth - (4*gp.tileSize);
-        int height = (11*gp.tileSize);
-        drawSubScreen(x, y, width, height);
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,20F));
-        x+= gp.tileSize;
-        y+= gp.tileSize;
-        g2.drawString(text, x, y);
-        g2.drawString("press space to continue", width-150, height);
     }
-    public void drawScreen1(String text){
-        int x = gp.tileSize *2;
-        int y = gp.tileSize *3;
-        int width = gp.screenWidth - (4*gp.tileSize);
-        int height = (4*gp.tileSize);
-        drawSubScreen(x, y, width, height);
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,20F));
-        x+= gp.tileSize;
-        y+= gp.tileSize;
-        g2.drawString(text, x, y);
-        g2.drawString("(Y/N)", width, height+100);
-    }
-    
-    public void drawSubScreen(int x, int y, int width, int height){
-        Color color = new Color(0,0,100,100);
-        g2.setColor(color);//nền trong
-        g2.fillRoundRect(x, y,width ,height,35, 35);
-
-        g2.setColor(Color.white);//viền
-        g2.setStroke(new BasicStroke(5));
-        g2.drawRoundRect(x+5, y+5,width-10 ,height-10,25, 25);
-}}
 
    

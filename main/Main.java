@@ -10,7 +10,7 @@ public class Main {
         w.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         w.setIconImage(p.get("icon"));
         w.setResizable(false);
-        w.setTitle("The adventure of Fire Boy and Water Boy");/*Set tittle */
+        w.setTitle("My adventure");/*Set tittle */
         GamePanel gamePanel = new GamePanel();
         w.add(gamePanel);
         w.pack();
