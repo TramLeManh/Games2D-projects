@@ -75,6 +75,12 @@ public class TilesMangaer extends Tiles {
     public void update() {
 
     }
+    /** 
+     @param index set index of tiles
+     @param ImagePath name of the tiles
+    @param IsCollison if it is true, player will mover the tiles, else player will not move to the tiles
+
+     */
     public void setup(int index, String ImagePath, boolean IsCollision) {
         tools uTools = new tools();
         try {
