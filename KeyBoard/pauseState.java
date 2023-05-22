@@ -20,7 +20,7 @@ public class pauseState extends keyControl implements KeyBoard {
             }
             if (gp.pause.command == 0 && key_code == KeyEvent.VK_SPACE) {
                 gp.setGamestate(gp.playState);/* //dk choi nhac lại khi chuyển vùng */
-                // gp.playMusic(0);
+                gp.playMusic(0);
             } else if (key_code == KeyEvent.VK_SPACE) {
                 gp.pause.drawSubScreen = true;
                 gp.pause.pause = true;
