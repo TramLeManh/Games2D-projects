@@ -21,7 +21,9 @@ public class Sound {
         music[4] = getClass().getResource("/sound/endgame.wav");
         music[5] = getClass().getResource("/sound/teleport.wav");
         music[6] = getClass().getResource("/sound/fanfare.wav");
-
+        music[7] = getClass().getResource("/sound/powerdown.wav");
+        music[8] = getClass().getResource("/sound/chest.wav");
+        music[9] = getClass().getResource("/sound/clear.wav");
     }
 /*These are two methods in a Java class that set the audio file to be played. 
     The first method takes an integer parameter that represents the index of the audio file in an array, 
