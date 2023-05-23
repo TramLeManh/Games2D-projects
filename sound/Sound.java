@@ -4,6 +4,12 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 
+/*This is a Java class that can be used to play different sounds. It uses the Java Sound API to load and play audio files. 
+The class has an array of URLs that point to different sound files. 
+When you call the play() method with an index, it loads the corresponding sound file and plays it*/
+
+
+ /*Ais: Audio Input Stream */
 public class Sound {
     Clip clip;
     URL music[] = new URL[20];
@@ -17,6 +23,12 @@ public class Sound {
         music[6] = getClass().getResource("/sound/fanfare.wav");
 
     }
+/*These are two methods in a Java class that set the audio file to be played. 
+    The first method takes an integer parameter that represents the index of the audio file in an array, 
+    while the second method takes a string parameter that represents the file path of the audio file. 
+    The methods use the AudioSystem and Clip classes from the Java Sound API to load and play the audio file. 
+    If an exception occurs during the loading or playing of the audio file, it is caught and handled in the catch block.*/    
+    
     public void setFile(int number) {
         try {
             AudioInputStream ais = AudioSystem.getAudioInputStream(music[number]);
@@ -32,6 +44,8 @@ public class Sound {
         } catch (Exception e) {
         }
     }
+    
+    
     public void play(){
         clip.start();
     }
@@ -41,5 +55,10 @@ public class Sound {
     public void stop(){
         clip.stop();
     }
+    
+    /*This code appears to be a part of a class that deals with playing audio clips. 
+The `play()` method starts playing the audio clip. 
+The `loop()` method sets the audio clip to loop continuously. 
+The `stop()` method stops the audio clip from playing.*/
 
 }
