@@ -58,6 +58,7 @@ public class GamePanel extends JPanel implements Runnable {
     public collisionCheck cCheck = new collisionCheck(this);
     public SuperEvent eventH  = new SuperEvent(this,player);
     //Superobject Gamepannel 
+    /** Polymorphism0 */
     public SuperObject object[] = new SuperObject[50];//create ten block objects
     public object_set  objects = new object_set(this);
     public map map = new map(this);
@@ -168,10 +169,6 @@ public class GamePanel extends JPanel implements Runnable {
              else if(gamestate==pauseState){
                 pause.draw(g2);
              }
-            
-
-       
-       
     }
     public void playMusic(int number){
         music.setFile(number);

@@ -32,7 +32,7 @@ public class quizzState extends SuperUI {
         questions[0].answer = true;// fanswer
 
         questions[1] = new setQuestions();
-        questions[1].text = "int a = 4%2\n the result  a is 2 ";
+        questions[1].text = "int a = 4%2 \n the result  a is 2 ";
         questions[1].answer = false; 
 
         questions[2] = new setQuestions();
@@ -99,8 +99,11 @@ public class quizzState extends SuperUI {
     public void update() {
         if (gp.gamestate == gp.quizzState) {
             gp.player.isMove = false;
-            if (SuperEvent.getObjectName()=="monster"||SuperEvent.getObjectName()=="doll"){
+            if ((SuperEvent.getObjectName()=="monster"||SuperEvent.getObjectName()=="doll")&&events.getObjectIndex()!=35){
                 i = z;
+            }
+            else if(events.getObjectIndex()==35){
+                i = 10;
             }
             if(keyControl.tPress==true){
                     if(questions[i].answer == true){
