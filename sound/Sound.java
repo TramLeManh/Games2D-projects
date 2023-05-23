@@ -4,12 +4,15 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 
-/*This is a Java class that can be used to play different sounds. It uses the Java Sound API to load and play audio files. 
+/*  This is a Java class that can be used to play different sounds. It uses the Java Sound API to load and play audio files. 
 The class has an array of URLs that point to different sound files. 
-When you call the play() method with an index, it loads the corresponding sound file and plays it*/
-
-
+When you call the play() method with an index, it loads the corresponding sound file and plays it.
+Ưhen adding music, we modify the initial audio to the format .wav and insert the files .wav into the folder, 
+so that the JAVA sound class can extract the files and run on the game. 
+The online music editor that was used in process is "mp3cut.net" converting the format MP4/MP3 of the audio to .wav  */
+ 
  /*Ais: Audio Input Stream */
+
 public class Sound {
     Clip clip;
     URL music[] = new URL[20];
