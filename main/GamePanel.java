@@ -53,7 +53,8 @@ public class GamePanel extends JPanel implements Runnable {
     Sound SoundEffect = new Sound();
     public boolean hit =true;
     public Thread gameThread;
-    public Player player = new Player(this,keyBoard);
+
+    public Player player = Player.getInstance(this,keyBoard);
     public TilesMangaer tilesM = new TilesMangaer(this);
     public collisionCheck cCheck = new collisionCheck(this);
     public SuperEvent eventH  = new SuperEvent(this,player);

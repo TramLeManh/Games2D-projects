@@ -19,13 +19,20 @@ public class Player extends Entity {
     public keyControl keyBoard;
     public int global_index = 0;
 
-    public Player(GamePanel gp, keyControl keyBoard) {
+    private static Player player = null;
+
+    private Player(GamePanel gp, keyControl keyBoard) {
         this.gp = gp;
         this.keyBoard = keyBoard;
         DefultValues();
-        
         setDefultValues();
-
+    }
+    public static synchronized Player getInstance(GamePanel gp,keyControl keyBoard) 
+    {
+        if (player == null){
+            player = new Player(gp,keyBoard);
+        }
+        return player;
     }
     public void DefultValues() {
         screenX = gp.screenWidth / 2 - (gp.tileSize / 2);
