@@ -2,7 +2,13 @@ package KeyBoard;
 
 import java.awt.event.KeyEvent;
 
-public class playState extends keyControl implements KeyBoard {
+import main.GamePanel;
+
+public class playKey extends keyControl implements KeyCommand {
+    private GamePanel gp;
+    public playKey(GamePanel gp) {
+        this.gp = gp;
+    }
 
     @Override
     public void keyPressed(int key_code) {

@@ -1,10 +1,14 @@
 package KeyBoard;
 import java.awt.event.KeyEvent;
 
+import main.GamePanel;
 
-public class startState extends keyControl implements KeyBoard  {
-  
-    
+
+public class startKey implements KeyCommand  {
+    private GamePanel gp;
+    public startKey(GamePanel gp) {
+        this.gp = gp;
+    }
 
     public void keyPressed(int key_code) {
         if (!gp.start.pause) {

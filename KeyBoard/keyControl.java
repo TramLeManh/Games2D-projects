@@ -12,15 +12,14 @@ public class keyControl implements KeyListener {
     public static boolean isOne, isTwo;
     public static boolean pPress;
     protected static GamePanel gp;
-    private KeyBoard startState, pauseState, playState;
+    private KeyCommand startState, pauseState, playState;
 
-    public keyControl(GamePanel gp) {
+    public keyControl(GamePanel gp,KeyCommand startState,KeyCommand playState, KeyCommand pauseState ) {
         keyControl.gp = gp;
-        startState = new startState();
-        pauseState = new pauseState();
-        playState = new playState();
+        this.startState = startState;
+        this.playState = playState;
+        this.pauseState = pauseState;
     }
-
     public keyControl() {
         super();
     }

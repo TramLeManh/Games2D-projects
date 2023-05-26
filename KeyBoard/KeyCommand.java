@@ -5,7 +5,7 @@ package KeyBoard;
 
 
 
-public interface KeyBoard{
+public interface KeyCommand{
 
 
 

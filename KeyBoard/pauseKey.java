@@ -2,7 +2,13 @@ package KeyBoard;
 
 import java.awt.event.KeyEvent;
 
-public class pauseState extends keyControl implements KeyBoard {
+import main.GamePanel;
+
+public class pauseKey implements KeyCommand {
+    private GamePanel gp;
+    public pauseKey(GamePanel gp) {
+        this.gp = gp;
+    }
     @Override
     public void keyPressed(int key_code) {
         if (!gp.pause.pause) {

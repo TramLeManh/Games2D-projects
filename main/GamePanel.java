@@ -8,13 +8,19 @@ import java.awt.Dimension;
 
 import javax.swing.JPanel;
 import Events.SuperEvent;
+import KeyBoard.KeyCommand;
 import KeyBoard.keyControl;
+import KeyBoard.playKey;
+import KeyBoard.startKey;
+import KeyBoard.pauseKey;
+
 import TextSreen.announceState;
 import TextSreen.playState;
 import TextSreen.quizzState;
 import TextSreen.Screens.pauseScreen;
 import TextSreen.Screens.startScreen;
 import tiles.TilesMangaer;
+
 
 import entity.Player;
 
@@ -48,7 +54,11 @@ public class GamePanel extends JPanel implements Runnable {
     public final int announceState1 = 6;
 
     int FPS = 60;
-    public keyControl keyBoard = new keyControl(this);
+    /** list of keyboard*/
+    private KeyCommand startKey = new startKey(this);
+    private KeyCommand playKey = new playKey(this);
+    private KeyCommand pauseKey = new pauseKey(this);
+    public keyControl keyBoard = new keyControl(this, startKey, playKey, pauseKey);
     Sound music = new Sound();
     Sound SoundEffect = new Sound();
     public boolean hit =true;
@@ -59,7 +69,8 @@ public class GamePanel extends JPanel implements Runnable {
     public collisionCheck cCheck = new collisionCheck(this);
     public SuperEvent eventH  = new SuperEvent(this,player);
     //Superobject Gamepannel 
-    /** Polymorphism0 */
+    /** Polymorphism */
+
     public SuperObject object[] = new SuperObject[50];//create ten block objects
     public object_set  objects = new object_set(this);
     public map map = new map(this);
