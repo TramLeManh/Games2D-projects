@@ -13,9 +13,5 @@ public class apple extends SuperObject {
         }
         collision = true;
         size = 48;
-
-       
-
-
     }
 }

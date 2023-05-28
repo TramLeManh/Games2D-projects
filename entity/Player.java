@@ -34,6 +34,7 @@ public class Player extends Entity {
         }
         return player;
     }
+    
     public void DefultValues() {
         screenX = gp.screenWidth / 2 - (gp.tileSize / 2);
         screenY = gp.screenHeight / 2 - (gp.tileSize / 2);

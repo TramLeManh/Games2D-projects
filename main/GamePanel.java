@@ -65,14 +65,16 @@ public class GamePanel extends JPanel implements Runnable {
     public Thread gameThread;
 
     public Player player = Player.getInstance(this,keyBoard);
+    
     public TilesMangaer tilesM = new TilesMangaer(this);
     public collisionCheck cCheck = new collisionCheck(this);
     public SuperEvent eventH  = new SuperEvent(this,player);
     //Superobject Gamepannel 
     /** Polymorphism */
 
-    public SuperObject object[] = new SuperObject[50];//create ten block objects
+    public SuperObject object[] = new SuperObject[50];
     public object_set  objects = new object_set(this);
+
     public map map = new map(this);
     public boolean playMusic = true;
     public quizzState quizz = new quizzState(this,keyBoard);
@@ -166,7 +168,7 @@ public class GamePanel extends JPanel implements Runnable {
                     object[i].draw(g2,this);
                    }
                 }
-        
+                
                 //draw player
                 player.draw(g2);
                 //draw UI
