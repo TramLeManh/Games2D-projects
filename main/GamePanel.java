@@ -96,6 +96,7 @@ public class GamePanel extends JPanel implements Runnable {
         this.setPreferredSize(new Dimension(16*48, 12*48));
         this.setBackground(new Color(70,120,80));/* getHSBColor() */ /* decode hex code */ /*Color.decode("#000000") */
         this.setDoubleBuffered(true);
+        
         // Insert Keyboard:
         this.addKeyListener(keyBoard);
         this.setFocusable(true);

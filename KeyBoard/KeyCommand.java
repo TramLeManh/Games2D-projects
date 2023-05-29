@@ -6,12 +6,6 @@ package KeyBoard;
 
 
 public interface KeyCommand{
-
-
-
     public void keyPressed(int key_code);
-
-
     public void keyReleased(int key_code);
-    
 }
