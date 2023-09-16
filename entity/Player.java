@@ -10,8 +10,8 @@ import KeyBoard.keyControl;
 public class Player extends Entity {
     choosePlayer chooseSprite = new choosePlayer();
     private boolean transfer = false;
-    public  int screenX;
-    public  int screenY;
+    public int screenX;
+    public int screenY;
     private int Key_count = 0;
     public boolean isMove = true;
     private String objectName;
@@ -27,14 +27,14 @@ public class Player extends Entity {
         DefultValues();
         setDefultValues();
     }
-    public static synchronized Player getInstance(GamePanel gp,keyControl keyBoard) 
-    {
-        if (player == null){
-            player = new Player(gp,keyBoard);
+
+    public static synchronized Player getInstance(GamePanel gp, keyControl keyBoard) {
+        if (player == null) {
+            player = new Player(gp, keyBoard);
         }
         return player;
     }
-    
+
     public void DefultValues() {
         screenX = gp.screenWidth / 2 - (gp.tileSize / 2);
         screenY = gp.screenHeight / 2 - (gp.tileSize / 2);
@@ -47,26 +47,27 @@ public class Player extends Entity {
         solidAreaDefaultY = solidArea.y;
 
     }
+
     public void setDefultValues() {
-        worldX = gp.tileSize * 15 ;//15
-        worldY = gp.tileSize * 11 ;//11
+        worldX = gp.tileSize * 15;// 15
+        worldY = gp.tileSize * 11;// 11
         speed = 3;
         direction = "down";
-        transfer = true; 
-      
+        transfer = true;
+
     }
+
     public void update() {
         gp.eventH.checkEvent(worldX, worldY);
-        //keyBoard player
-        
-        if((gp.gamestate==gp.announceState||gp.gamestate==gp.playState)){
-            if(keyControl.pPress==true){
+        // keyBoard player
+
+        if ((gp.gamestate == gp.announceState || gp.gamestate == gp.playState)) {
+            if (keyControl.pPress == true) {
                 gp.gamestate = gp.pauseState;
                 gp.stopMusic();
             }
         }
         gp.eventH.switchPlayer.set(worldX, worldY);
- 
 
         // movements
         if (isMove) {
@@ -85,13 +86,11 @@ public class Player extends Entity {
 
                 gp.eventH.pickObjects();
 
-
                 collisionEnabled = false;
 
                 gp.cCheck.checkTile(this);
 
                 // object collision
-           
 
                 spriteCounter++;
                 // gp.eventH.checkEvent();
@@ -123,20 +122,25 @@ public class Player extends Entity {
             }
         }
     }
+
     public void draw(Graphics2D g) {
         BufferedImage images = chooseSprite.get_image(transfer, direction, spriteNum);
         g.drawImage(images, screenX, screenY, null);
     }
+
     public void setTransfer(boolean transfer) {
         this.transfer = transfer;
     }
+
     public boolean getTransfer() {
         return this.transfer;
     }
+
     public void setKey_count(int key_count) {
         Key_count = key_count;
     }
-    public void reset(){
+
+    public void reset() {
         // gp.tilesM.tile[2].collision = true;//water
         // gp.tilesM.tile[6].collision = false;//lava
         // worldX = gp.tileSize * 15;//15
@@ -148,18 +152,15 @@ public class Player extends Entity {
         gp.gamestate = gp.playState;
         collisionEnabled = false;
 
-        
     }
-    
 
-  
-    //set get
+    // set get
     public int getKey_count() {
         return Key_count;
     }
+
     public String getObjectName() {
         return objectName;
     }
-    
-   
+
 }

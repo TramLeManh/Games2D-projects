@@ -28,6 +28,7 @@ public class choosePlayer {
    public BufferedImage right22;
 
    private void getplayerImage() {
+      //player 1
       up11 =setup("1_up_1");
       up12 = setup("1_up_2");
       down11 = setup("1_down_1");
