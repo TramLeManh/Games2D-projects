@@ -11,6 +11,4 @@ public class object_Key extends SuperObject{
         }
         size = 48;
     }
- 
-   
 }

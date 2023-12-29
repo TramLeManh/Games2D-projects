@@ -237,6 +237,7 @@ public class SuperEvent {
         isFirst = true;
         closeDoor = false;
         isMonster = true;
+        
     }
 
     public void closeDoor() {

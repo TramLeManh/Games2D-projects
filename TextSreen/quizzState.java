@@ -1,7 +1,7 @@
 package TextSreen;
 
 import java.awt.Graphics2D;
-import java.util.Random;
+import java.util.Random; 
 
 import Events.Quizz_Events;
 import Events.SuperEvent;
@@ -84,6 +84,9 @@ public class quizzState extends SuperUI {
         questions[13].text = " Molecules are smaller than electrons"; 
         questions[13].answer = false; 
 
+        questions[14] = new setQuestions();
+        questions[14].text = " Molecules are smaller than electrons"; 
+        questions[14].answer = false; 
        
     }
 

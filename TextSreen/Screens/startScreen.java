@@ -32,9 +32,12 @@ public class startScreen extends Screens {
         if(drawSubScreen){
             if(command == 3){
                 drawScreen1(screen_text);
-            }else{
-                drawScreen(screen_text,command);
-                pause = true;
+            }
+            else if(command != 2){
+              
+               drawScreen(screen_text,command);
+               pause = true;
+ 
             }
         }
         else{
@@ -89,7 +92,7 @@ public class startScreen extends Screens {
 
         g2.drawString(text, x, y);
 
-        text = "ABOUT";
+        text = "SCORE";
         x = LocateCenterText(text);
         y +=gp.tileSize;
         g2.drawString(text, x, y);
@@ -109,6 +112,7 @@ public class startScreen extends Screens {
                    screen_text = "Are you sure want to quit?";
         }
     }
+   
 //     public void drawScreen(String text){
 //         int x = gp.tileSize *2;
 //         int y = gp.tileSize /2;

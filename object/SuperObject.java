@@ -7,7 +7,6 @@ import java.awt.Rectangle;
 
 
 public abstract class SuperObject{
-    
     public Rectangle solidArea = new Rectangle(0, 0,48,48);
     public int solidAreaDefaultX,solidAreaDefaultY;
     public BufferedImage image;
@@ -16,10 +15,7 @@ public abstract class SuperObject{
      public String name;
      public int size;
      public String text;
-
-
-     public void draw(Graphics2D g,GamePanel gp) { 
-      
+     public void draw(Graphics2D g,GamePanel gp) {
         int screenX = worldX -gp.player.worldX + gp.player.screenX;
         int screenY = worldY -gp.player.worldY + gp.player.screenY;
         if (worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&

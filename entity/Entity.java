@@ -9,7 +9,7 @@ public class Entity {
     public int spriteCounter = 0;
     public int spriteNum = 1;
     public Rectangle solidArea;
-    public boolean collisionEnabled = false;
+    public boolean collisionEnabled = true;
     public int solidAreaDefaultX,solidAreaDefaultY;
     String announcements[] = new String[20];
     public void announce() {}

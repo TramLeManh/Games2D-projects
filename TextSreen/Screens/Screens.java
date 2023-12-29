@@ -46,9 +46,7 @@ public abstract class Screens {
         if(mode == 1){
             g2.drawImage(pictures.get("Instructions"),48*2+20,y+10,null);
         }
-        else if(mode ==2){
-            g2.drawImage(pictures.get("About"),48*2+20,y+10,null);
-        }
+        
         // g2.setColor(Color.black);
         // g2.drawRect(48*2+20,y+ 10,gp.screenWidth - (4*gp.tileSize)-40 , height-110);
         
@@ -77,5 +75,6 @@ public void drawScreen1(String text){
     g2.drawString(text, x, y);
     g2.drawString("(Y/N)", width, height+100);
 }
+
     
 }

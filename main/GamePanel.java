@@ -1,36 +1,36 @@
 package main;
-import object.SuperObject;
-import object.object_set;
-import sound.Sound;
-
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import ScoreBoard.score;
 import Events.SuperEvent;
 import KeyBoard.KeyCommand;
 import KeyBoard.keyControl;
+import KeyBoard.pauseKey;
 import KeyBoard.playKey;
 import KeyBoard.startKey;
-import KeyBoard.pauseKey;
-
 import TextSreen.announceState;
 import TextSreen.playState;
 import TextSreen.quizzState;
 import TextSreen.Screens.pauseScreen;
 import TextSreen.Screens.startScreen;
-import tiles.TilesMangaer;
-
-
 import entity.Player;
-
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import object.SuperObject;
+import object.object_set;
+import sound.Sound;
+import tiles.TilesMangaer;
 
 public class GamePanel extends JPanel implements Runnable {
     public boolean detection = false;
     public boolean object_detection = true;
-    public boolean end = false;
+    // public boolean end = false;
+    public boolean finish = false;
     final int originalTileSize = 16;
     final int scale = 3;
     private int temp;
@@ -40,8 +40,8 @@ public class GamePanel extends JPanel implements Runnable {
     public final int screenWidth = tileSize * maxScreenCol;//768
     public final int screenHeight = tileSize * maxScreenRow;//576
     // world settings
-    public final int maxWorldCol = 100;
-    public final int maxWorldRow = 100;//56
+    public  int maxWorldCol = 250;
+    public  int maxWorldRow = 250;//56
     public final int worldWidth = maxWorldCol*tileSize;
     public final int worldHeight = maxWorldRow*tileSize;
     //gamestate
@@ -51,8 +51,10 @@ public class GamePanel extends JPanel implements Runnable {
     public final int startState = 3;
     public final int quizzState = 4;
     public final int pauseState = 5;
+    public final int scoreState = 6;
     public final int announceState1 = 6;
-
+    public JFrame frame;
+    private int player_score;
     int FPS = 60;
     /** list of keyboard*/
     private KeyCommand startKey = new startKey(this);
@@ -72,7 +74,7 @@ public class GamePanel extends JPanel implements Runnable {
     //Superobject Gamepannel 
     /** Polymorphism */
 
-    public SuperObject object[] = new SuperObject[50];
+    public SuperObject object[] = new SuperObject[1000];
     public object_set  objects = new object_set(this);
 
     public map map = new map(this);
@@ -83,16 +85,20 @@ public class GamePanel extends JPanel implements Runnable {
     public announceState announce = new announceState(this);
     public startScreen start = new startScreen(this);
     public pauseScreen pause = new pauseScreen(this);
+    private score s;
+
 
 
 
     // Player start positions
-    int playerX     = 100;
-    int playerY     = 100;
+    // int playerX     = 0;//100
+    // int playerY     = 71;//100
     int playerSpeed = 5;
 
     public GamePanel() {
+     
         // set Background
+         s = new score(frame, false,this);
         this.setPreferredSize(new Dimension(16*48, 12*48));
         this.setBackground(new Color(70,120,80));/* getHSBColor() */ /* decode hex code */ /*Color.decode("#000000") */
         this.setDoubleBuffered(true);
@@ -159,7 +165,6 @@ public class GamePanel extends JPanel implements Runnable {
 
         // ui1.drawScreen("2");
         // ui.draw(g2);
-            //  //draw map
              if(gamestate == playState||gamestate==announceState||gamestate == quizzState||gamestate== announceState1){
                 tilesM.draw(g2);
     
@@ -180,6 +185,9 @@ public class GamePanel extends JPanel implements Runnable {
              }
              else if(gamestate==startState){
                 start.draw(g2);
+             }
+             else if(gamestate==scoreState){
+                openScore();
              }
              else if(gamestate==pauseState){
                 pause.draw(g2);
@@ -212,4 +220,31 @@ public class GamePanel extends JPanel implements Runnable {
     public int getGamestate(){
         return this.gamestate;
     }
+   public void addFrame(JFrame j){
+    this.frame  = j;
+   }
+   public void openScore(){
+    s.setVisible(true);
+   }
+    public void closeScore(){
+    s.dispose();
+   }
+   public void finshGame(){
+        stopMusic();
+        playMusic("endgame");
+        // s.insert("test",play.getScore()+1);
+        openScore();
+        finish = true;
+
+
+       
+   }
+   public void restart(){
+   map.reset1();
+   
+   }
+public void createAccount(String text) {
+    s.insert(text);
+}
+
 }

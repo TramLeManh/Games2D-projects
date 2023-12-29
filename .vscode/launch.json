@@ -3,6 +3,41 @@
   "configurations": [
     {
       "type": "java",
+      "name": "login",
+      "request": "launch",
+      "mainClass": "main.login",
+      "projectName": "Games2D-projects_642de12c"
+    },
+    {
+      "type": "java",
+      "name": "data",
+      "request": "launch",
+      "mainClass": "ScoreBoard.data",
+      "projectName": "Games2D-projects_642de12c"
+    },
+    {
+      "type": "java",
+      "name": "score",
+      "request": "launch",
+      "mainClass": "ScoreBoard.score",
+      "projectName": "Games2D-projects_642de12c"
+    },
+    {
+      "type": "java",
+      "name": "score",
+      "request": "launch",
+      "mainClass": "Score.score",
+      "projectName": "Games2D-projects_642de12c"
+    },
+    {
+      "type": "java",
+      "name": "score",
+      "request": "launch",
+      "mainClass": "main.score",
+      "projectName": "Games2D-projects_642de12c"
+    },
+    {
+      "type": "java",
       "name": "Main",
       "request": "launch",
       "mainClass": "main.Main",

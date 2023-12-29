@@ -9,68 +9,77 @@ public class object_set {
     }
     public void setup() 
     {
-        gp.object[0] = new object_potion2();
+       
+        // add(new object_potion2(),"p2",10,37,true);
+        // add(new object_potion2(),"p3",13,39,true);
+        // add(new object_potion2(),"p4",13,39,true);
+
+        add(new prince(),"prince1",81,67);
+        add(new prince(),"decoy",77,88);
+        add(new object_Key(),"key123",12,13);
+        add(new portal(),"p123",108,2);
+
+        gp.object[0] = new object_door();
         gp.object[0].worldX = 12*gp.tileSize;
         gp.object[0].worldY = 35*gp.tileSize;
+
+         add(new object_door(),"p1",12,35,false);
+
+        gp.object[0].collision = false;
 
         gp.object[1] = new object_potion2();
         gp.object[1].worldX = 10*gp.tileSize;
         gp.object[1].worldY = 37*gp.tileSize;
 
-        gp.object[2] = new object_potion2();
-        gp.object[2].worldX = 13*gp.tileSize;
-        gp.object[2].worldY = 39*gp.tileSize;
+        // gp.object[2] = new object_potion2();
+        // gp.object[2].worldX = 13*gp.tileSize;
+        // gp.object[2].worldY = 39*gp.tileSize;
 
-        gp.object[3] = new object_potion2();
-        gp.object[3].worldX = 50*gp.tileSize;
-        gp.object[3].worldY = 8*gp.tileSize;
+        // gp.object[3] = new object_potion2();
+        // gp.object[3].worldX = 50*gp.tileSize;
+        // gp.object[3].worldY = 8*gp.tileSize;
 
-        gp.object[4] = new object_potion2();
-        gp.object[4].worldX = 71*gp.tileSize;
-        gp.object[4].worldY = 8*gp.tileSize;
+        // gp.object[4] = new object_potion2();
+        // gp.object[4].worldX = 71*gp.tileSize;
+        // gp.object[4].worldY = 8*gp.tileSize;
 
-        gp.object[5] = new prince ();
-        gp.object[5].worldX = 81*gp.tileSize;
-        gp.object[5].worldY = 67*gp.tileSize;
+        // gp.object[5] = new prince ();
+        // gp.object[5].worldX = 81*gp.tileSize;
+        // gp.object[5].worldY = 67*gp.tileSize;
+        add(new object_question(),53,71);
+        add(new object_question(),58,71);
+         add(new object_question(),63,71);
+         add(new object_question(),59,74);
+           add(new object_question(),62,74);
+        add(new object_question(),67,74);
+        add(new object_question(),72,74);
+        add(new object_question(),30,84);
+        add(new object_question(),32,84);
+        // gp.object[6] = new object_question();
+        // gp.object[6].worldX = 53*gp.tileSize;
+        // gp.object[6].worldY = 71*gp.tileSize;
 
-        gp.object[6] = new object_question();
-        gp.object[6].worldX = 53*gp.tileSize;
-        gp.object[6].worldY = 71*gp.tileSize;
+        // gp.object[7] = new object_question();
+        // gp.object[7].worldX = 58*gp.tileSize;
+        // gp.object[7].worldY = 71*gp.tileSize;
 
-        gp.object[7] = new object_question();
-        gp.object[7].worldX = 58*gp.tileSize;
-        gp.object[7].worldY = 71*gp.tileSize;
+        // gp.object[8] = new object_question();
+        // gp.object[8].worldX = 63*gp.tileSize;
+        // gp.object[8].worldY = 71*gp.tileSize;
 
-        gp.object[8] = new object_question();
-        gp.object[8].worldX = 63*gp.tileSize;
-        gp.object[8].worldY = 71*gp.tileSize;
+        // gp.object[9] = new object_question();
+        // gp.object[9].worldX = 59*gp.tileSize;
+        // gp.object[9].worldY = 74*gp.tileSize;
 
-        gp.object[9] = new object_question();
-        gp.object[9].worldX = 59*gp.tileSize;
-        gp.object[9].worldY = 74*gp.tileSize;
-
-        gp.object[10] = new object_question();
-        gp.object[10].worldX = 62*gp.tileSize;
-        gp.object[10].worldY = 74*gp.tileSize;
+        // gp.object[10] = new object_question();
+        // gp.object[10].worldX = 62*gp.tileSize;
+        // gp.object[10].worldY = 74*gp.tileSize;
 
         
-        gp.object[11] = new object_question();
-        gp.object[11].worldX = 67*gp.tileSize;
-        gp.object[11].worldY = 74*gp.tileSize;
+      
 
-        gp.object[12] = new object_question();
-        gp.object[12].worldX = 72*gp.tileSize;
-        gp.object[12].worldY = 74*gp.tileSize;
+ 
 
-        //
-        gp.object[13] = new object_question();
-        gp.object[13].worldX = 30*gp.tileSize;
-        gp.object[13].worldY = 84*gp.tileSize;
-
-        gp.object[14] = new object_question();
-        gp.object[14].worldX = 32*gp.tileSize;
-        gp.object[14].worldY = 84*gp.tileSize;
-        
 
         //79
         gp.object[15] = new portal();
@@ -111,9 +120,9 @@ public class object_set {
         gp.object[23].worldX = 63*gp.tileSize;
         gp.object[23].worldY = 16*gp.tileSize;
 
-        gp.object[24] = new prince();
-        gp.object[24].worldX = 77*gp.tileSize;
-        gp.object[24].worldY = 8*gp.tileSize;
+        // gp.object[24] = new prince();
+        // gp.object[24].worldX = 77*gp.tileSize;
+        // gp.object[24].worldY = 8*gp.tileSize;
 
         gp.object[25] = new object_chest();
         gp.object[25].worldX = 79*gp.tileSize;
@@ -176,20 +185,50 @@ public class object_set {
         gp.object[39].worldX = 26*gp.tileSize;
         gp.object[39].worldY = 40*gp.tileSize;
 
-
+        SuperObject a =new object_chest();
         
-       
+        gp.object[39] = a;
+        gp.object[39].worldX = 26*gp.tileSize;
+        gp.object[39].worldY = 40*gp.tileSize;
+        add(new object_Key(),"key1",15,13, true);
+    }   
+
+    //SuperObject là các array object inherited superObject
+    public  void add(SuperObject object,String name,int x,int y,boolean collision){
+        int index = hashFunc(name);
+        gp.object[index] = object;
+        gp.object[index].worldX = x*gp.tileSize;//location x
+        gp.object[index].worldY = y*gp.tileSize; //location x
+        gp.object[index].collision = collision; //isCollision ?
+    } 
+
+    public  void add(SuperObject object,String name,int x,int y){
+        int index = hashFunc(name);
+        gp.object[index] = object;
+        gp.object[index].worldX = x*gp.tileSize;
+        gp.object[index].worldY = y*gp.tileSize;
         
+    } 
+     public  void add(SuperObject object,int x,int y){
+        int index = checkCollision(object.name);
+        gp.object[index] = object;
+        gp.object[index].worldX = x*gp.tileSize;
+        gp.object[index].worldY = y*gp.tileSize;
+    } 
+    public  int hashFunc(String input){
+        int sum = 0;
+       for (int i = 0; i < input.length(); i++) {
+           char c = input.charAt(i);
+           sum += (int) c;
+       }
+       return (sum % 999);
+   }
 
-
-
-
-
-
-
-
-
-
-     
-    }    
+   public int checkCollision(String input){
+    int index  = hashFunc(input);
+    while(gp.object[index] != null){
+        index +=1;
+   }
+   return index;
+}
 }

@@ -49,8 +49,8 @@ public class Player extends Entity {
     }
 
     public void setDefultValues() {
-        worldX = gp.tileSize * 15;// 15
-        worldY = gp.tileSize * 11;// 11
+        worldX = gp.tileSize * 48;// 15
+        worldY = gp.tileSize * 71;// 11
         speed = 3;
         direction = "down";
         transfer = true;
@@ -149,7 +149,7 @@ public class Player extends Entity {
         direction = "down";
         Key_count = 0;
         isMove = true;
-        gp.gamestate = gp.playState;
+     
         collisionEnabled = false;
 
     }

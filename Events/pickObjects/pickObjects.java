@@ -17,8 +17,15 @@ public class pickObjects extends SuperEvent {
     public pickObjects() {
     }
 
+    /**
+     * @param objectName
+     * @param index
+     */
     public void set(String objectName, int index) {
+        
+    
         this.index = index;
+
         if (objectName == "key") {
             if (index == 23) {
                 gp.playSE("coin");
@@ -72,9 +79,10 @@ public class pickObjects extends SuperEvent {
             }
         }
 
-        else if (index == 0 || index == 1 || index == 2) {
-            teleport(18, 37);
-        }
+        // else if (check("p1") || check("p2") || check("p3")) {
+        //     // teleport(18, 37);
+          
+        // }
         if (index == 3) {
             teleport(49, 16);
             clear();
@@ -83,14 +91,16 @@ public class pickObjects extends SuperEvent {
             teleport(59, 8);
             clear();
         } else if (objectName == "prince") {
-            if (index == 5) {
-                announce("Victory");
-                gp.stopMusic();
-                gp.playMusic("endgame");
+            if (check("prince1" )&&gp.finish == false) {
+                // announce("Victory");
+                gp.finshGame();
                 gp.gameThread = null;
+                // gp.playMusic("endgame");
+                // gp.gamestate = gp.startState;
+
                 // System.out.println("2");
             }
-            else if (index == 24) {
+            else if (check("decoy")) {
                 announce("This a fake princess. She is somewhere in the world.");
                 addObject("portal", 77, 6, 35);
                 gp.playSE("clear");
@@ -204,6 +214,14 @@ public class pickObjects extends SuperEvent {
             if (index == 35) {
                 teleport(14, 62, "down");
             }
+            if(index == hashFunc("p123")){
+                teleport(111, 6, "down");
+                addKey();
+
+                gp.playSE("powerDown");
+                announce("test 123");
+
+            }
 
         } else if (objectName == "oldman"&&player.direction == "right") {
             oldman.set(this,index);
@@ -253,9 +271,9 @@ public class pickObjects extends SuperEvent {
 
     }
 
-    /**
-     * remove the object
-     */
+    // /**
+    //  * remove the object
+    //  */
 
 
     public void clear() {
@@ -296,5 +314,20 @@ public class pickObjects extends SuperEvent {
     public boolean isHaveToothpaste() {
         return haveToothpaste;
     }
+    public  int hashFunc(String input){
+        int sum = 0;
+       for (int i = 0; i < input.length(); i++) {
+           char c = input.charAt(i);
+           sum += (int) c;
+       }
+       return (sum % 999);
+   
+   }
+   public  boolean check(String input){
+        if(hashFunc(input)==index){
+            return true;
+        }
+       return false;
+   }
     
 }

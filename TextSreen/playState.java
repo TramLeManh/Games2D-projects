@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.text.DecimalFormat;
+import java.text.*;
 
 import main.GamePanel;
 import object.object_Key;
@@ -75,5 +75,10 @@ public class playState extends SuperUI{
             timeStop = false;
 
     }
-}}
+}
+public int getScore(){
+    timeStop = true; 
+    return minute*60+(int)seconds;
+}
+}
     

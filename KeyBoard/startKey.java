@@ -27,14 +27,21 @@ public class startKey implements KeyCommand  {
             if (gp.start.command == 0 && key_code == KeyEvent.VK_SPACE) {
                 gp.setGamestate(gp.playState);
                 gp.playMusic("road");
-            } else if (key_code == KeyEvent.VK_SPACE) {
+            } else if (key_code == KeyEvent.VK_SPACE&&gp.start.command != 2) {
                 gp.start.drawSubScreen = true;
                 gp.start.pause = true;
 
             }
+            else if (key_code == KeyEvent.VK_SPACE&&gp.start.command == 2) {
+                gp.openScore();
+                gp.start.pause = true;
+
+            }
+            
         } else if (key_code == KeyEvent.VK_SPACE && gp.start.pause) {
             gp.start.drawSubScreen = false;
             gp.start.pause = false;
+            gp.closeScore();
         }
         if (gp.start.drawSubScreen) {
             if (gp.start.command == 3) {

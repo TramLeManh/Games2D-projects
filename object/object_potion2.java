@@ -11,7 +11,7 @@ public class object_potion2 extends SuperObject{
             e.printStackTrace();
         } 
         collision = true;
-        size = 40;
+        size = 48;
 
 
     }

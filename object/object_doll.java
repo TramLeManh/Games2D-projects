@@ -12,7 +12,5 @@ public class object_doll extends SuperObject{
         } 
         collision = true;
         size = 48;
-
-
     }
 }

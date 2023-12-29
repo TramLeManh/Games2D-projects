@@ -53,7 +53,6 @@ public class Quizz_Events extends SuperEvent {
                 setTeleport(15, 81);
             } else {
                 announce("Wrong, you can not pass");
-
             }
         } else if (objectName == "doll") {
             if (Keys() == 0) {
