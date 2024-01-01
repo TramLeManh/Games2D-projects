@@ -224,15 +224,18 @@ public class GamePanel extends JPanel implements Runnable {
     this.frame  = j;
    }
    public void openScore(){
+    s.set();
     s.setVisible(true);
    }
     public void closeScore(){
+    s.reset();
     s.dispose();
    }
    public void finshGame(){
         stopMusic();
         playMusic("endgame");
-        // s.insert("test",play.getScore()+1);
+        s.finish();
+     
         openScore();
         finish = true;
 
@@ -243,8 +246,11 @@ public class GamePanel extends JPanel implements Runnable {
    map.reset1();
    
    }
+   public int getScore(){
+    return play.getScore();
+   }
 public void createAccount(String text) {
-    s.insert(text);
+    s.insert(text,0);
 }
 
 }

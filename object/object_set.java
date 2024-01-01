@@ -15,7 +15,7 @@ public class object_set {
         // add(new object_potion2(),"p4",13,39,true);
 
         add(new prince(),"prince1",81,67);
-        add(new prince(),"decoy",77,88);
+        add(new prince(),"decoy",77,8);
         add(new object_Key(),"key123",12,13);
         add(new portal(),"p123",108,2);
 

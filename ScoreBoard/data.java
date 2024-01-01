@@ -12,7 +12,8 @@ public class data {
     public data() {
     }
     public players[] getData(){
-        get();
+         get1();
+       
         return  players;
     }
     public int getSize(){
@@ -33,6 +34,15 @@ public class data {
             System.out.println("error");
         }
         return -1;
+
+    }
+    public void get1(){
+          players = new players[100];
+
+           players[0] = new players("a1",1);
+                players[1] = new players("a2",2);
+                players[2] = new players("a3",3);
+                        players[3] = new players("a4",4);
 
     }
     public void get(){

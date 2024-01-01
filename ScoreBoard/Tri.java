@@ -8,7 +8,7 @@ public class Tri {
         data data = new data();
 
         Players_list=  data. getData();
-        this.elements = data.getSize();
+        this.elements = 4;//data.getSize()
         sort();
         this.score = score;
       
@@ -17,10 +17,17 @@ public class Tri {
     public void execute(){
         for(int i = 0; i <elements; i++){
             if(Players_list[i]!=null){
-                        score.text.append(i+Players_list[i].toString());
+                        score.text.append(" "+(i+1)+"\t"+Players_list[i].toString());
             }
         }
     }
+    public void finish(int score)
+        {
+            Players_list[elements-1].setScore(score);
+            sort();
+            System.out.println("done");
+            System.out.println(Players_list[elements-1].toString());
+        }
     public void sort() {
         int i, j;
 
@@ -28,7 +35,7 @@ public class Tri {
         for (i = 0; i < elements- 1; i++) {
             swapped = false;
             for (j = 0; j < elements - i - 1; j++) {
-                if ( Players_list[j].getScore() <  Players_list[j + 1].getScore()) {
+                if ( Players_list[j].getScore() >  Players_list[j + 1].getScore()) {
                     // Swap arr[j] and arr[j+1]
                     players p1 = Players_list[j];
                     this.Swap(Players_list[j], Players_list[j+1]);
@@ -42,12 +49,22 @@ public class Tri {
                 break;
         }
     }
-    public void create(String  name) {
-    
-        players p = new players( name,0);
+    public void insert(String  name,int score) {
+        if(score == 0){
+             players p = new players( name,score);
+        Players_list [elements] = p;
+        elements++;
+
+        }
+        else{
+                 players p = new players( name,score);
         Players_list [elements] = p;
         elements++;
         sort();
+
+        }
+    
+    
     }
 
     public int rank(players p ){

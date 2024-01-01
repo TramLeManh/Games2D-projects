@@ -9,7 +9,7 @@ public class players{
     @Override
     public String toString() {
         if(score != 0)
-        return this.getName()+"\t      "+this.getScore()+"\n";
+        return this.getName()+"\t"+this.getScore()+"\n";
         else
         return this.getName()+"\t      "+"\n";
     }

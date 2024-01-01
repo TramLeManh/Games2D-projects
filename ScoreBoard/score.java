@@ -3,6 +3,8 @@
 
 package ScoreBoard;
 import java.awt.event.KeyEvent;
+import java.awt.Label;
+import java.awt.event.KeyEvent;
 
 import main.GamePanel;
 
@@ -22,7 +24,7 @@ public class score extends javax.swing.JDialog {
         tri = new Tri(this);
                       
                      
-        set();
+      
 
     }
         private Tri tri;
@@ -52,22 +54,27 @@ public class score extends javax.swing.JDialog {
                         if(gp.finish == true){
                             gp.restart();
                             gp.finish = false;
+                         
                         }
+                        reset();
              
 
                     
                 }
                 });
-        set();
+        // set();
            
          
     }
-    public void insert(String name){
-        tri.create(name);
-        reset();
+    public void insert(String name,int score){
+     tri.insert(name,score);
+    }
+    public void finish(){
+               tri.finish(gp.getScore());
+             reset();
     }
     public void set(){
-        text.append("Rank\t      Username\t      Score\n");
+        text.append("Rank\tUsername\tScore\n");
         tri.execute();
             }
     /**
@@ -78,11 +85,10 @@ public class score extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
-
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         text = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel1 = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -97,11 +103,7 @@ public class score extends javax.swing.JDialog {
         });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jPanel1KeyPressed(evt);
-            }
-        });
+       
 
         text.setEditable(false);
         text.setBackground(new java.awt.Color(255, 255, 255));
@@ -111,18 +113,16 @@ public class score extends javax.swing.JDialog {
         text.setRows(5);
         text.setBorder(null);
         text.setVerifyInputWhenFocusTarget(false);
-        text.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-               
-            }
-        });
+        
         jScrollPane1.setViewportView(text);
-        text.getAccessibleContext().setAccessibleParent(null);
 
-        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("             SCORE BOARD");
+        jLabel1.setAlignment(java.awt.Label.CENTER);
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jLabel1.setEnabled(false);
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(153, 153, 255));
+        jLabel1.setName("SCORE BOARD"); // NOI18N
+        jLabel1.setText("SCORE BOARD");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -131,15 +131,15 @@ public class score extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(90, 90, 90)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane1)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE))
                 .addContainerGap(90, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -157,7 +157,7 @@ public class score extends javax.swing.JDialog {
         );
 
         pack();
-    }// </editor-fold>                        
+    }// </editor-fold>                    
 
     private void formComponentHidden(java.awt.event.ComponentEvent evt) {                                     
 System.out.println(2);
@@ -170,7 +170,7 @@ System.out.println(2);
                                 
     public void reset(){
             text.setText(" ");
-            set();
+            // set();
     }
     private void formKeyPressed(java.awt.event.KeyEvent evt) {                                
           if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
@@ -224,7 +224,7 @@ System.out.println(2);
             }
         });
     }
-    private javax.swing.JLabel jLabel1;
+    private Label jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTextArea text;

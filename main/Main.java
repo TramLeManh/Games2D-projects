@@ -1,7 +1,7 @@
 package main;
 import javax.swing.JFrame;
 
-import picture.picture;
+ import picture.picture;
 /*w window */
 public class Main {
     public static void main(String[] args){
