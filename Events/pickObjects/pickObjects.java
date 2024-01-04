@@ -23,9 +23,11 @@ public class pickObjects extends SuperEvent {
      */
     public void set(String objectName, int index) {
         
-    
-        this.index = index;
+        gp.g.set(objectName, index,this);
+                gp.h.set(objectName, index,this);
 
+        this.index = index;
+     
         if (objectName == "key") {
             if (index == 23) {
                 gp.playSE("coin");

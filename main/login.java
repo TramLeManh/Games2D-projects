@@ -20,6 +20,8 @@ public class login extends javax.swing.JFrame {
     public login() {
 
         initComponents();
+       
+
     }
     JFrame j;
     GamePanel gp;
@@ -27,6 +29,8 @@ public class login extends javax.swing.JFrame {
         this.j = j;
         this.gp=gp;
         initComponents();
+         setResizable(false);
+        setLocationRelativeTo(null);
     }
 
     /**

@@ -37,6 +37,9 @@ public class score extends javax.swing.JDialog {
     
         initComponents();
              tri = new Tri(this);
+
+             setTitle("ScoreBoard");/*Set tittle */
+       
                  
         //   this.setLocation(48,48);
         this.setLocationRelativeTo(parent);

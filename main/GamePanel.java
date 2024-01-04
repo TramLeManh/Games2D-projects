@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 
 import ScoreBoard.score;
 import Events.SuperEvent;
+import Events.graph;
+import Events.hung.hung;
 import KeyBoard.KeyCommand;
 import KeyBoard.keyControl;
 import KeyBoard.pauseKey;
@@ -32,6 +34,7 @@ public class GamePanel extends JPanel implements Runnable {
     // public boolean end = false;
     public boolean finish = false;
     final int originalTileSize = 16;
+
     final int scale = 3;
     private int temp;
     public final int tileSize = originalTileSize * scale; /* 48*48 */
@@ -56,6 +59,8 @@ public class GamePanel extends JPanel implements Runnable {
     public JFrame frame;
     private int player_score;
     int FPS = 60;
+    public graph g = new graph();
+    public hung h = new hung();
     /** list of keyboard*/
     private KeyCommand startKey = new startKey(this);
     private KeyCommand playKey = new playKey(this);

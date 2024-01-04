@@ -191,6 +191,8 @@ public class object_set {
         gp.object[39].worldX = 26*gp.tileSize;
         gp.object[39].worldY = 40*gp.tileSize;
         add(new object_Key(),"key1",15,13, true);
+        gp.g.setup();
+        gp.h.setup();
     }   
 
     //SuperObject là các array object inherited superObject
@@ -226,6 +228,10 @@ public class object_set {
 
    public int checkCollision(String input){
     int index  = hashFunc(input);
+    if(input.compareTo("question") == -1){
+            System.out.println("collision error: " + input);
+
+    }
     while(gp.object[index] != null){
         index +=1;
    }
