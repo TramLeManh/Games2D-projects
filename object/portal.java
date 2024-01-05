@@ -9,7 +9,7 @@ public class portal extends SuperObject{
     public portal(){
         name = "portal";
         try {
-            image = ImageIO.read(getClass().getResourceAsStream("/picture/object/portal.png"));
+            image = ImageIO.read(getClass().getResourceAsStream("/picture/tiles/92.B.png"));
         } catch (Exception e) {
             e.printStackTrace(); 
         } 

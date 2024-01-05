@@ -83,8 +83,8 @@ public class object_set {
 
         //79
         gp.object[15] = new portal();
-        gp.object[15].worldX = 29*gp.tileSize;
-        gp.object[15].worldY = 79*gp.tileSize;
+        gp.object[15].worldX = 75*gp.tileSize;
+        gp.object[15].worldY = 8*gp.tileSize;
 
         
         gp.object[16] = new portal();

@@ -1,5 +1,8 @@
 package Events.pickObjects;
 
+import java.util.ArrayList;
+import java.util.List;
+import Events.pickObjects.Graph.*;
 import Events.SuperEvent;
 import KeyBoard.keyControl;
 
@@ -13,6 +16,9 @@ public class pickObjects extends SuperEvent {
     private int y;
     private boolean haveToothpaste = false;
     private oldman oldman =  new oldman();
+    
+        
+   
 
     public pickObjects() {
     }
@@ -187,8 +193,13 @@ public class pickObjects extends SuperEvent {
         else if (objectName == "question") {
             gp.setGamestate(gp.quizzState);
         } else if (objectName == "portal") {
-            if (index == 15) {// 29 79
-                teleport(44, 62, "right");
+            if (index >= 15&& index<=35) {// 29 79
+                MapApp mapApp = new MapApp(); // create a MapApp object
+                mapApp.CreateMap(); // call the CreateMap() method
+                GraphTeleport g = mapApp.getGraph(); // get the graph object
+                setTeleport(g.getAllEdges().get(index%15).getDestination().getX(),g.getAllEdges().get(index%15).getDestination().getY());
+                
+                announce(g.getAllEdges().get(index%15).getSource().getId()+g.getAllEdges().get(index%15).getDestination().getId()+" if you tele this port u will loss "+g.getAllEdges().get(index%15).getMana()+" mana");
                 System.out.println(getObjectIndex());
             }
             if (index == 16) {// 29 79
