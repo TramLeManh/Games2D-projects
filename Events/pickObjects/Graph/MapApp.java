@@ -1,5 +1,10 @@
 package Events.pickObjects.Graph;
 
+import java.util.List;
+import java.util.Map;
+
+import org.w3c.dom.Node;
+
 public class MapApp {
     private GraphTeleport graph; // declare a field to store the graph
 
@@ -35,6 +40,25 @@ public class MapApp {
     graph.addEdge(ce);
     graph.addEdge(ca);
     graph.addEdge(ed);
+
+    graph.printGraph();
     
+    NodeMap startNode = A; // Replace with your actual start node (e.g., A)
+    NodeMap endNode = E;   // Replace with your actual end node (e.g., K)
+
+        // Find the shortest path
+        Map<NodeMap, NodeMap> shortestPathPrevious = graph.shortestPathW(startNode, endNode);
+        double shortestPathWeight = graph.reconstructW(shortestPathPrevious, startNode, endNode);
+
+        // Print the shortest path and its weight
+        List<NodeMap> ln= graph.shortestPath(startNode, endNode);
+        System.out.println("Shortest Path from " + startNode.getId() + " to " + endNode.getId() + ": "
+               );
+        for (int i=0;i<ln.size();i++){
+            System.err.print(ln.get(i).getId()+" ");
+        }
+        System.err.println();       
+        System.out.println("Shortest Path Weight: " + shortestPathWeight);
+
     }
 }

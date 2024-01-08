@@ -201,6 +201,7 @@ public class pickObjects extends SuperEvent {
                 
                 announce(g.getAllEdges().get(index%15).getSource().getId()+g.getAllEdges().get(index%15).getDestination().getId()+" if you tele this port u will loss "+g.getAllEdges().get(index%15).getMana()+" mana");
                 System.out.println(getObjectIndex());
+                
             }
             if (index == 16) {// 29 79
                 teleport(44, 71, "right");
