@@ -51,15 +51,15 @@ public class random {
             array[i][j] = getRandom(5, 8);
         }
          if(i == 3){
-            array[i][j] = getRandom(9, 12);
+            array[i][j] = getRandom(9, 13);
         }
          if(i == 4){
-            array[i][j] = getRandom(13, 16);
+            array[i][j] = getRandom(14, 18);
         }
          if(i == 5){
-            array[i][j] = getRandom(17, 20);
+            array[i][j] = getRandom(19, 23);
         }
-         
+       
        
         
       }

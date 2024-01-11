@@ -41,7 +41,7 @@ public class scoreBoard {
           this.Swap(Players_list[j], Players_list[j + 1]);
           swapped = true;
         }
-      }
+      }      
       // If no two elements were
       // swapped by inner loop, then break
       if (swapped == false) break;

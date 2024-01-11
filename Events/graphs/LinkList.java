@@ -17,12 +17,7 @@ public class LinkList {
     
     public void insert(Node newNode) {
        
-            // Node temp = head;
-            // while (temp.next != head) {
-            //     temp = temp.next;
-            // }
-            // temp.next = newNode;
-            // newNode.next = head;
+           
 
             if(head.next == null){
                 head.next = newNode;
@@ -36,10 +31,12 @@ public class LinkList {
             }
         
     }
+
     public Node getNext() {
         this.cur = this.cur.next;
         return this.cur;
     }
+
     public void addLast(String l){
         if(cur == head) {
             // pos.append(l+"");
@@ -57,6 +54,7 @@ public class LinkList {
           
         
     }
+
     public Node getCur() {
         return cur;
     }

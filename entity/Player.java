@@ -1,6 +1,6 @@
 package entity;
 
-import main.GamePanel;
+import main.GamePanel; 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -55,8 +55,8 @@ public class Player extends Entity {
     }
 
     public void setDefultValues() {
-        worldX = gp.tileSize * 85;// 15
-        worldY = gp.tileSize * 67;// 11
+        worldX = gp.tileSize * 164;// 15
+        worldY = gp.tileSize * 20;// 11
         speed = 3;
         direction = "down";
         transfer = true;

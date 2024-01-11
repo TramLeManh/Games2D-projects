@@ -25,11 +25,13 @@ public class pickObjects extends SuperEvent {
         
         gp.g.set(objectName, index,this);
                 
-        gp.h.set(objectName, index,this);
+       
 
         this.index = index;
-     
-        if (objectName == "key") {
+        if(gp.isGraph){
+             gp.h.set(objectName, index,this);
+        }else{
+             if (objectName == "key") {
             if (index == 23) {
                 gp.playSE("coin");
                 announce("This is a fake key :))");
@@ -271,6 +273,9 @@ public class pickObjects extends SuperEvent {
                 clear();
             }
         }
+        }
+     
+       
 
     }
 
@@ -327,7 +332,8 @@ public class pickObjects extends SuperEvent {
    
    }
    public  boolean check(String input){
-        if(hashFunc(input)==index){
+        if(hashFunc(input)==this.index){
+            System.out.println(hashFunc(input));
             return true;
         }
        return false;
