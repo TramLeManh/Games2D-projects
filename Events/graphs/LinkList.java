@@ -16,13 +16,6 @@ public class LinkList {
     
     
     public void insert(Node newNode) {
-       
-            // Node temp = head;
-            // while (temp.next != head) {
-            //     temp = temp.next;
-            // }
-            // temp.next = newNode;
-            // newNode.next = head;
 
             if(head.next == null){
                 head.next = newNode;
