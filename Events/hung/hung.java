@@ -14,7 +14,8 @@ import object.portal;
 import object.portal1;
 
 public class hung extends SuperEvent {
-
+  public boolean yn = false;
+  public boolean oldman = false;
   object_set objects;
   pickObjects pick;
   private int index;
@@ -67,91 +68,124 @@ public class hung extends SuperEvent {
 
   public void set(String objectName, int index, pickObjects object) {
     if (index == object.hashFunc("A123")) {
+      yn = true;
+      gp.playSE("teleport");
       System.out.println("A123");
       ask(0);
     }
     if (index == object.hashFunc("A223")) {
+      yn = true;
+      gp.playSE("teleport");
       System.out.println("A223");
       ask(1);
     }
     if (index == object.hashFunc("A323")) {
+       yn = true;
+      gp.playSE("teleport");
       System.out.println("A323");
       ask(2);
     }
     if (index == object.hashFunc("B1412")) {
+       yn = true;
+      gp.playSE("teleport");
       System.out.println("B1412");
 
       ask(3);
     }
     if (index == object.hashFunc("B2345")) {
+       yn = true;
+      gp.playSE("teleport");
       System.out.println("B2345");
 
       ask(4);
     }
     if (index == object.hashFunc("B3456")) {
+       yn = true;
+      gp.playSE("teleport");
       System.out.println("B3456");
 
       ask(5);
     }
     if (index == object.hashFunc("C1412")) {
+       yn = true;
+      gp.playSE("teleport");
       System.out.println("C1412");
 
       ask(6);
     }
     if (index == object.hashFunc("C2412")) {
+       yn = true;
+      gp.playSE("teleport");
       System.out.println("C2412");
 
       ask(7);
     }
     if (index == object.hashFunc("C3457")) {
+       yn = true;
+      gp.playSE("teleport");
       System.out.println("C3457");
 
       ask(8);
     }
     if (index == object.hashFunc("D1789")) {
+       yn = true;
+      gp.playSE("teleport");
       System.out.println("D1789");
 
       ask(9);
     }
     if (index == object.hashFunc("D2456")) {
+   yn = true;
+      gp.playSE("teleport");
       System.out.println("D2456");
 
       ask(10);
     }
     if (index == object.hashFunc("D3896")) {
+    yn = true;
+      gp.playSE("teleport");
       System.out.println("D3896");
 
       ask(11);
     }
     if (index == object.hashFunc("E178*")) {
+    yn = true;
+      gp.playSE("teleport");
       System.out.println("E178*");
 
       ask(12);
     }
     if (index == object.hashFunc("E245#")) {
+    yn = true;
+      gp.playSE("teleport");
       System.out.println("E245#");
 
       ask(13);
     }
     if (index == object.hashFunc("E3141")) {
+       yn = true;
+      gp.playSE("teleport");
       System.out.println("E3141");
 
       ask(14);
     }
     if (index == object.hashFunc("Exit")&&objectName == "portal1") {
         System.out.println("DOne");
+              gp.playSE("teleport");
+
 
     }
-    //  else if(index== object.hashFunc("guide")){
-    //     set();
-    //    i+=1;
-    //  announce(inst[i]);
+     else if(index== object.hashFunc("guide")){
+      this.oldman = true;
+        set();
+       i+=1;
+     announce(inst[i]);
 
-    //  if(i ==1 ){
-    //     i = 0;
-    //  }
+     if(i ==1 ){
+        i = 0;
+     }
 
-    // }
+    }
          if(index== object.hashFunc("Exit")&&objectName == "door"){
             System.out.println(2);
            if(gp.player.coin == mapApp.getshortWeight()){
@@ -182,10 +216,13 @@ public class hung extends SuperEvent {
 
   //ask for teleport in quizzState.java
   public String annouces() {
+              this.yn = true;
+
     return announce;
   }
 
   public void ask(String name) {
+
     g.getEdges(name);
     announce =
       "Do you want to teleport " +
@@ -247,6 +284,7 @@ public class hung extends SuperEvent {
       announce("You have reset the map");
       mapApp = null;
       graph();
+      attemp = 0;
     } else if (attemp == 1) {
       announce("You have one try");
     }

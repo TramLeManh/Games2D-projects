@@ -11,8 +11,12 @@ public class announceState extends SuperUI{
         super(gp,g2);
         sub_text = "Press space to continue";
         if(gp.isGraph){
-            sub_text = "Press Y or N";
+           
+                    sub_text = "Press Y or N";
+
+          
         }
+       
         word_length = 150;
         
     }

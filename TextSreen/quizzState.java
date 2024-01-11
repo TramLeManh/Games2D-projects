@@ -96,9 +96,9 @@ public class quizzState extends SuperUI {
         if (gp.gamestate == gp.quizzState) {
             //   if(gp.isGraph){
                 // System.out.println(1234);
-                drawScreen(gp.h.annouces());
+                // drawScreen(gp.h.annouces());
             // }else{
-            //                 drawScreen(questions[i].text);
+                            drawScreen(questions[i].text);
 
             // }
         }

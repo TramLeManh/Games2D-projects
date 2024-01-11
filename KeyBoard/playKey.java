@@ -46,18 +46,36 @@ public class playKey extends keyControl implements KeyCommand {
             gp.player.coin= 0;
         }
          else if(key_code == KeyEvent.VK_Y){
-            gp.h.teleport();
+            if(gp.h.oldman == true){
+                            gp.gamestate = gp.playState;
+                gp.h.oldman = false;
+                                    gp.player.isMove = true;
+
+            }
+            else{
+ gp.h.teleport();
                         gp.gamestate = gp.playState;
                         gp.player.isMove = true;
                       
+            }
+           
 
         }
            else if(key_code == KeyEvent.VK_N){
+             if(gp.h.oldman == true){
+                            gp.gamestate = gp.playState;
+                                            gp.h.oldman = false;
+                        gp.player.isMove = true;
+
+
+            }
+            else{
             gp.gamestate = gp.playState;
                                     gp.player.isMove = true;
 
 
         }
+    }
         
        
     }
