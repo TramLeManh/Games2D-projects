@@ -10,6 +10,9 @@ public class announceState extends SuperUI{
     public announceState(GamePanel gp) {
         super(gp,g2);
         sub_text = "Press space to continue";
+        if(gp.isGraph){
+            sub_text = "Press Y or N";
+        }
         word_length = 150;
         
     }

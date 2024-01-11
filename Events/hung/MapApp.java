@@ -20,10 +20,10 @@ public class MapApp {
   public void CreateMap() {
     NodeMap A = new NodeMap(166, 20, "A");
     NodeMap B = new NodeMap(205, 20, "B");
-    NodeMap C = new NodeMap(189, 57, "C");
+    NodeMap C = new NodeMap(189, 54, "C");
     NodeMap D = new NodeMap(180, 39, "D");
     NodeMap E = new NodeMap(222, 39, "E");
-    NodeMap F = new NodeMap(70, 74, "F");
+    NodeMap F = new NodeMap(151, 37, "F");
 
     ab = new Edge(A, B, 1);
     ac = new Edge(A, C, 2);

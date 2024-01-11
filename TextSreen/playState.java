@@ -26,6 +26,7 @@ public class playState extends SuperUI{
         if(gp.gamestate == gp.playState){
             time();
             hasKey();
+            if(gp.isGraph)
             coin();
         }
     }

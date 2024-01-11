@@ -39,12 +39,9 @@ public class oldman {
         } else if(SuperEvent.gp.isGraph == false) {
             if(SuperEvent.isMan){
 
-                if(SuperEvent.gp.isGraph ==true){
-                    System.out.println("Here you are");
-                }
-                else{
+              
                     
-                }
+                
                 if(p.isFirst&&SuperEvent.gp.object[41]==null) {
                     p.announce("Hello, there is something in the lava");
                         p.Key2();

@@ -123,10 +123,11 @@ public class Quizz_Events extends SuperEvent {
     }
     public void graph() {
             if(objectName == "portal"){
+
                 gp.h.teleport();
                 gp.gamestate = gp.playState;
                 gp.player.isMove = true;
-                clear_object();
+                // clear_object();
             }
 
         }

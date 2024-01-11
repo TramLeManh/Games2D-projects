@@ -94,12 +94,13 @@ public class quizzState extends SuperUI {
         SuperUI.g2 = g2;
 
         if (gp.gamestate == gp.quizzState) {
-              if(gp.isGraph){
+            //   if(gp.isGraph){
+                // System.out.println(1234);
                 drawScreen(gp.h.annouces());
-            }else{
-                            drawScreen(questions[i].text);
+            // }else{
+            //                 drawScreen(questions[i].text);
 
-            }
+            // }
         }
        
     }
