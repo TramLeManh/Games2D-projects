@@ -34,10 +34,18 @@ public class playKey extends keyControl implements KeyCommand {
         }
         else if (key_code == KeyEvent.VK_W || key_code == KeyEvent.VK_UP) {
             upPress = true;
-        }
+        } 
         else if (key_code == KeyEvent.VK_2) {
             isTwo = true;
         }
+        else if(key_code == KeyEvent.VK_M){
+            gp.h.openMap();
+        }
+         else if(key_code == KeyEvent.VK_R){
+            gp.h.reset();
+            gp.player.coin= 0;
+        }
+        
        
     }
 
@@ -70,9 +78,10 @@ public class playKey extends keyControl implements KeyCommand {
         else if (key_code == KeyEvent.VK_F) {
             fPress = false;
         }
-        else  if (key_code == KeyEvent.VK_T) {
-            tPress = false;
+        else if(key_code == KeyEvent.VK_M){
+            mPress = false;
         }
+        
     }
     
 }

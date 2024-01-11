@@ -24,7 +24,8 @@ public class pickObjects extends SuperEvent {
     public void set(String objectName, int index) {
         
         gp.g.set(objectName, index,this);
-                gp.h.set(objectName, index,this);
+                
+        gp.h.set(objectName, index,this);
 
         this.index = index;
      

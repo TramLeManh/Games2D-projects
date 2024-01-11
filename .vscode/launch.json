@@ -3,6 +3,48 @@
   "configurations": [
     {
       "type": "java",
+      "name": "view",
+      "request": "launch",
+      "mainClass": "ScoreBoard.view",
+      "projectName": "Games2D-projects_642de12c"
+    },
+    {
+      "type": "java",
+      "name": "random",
+      "request": "launch",
+      "mainClass": "Events.hung.random",
+      "projectName": "Games2D-projects_642de12c"
+    },
+    {
+      "type": "java",
+      "name": "main",
+      "request": "launch",
+      "mainClass": "main",
+      "projectName": ""
+    },
+    {
+      "type": "java",
+      "name": "test",
+      "request": "launch",
+      "mainClass": "Events.hung.test",
+      "projectName": "Games2D-projects_642de12c"
+    },
+    {
+      "type": "java",
+      "name": "MapApp",
+      "request": "launch",
+      "mainClass": "Events.hung.MapApp",
+      "projectName": "Games2D-projects_642de12c"
+    },
+    {
+      "type": "java",
+      "name": "main",
+      "request": "launch",
+      "mainClass": "Events.graphs.main",
+      "projectName": "Games2D-projects_642de12c"
+    },
+    {
+      "type": "java",
       "name": "login",
       "request": "launch",
       "mainClass": "main.login",

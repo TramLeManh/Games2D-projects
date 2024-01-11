@@ -197,7 +197,7 @@ public class object_set {
 
     //SuperObject là các array object inherited superObject
     public  void add(SuperObject object,String name,int x,int y,boolean collision){
-        int index = hashFunc(name);
+        int index = checkCollision(name);
         gp.object[index] = object;
         gp.object[index].worldX = x*gp.tileSize;//location x
         gp.object[index].worldY = y*gp.tileSize; //location x
@@ -205,7 +205,7 @@ public class object_set {
     } 
 
     public  void add(SuperObject object,String name,int x,int y){
-        int index = hashFunc(name);
+        int index = checkCollision(name);
         gp.object[index] = object;
         gp.object[index].worldX = x*gp.tileSize;
         gp.object[index].worldY = y*gp.tileSize;

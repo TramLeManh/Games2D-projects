@@ -9,8 +9,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import ScoreBoard.score;
+import ScoreBoard.view;
 import Events.SuperEvent;
-import Events.graph;
+import Events.graphs.graph;
 import Events.hung.hung;
 import KeyBoard.KeyCommand;
 import KeyBoard.keyControl;
@@ -34,6 +35,7 @@ public class GamePanel extends JPanel implements Runnable {
     // public boolean end = false;
     public boolean finish = false;
     final int originalTileSize = 16;
+    public boolean isGraph = true;
 
     final int scale = 3;
     private int temp;
@@ -90,7 +92,8 @@ public class GamePanel extends JPanel implements Runnable {
     public announceState announce = new announceState(this);
     public startScreen start = new startScreen(this);
     public pauseScreen pause = new pauseScreen(this);
-    private score s;
+    public score s;
+    public view v;
 
 
 
@@ -99,11 +102,13 @@ public class GamePanel extends JPanel implements Runnable {
     // int playerX     = 0;//100
     // int playerY     = 71;//100
     int playerSpeed = 5;
+    public boolean graphs = true;
 
     public GamePanel() {
      
         // set Background
          s = new score(frame, false,this);
+         v = new view(frame,false,this);
         this.setPreferredSize(new Dimension(16*48, 12*48));
         this.setBackground(new Color(70,120,80));/* getHSBColor() */ /* decode hex code */ /*Color.decode("#000000") */
         this.setDoubleBuffered(true);
@@ -256,6 +261,12 @@ public class GamePanel extends JPanel implements Runnable {
    }
 public void createAccount(String text) {
     s.insert(text,0);
+}
+public void openMap(){
+    v.setVisible(true);
+}
+public void closeMap(){
+    v.setVisible(false);
 }
 
 }

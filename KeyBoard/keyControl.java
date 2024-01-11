@@ -7,7 +7,7 @@ import main.GamePanel;
 
 public class keyControl implements KeyListener {
     public static boolean upPress, downPress, rightPress, leftPress,isSpace;
-    public static boolean tPress, fPress;
+    public static boolean tPress, fPress,mPress;
     public boolean isFall;
     public static boolean isOne, isTwo;
     public static boolean pPress;
@@ -32,6 +32,8 @@ public class keyControl implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int key_code = e.getKeyCode();
+        
+
 
         if (gp.gamestate == gp.startState) {
             startState.keyPressed(key_code);
@@ -57,6 +59,7 @@ public class keyControl implements KeyListener {
     public void keyReleased(KeyEvent e) {
         int key_code = e.getKeyCode();
         playState.keyReleased(key_code);
+       
 
     }
 

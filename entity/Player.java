@@ -18,6 +18,7 @@ public class Player extends Entity {
     GamePanel gp;
     public keyControl keyBoard;
     public int global_index = 0;
+    public int coin = 0;
 
     private static Player player = null;
 
@@ -34,7 +35,12 @@ public class Player extends Entity {
         }
         return player;
     }
-
+    public int getCoin() {
+        return coin;
+    }
+    public void setCoin(int coin) {
+        this.coin += coin;
+    }
     public void DefultValues() {
         screenX = gp.screenWidth / 2 - (gp.tileSize / 2);
         screenY = gp.screenHeight / 2 - (gp.tileSize / 2);
@@ -43,23 +49,23 @@ public class Player extends Entity {
         solidArea.y = 10;
         solidArea.width = 32;
         solidArea.height = 32;
-        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultX = solidArea.x;  
         solidAreaDefaultY = solidArea.y;
 
     }
 
     public void setDefultValues() {
-        worldX = gp.tileSize * 102;// 15
-        worldY = gp.tileSize * 73;// 11
+        worldX = gp.tileSize * 85;// 15
+        worldY = gp.tileSize * 67;// 11
         speed = 3;
         direction = "down";
         transfer = true;
-
     }
 
     public void update() {
         gp.eventH.checkEvent(worldX, worldY);
         // keyBoard player
+
 
         if ((gp.gamestate == gp.announceState || gp.gamestate == gp.playState)) {
             if (keyControl.pPress == true) {
@@ -70,6 +76,9 @@ public class Player extends Entity {
         gp.eventH.switchPlayer.set(worldX, worldY);
 
         // movements
+                        // gp.h.keyBoard();
+
+
         if (isMove) {
             if (keyControl.downPress == true || keyControl.upPress == true || keyControl.rightPress
                     || keyControl.leftPress == true) {

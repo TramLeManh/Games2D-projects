@@ -1,5 +1,7 @@
 package Events;
 
+import TextSreen.playState;
+
 public class Quizz_Events extends SuperEvent {
     private int x;
     private int y;
@@ -43,6 +45,8 @@ public class Quizz_Events extends SuperEvent {
                 clear_object();
             }
         }
+       
+        
 
     }
 
@@ -99,6 +103,12 @@ public class Quizz_Events extends SuperEvent {
                 nextState(gp.playState);
             }
         }
+        // if(gp.isGraph){
+        //     if(objectName == "portal"){
+        //         nextState(gp.playState);
+        //     }
+
+        // }
 
     }
 
@@ -111,4 +121,14 @@ public class Quizz_Events extends SuperEvent {
         this.y = y;
         teleport = true;
     }
+    public void graph() {
+            if(objectName == "portal"){
+                gp.h.teleport();
+                gp.gamestate = gp.playState;
+                gp.player.isMove = true;
+                clear_object();
+            }
+
+        }
+    
 }

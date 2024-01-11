@@ -45,6 +45,7 @@ public class data {
                         players[3] = new players("a4",4);
 
     }
+
     public void get(){
         players = new players[100];
         Connection connection = connect();
@@ -55,7 +56,7 @@ public class data {
         try {
             ResultSet rs = connection.createStatement().executeQuery(sql);
             while(rs.next()) {
-                players[elements] = new players(rs.getString(1), rs.getInt(3));
+                players[elements] = new players(rs.getString(1), rs.getInt(3));///add players to array
                 elements += 1;
            
             }}

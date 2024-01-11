@@ -94,8 +94,14 @@ public class quizzState extends SuperUI {
         SuperUI.g2 = g2;
 
         if (gp.gamestate == gp.quizzState) {
-            drawScreen(questions[i].text);
+              if(gp.isGraph){
+                drawScreen(gp.h.annouces());
+            }else{
+                            drawScreen(questions[i].text);
+
+            }
         }
+       
     }
 
     /* */
@@ -108,8 +114,16 @@ public class quizzState extends SuperUI {
             else if(events.getObjectIndex()==35){
                 i = 10;
             }
+           
             if(keyControl.tPress==true){
-                    if(questions[i].answer == true){
+                if(gp.isGraph){
+                    events.graph();
+                }else{
+
+                
+
+                
+                if(questions[i].answer == true){
                         System.out.println(i+" "+questions[i].answer);
                         events.correct();
                         i = random.nextInt(10);
@@ -129,8 +143,13 @@ public class quizzState extends SuperUI {
                     }
                     keyControl.tPress = false;
 
-                }
+            }}
                 if(keyControl.fPress==true){
+                    if(gp.isGraph){
+                  gp.gamestate = gp.playState;
+                  gp.player.isMove = true;
+
+                }else{
                     if(questions[i].answer == true){
                         System.out.println(i+" "+questions[i].answer);
 
@@ -148,6 +167,7 @@ public class quizzState extends SuperUI {
                     }
                     keyControl.fPress = false;
                 }
+            }
                 }
                 if(events.teleport == true&&keyControl.isSpace==true) {
                     events.teleport();

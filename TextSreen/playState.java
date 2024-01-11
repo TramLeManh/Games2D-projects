@@ -8,6 +8,7 @@ import java.text.*;
 
 import main.GamePanel;
 import object.object_Key;
+import object.object_potion1;
 import picture.picture;
 
 
@@ -25,6 +26,7 @@ public class playState extends SuperUI{
         if(gp.gamestate == gp.playState){
             time();
             hasKey();
+            coin();
         }
     }
     public void hasKey(){
@@ -35,6 +37,15 @@ public class playState extends SuperUI{
         g2.setColor(Color.white);
         g2.drawImage(key_picture, gp.tileSize/2,gp.tileSize/2,gp.tileSize,gp.tileSize,null);
         g2.drawString("x " +gp.player.getKey_count(),74,65);// 74 65
+    }
+      public void coin(){
+        Font font = new Font("Arial", Font.PLAIN, 40);
+        object_potion1 key  = new object_potion1();
+        BufferedImage key_picture = key.image;
+        g2.setFont(font);
+        g2.setColor(Color.white);
+        g2.drawImage(key_picture, gp.tileSize/2,gp.tileSize/2+48,gp.tileSize,gp.tileSize,null);
+        g2.drawString("= " +gp.player.getCoin(),74,65+48);// 74 65
     }
     public void time(){
         Font font = new Font("Arial", Font.PLAIN, 40);
